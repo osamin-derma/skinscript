@@ -1,43 +1,43 @@
 import { useEffect, useReducer, useState } from 'react'
-import last11Questions from './data/last11_questions.json'
-import makkiQuestionsRaw from './data/makki_questions.json'
-import etasHairNailsRaw from './data/etas_hair_nails_questions.json'
-import bvHairNailRaw from './data/bv_hair_nail_questions.json'
+import arabBoardRaw from './data/arab_board_master.json'
+import boardVitalsRaw from './data/board_vitals_master.json'
+import makkiRaw from './data/makki_master.json'
+import etas2026Raw from './data/etas_2026_master.json'
 
 // Tag each question with its source so they can be combined
-const last11Tagged = last11Questions.map(q => ({ ...q, source: q.source || 'Last 11 Board Exams' }))
-const makkiTagged = makkiQuestionsRaw.map(q => ({ ...q, source: 'Makki Questions' }))
-const etasHairNailsTagged = etasHairNailsRaw.map(q => ({ ...q, source: 'ETAS Hair & Nails' }))
-const bvHairNailTagged = bvHairNailRaw.map(q => ({ ...q, source: 'Board Vitals — Hair & Nail' }))
+const arabBoardTagged = arabBoardRaw.map(q => ({ ...q, source: q.source || 'Arab Board' }))
+const boardVitalsTagged = boardVitalsRaw.map(q => ({ ...q, source: q.source || 'Board Vitals' }))
+const makkiTagged = makkiRaw.map(q => ({ ...q, source: q.source || 'Makki' }))
+const etas2026Tagged = etas2026Raw.map(q => ({ ...q, source: q.source || 'ETAS 2026' }))
 
 // Combined "All" bank: offset IDs from each bank to avoid collisions
 const combinedAll = [
-  ...last11Tagged,
-  ...makkiTagged.map(q => ({ ...q, id: q.id + 100000 })),
-  ...etasHairNailsTagged.map(q => ({ ...q, id: q.id + 200000 })),
-  ...bvHairNailTagged.map(q => ({ ...q, id: q.id + 300000 })),
+  ...arabBoardTagged,
+  ...boardVitalsTagged.map(q => ({ ...q, id: q.id + 100000 })),
+  ...makkiTagged.map(q => ({ ...q, id: q.id + 200000 })),
+  ...etas2026Tagged.map(q => ({ ...q, id: q.id + 300000 })),
 ]
 
 const allBanks = {
-  last11: {
-    label: 'Last 11 Board Exams',
-    questions: last11Tagged,
-    count: last11Tagged.length,
+  arabBoard: {
+    label: 'Arab Board',
+    questions: arabBoardTagged,
+    count: arabBoardTagged.length,
+  },
+  boardVitals: {
+    label: 'Board Vitals',
+    questions: boardVitalsTagged,
+    count: boardVitalsTagged.length,
   },
   makki: {
-    label: 'Makki Questions',
+    label: 'Makki',
     questions: makkiTagged,
     count: makkiTagged.length,
   },
-  etasHairNails: {
-    label: 'ETAS Hair & Nails',
-    questions: etasHairNailsTagged,
-    count: etasHairNailsTagged.length,
-  },
-  bvHairNail: {
-    label: 'Board Vitals — Hair & Nail',
-    questions: bvHairNailTagged,
-    count: bvHairNailTagged.length,
+  etas2026: {
+    label: 'ETAS 2026',
+    questions: etas2026Tagged,
+    count: etas2026Tagged.length,
   },
   all: {
     label: 'All Questions',
@@ -46,18 +46,30 @@ const allBanks = {
   },
 }
 
-function getBankQuestions(bankKey) {
-  return allBanks[bankKey]?.questions || allBanks.last11.questions
+// Compute available categories across all banks
+const ALL_CATEGORIES = Array.from(new Set(combinedAll.map(q => q.category).filter(Boolean))).sort()
+
+function getBankQuestions(bankKey, categoryFilter = null) {
+  const base = allBanks[bankKey]?.questions || allBanks.all.questions
+  if (categoryFilter && categoryFilter !== 'all') {
+    return base.filter(q => q.category === categoryFilter)
+  }
+  return base
 }
 import StartScreen from './components/StartScreen'
 import QuizScreen from './components/QuizScreen'
 import ResultsDashboard from './components/ResultsDashboard'
 
-const STORAGE_KEY = 'last11-quiz-state'
-const HISTORY_KEY = 'last11-quiz-history'
-const GLOBAL_FLAGS_KEY = 'last11-quiz-flags'
-const GLOBAL_WRONG_KEY = 'last11-quiz-wrong'
-const GLOBAL_USED_KEY = 'last11-quiz-used'
+// Master Edition 2026 — versioned keys so old user data is preserved
+// but new banks start fresh.
+const APP_VERSION = 'master2026'
+const STORAGE_KEY = `skinscript-${APP_VERSION}-state`
+const HISTORY_KEY = `skinscript-${APP_VERSION}-history`
+const GLOBAL_FLAGS_KEY = `skinscript-${APP_VERSION}-flags`
+const GLOBAL_WRONG_KEY = `skinscript-${APP_VERSION}-wrong`
+const GLOBAL_USED_KEY = `skinscript-${APP_VERSION}-used`
+const RESET_NOTICE_KEY = `skinscript-${APP_VERSION}-notice-seen`
+const CATEGORY_FILTER_KEY = `skinscript-${APP_VERSION}-category-filter`
 
 function shuffleArray(arr) {
   const a = [...arr]
@@ -90,7 +102,8 @@ const initialState = {
   darkMode: false,
   selectedTopics: [],
   quizSource: 'all', // 'all' | 'flagged' | 'wrong' | 'unused' | 'topics'
-  activeBank: 'all', // 'all' | 'last11' | 'makki'
+  activeBank: 'all', // 'all' | 'arabBoard' | 'boardVitals' | 'makki' | 'etas2026'
+  categoryFilter: 'all', // 'all' | <category name>
   history: [],
   globalFlagged: [],
   globalWrong: [],
@@ -106,15 +119,21 @@ function reducer(state, action) {
         globalFlagged: loadJSON(GLOBAL_FLAGS_KEY, []),
         globalWrong: loadJSON(GLOBAL_WRONG_KEY, []),
         globalUsed: loadJSON(GLOBAL_USED_KEY, []),
+        categoryFilter: localStorage.getItem(CATEGORY_FILTER_KEY) || 'all',
       }
     }
     case 'SET_BANK': {
       return { ...state, activeBank: action.bank }
     }
+    case 'SET_CATEGORY_FILTER': {
+      localStorage.setItem(CATEGORY_FILTER_KEY, action.category)
+      return { ...state, categoryFilter: action.category }
+    }
     case 'START_QUIZ': {
       // Use selected bank — store in state for rendering
       const bankKey = action.bank || state.activeBank || 'all'
-      const bankQuestions = getBankQuestions(bankKey)
+      const catFilter = action.categoryFilter !== undefined ? action.categoryFilter : state.categoryFilter
+      const bankQuestions = getBankQuestions(bankKey, catFilter)
 
       let pool = bankQuestions.map((_, i) => i)
 
@@ -284,10 +303,26 @@ function reducer(state, action) {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [showWelcome, setShowWelcome] = useState(false)
 
   useEffect(() => {
     dispatch({ type: 'INIT' })
+    // Detect existing users (had data under old keys) and show welcome notice
+    const noticeSeen = localStorage.getItem(RESET_NOTICE_KEY)
+    const hadOldData = ['last11-quiz-state', 'last11-quiz-history', 'last11-quiz-flags',
+                        'last11-quiz-wrong', 'last11-quiz-used'].some(k => localStorage.getItem(k))
+    if (hadOldData && !noticeSeen) {
+      setShowWelcome(true)
+    }
   }, [])
+
+  const dismissWelcome = () => {
+    // Clean up old version's localStorage to avoid conflicts
+    ['last11-quiz-state', 'last11-quiz-history', 'last11-quiz-flags',
+     'last11-quiz-wrong', 'last11-quiz-used'].forEach(k => localStorage.removeItem(k))
+    localStorage.setItem(RESET_NOTICE_KEY, '1')
+    setShowWelcome(false)
+  }
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', state.darkMode)
@@ -317,12 +352,48 @@ export default function App() {
     }
   }, [])
 
-  // Derive active questions from state.activeBank
-  const activeQuestions = getBankQuestions(state.activeBank)
-  const topics = [...new Set(activeQuestions.map(q => q.topic).filter(Boolean))].sort()
+  // Derive active questions from state.activeBank + categoryFilter
+  const activeQuestions = getBankQuestions(state.activeBank, state.categoryFilter)
+  const topics = [...new Set(activeQuestions.map(q => q.category).filter(Boolean))].sort()
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${state.darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      {/* WELCOME / RESET NOTICE for upgrading users */}
+      {showWelcome && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className={`max-w-md w-full rounded-2xl shadow-2xl p-6 ${state.darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+            <div className="text-center mb-4">
+              <div className="inline-block px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#fdf6e3', color: '#c9a84c' }}>
+                <span className="text-[10px] font-bold tracking-wider uppercase">Master Edition · 2026</span>
+              </div>
+              <h2 className="text-2xl font-extrabold tracking-tight mb-2" style={{ color: '#2c3e3f' }}>
+                Welcome to the new SkinScript
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                The question bank has been completely rebuilt with <strong>11,583 verified questions</strong> across 4 sources:
+                Arab Board, Board Vitals, Makki, and ETAS 2026.
+              </p>
+            </div>
+
+            <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: state.darkMode ? '#374151' : '#f3f4f6' }}>
+              <p className="text-xs leading-relaxed">
+                <strong>Heads up:</strong> Because the questions are new, your previous quiz history, flags, and incorrect-answer
+                tracking from the older version cannot be carried over. Clicking <em>Continue</em> will clear that old data and
+                start you fresh in the Master Edition.
+              </p>
+            </div>
+
+            <button
+              onClick={dismissWelcome}
+              className="w-full py-3 rounded-xl text-white font-bold text-base transition hover:opacity-90 shadow"
+              style={{ backgroundColor: '#2c3e3f' }}
+            >
+              Continue with Master Edition 2026
+            </button>
+          </div>
+        </div>
+      )}
+
       {state.screen === 'start' && (
         <StartScreen
           totalQuestions={activeQuestions.length}
@@ -334,13 +405,16 @@ export default function App() {
           dispatch={dispatch}
           banks={{
             all: { label: 'All Questions', count: allBanks.all.count, questions: allBanks.all.questions },
-            last11: { label: 'Last 11 Board Exams', count: allBanks.last11.count, questions: allBanks.last11.questions },
-            makki: { label: 'Makki Questions', count: allBanks.makki.count, questions: allBanks.makki.questions },
-            etasHairNails: { label: 'ETAS Hair & Nails', count: allBanks.etasHairNails.count, questions: allBanks.etasHairNails.questions },
-            bvHairNail: { label: 'Board Vitals — Hair & Nail', count: allBanks.bvHairNail.count, questions: allBanks.bvHairNail.questions },
+            arabBoard: { label: 'Arab Board', count: allBanks.arabBoard.count, questions: allBanks.arabBoard.questions },
+            boardVitals: { label: 'Board Vitals', count: allBanks.boardVitals.count, questions: allBanks.boardVitals.questions },
+            makki: { label: 'Makki', count: allBanks.makki.count, questions: allBanks.makki.questions },
+            etas2026: { label: 'ETAS 2026', count: allBanks.etas2026.count, questions: allBanks.etas2026.questions },
           }}
           activeBank={state.activeBank}
           setActiveBank={(bank) => dispatch({ type: 'SET_BANK', bank })}
+          categoryFilter={state.categoryFilter}
+          setCategoryFilter={(category) => dispatch({ type: 'SET_CATEGORY_FILTER', category })}
+          allCategories={ALL_CATEGORIES}
         />
       )}
       {state.screen === 'quiz' && (

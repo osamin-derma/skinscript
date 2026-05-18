@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon } from 'lucide-react'
 
-export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks }) {
+export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories }) {
   const [mode, setMode] = useState('tutor')
   const [timer, setTimer] = useState(90)
   const [shuffle, setShuffle] = useState(true)
@@ -351,13 +351,15 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         )}
 
         {/* ═══════════════════════════════════════════════ */}
-        {/* QUESTION BANK SELECTOR — All / Last 11 / Makki  */}
+        {/* QUESTION BANK SELECTOR — Master Edition 2026     */}
+        {/* All / Arab Board / Board Vitals / Makki / ETAS   */}
         {/* ═══════════════════════════════════════════════ */}
         {banks && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-1 h-5 rounded-full" style={{ backgroundColor: brand }} />
               <label className="text-sm font-bold uppercase tracking-wide" style={{ color: brand }}>Select Question Bank</label>
+              <span className="ml-auto text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded" style={{ color: gold, backgroundColor: '#fdf6e3' }}>Master Edition · 2026</span>
             </div>
 
             {/* All Questions — full-width card */}
@@ -379,44 +381,74 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               </div>
               <div className="flex-1">
                 <div className="font-bold text-base" style={{ color: activeBank === 'all' ? brand : undefined }}>All Questions</div>
-                <div className="text-xs text-gray-500">Combined: all banks</div>
+                <div className="text-xs text-gray-500">Combined: all 4 sources</div>
               </div>
               <div className="text-2xl font-extrabold"
                    style={{ color: activeBank === 'all' ? brand : '#9ca3af' }}>
-                {banks.all.count}
+                {banks.all.count.toLocaleString()}
               </div>
             </button>
 
             {/* Individual banks — 2x2 grid */}
             <div className="grid grid-cols-2 gap-2">
-              {/* Last 11 */}
+              {/* Arab Board */}
               <button
-                onClick={() => setActiveBank('last11')}
+                onClick={() => setActiveBank('arabBoard')}
                 className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'last11'
+                  activeBank === 'arabBoard'
                     ? 'shadow-md'
                     : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
                 }`}
-                style={activeBank === 'last11'
+                style={activeBank === 'arabBoard'
                   ? { backgroundColor: '#e8f0f0', borderColor: brand }
                   : {}}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'last11' ? brand : '#e5e7eb',
-                                color: activeBank === 'last11' ? 'white' : '#6b7280' }}>
-                    📋
+                       style={{ backgroundColor: activeBank === 'arabBoard' ? brand : '#e5e7eb',
+                                color: activeBank === 'arabBoard' ? 'white' : '#6b7280' }}>
+                    🌍
                   </div>
                   <div className="text-2xl font-extrabold"
-                       style={{ color: activeBank === 'last11' ? brand : '#9ca3af' }}>
-                    {banks.last11.count}
+                       style={{ color: activeBank === 'arabBoard' ? brand : '#9ca3af' }}>
+                    {banks.arabBoard.count.toLocaleString()}
                   </div>
                 </div>
                 <div className="font-semibold text-sm"
-                     style={{ color: activeBank === 'last11' ? brand : undefined }}>
-                  Last 11 Board Exams
+                     style={{ color: activeBank === 'arabBoard' ? brand : undefined }}>
+                  Arab Board
                 </div>
-                <div className="text-[10px] text-gray-400 mt-0.5">Sep 2019 – Oct 2025</div>
+                <div className="text-[10px] text-gray-400 mt-0.5">Regional board exams</div>
+              </button>
+
+              {/* Board Vitals */}
+              <button
+                onClick={() => setActiveBank('boardVitals')}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  activeBank === 'boardVitals'
+                    ? 'shadow-md'
+                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
+                }`}
+                style={activeBank === 'boardVitals'
+                  ? { backgroundColor: '#fef2f2', borderColor: '#ef4444' }
+                  : {}}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                       style={{ backgroundColor: activeBank === 'boardVitals' ? '#ef4444' : '#e5e7eb',
+                                color: activeBank === 'boardVitals' ? 'white' : '#6b7280' }}>
+                    💉
+                  </div>
+                  <div className="text-2xl font-extrabold"
+                       style={{ color: activeBank === 'boardVitals' ? '#ef4444' : '#9ca3af' }}>
+                    {banks.boardVitals.count.toLocaleString()}
+                  </div>
+                </div>
+                <div className="font-semibold text-sm"
+                     style={{ color: activeBank === 'boardVitals' ? '#ef4444' : undefined }}>
+                  Board Vitals
+                </div>
+                <div className="text-[10px] text-gray-400 mt-0.5">With explanations</div>
               </button>
 
               {/* Makki */}
@@ -439,80 +471,95 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                   </div>
                   <div className="text-2xl font-extrabold"
                        style={{ color: activeBank === 'makki' ? gold : '#9ca3af' }}>
-                    {banks.makki.count}
+                    {banks.makki.count.toLocaleString()}
                   </div>
                 </div>
                 <div className="font-semibold text-sm"
                      style={{ color: activeBank === 'makki' ? gold : undefined }}>
-                  Makki Questions
+                  Makki
                 </div>
                 <div className="text-[10px] text-gray-400 mt-0.5">Dermatology MCQs</div>
               </button>
 
-              {/* ETAS Hair & Nails */}
-              {banks.etasHairNails && (
-                <button
-                  onClick={() => setActiveBank('etasHairNails')}
-                  className={`p-4 rounded-xl border-2 text-left transition-all ${
-                    activeBank === 'etasHairNails'
-                      ? 'shadow-md'
-                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                  }`}
-                  style={activeBank === 'etasHairNails'
-                    ? { backgroundColor: '#eef4ff', borderColor: '#3b82f6' }
-                    : {}}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                         style={{ backgroundColor: activeBank === 'etasHairNails' ? '#3b82f6' : '#e5e7eb',
-                                  color: activeBank === 'etasHairNails' ? 'white' : '#6b7280' }}>
-                      💇
-                    </div>
-                    <div className="text-2xl font-extrabold"
-                         style={{ color: activeBank === 'etasHairNails' ? '#3b82f6' : '#9ca3af' }}>
-                      {banks.etasHairNails.count}
-                    </div>
+              {/* ETAS 2026 */}
+              <button
+                onClick={() => setActiveBank('etas2026')}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  activeBank === 'etas2026'
+                    ? 'shadow-md'
+                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
+                }`}
+                style={activeBank === 'etas2026'
+                  ? { backgroundColor: '#eef4ff', borderColor: '#3b82f6' }
+                  : {}}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                       style={{ backgroundColor: activeBank === 'etas2026' ? '#3b82f6' : '#e5e7eb',
+                                color: activeBank === 'etas2026' ? 'white' : '#6b7280' }}>
+                    📋
                   </div>
-                  <div className="font-semibold text-sm"
-                       style={{ color: activeBank === 'etasHairNails' ? '#3b82f6' : undefined }}>
-                    ETAS Hair & Nails
+                  <div className="text-2xl font-extrabold"
+                       style={{ color: activeBank === 'etas2026' ? '#3b82f6' : '#9ca3af' }}>
+                    {banks.etas2026.count.toLocaleString()}
                   </div>
-                  <div className="text-[10px] text-gray-400 mt-0.5">With explanations</div>
-                </button>
-              )}
-
-              {/* Board Vitals — Hair & Nail */}
-              {banks.bvHairNail && (
-                <button
-                  onClick={() => setActiveBank('bvHairNail')}
-                  className={`p-4 rounded-xl border-2 text-left transition-all ${
-                    activeBank === 'bvHairNail'
-                      ? 'shadow-md'
-                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                  }`}
-                  style={activeBank === 'bvHairNail'
-                    ? { backgroundColor: '#fef2f2', borderColor: '#ef4444' }
-                    : {}}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                         style={{ backgroundColor: activeBank === 'bvHairNail' ? '#ef4444' : '#e5e7eb',
-                                  color: activeBank === 'bvHairNail' ? 'white' : '#6b7280' }}>
-                      💅
-                    </div>
-                    <div className="text-2xl font-extrabold"
-                         style={{ color: activeBank === 'bvHairNail' ? '#ef4444' : '#9ca3af' }}>
-                      {banks.bvHairNail.count}
-                    </div>
-                  </div>
-                  <div className="font-semibold text-sm"
-                       style={{ color: activeBank === 'bvHairNail' ? '#ef4444' : undefined }}>
-                    Board Vitals — Hair & Nail
-                  </div>
-                  <div className="text-[10px] text-gray-400 mt-0.5">UWorld-style</div>
-                </button>
-              )}
+                </div>
+                <div className="font-semibold text-sm"
+                     style={{ color: activeBank === 'etas2026' ? '#3b82f6' : undefined }}>
+                  ETAS 2026
+                </div>
+                <div className="text-[10px] text-gray-400 mt-0.5">Largest collection</div>
+              </button>
             </div>
+
+            {/* CATEGORY FILTER — Filter by main category */}
+            {allCategories && allCategories.length > 0 && (
+              <div className="mt-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-1 h-4 rounded-full" style={{ backgroundColor: gold }} />
+                  <label className="text-xs font-bold uppercase tracking-wide text-gray-600 dark:text-gray-300">Filter by Topic</label>
+                  {categoryFilter && categoryFilter !== 'all' && (
+                    <button
+                      onClick={() => setCategoryFilter('all')}
+                      className="ml-auto text-[10px] text-gray-500 hover:text-red-500 underline"
+                    >
+                      clear
+                    </button>
+                  )}
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  <button
+                    onClick={() => setCategoryFilter('all')}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                      !categoryFilter || categoryFilter === 'all'
+                        ? 'font-semibold'
+                        : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
+                    }`}
+                    style={(!categoryFilter || categoryFilter === 'all')
+                      ? { backgroundColor: brand, borderColor: brand, color: 'white' }
+                      : {}}
+                  >
+                    All topics
+                  </button>
+                  {allCategories.map(cat => (
+                    <button
+                      key={cat}
+                      onClick={() => setCategoryFilter(cat)}
+                      className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                        categoryFilter === cat
+                          ? 'font-semibold'
+                          : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
+                      }`}
+                      style={categoryFilter === cat
+                        ? { backgroundColor: brand, borderColor: brand, color: 'white' }
+                        : {}}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
 
