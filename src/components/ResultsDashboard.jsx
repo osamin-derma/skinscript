@@ -171,7 +171,7 @@ export default function ResultsDashboard({ state, questions, dispatch }) {
                     <div className="px-4 pb-4 border-t dark:border-gray-600">
                       <div className="mt-3 text-sm">
                         <p className="font-medium mb-2">{q.question}</p>
-                        {Object.entries(q.choices).sort().map(([letter, text]) => (
+                        {Object.entries(q.choices || {}).sort().map(([letter, text]) => (
                           <div key={letter} className={`py-1 px-2 rounded text-xs mb-1 ${
                             letter === q.correct_answer ? 'bg-green-50 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                             letter === ans?.selected ? 'bg-red-50 text-red-800 dark:bg-red-900/30 dark:text-red-300' : ''

@@ -135,7 +135,14 @@ function reducer(state, action) {
       const catFilter = action.categoryFilter !== undefined ? action.categoryFilter : state.categoryFilter
       const bankQuestions = getBankQuestions(bankKey, catFilter)
 
-      let pool = bankQuestions.map((_, i) => i)
+      // Quizzable = MCQ items only. Non-MCQ rows (short-answer /
+      // "answer not clearly provided in source") are still in the data
+      // so bank counts reflect the source PDFs, but the timed/tutor quiz
+      // only draws from items with full A-E choices.
+      const isQuizzable = (q) => q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
+      let pool = bankQuestions
+        .map((_, i) => i)
+        .filter(i => isQuizzable(bankQuestions[i]))
 
       // Filter by source
       if (action.source === 'flagged') {
@@ -370,7 +377,7 @@ export default function App() {
                 Welcome to the new SkinScript
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-300">
-                The question bank has been completely rebuilt with <strong>11,583 verified questions</strong> across 4 sources:
+                The question bank has been completely rebuilt with <strong>11,896 verified questions</strong> across 4 sources:
                 Arab Board, Board Vitals, Makki, and ETAS 2026.
               </p>
             </div>

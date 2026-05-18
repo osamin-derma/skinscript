@@ -131,7 +131,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
   const progress = ((currentIndex + 1) / totalQ) * 100
   const isFlagged = flagged.includes(q.id)
-  const choiceKeys = Object.keys(q.choices).sort()
+  const choiceKeys = Object.keys(q.choices || {}).sort()
 
   const getChoiceStyle = (letter) => {
     if (!isSubmitted) {

@@ -22,7 +22,9 @@ export default function ExplanationPanel({ question, answer, darkMode }) {
         <div className="mb-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Correct Answer</span>
           <p className="mt-1 font-semibold text-green-700 dark:text-green-400">
-            {question.correct_answer}. {question.choices[question.correct_answer]}
+            {question.correct_answer && question.choices?.[question.correct_answer]
+              ? `${question.correct_answer}. ${question.choices[question.correct_answer]}`
+              : (question.correct_text || '—')}
           </p>
         </div>
 
@@ -31,7 +33,7 @@ export default function ExplanationPanel({ question, answer, darkMode }) {
           <div className="mb-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">Your Answer</span>
             <p className="mt-1 text-red-600 dark:text-red-400 line-through">
-              {answer.selected}. {question.choices[answer.selected]}
+              {answer.selected}. {question.choices?.[answer.selected] || ''}
             </p>
           </div>
         )}
