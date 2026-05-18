@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 // Set base to match the repo name
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/skinscript-last11-quiz/',
+  base: '/skinscript/',
 })
