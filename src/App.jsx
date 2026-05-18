@@ -68,8 +68,30 @@ const HISTORY_KEY = `skinscript-${APP_VERSION}-history`
 const GLOBAL_FLAGS_KEY = `skinscript-${APP_VERSION}-flags`
 const GLOBAL_WRONG_KEY = `skinscript-${APP_VERSION}-wrong`
 const GLOBAL_USED_KEY = `skinscript-${APP_VERSION}-used`
-const RESET_NOTICE_KEY = `skinscript-${APP_VERSION}-notice-seen`
 const CATEGORY_FILTER_KEY = `skinscript-${APP_VERSION}-category-filter`
+
+// DATA_VERSION bumps every time the question bank changes in a way that
+// invalidates user history (new IDs, rewritten explanations, etc.). On
+// each bump, we show a welcome notice and reset *all* prior app data
+// — cleaner than trying to partially migrate references that may be
+// stale.  Bump this string in lockstep with content changes.
+const DATA_VERSION = '2026-05-19-master2026'
+const DATA_VERSION_KEY = 'skinscript-data-version'
+
+// All localStorage key prefixes the app has ever owned. Used to wipe
+// everything cleanly on a data-version bump.
+const OWNED_KEY_PREFIXES = ['skinscript-', 'last11-quiz-']
+
+function wipeAllAppData() {
+  const toRemove = []
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i)
+    if (k && OWNED_KEY_PREFIXES.some(p => k.startsWith(p))) {
+      toRemove.push(k)
+    }
+  }
+  toRemove.forEach(k => localStorage.removeItem(k))
+}
 
 function shuffleArray(arr) {
   const a = [...arr]
@@ -312,23 +334,40 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [showWelcome, setShowWelcome] = useState(false)
 
+  // Show the welcome/reset notice once per data version. If the user's
+  // recorded data version doesn't match the current one, we surface the
+  // modal BEFORE rehydrating any reducer state — so stale history/flags
+  // don't briefly flash on screen.
+  const [hadPriorData, setHadPriorData] = useState(false)
   useEffect(() => {
-    dispatch({ type: 'INIT' })
-    // Detect existing users (had data under old keys) and show welcome notice
-    const noticeSeen = localStorage.getItem(RESET_NOTICE_KEY)
-    const hadOldData = ['last11-quiz-state', 'last11-quiz-history', 'last11-quiz-flags',
-                        'last11-quiz-wrong', 'last11-quiz-used'].some(k => localStorage.getItem(k))
-    if (hadOldData && !noticeSeen) {
+    const seenVersion = localStorage.getItem(DATA_VERSION_KEY)
+    if (seenVersion !== DATA_VERSION) {
+      // First visit to this data version. Check whether they had any
+      // prior app data so the modal copy can adapt.
+      let hadAny = false
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i)
+        if (k && OWNED_KEY_PREFIXES.some(p => k.startsWith(p))) {
+          hadAny = true
+          break
+        }
+      }
+      setHadPriorData(hadAny)
       setShowWelcome(true)
+    } else {
+      // Already on the current data version — just rehydrate.
+      dispatch({ type: 'INIT' })
     }
   }, [])
 
   const dismissWelcome = () => {
-    // Clean up old version's localStorage to avoid conflicts
-    ['last11-quiz-state', 'last11-quiz-history', 'last11-quiz-flags',
-     'last11-quiz-wrong', 'last11-quiz-used'].forEach(k => localStorage.removeItem(k))
-    localStorage.setItem(RESET_NOTICE_KEY, '1')
+    // Wipe every key we've ever owned, then mark this data version as
+    // seen. Reload to guarantee a clean slate (no in-memory leftovers
+    // from earlier reducer hooks).
+    wipeAllAppData()
+    localStorage.setItem(DATA_VERSION_KEY, DATA_VERSION)
     setShowWelcome(false)
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -365,29 +404,50 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${state.darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
-      {/* WELCOME / RESET NOTICE for upgrading users */}
+      {/* WELCOME / RESET NOTICE — shown once per DATA_VERSION */}
       {showWelcome && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className={`max-w-md w-full rounded-2xl shadow-2xl p-6 ${state.darkMode ? 'bg-gray-800' : 'bg-white'}`}>
-            <div className="text-center mb-4">
+            <div className="text-center mb-5">
               <div className="inline-block px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#fdf6e3', color: '#c9a84c' }}>
                 <span className="text-[10px] font-bold tracking-wider uppercase">Master Edition · 2026</span>
               </div>
               <h2 className="text-2xl font-extrabold tracking-tight mb-2" style={{ color: '#2c3e3f' }}>
-                Welcome to the new SkinScript
+                {hadPriorData ? 'SkinScript has been updated' : 'Welcome to SkinScript'}
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
-                The question bank has been completely rebuilt with <strong>11,896 verified questions</strong> across 4 sources:
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                Your dermatology board prep is powered by{' '}
+                <strong>11,896 verified questions</strong> across 4 source banks:
                 Arab Board, Board Vitals, Makki, and ETAS 2026.
               </p>
             </div>
 
-            <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: state.darkMode ? '#374151' : '#f3f4f6' }}>
-              <p className="text-xs leading-relaxed">
-                <strong>Heads up:</strong> Because the questions are new, your previous quiz history, flags, and incorrect-answer
-                tracking from the older version cannot be carried over. Clicking <em>Continue</em> will clear that old data and
-                start you fresh in the Master Edition.
-              </p>
+            <div className="rounded-xl p-4 mb-5" style={{ backgroundColor: state.darkMode ? '#374151' : '#f3f4f6' }}>
+              {hadPriorData ? (
+                <>
+                  <p className="text-xs font-semibold mb-2" style={{ color: '#2c3e3f' }}>
+                    🔄 Fresh start
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                    The question bank was rebuilt, so question IDs and explanations have changed.
+                    Your previous <strong>quiz history</strong>, <strong>flags</strong>, and{' '}
+                    <strong>wrong/used tracking</strong> would point at stale entries — we'd rather
+                    reset cleanly than partially migrate. Tapping <em>Start Fresh</em> clears
+                    everything stored on this device and starts you with a clean slate.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-xs font-semibold mb-2" style={{ color: '#2c3e3f' }}>
+                    👋 First-time setup
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+                    Your progress (history, flagged questions, wrong-answer tracking) is saved
+                    only on this device. Each time we update the question bank, we'll show this
+                    notice again and reset to a clean slate so nothing references stale data.
+                  </p>
+                </>
+              )}
             </div>
 
             <button
@@ -395,8 +455,12 @@ export default function App() {
               className="w-full py-3 rounded-xl text-white font-bold text-base transition hover:opacity-90 shadow"
               style={{ backgroundColor: '#2c3e3f' }}
             >
-              Continue with Master Edition 2026
+              {hadPriorData ? 'Start Fresh' : 'Get Started'}
             </button>
+
+            <p className="text-[10px] text-center text-gray-400 mt-3">
+              Data version {DATA_VERSION}
+            </p>
           </div>
         </div>
       )}
