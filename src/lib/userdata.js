@@ -12,9 +12,14 @@ import { supabase } from './supabase'
 // shouldn't crash a study session.
 // ─────────────────────────────────────────────────────────────────────────
 
+// Read the current user id from the cached session (synchronous after the
+// initial auth bootstrap — no network call).  getUser() makes a request
+// to /auth/v1/user and would silently return null on a flaky network,
+// which is exactly the kind of failure that left old rows behind on
+// "Reset ALL" → that's why this is now getSession().
 async function uid() {
-  const { data } = await supabase.auth.getUser()
-  return data?.user?.id || null
+  const { data } = await supabase.auth.getSession()
+  return data?.session?.user?.id || null
 }
 
 function warn(label, err) {
@@ -159,16 +164,39 @@ export async function clearHistory() {
 // ── Bulk reset (matches the existing "Reset Performance" + RESET_ALL) ────
 
 export async function clearProgress() {
-  const userId = await uid(); if (!userId) return
+  const userId = await uid()
+  if (!userId) {
+    console.warn('[userdata] clearProgress: no user id, nothing to clear')
+    return false
+  }
   const results = await Promise.all([
     supabase.from('user_flags').delete().eq('user_id', userId),
     supabase.from('user_wrong').delete().eq('user_id', userId),
     supabase.from('user_used' ).delete().eq('user_id', userId),
   ])
-  results.forEach((r, i) => warn(['flags','wrong','used'][i] + ' clear', r.error))
+  let ok = true
+  results.forEach((r, i) => {
+    const label = ['flags', 'wrong', 'used'][i]
+    if (r.error) {
+      console.error('[userdata] clearProgress', label, 'failed:', r.error)
+      ok = false
+    } else {
+      console.log('[userdata] cleared', label, 'for user', userId)
+    }
+  })
+  return ok
 }
 
 export async function clearEverything() {
-  await clearHistory()
-  await clearProgress()
+  const userId = await uid()
+  if (!userId) {
+    console.warn('[userdata] clearEverything: no user id, aborting')
+    return false
+  }
+  console.log('[userdata] clearEverything starting for user', userId)
+  const histRes = await supabase.from('quiz_history').delete().eq('user_id', userId)
+  if (histRes.error) console.error('[userdata] history delete failed:', histRes.error)
+  else console.log('[userdata] cleared history for user', userId)
+  const progressOk = await clearProgress()
+  return !histRes.error && progressOk
 }
