@@ -3,6 +3,9 @@ import arabBoardRaw from './data/arab_board_master.json'
 import boardVitalsRaw from './data/board_vitals_master.json'
 import makkiRaw from './data/makki_master.json'
 import etas2026Raw from './data/etas_2026_master.json'
+import AuthScreen from './components/AuthScreen'
+import { supabase } from './lib/supabase'
+import { onAuthStateChange, signOut } from './lib/auth'
 
 // Tag each question with its source so they can be combined
 const arabBoardTagged = arabBoardRaw.map(q => ({ ...q, source: q.source || 'Arab Board' }))
@@ -334,6 +337,30 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [showWelcome, setShowWelcome] = useState(false)
 
+  // ── Auth gate ──────────────────────────────────────────────────────────
+  // null = still resolving the initial session; false = no session;
+  // {user,…} = signed in. We show a brief splash while resolving so we
+  // never flash the AuthScreen at a returning logged-in user.
+  const [session, setSession] = useState(null)
+  const [sessionResolved, setSessionResolved] = useState(false)
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setSession(data.session)
+      setSessionResolved(true)
+    })
+    const unsubscribe = onAuthStateChange((s) => setSession(s))
+    return unsubscribe
+  }, [])
+
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+    } catch {/* ignore */}
+    // Wipe all local progress/state too — keeps the device clean.
+    wipeAllAppData()
+    window.location.reload()
+  }
+
   // Show the welcome/reset notice once per data version. If the user's
   // recorded data version doesn't match the current one, we surface the
   // modal BEFORE rehydrating any reducer state — so stale history/flags
@@ -401,6 +428,29 @@ export default function App() {
   // Derive active questions from state.activeBank + categoryFilter
   const activeQuestions = getBankQuestions(state.activeBank, state.categoryFilter)
   const topics = [...new Set(activeQuestions.map(q => q.category).filter(Boolean))].sort()
+
+  // ── AUTH GATE ──
+  // While we resolve the initial session, show a minimal splash so a
+  // returning user doesn't see the login form flash.
+  if (!sessionResolved) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center ${state.darkMode ? 'bg-gray-900 text-gray-200' : 'bg-gray-50 text-gray-700'}`}>
+        <div className="text-center">
+          <div className="inline-block w-10 h-10 border-4 border-current border-t-transparent rounded-full animate-spin mb-3" style={{ color: '#2c3e3f' }} />
+          <p className="text-sm">Loading SkinScript…</p>
+        </div>
+      </div>
+    )
+  }
+  // No session = require login.
+  if (!session) {
+    return (
+      <AuthScreen
+        darkMode={state.darkMode}
+        onToggleDark={() => dispatch({ type: 'TOGGLE_DARK' })}
+      />
+    )
+  }
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${state.darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
@@ -486,6 +536,11 @@ export default function App() {
           categoryFilter={state.categoryFilter}
           setCategoryFilter={(category) => dispatch({ type: 'SET_CATEGORY_FILTER', category })}
           allCategories={ALL_CATEGORIES}
+          currentUser={{
+            email: session?.user?.email,
+            username: session?.user?.user_metadata?.username,
+          }}
+          onSignOut={handleSignOut}
         />
       )}
       {state.screen === 'quiz' && (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User } from 'lucide-react'
 
-export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories }) {
+export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut }) {
   const [mode, setMode] = useState('tutor')
   const [timer, setTimer] = useState(90)
   const [shuffle, setShuffle] = useState(true)
@@ -150,10 +150,29 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
-          <div />
-          <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition">
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          {currentUser ? (
+            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700 shadow-sm border border-gray-200'}`}>
+              <User size={13} className="text-gray-400" />
+              <span className="font-medium max-w-[140px] truncate">
+                {currentUser.username || currentUser.email}
+              </span>
+            </div>
+          ) : <div />}
+          <div className="flex items-center gap-1">
+            <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Toggle dark mode">
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            {onSignOut && (
+              <button
+                onClick={() => { if (confirm('Sign out?')) onSignOut() }}
+                className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+                aria-label="Sign out"
+                title="Sign out"
+              >
+                <LogOut size={20} />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Logo & Title */}
