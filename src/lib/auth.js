@@ -112,7 +112,7 @@ export async function requestPasswordReset(email) {
 }
 
 
-// ── WhatsApp / phone OTP ────────────────────────────────────────────────
+// ── Phone OTP (SMS) ─────────────────────────────────────────────────────
 //
 // signInWithOtp creates the auth user on first use and ignores the
 // metadata for subsequent logins (Supabase only sets user_metadata at
@@ -133,12 +133,12 @@ export function validatePhone(p) {
   const norm = normalizePhone(p)
   if (!norm) return 'Phone number is required.'
   if (!E164_RE.test(norm)) {
-    return 'Use international format with country code, e.g. +9665XXXXXXXX.'
+    return 'Use international format with country code, e.g. +9647XXXXXXXXX.'
   }
   return null
 }
 
-export async function sendWhatsappOtp({ phone, username }) {
+export async function sendSmsOtp({ phone, username }) {
   const pErr = validatePhone(phone)
   if (pErr) throw new Error(pErr)
   const norm = normalizePhone(phone)
@@ -154,7 +154,7 @@ export async function sendWhatsappOtp({ phone, username }) {
     if (taken) throw new Error('That username is already taken.')
   }
 
-  const options = { channel: 'whatsapp' }
+  const options = { channel: 'sms' }
   if (username) options.data = { username }
 
   const { error } = await supabase.auth.signInWithOtp({
@@ -165,15 +165,15 @@ export async function sendWhatsappOtp({ phone, username }) {
   return { phone: norm }
 }
 
-export async function verifyWhatsappOtp({ phone, token }) {
+export async function verifySmsOtp({ phone, token }) {
   const norm = normalizePhone(phone)
   if (!token || !/^\d{4,8}$/.test(token.trim())) {
-    throw new Error('Enter the code you received on WhatsApp.')
+    throw new Error('Enter the code you received by SMS.')
   }
   const { data, error } = await supabase.auth.verifyOtp({
     phone: norm,
     token: token.trim(),
-    type: 'sms',     // OTP-verify uses 'sms' type regardless of delivery channel
+    type: 'sms',
   })
   if (error) throw error
   return data

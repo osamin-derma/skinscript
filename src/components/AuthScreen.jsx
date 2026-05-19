@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import {
-  Eye, EyeOff, Mail, Lock, User, MessageCircle,
+  Eye, EyeOff, Mail, Lock, User, MessageSquare,
   ArrowRight, AlertCircle, CheckCircle2,
 } from 'lucide-react'
 import {
   signUp, signInWithUsername, requestPasswordReset,
   validateUsername, validateEmail, validatePassword,
-  sendWhatsappOtp, verifyWhatsappOtp,
+  sendSmsOtp, verifySmsOtp,
 } from '../lib/auth'
 import PhoneInput from './PhoneInput'
 
 const brand = '#2c3e3f'
 const gold = '#c9a84c'
 
-// method: 'email' | 'whatsapp'
-// mode (email):    'login' | 'register' | 'forgot'
-// mode (whatsapp): 'phone' (ask for number) | 'code' (enter OTP)
+// method: 'email' | 'sms'
+// mode (email): 'login' | 'register' | 'forgot'
+// mode (sms):   'phone' (ask for number) | 'code' (enter OTP)
 export default function AuthScreen({ darkMode, onToggleDark }) {
   const [method, setMethod] = useState('email')
   const [mode, setMode] = useState('login')
@@ -30,9 +30,9 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
   const [password, setPassword] = useState('')
   const [showPwd, setShowPwd] = useState(false)
 
-  // WhatsApp-flow fields
+  // SMS / phone-flow fields
   const [phone, setPhone] = useState('')
-  const [waUsername, setWaUsername] = useState('')
+  const [smsUsername, setSmsUsername] = useState('')
   const [otp, setOtp] = useState('')
   const [verifiedPhone, setVerifiedPhone] = useState('')   // server-normalized
 
@@ -63,14 +63,14 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
         setInfo('If that email is registered, a reset link is on its way.')
       }
 
-      // ── WhatsApp OTP flow ──
-      else if (method === 'whatsapp' && mode === 'phone') {
-        const { phone: normalized } = await sendWhatsappOtp({ phone, username: waUsername })
+      // ── SMS OTP flow ──
+      else if (method === 'sms' && mode === 'phone') {
+        const { phone: normalized } = await sendSmsOtp({ phone, username: smsUsername })
         setVerifiedPhone(normalized)
         setMode('code')
-        setInfo(`We sent a 6-digit code to ${normalized} on WhatsApp.`)
-      } else if (method === 'whatsapp' && mode === 'code') {
-        await verifyWhatsappOtp({ phone: verifiedPhone, token: otp })
+        setInfo(`We sent a 6-digit code to ${normalized} by SMS.`)
+      } else if (method === 'sms' && mode === 'code') {
+        await verifySmsOtp({ phone: verifiedPhone, token: otp })
         // Auth state listener in App.jsx will re-render us out.
       }
     } catch (err) {
@@ -84,8 +84,8 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
     clear()
     setBusy(true)
     try {
-      await sendWhatsappOtp({ phone: verifiedPhone, username: waUsername })
-      setInfo(`Re-sent a code to ${verifiedPhone} on WhatsApp.`)
+      await sendSmsOtp({ phone: verifiedPhone, username: smsUsername })
+      setInfo(`Re-sent a code to ${verifiedPhone} by SMS.`)
     } catch (err) {
       setError(humanizeAuthError(err))
     } finally {
@@ -126,14 +126,14 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           </button>
           <button
             type="button"
-            onClick={() => switchMethod('whatsapp')}
+            onClick={() => switchMethod('sms')}
             className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition ${
-              method === 'whatsapp'
+              method === 'sms'
                 ? (darkMode ? 'bg-gray-700 text-gray-100 shadow-sm' : 'bg-white text-gray-800 shadow-sm')
                 : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
             }`}
           >
-            <MessageCircle size={13} /> WhatsApp
+            <MessageSquare size={13} /> SMS
           </button>
         </div>
 
@@ -142,15 +142,15 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           {method === 'email' && mode === 'login'    && 'Sign in'}
           {method === 'email' && mode === 'register' && 'Create your account'}
           {method === 'email' && mode === 'forgot'   && 'Reset your password'}
-          {method === 'whatsapp' && mode === 'phone' && 'Sign in with WhatsApp'}
-          {method === 'whatsapp' && mode === 'code'  && 'Enter your verification code'}
+          {method === 'sms'   && mode === 'phone'    && 'Sign in by SMS'}
+          {method === 'sms'   && mode === 'code'     && 'Enter your verification code'}
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
           {method === 'email' && mode === 'login'    && 'Welcome back. Pick up where you left off.'}
           {method === 'email' && mode === 'register' && 'Track your progress across every device.'}
           {method === 'email' && mode === 'forgot'   && 'Enter your email and we’ll send you a reset link.'}
-          {method === 'whatsapp' && mode === 'phone' && 'We’ll send a 6-digit code to your WhatsApp.'}
-          {method === 'whatsapp' && mode === 'code'  && `Check WhatsApp for the code sent to ${verifiedPhone}.`}
+          {method === 'sms'   && mode === 'phone'    && 'We’ll text you a 6-digit code.'}
+          {method === 'sms'   && mode === 'code'     && `Check your SMS for the code sent to ${verifiedPhone}.`}
         </p>
 
         {/* Alerts */}
@@ -220,12 +220,12 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
             />
           )}
 
-          {/* ─── WhatsApp flow ─── */}
-          {method === 'whatsapp' && mode === 'phone' && (
+          {/* ─── SMS flow ─── */}
+          {method === 'sms' && mode === 'phone' && (
             <>
               <div>
                 <label className="block text-xs font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
-                  WhatsApp number
+                  Mobile number
                 </label>
                 <PhoneInput
                   value={phone}
@@ -234,7 +234,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                   autoFocus
                 />
                 <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1.5">
-                  Pick your country, then enter the rest of your WhatsApp number.
+                  Pick your country, then enter the rest of your mobile number.
                 </p>
               </div>
               <Field
@@ -243,18 +243,18 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                 hint="Pick a username (only needed if you’re new)"
                 type="text"
                 autoComplete="username"
-                value={waUsername}
-                onChange={setWaUsername}
+                value={smsUsername}
+                onChange={setSmsUsername}
                 darkMode={darkMode}
               />
             </>
           )}
 
-          {method === 'whatsapp' && mode === 'code' && (
+          {method === 'sms' && mode === 'code' && (
             <Field
-              icon={<MessageCircle size={16} />}
+              icon={<MessageSquare size={16} />}
               label="6-digit code"
-              hint="Open WhatsApp and copy the code we just sent"
+              hint="Open Messages and copy the code we just sent"
               type="text"
               autoComplete="one-time-code"
               value={otp}
@@ -313,8 +313,8 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                 {method === 'email' && mode === 'login'    && 'Sign in'}
                 {method === 'email' && mode === 'register' && 'Create account'}
                 {method === 'email' && mode === 'forgot'   && 'Send reset link'}
-                {method === 'whatsapp' && mode === 'phone' && 'Send WhatsApp code'}
-                {method === 'whatsapp' && mode === 'code'  && 'Verify & sign in'}
+                {method === 'sms'   && mode === 'phone'    && 'Send SMS code'}
+                {method === 'sms'   && mode === 'code'     && 'Verify & sign in'}
                 <ArrowRight size={14} />
               </>
             )}
@@ -354,7 +354,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
               </button>
             </p>
           )}
-          {method === 'whatsapp' && mode === 'code' && (
+          {method === 'sms' && mode === 'code' && (
             <>
               <p>
                 Didn’t get the code?{' '}
@@ -422,10 +422,10 @@ function humanizeAuthError(err) {
 
   // Twilio / Verify
   if (/Token has expired|expired/i.test(msg)) return 'That code expired — request a new one.'
-  if (/Invalid token|Token is invalid|incorrect/i.test(msg)) return 'Wrong code. Double-check WhatsApp and try again.'
+  if (/Invalid token|Token is invalid|incorrect/i.test(msg)) return 'Wrong code. Double-check the message and try again.'
   if (/Phone.*already.*registered/i.test(msg)) return 'That phone number is already linked to an account.'
   if (/SMS rate limit|exceeded the rate limit|rate.limit/i.test(msg)) return 'Too many code requests. Wait a minute and try again.'
-  if (/Unverified number|unverified number/i.test(msg)) return 'Your number is not yet permitted by the WhatsApp sender — the admin needs to verify it first (trial-mode limit).'
+  if (/Unverified number|unverified number/i.test(msg)) return 'Your number isn’t on our SMS sender’s allow-list yet — the admin needs to verify it first (Twilio trial-mode limit).'
   if (/not a valid phone number|invalid phone/i.test(msg)) return 'That doesn’t look like a valid phone number.'
 
   return msg
