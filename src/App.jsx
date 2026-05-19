@@ -4,6 +4,7 @@ import boardVitalsRaw from './data/board_vitals_master.json'
 import makkiRaw from './data/makki_master.json'
 import etas2026Raw from './data/etas_2026_master.json'
 import AuthScreen from './components/AuthScreen'
+import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
 import { onAuthStateChange, signOut } from './lib/auth'
 import * as userdata from './lib/userdata'
@@ -592,6 +593,9 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* Soft install banner — only renders on mobile, when not already installed */}
+      {state.screen === 'start' && <InstallPrompt darkMode={state.darkMode} />}
 
       {state.screen === 'start' && (
         <StartScreen
