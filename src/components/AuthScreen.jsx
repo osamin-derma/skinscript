@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  Eye, EyeOff, Mail, Lock, User, Phone, MessageCircle,
+  Eye, EyeOff, Mail, Lock, User, MessageCircle,
   ArrowRight, AlertCircle, CheckCircle2,
 } from 'lucide-react'
 import {
@@ -8,6 +8,7 @@ import {
   validateUsername, validateEmail, validatePassword,
   sendWhatsappOtp, verifyWhatsappOtp,
 } from '../lib/auth'
+import PhoneInput from './PhoneInput'
 
 const brand = '#2c3e3f'
 const gold = '#c9a84c'
@@ -222,17 +223,20 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           {/* ─── WhatsApp flow ─── */}
           {method === 'whatsapp' && mode === 'phone' && (
             <>
-              <Field
-                icon={<Phone size={16} />}
-                label="WhatsApp number"
-                hint="International format, e.g. +9665XXXXXXXX"
-                type="tel"
-                autoComplete="tel"
-                value={phone}
-                onChange={setPhone}
-                darkMode={darkMode}
-                autoFocus
-              />
+              <div>
+                <label className="block text-xs font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
+                  WhatsApp number
+                </label>
+                <PhoneInput
+                  value={phone}
+                  onChange={setPhone}
+                  darkMode={darkMode}
+                  autoFocus
+                />
+                <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1.5">
+                  Pick your country, then enter the rest of your WhatsApp number.
+                </p>
+              </div>
               <Field
                 icon={<User size={16} />}
                 label="Username"
