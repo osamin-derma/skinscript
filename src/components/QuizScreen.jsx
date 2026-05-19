@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
+import QuestionImages from './QuestionImages'
 
 const HIGHLIGHTS_KEY = 'last11-quiz-highlights'
 
@@ -292,6 +293,9 @@ export default function QuizScreen({ state, questions, dispatch }) {
                 Highlighter ON — select any text in the question above to highlight it
               </p>
             )}
+
+            {/* Clinical photos / diagrams (only if the source PDF had any) */}
+            <QuestionImages images={q.images} darkMode={state.darkMode} />
 
             {/* Blurred overlay when paused */}
             <div className={paused ? 'blur-md select-none pointer-events-none' : ''}>

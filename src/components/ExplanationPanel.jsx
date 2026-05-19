@@ -1,4 +1,5 @@
 import { CheckCircle, XCircle } from 'lucide-react'
+import QuestionImages from './QuestionImages'
 
 /**
  * ExplanationPanel — renders the answer/explanation block in the layout
@@ -96,6 +97,9 @@ export default function ExplanationPanel({ question, answer, darkMode }) {
             style={{ backgroundColor: darkMode ? '#3a5556' : teal, opacity: darkMode ? 0.6 : 1 }}
           />
         </div>
+
+        {/* Reference image(s) from the source PDF, if any */}
+        <QuestionImages images={question.images} darkMode={darkMode} compact />
 
         {/* Correct answer line */}
         <p className="text-[15px] leading-relaxed mb-4 text-gray-900 dark:text-gray-100">
