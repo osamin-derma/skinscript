@@ -301,24 +301,51 @@ export default function QuizScreen({ state, questions, dispatch }) {
             <div className={paused ? 'blur-md select-none pointer-events-none' : ''}>
               {/* Answer choices */}
               <div className="space-y-2.5">
-                {choiceKeys.map(letter => (
-                  <button
-                    key={letter}
-                    disabled={isSubmitted}
-                    onClick={() => setSelected(letter)}
-                    className={`w-full text-left flex items-start gap-3 p-3.5 rounded-lg border-2 transition-all duration-200 ${getChoiceStyle(letter)}`}
-                  >
-                    <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
-                      isSubmitted && letter === q.correct_answer ? 'border-green-500 bg-green-100 text-green-700' :
-                      isSubmitted && letter === answered?.selected && letter !== q.correct_answer ? 'border-red-500 bg-red-100 text-red-700' :
-                      selected === letter ? 'border-blue-500 bg-blue-100 text-blue-700' :
-                      'border-gray-300 dark:border-gray-500'
-                    }`}>
-                      {getChoiceIcon(letter) || letter}
-                    </span>
-                    <span className="text-sm leading-relaxed pt-0.5">{q.choices[letter]}</span>
-                  </button>
-                ))}
+                {choiceKeys.map(letter => {
+                  const isStruck = !!(state.strikethroughs?.[q.id]?.[letter])
+                  return (
+                    <div key={letter} className="relative group">
+                      <button
+                        disabled={isSubmitted}
+                        onClick={() => setSelected(letter)}
+                        className={`w-full text-left flex items-start gap-3 p-3.5 pr-12 rounded-lg border-2 transition-all duration-200 ${getChoiceStyle(letter)} ${isStruck && !isSubmitted ? 'opacity-50' : ''}`}
+                      >
+                        <span className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
+                          isSubmitted && letter === q.correct_answer ? 'border-green-500 bg-green-100 text-green-700' :
+                          isSubmitted && letter === answered?.selected && letter !== q.correct_answer ? 'border-red-500 bg-red-100 text-red-700' :
+                          selected === letter ? 'border-blue-500 bg-blue-100 text-blue-700' :
+                          'border-gray-300 dark:border-gray-500'
+                        }`}>
+                          {getChoiceIcon(letter) || letter}
+                        </span>
+                        <span className={`text-sm leading-relaxed pt-0.5 ${isStruck && !isSubmitted ? 'line-through decoration-2' : ''}`}>
+                          {q.choices[letter]}
+                        </span>
+                      </button>
+
+                      {/* Strikethrough toggle — process-of-elimination aid.
+                          Visible faintly until hover on desktop, always full
+                          opacity once a choice is struck. Hidden after the
+                          user submits (it stops being useful once the
+                          answer + explanation are shown). */}
+                      {!isSubmitted && (
+                        <button
+                          type="button"
+                          onClick={() => dispatch({ type: 'TOGGLE_STRIKE', questionId: q.id, letter })}
+                          className={`absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center transition ${
+                            isStruck
+                              ? 'opacity-100 text-red-600 bg-red-50 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-300 dark:hover:bg-red-900/50'
+                              : 'opacity-30 group-hover:opacity-90 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400'
+                          }`}
+                          title={isStruck ? `Remove strikethrough on ${letter}` : `Strike out ${letter}`}
+                          aria-label={isStruck ? `Remove strikethrough on ${letter}` : `Strike out ${letter}`}
+                        >
+                          <X size={15} strokeWidth={isStruck ? 3 : 2.25} />
+                        </button>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
 

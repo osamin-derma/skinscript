@@ -135,6 +135,11 @@ const initialState = {
   globalFlagged: [],
   globalWrong: [],
   globalUsed: [],
+  // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
+  // Lives only for the duration of the current quiz; cleared on START_QUIZ
+  // and END_QUIZ.  Independent from `answers` — striking a choice and
+  // selecting it as the answer are two unrelated user actions.
+  strikethroughs: {},
 }
 
 function reducer(state, action) {
@@ -211,6 +216,7 @@ function reducer(state, action) {
         currentIndex: 0,
         answers: {},
         flagged: [],
+        strikethroughs: {},
         quizSource: action.source || 'all',
         activeBank: bankKey,
       }
@@ -224,6 +230,23 @@ function reducer(state, action) {
         ? state.globalWrong.filter(id => id !== action.questionId)
         : [...new Set([...state.globalWrong, action.questionId])]
       return { ...state, answers: newAnswers, globalUsed: newUsed, globalWrong: newWrong }
+    }
+    case 'TOGGLE_STRIKE': {
+      // Per-question, per-letter strikethrough.  Lives in memory for the
+      // current quiz session; cleared on START_QUIZ and END_QUIZ.
+      const qid = action.questionId
+      const letter = action.letter
+      const current = state.strikethroughs[qid] || {}
+      const next = { ...current }
+      if (next[letter]) delete next[letter]
+      else next[letter] = true
+      return {
+        ...state,
+        strikethroughs: {
+          ...state.strikethroughs,
+          [qid]: next,
+        },
+      }
     }
     case 'NAVIGATE':
       return { ...state, currentIndex: action.index }
@@ -264,7 +287,7 @@ function reducer(state, action) {
       }
 
       const newHistory = [historyEntry, ...state.history].slice(0, 50)
-      return { ...state, screen: 'results', history: newHistory }
+      return { ...state, screen: 'results', history: newHistory, strikethroughs: {} }
     }
     case 'RESTART':
       localStorage.removeItem(STORAGE_KEY)
