@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import arabBoardRaw from './data/arab_board_master.json'
 import boardVitalsRaw from './data/board_vitals_master.json'
 import makkiRaw from './data/makki_master.json'
@@ -6,6 +6,7 @@ import etas2026Raw from './data/etas_2026_master.json'
 import AuthScreen from './components/AuthScreen'
 import { supabase } from './lib/supabase'
 import { onAuthStateChange, signOut } from './lib/auth'
+import * as userdata from './lib/userdata'
 
 // Tag each question with its source so they can be combined
 const arabBoardTagged = arabBoardRaw.map(q => ({ ...q, source: q.source || 'Arab Board' }))
@@ -138,13 +139,21 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'INIT': {
+      // Only restore device-local UI preferences here. Per-user progress
+      // (history / flags / wrong / used) is loaded from Supabase by the
+      // App component and arrives via INIT_FROM_CLOUD.
       return {
         ...state,
-        history: loadJSON(HISTORY_KEY, []),
-        globalFlagged: loadJSON(GLOBAL_FLAGS_KEY, []),
-        globalWrong: loadJSON(GLOBAL_WRONG_KEY, []),
-        globalUsed: loadJSON(GLOBAL_USED_KEY, []),
         categoryFilter: localStorage.getItem(CATEGORY_FILTER_KEY) || 'all',
+      }
+    }
+    case 'INIT_FROM_CLOUD': {
+      return {
+        ...state,
+        history:       action.data?.history || [],
+        globalFlagged: action.data?.flags   || [],
+        globalWrong:   action.data?.wrong   || [],
+        globalUsed:    action.data?.used    || [],
       }
     }
     case 'SET_BANK': {
@@ -204,17 +213,13 @@ function reducer(state, action) {
       }
     }
     case 'ANSWER': {
+      // Cloud sync for globalUsed / globalWrong is handled by the
+      // watch-and-diff effects in App() — no localStorage write here.
       const newAnswers = { ...state.answers, [action.questionId]: { selected: action.selected, correct: action.correct, submitted: true } }
-
-      // Track globally
       const newUsed = [...new Set([...state.globalUsed, action.questionId])]
       const newWrong = action.correct
         ? state.globalWrong.filter(id => id !== action.questionId)
         : [...new Set([...state.globalWrong, action.questionId])]
-
-      saveJSON(GLOBAL_USED_KEY, newUsed)
-      saveJSON(GLOBAL_WRONG_KEY, newWrong)
-
       return { ...state, answers: newAnswers, globalUsed: newUsed, globalWrong: newWrong }
     }
     case 'NAVIGATE':
@@ -234,8 +239,6 @@ function reducer(state, action) {
 
       if (gIdx >= 0) gf.splice(gIdx, 1)
       else gf.push(action.questionId)
-
-      saveJSON(GLOBAL_FLAGS_KEY, gf)
       return { ...state, flagged: f, globalFlagged: gf }
     }
     case 'END_QUIZ': {
@@ -258,8 +261,6 @@ function reducer(state, action) {
       }
 
       const newHistory = [historyEntry, ...state.history].slice(0, 50)
-      saveJSON(HISTORY_KEY, newHistory)
-
       return { ...state, screen: 'results', history: newHistory }
     }
     case 'RESTART':
@@ -307,21 +308,15 @@ function reducer(state, action) {
       return { ...state, screen: 'quiz', mode: 'tutor', questionOrder: shuffleArray(wrongOrder), currentIndex: 0, answers: {}, flagged: [], quizSource: 'wrong' }
     }
     case 'CLEAR_HISTORY':
-      saveJSON(HISTORY_KEY, [])
+      // Cloud sync handled by the history-watch effect in App().
       return { ...state, history: [] }
     case 'RESET_PERFORMANCE':
-      saveJSON(GLOBAL_WRONG_KEY, [])
-      saveJSON(GLOBAL_USED_KEY, [])
-      saveJSON(GLOBAL_FLAGS_KEY, [])
+      // Cloud sync handled by the wrong/used/flags watch effects in App().
       return { ...state, globalWrong: [], globalUsed: [], globalFlagged: [] }
     case 'RESET_ALL': {
-      // Nuclear option: clear ALL progress, history, flags, used, wrong,
-      // and any in-progress quiz — start completely fresh
+      // Nuclear option: clear ALL progress on this device. Cloud sync
+      // for each list is handled by its watch effect in App().
       localStorage.removeItem(STORAGE_KEY)
-      localStorage.removeItem(HISTORY_KEY)
-      localStorage.removeItem(GLOBAL_FLAGS_KEY)
-      localStorage.removeItem(GLOBAL_WRONG_KEY)
-      localStorage.removeItem(GLOBAL_USED_KEY)
       return {
         ...initialState,
         darkMode: state.darkMode, // keep dark mode preference
@@ -356,10 +351,91 @@ export default function App() {
     try {
       await signOut()
     } catch {/* ignore */}
-    // Wipe all local progress/state too — keeps the device clean.
-    wipeAllAppData()
+    // Clean up per-user device caches but keep DATA_VERSION_KEY (so the
+    // welcome modal doesn't re-fire on the next sign-in) and the dark-mode
+    // preference. Cloud data is preserved — sign-out is not deletion.
+    localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem(CATEGORY_FILTER_KEY)
     window.location.reload()
   }
+
+  // ── Cloud sync (Phase 2b) ───────────────────────────────────────────────
+  // On session change, hydrate per-user state from Supabase. The four refs
+  // below mirror the state at the moment of the last successful sync so the
+  // watch effects can compute a diff and push only the change to the cloud.
+  // Pre-setting the refs to the incoming data BEFORE dispatch keeps the
+  // initial load from looping back to the cloud.
+  const prevFlagsRef   = useRef([])
+  const prevWrongRef   = useRef([])
+  const prevUsedRef    = useRef([])
+  const prevHistoryRef = useRef([])
+  const cloudReadyRef  = useRef(false)
+
+  useEffect(() => {
+    if (!session?.user?.id) {
+      cloudReadyRef.current = false
+      return
+    }
+    cloudReadyRef.current = false
+    userdata.fetchAllUserData().then(data => {
+      prevFlagsRef.current   = data.flags
+      prevWrongRef.current   = data.wrong
+      prevUsedRef.current    = data.used
+      prevHistoryRef.current = data.history
+      dispatch({ type: 'INIT_FROM_CLOUD', data })
+      cloudReadyRef.current = true
+    })
+  }, [session?.user?.id])
+
+  // ── Watch flags → cloud (additions + removals) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = new Set(prevFlagsRef.current)
+    const curr = new Set(state.globalFlagged)
+    for (const id of curr) if (!prev.has(id)) userdata.addFlag(id)
+    for (const id of prev) if (!curr.has(id)) userdata.removeFlag(id)
+    prevFlagsRef.current = state.globalFlagged
+  }, [state.globalFlagged])
+
+  // ── Watch wrong → cloud ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = new Set(prevWrongRef.current)
+    const curr = new Set(state.globalWrong)
+    for (const id of curr) if (!prev.has(id)) userdata.addWrong(id)
+    for (const id of prev) if (!curr.has(id)) userdata.removeWrong(id)
+    prevWrongRef.current = state.globalWrong
+  }, [state.globalWrong])
+
+  // ── Watch used → cloud (insert-only) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = new Set(prevUsedRef.current)
+    for (const id of state.globalUsed) if (!prev.has(id)) userdata.addUsed(id)
+    prevUsedRef.current = state.globalUsed
+  }, [state.globalUsed])
+
+  // ── Watch history → cloud (new entries + clear-all) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = prevHistoryRef.current
+    const curr = state.history
+    // New entry inserted at the front by END_QUIZ?
+    if (curr.length > 0 && (prev.length === 0 || curr[0]?.id !== prev[0]?.id)) {
+      const justAdded = curr[0]
+      // The reducer used Date.now() for the id; replace with the cloud id
+      // after insert so future diffs match.
+      userdata.insertHistory(justAdded).then((cloudRow) => {
+        if (cloudRow) {
+          prevHistoryRef.current = [cloudRow, ...prevHistoryRef.current.filter(h => h.id !== justAdded.id)]
+        }
+      })
+    } else if (prev.length > 0 && curr.length === 0) {
+      // CLEAR_HISTORY / RESET_ALL emptied the list
+      userdata.clearHistory()
+    }
+    prevHistoryRef.current = curr
+  }, [state.history])
 
   // Show the welcome/reset notice once per data version. If the user's
   // recorded data version doesn't match the current one, we surface the
