@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -102,6 +102,22 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const brandBg = '#e8f0f0'
   const gold = '#c9a84c' // SkinScript gold accent
 
+  // ── Dark-mode-aware variants of the brand palette ──
+  //
+  // Light mode keeps the bold "solid brand teal + white text" selected state.
+  // Dark mode uses a *dark elevated* selected state (slightly lifted from the
+  // page bg) with a bright teal border + bright teal text — the same pattern
+  // pro dark UIs (Linear, Vercel, GitHub) use to avoid jarring bright pills
+  // floating on a dark page.
+  const accent      = darkMode ? '#7fb5b5' : brand            // foreground / icons
+  const accentSoft  = darkMode ? '#5a8385' : brandLight       // secondary brand text
+  const accentBg    = darkMode ? '#1e2e2f' : brandBg          // tinted card background
+  const accentBgSel = darkMode ? '#243738' : brandBg          // selected-card tint
+  const selectedBg     = darkMode ? '#243738' : brand         // dark elevated tint in dark, solid brand in light
+  const selectedBorder = darkMode ? '#7fb5b5' : brand         // bright accent border in dark, same as bg in light
+  const selectedText   = darkMode ? '#7fb5b5' : '#ffffff'     // bright teal text in dark, white in light
+  const goldDark    = darkMode ? '#d4b966' : gold             // brighter gold in dark
+
   const getPoolSize = () => {
     if (source === 'flagged') return globalFlagged.length
     if (source === 'wrong') return globalWrong.length
@@ -179,33 +195,36 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         <div className="text-center mb-6">
           <img src={`${import.meta.env.BASE_URL}icon.png`} alt="SkinScript" className="w-24 h-24 mx-auto mb-3 rounded-full shadow-lg" style={{ objectFit: 'cover' }} />
           <h1 className="text-3xl font-extrabold tracking-tight mb-0.5">
-            <span style={{ color: brand }}>SKIN</span><span style={{ color: brandLight }}>SCRIP</span><span style={{ color: gold, fontStyle: 'italic' }}>t</span>
+            <span style={{ color: accent }}>SKIN</span><span style={{ color: accentSoft }}>SCRIP</span><span style={{ color: goldDark, fontStyle: 'italic' }}>t</span>
           </h1>
-          <p className="text-xs font-medium tracking-widest uppercase text-gray-400">Dermatology & Education</p>
-          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full" style={{ backgroundColor: '#e8f0f0' }}>
-            <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: brand }}>Dermatology Quiz</span>
-            <span className="text-[10px] text-gray-500">•</span>
-            <span className="text-[10px] text-gray-500">4 Question Banks</span>
+          <p className="text-xs font-medium tracking-widest uppercase text-gray-500 dark:text-gray-400">Dermatology & Education</p>
+          <div
+            className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full"
+            style={{ backgroundColor: accentBg }}
+          >
+            <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: accent }}>Dermatology Quiz</span>
+            <span className="text-[10px] text-gray-500 dark:text-gray-400">•</span>
+            <span className="text-[10px] text-gray-500 dark:text-gray-400">4 Question Banks</span>
           </div>
         </div>
 
         {/* Stats bar */}
         <div className="grid grid-cols-4 gap-2 mb-2">
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold" style={{ color: brand }}>{totalQuestions}</div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wide">Total</div>
+            <div className="text-xl font-bold tabular-nums" style={{ color: accent }}>{totalQuestions.toLocaleString()}</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Total</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold text-green-600">{globalUsed.length}</div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wide">Used</div>
+            <div className="text-xl font-bold tabular-nums text-green-600 dark:text-green-400">{globalUsed.length}</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Used</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold text-red-600">{globalWrong.length}</div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wide">Incorrect</div>
+            <div className="text-xl font-bold tabular-nums text-red-600 dark:text-red-400">{globalWrong.length}</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Incorrect</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold text-orange-500">{globalFlagged.length}</div>
-            <div className="text-[10px] text-gray-500 uppercase tracking-wide">Flagged</div>
+            <div className="text-xl font-bold tabular-nums text-orange-500 dark:text-orange-400">{globalFlagged.length}</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Flagged</div>
           </div>
         </div>
 
@@ -232,8 +251,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         {banks && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-5 rounded-full" style={{ backgroundColor: brand }} />
-              <label className="text-sm font-bold uppercase tracking-wide" style={{ color: brand }}>
+              <div className="w-1 h-5 rounded-full" style={{ backgroundColor: goldDark }} />
+              <label className="text-sm font-bold uppercase tracking-wide" style={{ color: accent }}>
                 Search Questions
               </label>
             </div>
@@ -376,9 +395,17 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         {banks && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-5 rounded-full" style={{ backgroundColor: brand }} />
-              <label className="text-sm font-bold uppercase tracking-wide" style={{ color: brand }}>Select Question Bank</label>
-              <span className="ml-auto text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded" style={{ color: gold, backgroundColor: '#fdf6e3' }}>Master Edition · 2026</span>
+              <div className="w-1 h-5 rounded-full" style={{ backgroundColor: goldDark }} />
+              <label className="text-sm font-bold uppercase tracking-wide" style={{ color: accent }}>Select Question Bank</label>
+              <span
+                className="ml-auto text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded"
+                style={{
+                  color: goldDark,
+                  backgroundColor: darkMode ? '#3a2e0d' : '#fdf6e3',
+                }}
+              >
+                Master Edition · 2026
+              </span>
             </div>
 
             {/* All Questions — full-width card */}
@@ -390,20 +417,20 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                   : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
               }`}
               style={activeBank === 'all'
-                ? { backgroundColor: '#e8f0f0', borderColor: brand }
+                ? { backgroundColor: accentBgSel, borderColor: accent }
                 : {}}
             >
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl"
-                   style={{ backgroundColor: activeBank === 'all' ? brand : '#e5e7eb',
-                            color: activeBank === 'all' ? 'white' : '#6b7280' }}>
+                   style={{ backgroundColor: activeBank === 'all' ? accent : (darkMode ? '#374151' : '#e5e7eb'),
+                            color: activeBank === 'all' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                 📚
               </div>
               <div className="flex-1">
-                <div className="font-bold text-base" style={{ color: activeBank === 'all' ? brand : undefined }}>All Questions</div>
-                <div className="text-xs text-gray-500">Combined: all 4 sources</div>
+                <div className="font-bold text-base text-gray-900 dark:text-gray-100" style={activeBank === 'all' ? { color: accent } : {}}>All Questions</div>
+                <div className="text-xs text-gray-500 dark:text-gray-300">Combined: all 4 sources</div>
               </div>
-              <div className="text-2xl font-extrabold"
-                   style={{ color: activeBank === 'all' ? brand : '#9ca3af' }}>
+              <div className="text-2xl font-extrabold tabular-nums"
+                   style={{ color: activeBank === 'all' ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>
                 {banks.all.count.toLocaleString()}
               </div>
             </button>
@@ -419,25 +446,25 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                     : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
                 }`}
                 style={activeBank === 'arabBoard'
-                  ? { backgroundColor: '#e8f0f0', borderColor: brand }
+                  ? { backgroundColor: accentBgSel, borderColor: accent }
                   : {}}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'arabBoard' ? brand : '#e5e7eb',
-                                color: activeBank === 'arabBoard' ? 'white' : '#6b7280' }}>
+                       style={{ backgroundColor: activeBank === 'arabBoard' ? accent : (darkMode ? '#374151' : '#e5e7eb'),
+                                color: activeBank === 'arabBoard' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                     🌍
                   </div>
-                  <div className="text-2xl font-extrabold"
-                       style={{ color: activeBank === 'arabBoard' ? brand : '#9ca3af' }}>
+                  <div className="text-2xl font-extrabold tabular-nums"
+                       style={{ color: activeBank === 'arabBoard' ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>
                     {banks.arabBoard.count.toLocaleString()}
                   </div>
                 </div>
-                <div className="font-semibold text-sm"
-                     style={{ color: activeBank === 'arabBoard' ? brand : undefined }}>
+                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                     style={activeBank === 'arabBoard' ? { color: accent } : {}}>
                   Arab Board
                 </div>
-                <div className="text-[10px] text-gray-400 mt-0.5">Regional board exams</div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Regional board exams</div>
               </button>
 
               {/* Board Vitals */}
@@ -449,25 +476,25 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                     : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
                 }`}
                 style={activeBank === 'boardVitals'
-                  ? { backgroundColor: '#fef2f2', borderColor: '#ef4444' }
+                  ? { backgroundColor: darkMode ? '#2a1414' : '#fef2f2', borderColor: '#ef4444' }
                   : {}}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'boardVitals' ? '#ef4444' : '#e5e7eb',
-                                color: activeBank === 'boardVitals' ? 'white' : '#6b7280' }}>
+                       style={{ backgroundColor: activeBank === 'boardVitals' ? '#ef4444' : (darkMode ? '#374151' : '#e5e7eb'),
+                                color: activeBank === 'boardVitals' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                     💉
                   </div>
-                  <div className="text-2xl font-extrabold"
-                       style={{ color: activeBank === 'boardVitals' ? '#ef4444' : '#9ca3af' }}>
+                  <div className="text-2xl font-extrabold tabular-nums"
+                       style={{ color: activeBank === 'boardVitals' ? '#ef4444' : (darkMode ? '#6b7280' : '#9ca3af') }}>
                     {banks.boardVitals.count.toLocaleString()}
                   </div>
                 </div>
-                <div className="font-semibold text-sm"
-                     style={{ color: activeBank === 'boardVitals' ? '#ef4444' : undefined }}>
+                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                     style={activeBank === 'boardVitals' ? { color: '#ef4444' } : {}}>
                   Board Vitals
                 </div>
-                <div className="text-[10px] text-gray-400 mt-0.5">With explanations</div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">With explanations</div>
               </button>
 
               {/* Makki */}
@@ -479,25 +506,25 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                     : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
                 }`}
                 style={activeBank === 'makki'
-                  ? { backgroundColor: '#fdf6e3', borderColor: gold }
+                  ? { backgroundColor: darkMode ? '#2a230a' : '#fdf6e3', borderColor: goldDark }
                   : {}}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'makki' ? gold : '#e5e7eb',
-                                color: activeBank === 'makki' ? 'white' : '#6b7280' }}>
+                       style={{ backgroundColor: activeBank === 'makki' ? goldDark : (darkMode ? '#374151' : '#e5e7eb'),
+                                color: activeBank === 'makki' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                     🩺
                   </div>
-                  <div className="text-2xl font-extrabold"
-                       style={{ color: activeBank === 'makki' ? gold : '#9ca3af' }}>
+                  <div className="text-2xl font-extrabold tabular-nums"
+                       style={{ color: activeBank === 'makki' ? goldDark : (darkMode ? '#6b7280' : '#9ca3af') }}>
                     {banks.makki.count.toLocaleString()}
                   </div>
                 </div>
-                <div className="font-semibold text-sm"
-                     style={{ color: activeBank === 'makki' ? gold : undefined }}>
+                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                     style={activeBank === 'makki' ? { color: goldDark } : {}}>
                   Makki
                 </div>
-                <div className="text-[10px] text-gray-400 mt-0.5">Dermatology MCQs</div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Dermatology MCQs</div>
               </button>
 
               {/* ETAS 2026 */}
@@ -509,25 +536,25 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                     : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
                 }`}
                 style={activeBank === 'etas2026'
-                  ? { backgroundColor: '#eef4ff', borderColor: '#3b82f6' }
+                  ? { backgroundColor: darkMode ? '#0e1d3a' : '#eef4ff', borderColor: '#3b82f6' }
                   : {}}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'etas2026' ? '#3b82f6' : '#e5e7eb',
-                                color: activeBank === 'etas2026' ? 'white' : '#6b7280' }}>
+                       style={{ backgroundColor: activeBank === 'etas2026' ? '#3b82f6' : (darkMode ? '#374151' : '#e5e7eb'),
+                                color: activeBank === 'etas2026' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                     📋
                   </div>
-                  <div className="text-2xl font-extrabold"
-                       style={{ color: activeBank === 'etas2026' ? '#3b82f6' : '#9ca3af' }}>
+                  <div className="text-2xl font-extrabold tabular-nums"
+                       style={{ color: activeBank === 'etas2026' ? '#3b82f6' : (darkMode ? '#6b7280' : '#9ca3af') }}>
                     {banks.etas2026.count.toLocaleString()}
                   </div>
                 </div>
-                <div className="font-semibold text-sm"
-                     style={{ color: activeBank === 'etas2026' ? '#3b82f6' : undefined }}>
+                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                     style={activeBank === 'etas2026' ? { color: '#3b82f6' } : {}}>
                   ETAS 2026
                 </div>
-                <div className="text-[10px] text-gray-400 mt-0.5">Largest collection</div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Largest collection</div>
               </button>
             </div>
 
@@ -583,7 +610,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         )}
 
         {/* Tab bar */}
-        <div className="flex gap-1 mb-4 p-1 rounded-xl bg-gray-100 dark:bg-gray-700">
+        <div className="flex gap-1 mb-4 p-1 rounded-xl bg-gray-100 dark:bg-gray-800/70 dark:border dark:border-gray-700">
           {[
             { key: 'create', icon: <Sparkles size={14} />, label: 'Create Quiz' },
             { key: 'history', icon: <History size={14} />, label: 'History' },
@@ -592,8 +619,10 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             <button
               key={t.key}
               onClick={() => setTab(t.key)}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-medium transition ${
-                tab === t.key ? 'bg-white dark:bg-gray-600 shadow-sm font-semibold' : 'hover:bg-gray-200 dark:hover:bg-gray-600'
+              className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs transition ${
+                tab === t.key
+                  ? 'bg-white dark:bg-gray-700 shadow-sm font-bold text-gray-900 dark:text-gray-50'
+                  : 'font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/70'
               }`}
             >
               {t.icon} {t.label}
@@ -627,19 +656,32 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               {unusedCount > 0 && (
                 <button
                   onClick={() => { setSource('unused'); }}
-                  className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 transition ${
-                    source === 'unused' ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-400 dark:border-gray-600'
+                  className={`relative flex flex-col items-center justify-center gap-1 p-3 rounded-xl border-2 transition ${
+                    source === 'unused'
+                      ? 'shadow-md'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 bg-white dark:bg-gray-700'
                   }`}
+                  style={source === 'unused'
+                    ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText }
+                    : {}}
                 >
-                  <Sparkles size={18} className="text-blue-500" />
-                  <span className="text-[10px] font-semibold text-blue-600">Unused ({unusedCount})</span>
+                  <Sparkles size={18} style={source === 'unused' ? { color: selectedText } : { color: goldDark }} />
+                  <span className="text-base font-bold tabular-nums leading-none" style={source === 'unused' ? { color: selectedText } : {}}>
+                    {unusedCount.toLocaleString()}
+                  </span>
+                  <span
+                    className={`text-[10px] font-semibold uppercase tracking-wide ${source === 'unused' ? '' : 'text-gray-500 dark:text-gray-200'}`}
+                    style={source === 'unused' ? { color: selectedText, opacity: 0.85 } : {}}
+                  >
+                    Unused
+                  </span>
                 </button>
               )}
             </div>
 
             {/* Question Source */}
             <div className="mb-5">
-              <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-gray-500">Question Source</label>
+              <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">Question Source</label>
               <div className="grid grid-cols-2 gap-2">
                 {[
                   { key: 'all', label: 'All Questions', count: totalQuestions },
@@ -651,21 +693,30 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                   const disabled = (s.key === 'wrong' && globalWrong.length === 0)
                     || (s.key === 'unused' && unusedCount === 0)
                     || (s.key === 'flagged' && globalFlagged.length === 0)
+                  const isActive = !disabled && source === s.key
                   return (
                     <button
                       key={s.key}
                       onClick={() => !disabled && setSource(s.key)}
                       disabled={disabled}
-                      className={`py-2 px-3 rounded-lg text-xs font-medium border transition text-left ${
+                      className={`py-2.5 px-3 rounded-xl text-xs border-2 transition text-left ${
                         disabled
-                          ? 'border-gray-200 text-gray-300 cursor-not-allowed dark:border-gray-700'
-                          : source === s.key
-                            ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
-                            : 'border-gray-200 hover:border-gray-300 dark:border-gray-600'
+                          ? 'border-gray-100 text-gray-300 cursor-not-allowed dark:border-gray-700 dark:text-gray-600'
+                          : isActive
+                            ? 'font-bold shadow-sm'
+                            : 'font-medium border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:border-gray-400 dark:hover:border-gray-400 bg-white dark:bg-gray-700'
                       }`}
+                      style={isActive ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText } : {}}
                     >
-                      {s.label}
-                      {s.count !== null && <span className="ml-1 text-gray-400">({s.count})</span>}
+                      <span>{s.label}</span>
+                      {s.count !== null && (
+                        <span
+                          className={`ml-1.5 tabular-nums ${isActive ? '' : 'text-gray-400 dark:text-gray-400'}`}
+                          style={isActive ? { color: selectedText, opacity: 0.8 } : {}}
+                        >
+                          {s.count.toLocaleString()}
+                        </span>
+                      )}
                     </button>
                   )
                 })}
@@ -705,43 +756,52 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
 
             {/* Number of questions */}
             <div className="mb-5">
-              <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-gray-500">
+              <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">
                 Number of Questions
                 <span className="ml-2 text-gray-400 normal-case font-normal">(pool: {poolSize})</span>
               </label>
               <div className="flex gap-2 mb-2">
                 {presets.map(n => {
                   const disabled = n > poolSize
+                  const active = !disabled && questionCount === n
                   return (
                     <button
                       key={n}
                       onClick={() => setQuestionCount(n)}
                       disabled={disabled}
-                      className={`flex-1 py-2 rounded-lg text-sm font-medium border transition ${
+                      className={`flex-1 py-2 rounded-lg text-sm border-2 transition tabular-nums ${
                         disabled
-                          ? 'border-gray-200 text-gray-300 cursor-not-allowed dark:border-gray-700'
-                          : questionCount === n
-                            ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/30'
-                            : 'border-gray-200 hover:border-gray-300 dark:border-gray-600'
+                          ? 'border-gray-200 text-gray-300 cursor-not-allowed dark:border-gray-700 dark:text-gray-600'
+                          : active
+                            ? 'font-bold shadow-sm'
+                            : 'font-medium border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-400'
                       }`}
+                      style={active ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText } : {}}
                     >
                       {n}
                     </button>
                   )
                 })}
-                <button
-                  onClick={() => setQuestionCount(poolSize)}
-                  disabled={poolSize === 0}
-                  className={`flex-1 py-2 rounded-lg text-sm font-medium border transition ${
-                    poolSize === 0
-                      ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                      : questionCount === poolSize && !presets.includes(questionCount)
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-200 hover:border-gray-300 dark:border-gray-600'
-                  }`}
-                >
-                  All
-                </button>
+                {(() => {
+                  const disabled = poolSize === 0
+                  const active = !disabled && questionCount === poolSize && !presets.includes(questionCount)
+                  return (
+                    <button
+                      onClick={() => setQuestionCount(poolSize)}
+                      disabled={disabled}
+                      className={`flex-1 py-2 rounded-lg text-sm border-2 transition ${
+                        disabled
+                          ? 'border-gray-200 text-gray-300 cursor-not-allowed dark:border-gray-700 dark:text-gray-600'
+                          : active
+                            ? 'font-bold shadow-sm'
+                            : 'font-medium border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-400'
+                      }`}
+                      style={active ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText } : {}}
+                    >
+                      All
+                    </button>
+                  )
+                })()}
               </div>
               <input
                 type="range"
@@ -750,7 +810,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 value={questionCount}
                 disabled={poolSize === 0}
                 onChange={e => setQuestionCount(Number(e.target.value))}
-                className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-blue-600 bg-gray-200 disabled:cursor-not-allowed"
+                className="w-full h-1.5 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700 disabled:cursor-not-allowed"
+                style={{ accentColor: accent }}
               />
               <div className="text-center text-xs text-gray-500 mt-1">
                 {poolSize === 0
@@ -761,34 +822,54 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
 
             {/* Mode */}
             <div className="mb-5">
-              <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-gray-500">Quiz Mode</label>
+              <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">Quiz Mode</label>
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { key: 'tutor', icon: <BookOpen size={14} />, label: 'Tutor', desc: 'See answers immediately' },
-                  { key: 'timed', icon: <Clock size={14} />, label: 'Timed', desc: 'Countdown per question' },
-                  { key: 'review', icon: <Eye size={14} />, label: 'Review', desc: 'Browse Q&A freely' },
-                ].map(m => (
-                  <button
-                    key={m.key}
-                    onClick={() => setMode(m.key)}
-                    className={`flex flex-col items-center gap-1 py-3 rounded-xl text-xs font-medium border-2 transition ${
-                      mode === m.key
-                        ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
-                        : 'border-gray-200 hover:border-gray-300 dark:border-gray-600'
-                    }`}
-                  >
-                    {m.icon}
-                    <span className="font-semibold">{m.label}</span>
-                    <span className="text-[9px] text-gray-400">{m.desc}</span>
-                  </button>
-                ))}
+                  { key: 'tutor', Icon: BookOpen, label: 'Tutor', desc: 'See answers immediately' },
+                  { key: 'timed', Icon: Clock,    label: 'Timed', desc: 'Countdown per question' },
+                  { key: 'review', Icon: Eye,     label: 'Review', desc: 'Browse Q&A freely' },
+                ].map(m => {
+                  const active = mode === m.key
+                  return (
+                    <button
+                      key={m.key}
+                      onClick={() => setMode(m.key)}
+                      className={`relative flex flex-col items-center justify-center gap-1.5 px-2 py-4 rounded-xl text-xs border-2 transition ${
+                        active
+                          ? 'shadow-md'
+                          : 'border-gray-200 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-400 bg-white dark:bg-gray-700'
+                      }`}
+                      style={active ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText } : {}}
+                    >
+                      {active && (
+                        <span
+                          className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: goldDark, color: darkMode ? '#0d1718' : brand }}
+                        >
+                          <Check size={11} strokeWidth={3} />
+                        </span>
+                      )}
+                      <m.Icon size={active ? 18 : 16} style={active ? { color: selectedText } : { color: accent }} />
+                      <span className={`font-bold tracking-wide ${active ? '' : 'text-gray-800 dark:text-gray-100'}`}
+                            style={active ? { color: selectedText } : {}}>
+                        {m.label}
+                      </span>
+                      <span
+                        className={`text-[9px] leading-tight ${active ? '' : 'text-gray-500 dark:text-gray-300'}`}
+                        style={active ? { color: selectedText, opacity: 0.85 } : {}}
+                      >
+                        {m.desc}
+                      </span>
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
             {/* Timer (timed only) */}
             {mode === 'timed' && (
               <div className="mb-5">
-                <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-gray-500">Seconds per Question</label>
+                <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">Seconds per Question</label>
                 <div className="flex gap-2">
                   {[60, 90, 120, 180].map(t => (
                     <button
@@ -807,7 +888,14 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
 
             {/* Shuffle */}
             <div className="mb-6 flex items-center gap-3">
-              <input type="checkbox" id="shuffle" checked={shuffle} onChange={e => setShuffle(e.target.checked)} className="w-4 h-4 rounded border-gray-300 text-blue-600" />
+              <input
+                type="checkbox"
+                id="shuffle"
+                checked={shuffle}
+                onChange={e => setShuffle(e.target.checked)}
+                className="w-4 h-4 rounded border-gray-300 dark:border-gray-600"
+                style={{ accentColor: accent }}
+              />
               <label htmlFor="shuffle" className="text-sm">Shuffle Questions</label>
             </div>
 

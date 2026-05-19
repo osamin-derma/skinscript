@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/*
+  Tailwind v4 uses media-query-based dark mode by default.  We toggle
+  the `.dark` class on <html>, so this re-points every `dark:` utility
+  to fire whenever any ancestor has class="dark".  Without this the
+  redesigned pill backgrounds, labels, etc. only apply when the OS
+  itself is in dark mode.
+*/
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
