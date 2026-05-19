@@ -112,6 +112,74 @@ export async function requestPasswordReset(email) {
 }
 
 
+// ── WhatsApp / phone OTP ────────────────────────────────────────────────
+//
+// signInWithOtp creates the auth user on first use and ignores the
+// metadata for subsequent logins (Supabase only sets user_metadata at
+// creation time).  So we can pass a desired username unconditionally
+// and trust the handle_new_user() trigger to apply it for new accounts.
+
+// Match E.164 — '+' followed by 8-15 digits.  Country code is required.
+const E164_RE = /^\+\d{8,15}$/
+
+export function normalizePhone(input) {
+  if (!input) return ''
+  let p = String(input).trim().replace(/[\s\-()]/g, '')
+  if (!p.startsWith('+')) p = '+' + p
+  return p
+}
+
+export function validatePhone(p) {
+  const norm = normalizePhone(p)
+  if (!norm) return 'Phone number is required.'
+  if (!E164_RE.test(norm)) {
+    return 'Use international format with country code, e.g. +9665XXXXXXXX.'
+  }
+  return null
+}
+
+export async function sendWhatsappOtp({ phone, username }) {
+  const pErr = validatePhone(phone)
+  if (pErr) throw new Error(pErr)
+  const norm = normalizePhone(phone)
+
+  // Username is optional but recommended on first signup. Validate only
+  // if the caller actually provided one.
+  if (username) {
+    const ue = validateUsername(username)
+    if (ue) throw new Error(ue)
+    const { data: taken, error: lookupErr } = await supabase
+      .rpc('username_taken', { p_username: username })
+    if (lookupErr) throw lookupErr
+    if (taken) throw new Error('That username is already taken.')
+  }
+
+  const options = { channel: 'whatsapp' }
+  if (username) options.data = { username }
+
+  const { error } = await supabase.auth.signInWithOtp({
+    phone: norm,
+    options,
+  })
+  if (error) throw error
+  return { phone: norm }
+}
+
+export async function verifyWhatsappOtp({ phone, token }) {
+  const norm = normalizePhone(phone)
+  if (!token || !/^\d{4,8}$/.test(token.trim())) {
+    throw new Error('Enter the code you received on WhatsApp.')
+  }
+  const { data, error } = await supabase.auth.verifyOtp({
+    phone: norm,
+    token: token.trim(),
+    type: 'sms',     // OTP-verify uses 'sms' type regardless of delivery channel
+  })
+  if (error) throw error
+  return data
+}
+
+
 // React hook-ish helper: returns the current session synchronously from
 // localStorage (Supabase persists it) so the app doesn't flash the auth
 // screen on every refresh while the network call resolves.

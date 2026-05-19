@@ -1,49 +1,90 @@
 import { useState } from 'react'
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react'
+import {
+  Eye, EyeOff, Mail, Lock, User, Phone, MessageCircle,
+  ArrowRight, AlertCircle, CheckCircle2,
+} from 'lucide-react'
 import {
   signUp, signInWithUsername, requestPasswordReset,
   validateUsername, validateEmail, validatePassword,
+  sendWhatsappOtp, verifyWhatsappOtp,
 } from '../lib/auth'
 
 const brand = '#2c3e3f'
 const gold = '#c9a84c'
 
-// Mode: 'login' | 'register' | 'forgot'
+// method: 'email' | 'whatsapp'
+// mode (email):    'login' | 'register' | 'forgot'
+// mode (whatsapp): 'phone' (ask for number) | 'code' (enter OTP)
 export default function AuthScreen({ darkMode, onToggleDark }) {
+  const [method, setMethod] = useState('email')
   const [mode, setMode] = useState('login')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [info, setInfo] = useState('')
 
-  // Form fields (shared across modes)
+  // Email-flow fields
   const [usernameOrEmail, setUsernameOrEmail] = useState('')
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPwd, setShowPwd] = useState(false)
 
+  // WhatsApp-flow fields
+  const [phone, setPhone] = useState('')
+  const [waUsername, setWaUsername] = useState('')
+  const [otp, setOtp] = useState('')
+  const [verifiedPhone, setVerifiedPhone] = useState('')   // server-normalized
+
   const clear = () => { setError(''); setInfo('') }
   const switchTo = (m) => { clear(); setMode(m) }
+  const switchMethod = (m) => {
+    clear()
+    setMethod(m)
+    setMode(m === 'email' ? 'login' : 'phone')
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
     clear()
     setBusy(true)
     try {
-      if (mode === 'login') {
+      // ── Email / username flows ──
+      if (method === 'email' && mode === 'login') {
         await signInWithUsername({ usernameOrEmail, password })
-        // Auth state listener in App.jsx will re-render us out.
-      } else if (mode === 'register') {
-        // Validate up front so we can show inline errors
+      } else if (method === 'email' && mode === 'register') {
         const errs = [validateUsername(username), validateEmail(email), validatePassword(password)].filter(Boolean)
         if (errs.length) throw new Error(errs[0])
         await signUp({ email, username, password })
         setInfo('Account created! Check your email to confirm and then sign in.')
         setMode('login')
-      } else if (mode === 'forgot') {
+      } else if (method === 'email' && mode === 'forgot') {
         await requestPasswordReset(email)
         setInfo('If that email is registered, a reset link is on its way.')
       }
+
+      // ── WhatsApp OTP flow ──
+      else if (method === 'whatsapp' && mode === 'phone') {
+        const { phone: normalized } = await sendWhatsappOtp({ phone, username: waUsername })
+        setVerifiedPhone(normalized)
+        setMode('code')
+        setInfo(`We sent a 6-digit code to ${normalized} on WhatsApp.`)
+      } else if (method === 'whatsapp' && mode === 'code') {
+        await verifyWhatsappOtp({ phone: verifiedPhone, token: otp })
+        // Auth state listener in App.jsx will re-render us out.
+      }
+    } catch (err) {
+      setError(humanizeAuthError(err))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function resendCode() {
+    clear()
+    setBusy(true)
+    try {
+      await sendWhatsappOtp({ phone: verifiedPhone, username: waUsername })
+      setInfo(`Re-sent a code to ${verifiedPhone} on WhatsApp.`)
     } catch (err) {
       setError(humanizeAuthError(err))
     } finally {
@@ -69,16 +110,46 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
       </div>
 
       <div className={`w-full max-w-md rounded-2xl shadow-2xl p-7 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        {/* Method tabs (Email / WhatsApp) */}
+        <div className={`flex gap-1 p-1 mb-5 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+          <button
+            type="button"
+            onClick={() => switchMethod('email')}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition ${
+              method === 'email'
+                ? (darkMode ? 'bg-gray-700 text-gray-100 shadow-sm' : 'bg-white text-gray-800 shadow-sm')
+                : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+            }`}
+          >
+            <Mail size={13} /> Email
+          </button>
+          <button
+            type="button"
+            onClick={() => switchMethod('whatsapp')}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition ${
+              method === 'whatsapp'
+                ? (darkMode ? 'bg-gray-700 text-gray-100 shadow-sm' : 'bg-white text-gray-800 shadow-sm')
+                : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+            }`}
+          >
+            <MessageCircle size={13} /> WhatsApp
+          </button>
+        </div>
+
         {/* Header */}
         <h2 className="text-xl font-bold mb-1" style={{ color: darkMode ? '#7fb5b5' : brand }}>
-          {mode === 'login' && 'Sign in'}
-          {mode === 'register' && 'Create your account'}
-          {mode === 'forgot' && 'Reset your password'}
+          {method === 'email' && mode === 'login'    && 'Sign in'}
+          {method === 'email' && mode === 'register' && 'Create your account'}
+          {method === 'email' && mode === 'forgot'   && 'Reset your password'}
+          {method === 'whatsapp' && mode === 'phone' && 'Sign in with WhatsApp'}
+          {method === 'whatsapp' && mode === 'code'  && 'Enter your verification code'}
         </h2>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
-          {mode === 'login' && 'Welcome back. Pick up where you left off.'}
-          {mode === 'register' && 'Track your progress across every device.'}
-          {mode === 'forgot' && 'Enter your email and we’ll send you a reset link.'}
+          {method === 'email' && mode === 'login'    && 'Welcome back. Pick up where you left off.'}
+          {method === 'email' && mode === 'register' && 'Track your progress across every device.'}
+          {method === 'email' && mode === 'forgot'   && 'Enter your email and we’ll send you a reset link.'}
+          {method === 'whatsapp' && mode === 'phone' && 'We’ll send a 6-digit code to your WhatsApp.'}
+          {method === 'whatsapp' && mode === 'code'  && `Check WhatsApp for the code sent to ${verifiedPhone}.`}
         </p>
 
         {/* Alerts */}
@@ -97,7 +168,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {mode === 'login' && (
+          {method === 'email' && mode === 'login' && (
             <Field
               icon={<User size={16} />}
               label="Username or email"
@@ -110,7 +181,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
             />
           )}
 
-          {mode === 'register' && (
+          {method === 'email' && mode === 'register' && (
             <>
               <Field
                 icon={<User size={16} />}
@@ -135,7 +206,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
             </>
           )}
 
-          {mode === 'forgot' && (
+          {method === 'email' && mode === 'forgot' && (
             <Field
               icon={<Mail size={16} />}
               label="Email"
@@ -148,7 +219,48 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
             />
           )}
 
-          {(mode === 'login' || mode === 'register') && (
+          {/* ─── WhatsApp flow ─── */}
+          {method === 'whatsapp' && mode === 'phone' && (
+            <>
+              <Field
+                icon={<Phone size={16} />}
+                label="WhatsApp number"
+                hint="International format, e.g. +9665XXXXXXXX"
+                type="tel"
+                autoComplete="tel"
+                value={phone}
+                onChange={setPhone}
+                darkMode={darkMode}
+                autoFocus
+              />
+              <Field
+                icon={<User size={16} />}
+                label="Username"
+                hint="Pick a username (only needed if you’re new)"
+                type="text"
+                autoComplete="username"
+                value={waUsername}
+                onChange={setWaUsername}
+                darkMode={darkMode}
+              />
+            </>
+          )}
+
+          {method === 'whatsapp' && mode === 'code' && (
+            <Field
+              icon={<MessageCircle size={16} />}
+              label="6-digit code"
+              hint="Open WhatsApp and copy the code we just sent"
+              type="text"
+              autoComplete="one-time-code"
+              value={otp}
+              onChange={(v) => setOtp(v.replace(/\D/g, '').slice(0, 8))}
+              darkMode={darkMode}
+              autoFocus
+            />
+          )}
+
+          {(method === 'email' && (mode === 'login' || mode === 'register')) && (
             <div>
               <label className="block text-xs font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
                 Password
@@ -194,9 +306,11 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
               <span className="inline-block animate-pulse">Working…</span>
             ) : (
               <>
-                {mode === 'login' && 'Sign in'}
-                {mode === 'register' && 'Create account'}
-                {mode === 'forgot' && 'Send reset link'}
+                {method === 'email' && mode === 'login'    && 'Sign in'}
+                {method === 'email' && mode === 'register' && 'Create account'}
+                {method === 'email' && mode === 'forgot'   && 'Send reset link'}
+                {method === 'whatsapp' && mode === 'phone' && 'Send WhatsApp code'}
+                {method === 'whatsapp' && mode === 'code'  && 'Verify & sign in'}
                 <ArrowRight size={14} />
               </>
             )}
@@ -205,7 +319,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
 
         {/* Mode switcher */}
         <div className="mt-5 pt-4 border-t dark:border-gray-700 text-xs text-center text-gray-500 dark:text-gray-400 space-y-1.5">
-          {mode === 'login' && (
+          {method === 'email' && mode === 'login' && (
             <>
               <p>
                 Don’t have an account?{' '}
@@ -220,7 +334,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
               </p>
             </>
           )}
-          {mode === 'register' && (
+          {method === 'email' && mode === 'register' && (
             <p>
               Already have an account?{' '}
               <button onClick={() => switchTo('login')} className="font-semibold underline hover:opacity-70" style={{ color: brand }}>
@@ -228,13 +342,28 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
               </button>
             </p>
           )}
-          {mode === 'forgot' && (
+          {method === 'email' && mode === 'forgot' && (
             <p>
               Remembered it?{' '}
               <button onClick={() => switchTo('login')} className="font-semibold underline hover:opacity-70" style={{ color: brand }}>
                 Back to sign in
               </button>
             </p>
+          )}
+          {method === 'whatsapp' && mode === 'code' && (
+            <>
+              <p>
+                Didn’t get the code?{' '}
+                <button onClick={resendCode} disabled={busy} className="font-semibold underline hover:opacity-70 disabled:opacity-40" style={{ color: brand }}>
+                  Resend
+                </button>
+              </p>
+              <p>
+                <button onClick={() => { setMode('phone'); setOtp('') }} className="font-semibold underline hover:opacity-70" style={{ color: brand }}>
+                  Change number
+                </button>
+              </p>
+            </>
           )}
         </div>
       </div>
@@ -286,5 +415,14 @@ function humanizeAuthError(err) {
   if (/already been registered/i.test(msg)) return 'An account with that email already exists.'
   if (/Email rate limit/i.test(msg)) return 'Too many emails sent. Please wait a few minutes and try again.'
   if (/Email not confirmed/i.test(msg)) return 'Please confirm your email first — check your inbox.'
+
+  // Twilio / Verify
+  if (/Token has expired|expired/i.test(msg)) return 'That code expired — request a new one.'
+  if (/Invalid token|Token is invalid|incorrect/i.test(msg)) return 'Wrong code. Double-check WhatsApp and try again.'
+  if (/Phone.*already.*registered/i.test(msg)) return 'That phone number is already linked to an account.'
+  if (/SMS rate limit|exceeded the rate limit|rate.limit/i.test(msg)) return 'Too many code requests. Wait a minute and try again.'
+  if (/Unverified number|unverified number/i.test(msg)) return 'Your number is not yet permitted by the WhatsApp sender — the admin needs to verify it first (trial-mode limit).'
+  if (/not a valid phone number|invalid phone/i.test(msg)) return 'That doesn’t look like a valid phone number.'
+
   return msg
 }

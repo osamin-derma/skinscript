@@ -35,19 +35,53 @@ create policy "profiles_self_insert" on public.profiles
 
 
 -- 2. Auto-create a profile row when a new auth user signs up.
--- The trigger reads the `username` we put in raw_user_meta_data during signUp.
+--
+-- Picks a username from (in order):
+--   - raw_user_meta_data->>'username'      (set during signUp from the app)
+--   - email prefix                          (email signups without metadata)
+--   - "wa_" + last 6 digits of phone        (WhatsApp / SMS OTP signups)
+--   - "user_" + first 8 chars of uuid       (last-resort fallback)
+--
+-- If the picked name collides with an existing profile, append a numeric
+-- suffix until it's unique.
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  base_username  text;
+  final_username text;
+  suffix         int := 0;
 begin
+  base_username := coalesce(
+    new.raw_user_meta_data->>'username',
+    case
+      when new.email is not null then split_part(new.email, '@', 1)
+      when new.phone is not null then 'wa_' || right(new.phone, 6)
+      else 'user_' || substr(new.id::text, 1, 8)
+    end
+  );
+
+  -- Strip anything not alphanumeric/underscore; fall back if too short.
+  base_username := regexp_replace(base_username, '[^a-zA-Z0-9_]', '', 'g');
+  if length(base_username) < 3 then
+    base_username := 'user_' || substr(new.id::text, 1, 8);
+  end if;
+
+  -- Resolve username uniqueness.
+  final_username := base_username;
+  while exists(select 1 from public.profiles where username = final_username) loop
+    suffix := suffix + 1;
+    final_username := base_username || suffix::text;
+  end loop;
+
   insert into public.profiles (id, username, display_name)
   values (
     new.id,
-    coalesce(new.raw_user_meta_data->>'username', split_part(new.email, '@', 1)),
-    coalesce(new.raw_user_meta_data->>'display_name', new.raw_user_meta_data->>'username')
+    final_username,
+    coalesce(new.raw_user_meta_data->>'display_name', final_username)
   )
   on conflict (id) do nothing;
   return new;
