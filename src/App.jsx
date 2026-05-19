@@ -186,7 +186,9 @@ function reducer(state, action) {
       } else if (action.source === 'unused') {
         pool = pool.filter(i => !state.globalUsed.includes(bankQuestions[i].id))
       } else if (action.source === 'topics' && action.topics?.length > 0) {
-        pool = pool.filter(i => action.topics.includes(bankQuestions[i].topic))
+        // The question field is `category` (not `topic`). Without this
+        // fix the pool was always empty and the quiz never started.
+        pool = pool.filter(i => action.topics.includes(bankQuestions[i].category))
       }
 
       // If selected source has no questions, don't start the quiz
