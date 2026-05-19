@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User } from 'lucide-react'
 
-export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut }) {
+export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
   const [timer, setTimer] = useState(90)
   const [shuffle, setShuffle] = useState(true)
@@ -215,7 +215,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             <button
               onClick={() => {
                 if (confirm('Start Fresh as a New User?\n\nThis will reset ALL progress:\n• ' + globalUsed.length + ' used questions\n• ' + globalWrong.length + ' incorrect answers\n• ' + globalFlagged.length + ' flagged questions\n• ' + history.length + ' quiz history entries\n\nThis cannot be undone.')) {
-                  dispatch({ type: 'RESET_ALL' })
+                  (onResetAll || (() => dispatch({ type: 'RESET_ALL' })))()
                 }
               }}
               className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-600 text-gray-500 hover:text-red-600 hover:border-red-300 transition"
@@ -885,7 +885,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               <button
                 onClick={() => {
                   if (confirm('Reset ALL progress?\n\nThis will clear:\n• Quiz history\n• Used/Incorrect/Flagged questions\n• All saved data\n\nYou will start fresh as a new user.\n\nThis cannot be undone.')) {
-                    dispatch({ type: 'RESET_ALL' })
+                    (onResetAll || (() => dispatch({ type: 'RESET_ALL' })))()
                   }
                 }}
                 className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700"

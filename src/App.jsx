@@ -466,13 +466,37 @@ export default function App() {
     }
   }, [])
 
-  const dismissWelcome = () => {
-    // Wipe every key we've ever owned, then mark this data version as
-    // seen. Reload to guarantee a clean slate (no in-memory leftovers
-    // from earlier reducer hooks).
+  const dismissWelcome = async () => {
+    // 1) Clear cloud progress FIRST. localStorage-only wipes don't survive
+    //    the next page load because the cloud-sync layer re-fetches the
+    //    user's history / flags / wrong / used from Supabase and
+    //    re-populates state. Await this so the reload truly starts clean.
+    try {
+      await userdata.clearEverything()
+    } catch (e) {
+      console.warn('[reset] cloud clear failed', e)
+    }
+    // 2) Wipe local caches.
     wipeAllAppData()
     localStorage.setItem(DATA_VERSION_KEY, DATA_VERSION)
     setShowWelcome(false)
+    // 3) Reload — guaranteed clean memory + freshly empty cloud fetch.
+    window.location.reload()
+  }
+
+  // Same pattern for the in-app "Reset ALL progress" button on
+  // StartScreen. The reducer change alone would be propagated to the
+  // cloud by the watch-and-diff effects, but only as fire-and-forget
+  // network calls — closing the tab mid-flush leaves stale rows in
+  // Supabase.  Awaiting the cloud delete first removes the race.
+  const handleResetAll = async () => {
+    try {
+      await userdata.clearEverything()
+    } catch (e) {
+      console.warn('[reset-all] cloud clear failed', e)
+    }
+    localStorage.removeItem(STORAGE_KEY)
+    localStorage.removeItem(CATEGORY_FILTER_KEY)
     window.location.reload()
   }
 
@@ -623,6 +647,7 @@ export default function App() {
             username: session?.user?.user_metadata?.username,
           }}
           onSignOut={handleSignOut}
+          onResetAll={handleResetAll}
         />
       )}
       {state.screen === 'quiz' && (
