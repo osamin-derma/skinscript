@@ -8,16 +8,16 @@
 // sorts by relevance + searches by name OR dial code.
 
 export const COUNTRIES = [
-  // ── Gulf & Middle East ─────────────────────────────────────────
+  // ── Gulf & Middle East (Iraq + Qatar pinned to the top) ───────
+  { code: 'IQ', name: 'Iraq',                 dial: '964', flag: '🇮🇶' },
+  { code: 'QA', name: 'Qatar',                dial: '974', flag: '🇶🇦' },
   { code: 'SA', name: 'Saudi Arabia',         dial: '966', flag: '🇸🇦' },
   { code: 'AE', name: 'United Arab Emirates', dial: '971', flag: '🇦🇪' },
   { code: 'KW', name: 'Kuwait',               dial: '965', flag: '🇰🇼' },
-  { code: 'QA', name: 'Qatar',                dial: '974', flag: '🇶🇦' },
   { code: 'BH', name: 'Bahrain',              dial: '973', flag: '🇧🇭' },
   { code: 'OM', name: 'Oman',                 dial: '968', flag: '🇴🇲' },
   { code: 'YE', name: 'Yemen',                dial: '967', flag: '🇾🇪' },
   { code: 'JO', name: 'Jordan',               dial: '962', flag: '🇯🇴' },
-  { code: 'IQ', name: 'Iraq',                 dial: '964', flag: '🇮🇶' },
   { code: 'SY', name: 'Syria',                dial: '963', flag: '🇸🇾' },
   { code: 'LB', name: 'Lebanon',              dial: '961', flag: '🇱🇧' },
   { code: 'PS', name: 'Palestine',            dial: '970', flag: '🇵🇸' },
@@ -85,7 +85,7 @@ export const COUNTRIES = [
   { code: 'CO', name: 'Colombia',             dial: '57',  flag: '🇨🇴' },
 ]
 
-export const DEFAULT_COUNTRY_CODE = 'SA'   // Saudi Arabia default
+export const DEFAULT_COUNTRY_CODE = 'IQ'   // Iraq default
 
 export function findCountry(code) {
   return COUNTRIES.find(c => c.code === code) || COUNTRIES[0]
