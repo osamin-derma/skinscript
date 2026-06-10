@@ -39,14 +39,45 @@ export function validatePassword(p) {
   return null
 }
 
+export function validateAccessCode(c) {
+  if (!c || !c.trim()) return 'Access code is required to register.'
+  return null
+}
 
-export async function signUp({ email, username, password, displayName }) {
+
+// ── Access codes (invite-only registration) ─────────────────────────────
+//
+// reserveAccessCode validates a code server-side and reserves it for the
+// email/phone about to register. The database trigger then consumes that
+// reservation when the account is actually created — so registration is
+// impossible without a valid code, and the code can't be claimed twice.
+export async function reserveAccessCode(code, identifier) {
+  const ce = validateAccessCode(code)
+  if (ce) throw new Error(ce)
+  const { data, error } = await supabase.rpc('reserve_access_code', {
+    p_code: code.trim().toUpperCase(),
+    p_identifier: identifier,
+  })
+  if (error) throw error
+  if (!data?.ok) {
+    if (data?.reason === 'invalid_or_used') {
+      throw new Error('That access code is invalid, already used, or expired.')
+    }
+    throw new Error('Could not validate that access code.')
+  }
+  return true
+}
+
+
+export async function signUp({ email, username, password, displayName, accessCode }) {
   const ue = validateUsername(username)
   if (ue) throw new Error(ue)
   const ee = validateEmail(email)
   if (ee) throw new Error(ee)
   const pe = validatePassword(password)
   if (pe) throw new Error(pe)
+  const ce = validateAccessCode(accessCode)
+  if (ce) throw new Error(ce)
 
   // Check username availability before creating an auth account, so a
   // duplicate name doesn't leave an orphan user_id behind.
@@ -54,6 +85,11 @@ export async function signUp({ email, username, password, displayName }) {
     .rpc('username_taken', { p_username: username })
   if (lookupErr) throw lookupErr
   if (existing) throw new Error('That username is already taken.')
+
+  // Reserve the access code for this email BEFORE creating the account.
+  // The handle_new_user trigger consumes the reservation; without it the
+  // account-creation INSERT is rolled back server-side.
+  await reserveAccessCode(accessCode, email)
 
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -138,24 +174,28 @@ export function validatePhone(p) {
   return null
 }
 
-export async function sendSmsOtp({ phone, username }) {
+export async function sendSmsOtp({ phone, username, accessCode, isNewUser }) {
   const pErr = validatePhone(phone)
   if (pErr) throw new Error(pErr)
   const norm = normalizePhone(phone)
 
-  // Username is optional but recommended on first signup. Validate only
-  // if the caller actually provided one.
-  if (username) {
+  // New users must supply a valid access code + username; existing users
+  // logging in by SMS need neither.
+  if (isNewUser) {
     const ue = validateUsername(username)
     if (ue) throw new Error(ue)
     const { data: taken, error: lookupErr } = await supabase
       .rpc('username_taken', { p_username: username })
     if (lookupErr) throw lookupErr
     if (taken) throw new Error('That username is already taken.')
+
+    // Reserve the code for this phone before the OTP send creates the
+    // account row (the trigger consumes it at insert time).
+    await reserveAccessCode(accessCode, norm)
   }
 
   const options = { channel: 'sms' }
-  if (username) options.data = { username }
+  if (isNewUser && username) options.data = { username }
 
   const { error } = await supabase.auth.signInWithOtp({
     phone: norm,

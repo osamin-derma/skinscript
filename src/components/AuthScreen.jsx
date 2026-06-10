@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  Eye, EyeOff, Mail, Lock, User, MessageSquare,
+  Eye, EyeOff, Mail, Lock, User, MessageSquare, KeyRound,
   ArrowRight, AlertCircle, CheckCircle2,
 } from 'lucide-react'
 import {
@@ -35,6 +35,10 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
   const [smsUsername, setSmsUsername] = useState('')
   const [otp, setOtp] = useState('')
   const [verifiedPhone, setVerifiedPhone] = useState('')   // server-normalized
+  const [smsIsNew, setSmsIsNew] = useState(false)          // new user vs existing
+
+  // Invite access code (required for any new registration)
+  const [accessCode, setAccessCode] = useState('')
 
   const clear = () => { setError(''); setInfo('') }
   const switchTo = (m) => { clear(); setMode(m) }
@@ -55,9 +59,10 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
       } else if (method === 'email' && mode === 'register') {
         const errs = [validateUsername(username), validateEmail(email), validatePassword(password)].filter(Boolean)
         if (errs.length) throw new Error(errs[0])
-        await signUp({ email, username, password })
+        await signUp({ email, username, password, accessCode })
         setInfo('Account created! Check your email to confirm and then sign in.')
         setMode('login')
+        setAccessCode('')
       } else if (method === 'email' && mode === 'forgot') {
         await requestPasswordReset(email)
         setInfo('If that email is registered, a reset link is on its way.')
@@ -65,7 +70,12 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
 
       // ── SMS OTP flow ──
       else if (method === 'sms' && mode === 'phone') {
-        const { phone: normalized } = await sendSmsOtp({ phone, username: smsUsername })
+        const { phone: normalized } = await sendSmsOtp({
+          phone,
+          username: smsUsername,
+          accessCode,
+          isNewUser: smsIsNew,
+        })
         setVerifiedPhone(normalized)
         setMode('code')
         setInfo(`We sent a 6-digit code to ${normalized} by SMS.`)
@@ -84,7 +94,9 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
     clear()
     setBusy(true)
     try {
-      await sendSmsOtp({ phone: verifiedPhone, username: smsUsername })
+      // On resend the account row already exists (created on first send),
+      // so no code reservation is needed — treat as a plain re-send.
+      await sendSmsOtp({ phone: verifiedPhone, isNewUser: false })
       setInfo(`Re-sent a code to ${verifiedPhone} by SMS.`)
     } catch (err) {
       setError(humanizeAuthError(err))
@@ -149,7 +161,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           {method === 'email' && mode === 'login'    && 'Welcome back. Pick up where you left off.'}
           {method === 'email' && mode === 'register' && 'Track your progress across every device.'}
           {method === 'email' && mode === 'forgot'   && 'Enter your email and we’ll send you a reset link.'}
-          {method === 'sms'   && mode === 'phone'    && 'We’ll text you a 6-digit code.'}
+          {method === 'sms'   && mode === 'phone'    && (smsIsNew ? 'New here? Enter your invite code, then we’ll text you a 6-digit code.' : 'We’ll text you a 6-digit code.')}
           {method === 'sms'   && mode === 'code'     && `Check your SMS for the code sent to ${verifiedPhone}.`}
         </p>
 
@@ -185,6 +197,17 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           {method === 'email' && mode === 'register' && (
             <>
               <Field
+                icon={<KeyRound size={16} />}
+                label="Access code"
+                hint="Invite-only — request a code from Dr. Osama Al Rawi"
+                type="text"
+                autoComplete="off"
+                value={accessCode}
+                onChange={(v) => setAccessCode(v.toUpperCase())}
+                darkMode={darkMode}
+                autoFocus
+              />
+              <Field
                 icon={<User size={16} />}
                 label="Username"
                 hint="3–24 chars, letters / digits / underscores"
@@ -193,7 +216,6 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                 value={username}
                 onChange={setUsername}
                 darkMode={darkMode}
-                autoFocus
               />
               <Field
                 icon={<Mail size={16} />}
@@ -223,6 +245,45 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           {/* ─── SMS flow ─── */}
           {method === 'sms' && mode === 'phone' && (
             <>
+              {/* Existing vs new toggle — only new users need a code */}
+              <div className={`flex gap-1 p-1 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+                <button
+                  type="button"
+                  onClick={() => { setSmsIsNew(false); clear() }}
+                  className={`flex-1 py-2 rounded-lg text-xs font-semibold transition ${
+                    !smsIsNew
+                      ? (darkMode ? 'bg-gray-700 text-gray-100 shadow-sm' : 'bg-white text-gray-800 shadow-sm')
+                      : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
+                >
+                  I have an account
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setSmsIsNew(true); clear() }}
+                  className={`flex-1 py-2 rounded-lg text-xs font-semibold transition ${
+                    smsIsNew
+                      ? (darkMode ? 'bg-gray-700 text-gray-100 shadow-sm' : 'bg-white text-gray-800 shadow-sm')
+                      : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
+                  }`}
+                >
+                  I’m new
+                </button>
+              </div>
+
+              {smsIsNew && (
+                <Field
+                  icon={<KeyRound size={16} />}
+                  label="Access code"
+                  hint="Invite-only — request a code from Dr. Osama Al Rawi"
+                  type="text"
+                  autoComplete="off"
+                  value={accessCode}
+                  onChange={(v) => setAccessCode(v.toUpperCase())}
+                  darkMode={darkMode}
+                />
+              )}
+
               <div>
                 <label className="block text-xs font-semibold mb-1.5 text-gray-700 dark:text-gray-300">
                   Mobile number
@@ -231,22 +292,24 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                   value={phone}
                   onChange={setPhone}
                   darkMode={darkMode}
-                  autoFocus
                 />
                 <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1.5">
                   Pick your country, then enter the rest of your mobile number.
                 </p>
               </div>
-              <Field
-                icon={<User size={16} />}
-                label="Username"
-                hint="Pick a username (only needed if you’re new)"
-                type="text"
-                autoComplete="username"
-                value={smsUsername}
-                onChange={setSmsUsername}
-                darkMode={darkMode}
-              />
+
+              {smsIsNew && (
+                <Field
+                  icon={<User size={16} />}
+                  label="Username"
+                  hint="3–24 chars, letters / digits / underscores"
+                  type="text"
+                  autoComplete="username"
+                  value={smsUsername}
+                  onChange={setSmsUsername}
+                  darkMode={darkMode}
+                />
+              )}
             </>
           )}
 
@@ -419,6 +482,11 @@ function humanizeAuthError(err) {
   if (/already been registered/i.test(msg)) return 'An account with that email already exists.'
   if (/Email rate limit/i.test(msg)) return 'Too many emails sent. Please wait a few minutes and try again.'
   if (/Email not confirmed/i.test(msg)) return 'Please confirm your email first — check your inbox.'
+
+  // Access-code gate (server-enforced)
+  if (/ACCESS_CODE_REQUIRED/i.test(msg)) return 'A valid access code is required to register. Request one from Dr. Osama Al Rawi.'
+  if (/invalid, already used, or expired/i.test(msg)) return msg
+  if (/Database error (saving|creating) new user/i.test(msg)) return 'Registration needs a valid access code. Pick “I’m new” and enter your code.'
 
   // Twilio / Verify
   if (/Token has expired|expired/i.test(msg)) return 'That code expired — request a new one.'
