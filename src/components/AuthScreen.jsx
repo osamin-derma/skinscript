@@ -13,6 +13,30 @@ import PhoneInput from './PhoneInput'
 const brand = '#2c3e3f'
 const gold = '#c9a84c'
 
+// WhatsApp request link for invite codes (+974 50180033), with a pre-filled
+// message so the student just hits send.
+const WHATSAPP_REQUEST_URL =
+  'https://wa.me/97450180033?text=' +
+  encodeURIComponent("Hi Dr. Osama, I'd like an access code for SkinScript.")
+
+// Reusable hint with a tappable WhatsApp link. WhatsApp green (#25D366)
+// reads well on both light and dark backgrounds.
+const requestCodeHint = (
+  <>
+    Invite-only —{' '}
+    <a
+      href={WHATSAPP_REQUEST_URL}
+      target="_blank"
+      rel="noreferrer"
+      className="font-bold underline"
+      style={{ color: '#25D366' }}
+    >
+      request a code on WhatsApp
+    </a>{' '}
+    from Dr. Osama Al Rawi
+  </>
+)
+
 // method: 'email' | 'sms'
 // mode (email): 'login' | 'register' | 'forgot'
 // mode (sms):   'phone' (ask for number) | 'code' (enter OTP)
@@ -199,7 +223,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
               <Field
                 icon={<KeyRound size={16} />}
                 label="Access code"
-                hint="Invite-only — request a code from Dr. Osama Al Rawi"
+                hint={requestCodeHint}
                 type="text"
                 autoComplete="off"
                 value={accessCode}
@@ -275,7 +299,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
                 <Field
                   icon={<KeyRound size={16} />}
                   label="Access code"
-                  hint="Invite-only — request a code from Dr. Osama Al Rawi"
+                  hint={requestCodeHint}
                   type="text"
                   autoComplete="off"
                   value={accessCode}
