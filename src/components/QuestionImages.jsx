@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { X, ZoomIn } from 'lucide-react'
+import { X, ZoomIn, ImageOff } from 'lucide-react'
 
 /**
  * Renders the question's clinical photos / diagrams.
@@ -7,11 +7,31 @@ import { X, ZoomIn } from 'lucide-react'
  *   - Up to 2 images side-by-side on wide screens, stacked on mobile.
  *   - Tap any thumbnail to open a full-screen lightbox.
  *   - `loading="lazy"` so a long quiz doesn't preload 80MB of photos.
+ *
+ * When `mediaMissing` is set and there are no images, shows a small
+ * "image unavailable" notice so students understand the source photo
+ * isn't included (rather than seeing an apparently-incomplete question).
  */
-export default function QuestionImages({ images, darkMode, compact = false }) {
+export default function QuestionImages({ images, darkMode, compact = false, mediaMissing = false }) {
   const [open, setOpen] = useState(null) // index of expanded image, or null
 
-  if (!images || images.length === 0) return null
+  if (!images || images.length === 0) {
+    if (!mediaMissing) return null
+    return (
+      <div className={`flex items-start gap-2.5 mb-5 px-3.5 py-3 rounded-xl border ${
+        darkMode
+          ? 'bg-amber-900/15 border-amber-800/60 text-amber-200'
+          : 'bg-amber-50 border-amber-200 text-amber-800'
+      }`}>
+        <ImageOff size={16} className="mt-0.5 flex-shrink-0 opacity-80" />
+        <p className="text-xs leading-relaxed">
+          <span className="font-semibold">Image unavailable.</span>{' '}
+          This question refers to a clinical image that isn’t included in the source.
+          {compact ? '' : ' Use the wording and, after answering, the explanation to reason it through.'}
+        </p>
+      </div>
+    )
+  }
 
   return (
     <>

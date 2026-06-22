@@ -6191,7 +6191,8 @@
     "source": "Board Vitals",
     "category": "Pathology",
     "format": "mcq",
-    "id": 260
+    "id": 260,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Pathol-0137",
@@ -11517,7 +11518,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 488
+    "id": 488,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Genera-0116",
@@ -14351,7 +14353,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 609
+    "id": 609,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Genode-0116",
@@ -16110,7 +16113,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 680
+    "id": 680,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Infect-0064",
@@ -18704,7 +18708,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 787
+    "id": 787,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Pediat-0058",
@@ -20845,7 +20850,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 878
+    "id": 878,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-System-0075",
@@ -20915,7 +20921,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 881
+    "id": 881,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-System-0078",
@@ -21005,7 +21012,8 @@
     "source": "Board Vitals",
     "category": "Diseases",
     "format": "mcq",
-    "id": 885
+    "id": 885,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-System-0082",
@@ -23514,7 +23522,8 @@
     "source": "Board Vitals",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 991
+    "id": 991,
+    "media_missing": true
   },
   {
     "pdf_id": "BV-Therap-0040",

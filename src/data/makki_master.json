@@ -2222,7 +2222,8 @@
     "source": "Makki",
     "category": "Basic",
     "format": "mcq",
-    "id": 89
+    "id": 89,
+    "media_missing": true
   },
   {
     "pdf_id": "MK-0418",
@@ -2272,7 +2273,8 @@
     "source": "Makki",
     "category": "Basic",
     "format": "mcq",
-    "id": 91
+    "id": 91,
+    "media_missing": true
   },
   {
     "pdf_id": "MK-0423",
@@ -13213,7 +13215,8 @@
     "source": "Makki",
     "category": "Pathology",
     "format": "mcq",
-    "id": 530
+    "id": 530,
+    "media_missing": true
   },
   {
     "pdf_id": "MK-0417",
@@ -13238,7 +13241,8 @@
     "source": "Makki",
     "category": "Pathology",
     "format": "mcq",
-    "id": 531
+    "id": 531,
+    "media_missing": true
   },
   {
     "pdf_id": "MK-0459",

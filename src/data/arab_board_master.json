@@ -23648,7 +23648,8 @@
     "source": "Arab Board",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 1054
+    "id": 1054,
+    "media_missing": true
   },
   {
     "pdf_id": "AB-September2023-019-0494",

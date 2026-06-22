@@ -295,7 +295,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             )}
 
             {/* Clinical photos / diagrams (only if the source PDF had any) */}
-            <QuestionImages images={q.images} darkMode={state.darkMode} />
+            <QuestionImages images={q.images} darkMode={state.darkMode} mediaMissing={q.media_missing} />
 
             {/* Blurred overlay when paused */}
             <div className={paused ? 'blur-md select-none pointer-events-none' : ''}>

@@ -99,7 +99,7 @@ export default function ExplanationPanel({ question, answer, darkMode }) {
         </div>
 
         {/* Reference image(s) from the source PDF, if any */}
-        <QuestionImages images={question.images} darkMode={darkMode} compact />
+        <QuestionImages images={question.images} darkMode={darkMode} compact mediaMissing={question.media_missing} />
 
         {/* Correct answer line */}
         <p className="text-[15px] leading-relaxed mb-4 text-gray-900 dark:text-gray-100">

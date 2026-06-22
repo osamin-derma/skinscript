@@ -157,7 +157,8 @@
     "source": "ETAS 2026",
     "category": "Basic",
     "format": "mcq",
-    "id": 8
+    "id": 8,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-BasicSci-00009",
@@ -380,7 +381,8 @@
     "source": "ETAS 2026",
     "category": "Basic",
     "format": "mcq",
-    "id": 19
+    "id": 19,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-BasicSci-00020",
@@ -1549,7 +1551,8 @@
     "source": "ETAS 2026",
     "category": "Basic",
     "format": "mcq",
-    "id": 77
+    "id": 77,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-BasicSci-00078",
@@ -5260,7 +5263,8 @@
     "source": "ETAS 2026",
     "category": "Basic",
     "format": "mcq",
-    "id": 262
+    "id": 262,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-BasicSci-00263",
@@ -6331,7 +6335,8 @@
     "source": "ETAS 2026",
     "category": "Basic",
     "format": "mcq",
-    "id": 315
+    "id": 315,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BasicScien-0016-00015",
@@ -11334,7 +11339,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 565
+    "id": 565,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0035-00770",
@@ -11394,7 +11400,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 568
+    "id": 568,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0038-00773",
@@ -11497,7 +11504,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 573
+    "id": 573,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0043-00778",
@@ -11637,7 +11645,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 580
+    "id": 580,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0050-00785",
@@ -12363,7 +12372,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 616
+    "id": 616,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0086-00825",
@@ -12506,7 +12516,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 623
+    "id": 623,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0093-00832",
@@ -13146,7 +13157,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 655
+    "id": 655,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0125-00864",
@@ -13886,7 +13898,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 692
+    "id": 692,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0164-00901",
@@ -14544,7 +14557,8 @@
     "source": "ETAS 2026",
     "category": "Hair & Nail",
     "format": "mcq",
-    "id": 725
+    "id": 725,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Disorderso-0197-00934",
@@ -15495,7 +15509,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 772
+    "id": 772,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00007",
@@ -15598,7 +15613,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 777
+    "id": 777,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00012",
@@ -15721,7 +15737,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 783
+    "id": 783,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00018",
@@ -15784,7 +15801,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 786
+    "id": 786,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00021",
@@ -15901,7 +15919,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 791
+    "id": 791,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00026",
@@ -15921,7 +15940,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 792
+    "id": 792,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00027",
@@ -16011,7 +16031,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 796
+    "id": 796,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00031",
@@ -16381,7 +16402,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 814
+    "id": 814,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00049",
@@ -16713,7 +16735,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 830
+    "id": 830,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00065",
@@ -17135,7 +17158,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 850
+    "id": 850,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00085",
@@ -17195,7 +17219,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 853
+    "id": 853,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00088",
@@ -17284,7 +17309,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 857
+    "id": 857,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00092",
@@ -17347,7 +17373,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 860
+    "id": 860,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00095",
@@ -18099,7 +18126,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 895
+    "id": 895,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00130",
@@ -18119,7 +18147,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 896
+    "id": 896,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00131",
@@ -18251,7 +18280,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 902
+    "id": 902,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00137",
@@ -18374,7 +18404,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 908
+    "id": 908,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00143",
@@ -18775,7 +18806,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 927
+    "id": 927,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00162",
@@ -18924,7 +18956,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 934
+    "id": 934,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00169",
@@ -19173,7 +19206,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 946
+    "id": 946,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00181",
@@ -19482,7 +19516,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 961
+    "id": 961,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00196",
@@ -19546,7 +19581,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 964
+    "id": 964,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00199",
@@ -19655,7 +19691,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 969
+    "id": 969,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00204",
@@ -19698,7 +19735,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 971
+    "id": 971,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00206",
@@ -19801,7 +19839,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 976
+    "id": 976,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00211",
@@ -19927,7 +19966,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 982
+    "id": 982,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00217",
@@ -19947,7 +19987,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 983
+    "id": 983,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00218",
@@ -20166,7 +20207,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 993
+    "id": 993,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00228",
@@ -20275,7 +20317,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 998
+    "id": 998,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00233",
@@ -20421,7 +20464,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1005
+    "id": 1005,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00240",
@@ -20594,7 +20638,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1013
+    "id": 1013,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00248",
@@ -20654,7 +20699,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1016
+    "id": 1016,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00251",
@@ -20674,7 +20720,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1017
+    "id": 1017,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00252",
@@ -20734,7 +20781,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1020
+    "id": 1020,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00255",
@@ -21046,7 +21094,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1035
+    "id": 1035,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00270",
@@ -21384,7 +21433,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1051
+    "id": 1051,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00286",
@@ -21533,7 +21583,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1058
+    "id": 1058,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Dermatop-00293",
@@ -21805,7 +21856,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1071
+    "id": 1071,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0002-01461",
@@ -21888,7 +21940,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1075
+    "id": 1075,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0007-01470",
@@ -22030,7 +22083,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1082
+    "id": 1082,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0014-01477",
@@ -22233,7 +22287,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1092
+    "id": 1092,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0024-01487",
@@ -22253,7 +22308,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1093
+    "id": 1093,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0025-01488",
@@ -22316,7 +22372,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1096
+    "id": 1096,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0028-01491",
@@ -22416,7 +22473,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1101
+    "id": 1101,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0033-01496",
@@ -22456,7 +22514,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1103
+    "id": 1103,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0035-01498",
@@ -22872,7 +22931,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1123
+    "id": 1123,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0055-01518",
@@ -23201,7 +23261,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1139
+    "id": 1139,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0071-01534",
@@ -23221,7 +23282,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1140
+    "id": 1140,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0073-01541",
@@ -23388,7 +23450,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1148
+    "id": 1148,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0081-01549",
@@ -23471,7 +23534,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1152
+    "id": 1152,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0085-01553",
@@ -23491,7 +23555,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1153
+    "id": 1153,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0086-01554",
@@ -23591,7 +23656,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1158
+    "id": 1158,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0091-01559",
@@ -23753,7 +23819,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1166
+    "id": 1166,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0099-01571",
@@ -23816,7 +23883,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1169
+    "id": 1169,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0102-01575",
@@ -24107,7 +24175,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1183
+    "id": 1183,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0116-01589",
@@ -24442,7 +24511,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1199
+    "id": 1199,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0132-01605",
@@ -24462,7 +24532,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1200
+    "id": 1200,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0133-01606",
@@ -24793,7 +24864,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1216
+    "id": 1216,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0150-01629",
@@ -25019,7 +25091,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1227
+    "id": 1227,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0161-01640",
@@ -25039,7 +25112,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1228
+    "id": 1228,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0162-01641",
@@ -25105,7 +25179,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1231
+    "id": 1231,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0165-01644",
@@ -25484,7 +25559,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1249
+    "id": 1249,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0183-01674",
@@ -25713,7 +25789,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1260
+    "id": 1260,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0194-01685",
@@ -25933,7 +26010,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1271
+    "id": 1271,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0205-01696",
@@ -26073,7 +26151,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1278
+    "id": 1278,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0212-01703",
@@ -26418,7 +26497,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1295
+    "id": 1295,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0229-01720",
@@ -26741,7 +26821,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1311
+    "id": 1311,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0245-01736",
@@ -26881,7 +26962,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1318
+    "id": 1318,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0252-01743",
@@ -26921,7 +27003,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1320
+    "id": 1320,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0254-01745",
@@ -27021,7 +27104,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1325
+    "id": 1325,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0259-01750",
@@ -27081,7 +27165,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1328
+    "id": 1328,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0262-01753",
@@ -27161,7 +27246,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1332
+    "id": 1332,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0266-01757",
@@ -27401,7 +27487,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1344
+    "id": 1344,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0278-01769",
@@ -27864,7 +27951,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1367
+    "id": 1367,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0301-01792",
@@ -27904,7 +27992,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1369
+    "id": 1369,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0303-01794",
@@ -28187,7 +28276,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1383
+    "id": 1383,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0317-01808",
@@ -28556,7 +28646,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1401
+    "id": 1401,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0335-01826",
@@ -28879,7 +28970,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1417
+    "id": 1417,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0351-01842",
@@ -28899,7 +28991,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1418
+    "id": 1418,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0352-01843",
@@ -29191,7 +29284,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1432
+    "id": 1432,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0366-01857",
@@ -29274,7 +29368,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1436
+    "id": 1436,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0370-01861",
@@ -29383,7 +29478,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1441
+    "id": 1441,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopat-0375-01866",
@@ -29661,7 +29757,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1454
+    "id": 1454,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0047-01913",
@@ -29741,7 +29838,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1458
+    "id": 1458,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0051-01917",
@@ -30109,7 +30207,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1476
+    "id": 1476,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0069-01935",
@@ -30489,7 +30588,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1495
+    "id": 1495,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0088-01954",
@@ -30749,7 +30849,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1508
+    "id": 1508,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0102-01967",
@@ -31355,7 +31456,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1538
+    "id": 1538,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0132-01997",
@@ -31415,7 +31517,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1541
+    "id": 1541,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0135-02000",
@@ -31578,7 +31681,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1549
+    "id": 1549,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0143-02008",
@@ -31598,7 +31702,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1550
+    "id": 1550,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0144-02009",
@@ -32364,7 +32469,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1588
+    "id": 1588,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0182-02047",
@@ -32384,7 +32490,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1589
+    "id": 1589,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0183-02048",
@@ -32404,7 +32511,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1590
+    "id": 1590,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0184-02049",
@@ -32504,7 +32612,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1595
+    "id": 1595,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0001-02055",
@@ -32624,7 +32733,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1601
+    "id": 1601,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0195-02061",
@@ -32884,7 +32994,8 @@
     "source": "ETAS 2026",
     "category": "Pathology",
     "format": "mcq",
-    "id": 1614
+    "id": 1614,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-BenignandM-0207-02074",
@@ -33247,7 +33358,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1632
+    "id": 1632,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00010",
@@ -33510,7 +33622,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1645
+    "id": 1645,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00023",
@@ -34139,7 +34252,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1676
+    "id": 1676,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00054",
@@ -34408,7 +34522,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1689
+    "id": 1689,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00067",
@@ -34491,7 +34606,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1693
+    "id": 1693,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00071",
@@ -35583,7 +35699,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1747
+    "id": 1747,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00125",
@@ -36159,7 +36276,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1775
+    "id": 1775,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00153",
@@ -36279,7 +36397,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1781
+    "id": 1781,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00159",
@@ -36359,7 +36478,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1785
+    "id": 1785,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00163",
@@ -36562,7 +36682,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1795
+    "id": 1795,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00173",
@@ -36668,7 +36789,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1800
+    "id": 1800,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00178",
@@ -36708,7 +36830,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1802
+    "id": 1802,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00180",
@@ -37074,7 +37197,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1820
+    "id": 1820,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00198",
@@ -37197,7 +37321,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1826
+    "id": 1826,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00204",
@@ -37450,7 +37575,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1838
+    "id": 1838,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00216",
@@ -37779,7 +37905,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1854
+    "id": 1854,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00232",
@@ -38208,7 +38335,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1875
+    "id": 1875,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00253",
@@ -38580,7 +38708,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1893
+    "id": 1893,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00271",
@@ -39137,7 +39266,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1920
+    "id": 1920,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00298",
@@ -39323,7 +39453,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1929
+    "id": 1929,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00307",
@@ -39606,7 +39737,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1943
+    "id": 1943,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00321",
@@ -39686,7 +39818,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1947
+    "id": 1947,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00325",
@@ -40075,7 +40208,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1966
+    "id": 1966,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00344",
@@ -40299,7 +40433,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1977
+    "id": 1977,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00355",
@@ -40725,7 +40860,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 1998
+    "id": 1998,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00376",
@@ -41051,7 +41187,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2014
+    "id": 2014,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00392",
@@ -42315,7 +42452,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2076
+    "id": 2076,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00454",
@@ -43702,7 +43840,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2144
+    "id": 2144,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00522",
@@ -43742,7 +43881,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2146
+    "id": 2146,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00524",
@@ -45747,7 +45887,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2244
+    "id": 2244,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00622",
@@ -45867,7 +46008,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2250
+    "id": 2250,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00628",
@@ -45887,7 +46029,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2251
+    "id": 2251,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00629",
@@ -46067,7 +46210,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2260
+    "id": 2260,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00638",
@@ -46127,7 +46271,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2263
+    "id": 2263,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00641",
@@ -46187,7 +46332,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2266
+    "id": 2266,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00644",
@@ -46678,7 +46824,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2290
+    "id": 2290,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00668",
@@ -46865,7 +47012,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2299
+    "id": 2299,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00677",
@@ -46905,7 +47053,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2301
+    "id": 2301,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00679",
@@ -47297,7 +47446,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2320
+    "id": 2320,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00698",
@@ -48340,7 +48490,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2371
+    "id": 2371,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00749",
@@ -48586,7 +48737,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2383
+    "id": 2383,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00761",
@@ -48648,7 +48800,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2386
+    "id": 2386,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00764",
@@ -49177,7 +49330,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2412
+    "id": 2412,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00790",
@@ -49383,7 +49537,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2422
+    "id": 2422,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00800",
@@ -49466,7 +49621,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2426
+    "id": 2426,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00804",
@@ -49972,7 +50128,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2451
+    "id": 2451,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00829",
@@ -50132,7 +50289,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2459
+    "id": 2459,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00837",
@@ -50192,7 +50350,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2462
+    "id": 2462,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00840",
@@ -50252,7 +50411,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2465
+    "id": 2465,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00843",
@@ -50478,7 +50638,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2476
+    "id": 2476,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00854",
@@ -50518,7 +50679,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2478
+    "id": 2478,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00856",
@@ -50558,7 +50720,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2480
+    "id": 2480,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00858",
@@ -50930,7 +51093,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2498
+    "id": 2498,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00876",
@@ -51813,7 +51977,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2541
+    "id": 2541,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00919",
@@ -51873,7 +52038,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2544
+    "id": 2544,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00922",
@@ -52485,7 +52651,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2574
+    "id": 2574,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00952",
@@ -52733,7 +52900,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2586
+    "id": 2586,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00964",
@@ -52873,7 +53041,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2593
+    "id": 2593,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00971",
@@ -52913,7 +53082,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2595
+    "id": 2595,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00973",
@@ -53093,7 +53263,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2604
+    "id": 2604,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-00982",
@@ -53536,7 +53707,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2626
+    "id": 2626,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01004",
@@ -53616,7 +53788,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2630
+    "id": 2630,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01008",
@@ -53656,7 +53829,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2632
+    "id": 2632,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01010",
@@ -54183,7 +54357,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2658
+    "id": 2658,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01036",
@@ -54286,7 +54461,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2663
+    "id": 2663,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01041",
@@ -54589,7 +54765,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2678
+    "id": 2678,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01056",
@@ -54669,7 +54846,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2682
+    "id": 2682,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01060",
@@ -54994,7 +55172,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2698
+    "id": 2698,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01076",
@@ -55257,7 +55436,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2711
+    "id": 2711,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01089",
@@ -56868,7 +57048,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2791
+    "id": 2791,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01169",
@@ -57600,7 +57781,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2827
+    "id": 2827,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01205",
@@ -58066,7 +58248,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2850
+    "id": 2850,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01228",
@@ -58369,7 +58552,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2865
+    "id": 2865,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01243",
@@ -58629,7 +58813,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2878
+    "id": 2878,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01256",
@@ -58966,7 +59151,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2895
+    "id": 2895,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01273",
@@ -59406,7 +59592,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2917
+    "id": 2917,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01295",
@@ -59426,7 +59613,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2918
+    "id": 2918,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01296",
@@ -59649,7 +59837,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2929
+    "id": 2929,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01307",
@@ -60844,7 +61033,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2988
+    "id": 2988,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01366",
@@ -61024,7 +61214,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 2997
+    "id": 2997,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01375",
@@ -61207,7 +61398,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3006
+    "id": 3006,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01384",
@@ -61247,7 +61439,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3008
+    "id": 3008,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01386",
@@ -61407,7 +61600,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3016
+    "id": 3016,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01394",
@@ -61610,7 +61804,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3026
+    "id": 3026,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01404",
@@ -62800,7 +62995,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3084
+    "id": 3084,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01462",
@@ -63140,7 +63336,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3101
+    "id": 3101,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01479",
@@ -63554,7 +63751,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3121
+    "id": 3121,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01499",
@@ -63700,7 +63898,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3128
+    "id": 3128,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01506",
@@ -63800,7 +63999,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3133
+    "id": 3133,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01511",
@@ -64112,7 +64312,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3148
+    "id": 3148,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01526",
@@ -64515,7 +64716,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3168
+    "id": 3168,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01546",
@@ -64878,7 +65080,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3186
+    "id": 3186,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01564",
@@ -64918,7 +65121,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3188
+    "id": 3188,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01566",
@@ -64938,7 +65142,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3189
+    "id": 3189,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01567",
@@ -64998,7 +65203,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3192
+    "id": 3192,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01570",
@@ -66093,7 +66299,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3246
+    "id": 3246,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01624",
@@ -66616,7 +66823,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3272
+    "id": 3272,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01650",
@@ -68242,7 +68450,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3352
+    "id": 3352,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01730",
@@ -68542,7 +68751,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3367
+    "id": 3367,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01745",
@@ -68722,7 +68932,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3376
+    "id": 3376,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01754",
@@ -70043,7 +70254,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3441
+    "id": 3441,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01819",
@@ -70166,7 +70378,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3447
+    "id": 3447,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01825",
@@ -70552,7 +70765,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3466
+    "id": 3466,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01844",
@@ -70875,7 +71089,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3482
+    "id": 3482,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01860",
@@ -71567,7 +71782,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3516
+    "id": 3516,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01894",
@@ -71667,7 +71883,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3521
+    "id": 3521,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01899",
@@ -71770,7 +71987,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3526
+    "id": 3526,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01904",
@@ -71830,7 +72048,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3529
+    "id": 3529,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01907",
@@ -72093,7 +72312,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3542
+    "id": 3542,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01920",
@@ -72622,7 +72842,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3568
+    "id": 3568,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01946",
@@ -72802,7 +73023,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3577
+    "id": 3577,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01955",
@@ -73517,7 +73739,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3612
+    "id": 3612,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-01990",
@@ -73761,7 +73984,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3624
+    "id": 3624,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02002",
@@ -74041,7 +74265,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3638
+    "id": 3638,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02016",
@@ -74633,7 +74858,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3667
+    "id": 3667,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02045",
@@ -74833,7 +75059,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3677
+    "id": 3677,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02055",
@@ -75428,7 +75655,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3706
+    "id": 3706,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02084",
@@ -76470,7 +76698,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3757
+    "id": 3757,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02135",
@@ -76673,7 +76902,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3767
+    "id": 3767,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02145",
@@ -76796,7 +77026,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3773
+    "id": 3773,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02151",
@@ -77872,7 +78103,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3826
+    "id": 3826,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-GeneralD-02204",
@@ -78195,7 +78427,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3842
+    "id": 3842,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00007",
@@ -78647,7 +78880,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3864
+    "id": 3864,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00029",
@@ -78807,7 +79041,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3872
+    "id": 3872,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00037",
@@ -80266,7 +80501,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3942
+    "id": 3942,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00107",
@@ -80495,7 +80731,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3953
+    "id": 3953,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00118",
@@ -80598,7 +80835,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3958
+    "id": 3958,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00123",
@@ -80904,7 +81142,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3973
+    "id": 3973,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00138",
@@ -81178,7 +81417,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 3986
+    "id": 3986,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00151",
@@ -81627,7 +81867,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4008
+    "id": 4008,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00173",
@@ -81647,7 +81888,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4009
+    "id": 4009,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00174",
@@ -81907,7 +82149,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4022
+    "id": 4022,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00187",
@@ -81927,7 +82170,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4023
+    "id": 4023,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00188",
@@ -81947,7 +82191,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4024
+    "id": 4024,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00189",
@@ -82007,7 +82252,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4027
+    "id": 4027,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00192",
@@ -82087,7 +82333,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4031
+    "id": 4031,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Pediatri-00196",
@@ -82170,7 +82417,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4035
+    "id": 4035,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0001-00406",
@@ -82210,7 +82458,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4037
+    "id": 4037,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0003-00408",
@@ -82621,7 +82870,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4057
+    "id": 4057,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0023-00428",
@@ -83164,7 +83414,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4084
+    "id": 4084,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0050-00455",
@@ -83207,7 +83458,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4086
+    "id": 4086,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0052-00457",
@@ -83250,7 +83502,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4088
+    "id": 4088,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0054-00459",
@@ -83390,7 +83643,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4095
+    "id": 4095,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0061-00466",
@@ -83410,7 +83664,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4096
+    "id": 4096,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0062-00467",
@@ -83610,7 +83865,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4106
+    "id": 4106,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0072-00477",
@@ -85310,7 +85566,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4191
+    "id": 4191,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0157-00563",
@@ -86890,7 +87147,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4270
+    "id": 4270,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0236-00642",
@@ -87650,7 +87908,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4308
+    "id": 4308,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0274-00680",
@@ -89227,7 +89486,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4387
+    "id": 4387,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0363-00760",
@@ -89947,7 +90207,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4423
+    "id": 4423,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Genodermat-0399-00796",
@@ -90647,7 +90908,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4458
+    "id": 4458,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0002-00831",
@@ -90767,7 +91029,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4464
+    "id": 4464,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0008-00840",
@@ -90827,7 +91090,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4467
+    "id": 4467,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0011-00843",
@@ -91096,7 +91360,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4480
+    "id": 4480,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0024-00856",
@@ -91196,7 +91461,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4485
+    "id": 4485,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0029-00861",
@@ -91216,7 +91482,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4486
+    "id": 4486,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0030-00862",
@@ -91360,7 +91627,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4493
+    "id": 4493,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0037-00870",
@@ -91523,7 +91791,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4501
+    "id": 4501,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0045-00882",
@@ -91683,7 +91952,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4509
+    "id": 4509,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0054-00890",
@@ -91883,7 +92153,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4519
+    "id": 4519,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0064-00904",
@@ -91923,7 +92194,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4521
+    "id": 4521,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0066-00906",
@@ -91983,7 +92255,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4524
+    "id": 4524,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0069-00909",
@@ -92023,7 +92296,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4526
+    "id": 4526,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0071-00911",
@@ -92043,7 +92317,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4527
+    "id": 4527,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0072-00912",
@@ -92086,7 +92361,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4529
+    "id": 4529,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0074-00914",
@@ -92593,7 +92869,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4554
+    "id": 4554,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0100-00959",
@@ -92633,7 +92910,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4556
+    "id": 4556,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0102-00961",
@@ -92713,7 +92991,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4560
+    "id": 4560,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0106-00965",
@@ -92753,7 +93032,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4562
+    "id": 4562,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0108-00967",
@@ -92976,7 +93256,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4573
+    "id": 4573,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0119-00982",
@@ -92996,7 +93277,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4574
+    "id": 4574,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0120-00983",
@@ -93299,7 +93581,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4589
+    "id": 4589,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0135-00998",
@@ -93811,7 +94094,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4614
+    "id": 4614,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0160-01035",
@@ -93851,7 +94135,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4616
+    "id": 4616,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0162-01037",
@@ -93871,7 +94156,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4617
+    "id": 4617,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0163-01038",
@@ -93971,7 +94257,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4622
+    "id": 4622,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0168-01043",
@@ -95080,7 +95367,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4677
+    "id": 4677,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0223-01099",
@@ -95360,7 +95648,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4691
+    "id": 4691,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0237-01113",
@@ -95440,7 +95729,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4695
+    "id": 4695,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0241-01117",
@@ -95723,7 +96013,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4709
+    "id": 4709,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0255-01131",
@@ -96043,7 +96334,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4725
+    "id": 4725,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0271-01147",
@@ -96103,7 +96395,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4728
+    "id": 4728,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0274-01150",
@@ -96183,7 +96476,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4732
+    "id": 4732,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0278-01154",
@@ -96443,7 +96737,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4745
+    "id": 4745,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0291-01167",
@@ -98829,7 +99124,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4864
+    "id": 4864,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0410-01286",
@@ -99429,7 +99725,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4894
+    "id": 4894,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0440-01316",
@@ -100635,7 +100932,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 4954
+    "id": 4954,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0500-01376",
@@ -101944,7 +102242,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5019
+    "id": 5019,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-GeneralDer-0566-01441",
@@ -102387,7 +102686,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5041
+    "id": 5041,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0004-02086",
@@ -102447,7 +102747,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5044
+    "id": 5044,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0007-02089",
@@ -102487,7 +102788,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5046
+    "id": 5046,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0009-02091",
@@ -102787,7 +103089,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5061
+    "id": 5061,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0024-02106",
@@ -105047,7 +105350,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5174
+    "id": 5174,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0005-00004",
@@ -105127,7 +105431,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5178
+    "id": 5178,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0009-00008",
@@ -105330,7 +105635,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5188
+    "id": 5188,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0019-00018",
@@ -105719,7 +106025,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5207
+    "id": 5207,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0038-00037",
@@ -105881,7 +106188,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5215
+    "id": 5215,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0046-00045",
@@ -105944,7 +106252,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5218
+    "id": 5218,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0049-00048",
@@ -106187,7 +106496,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5230
+    "id": 5230,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0061-00060",
@@ -106227,7 +106537,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5232
+    "id": 5232,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0063-00062",
@@ -106334,7 +106645,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5237
+    "id": 5237,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0068-00067",
@@ -106434,7 +106746,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5242
+    "id": 5242,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0073-00072",
@@ -106454,7 +106767,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5243
+    "id": 5243,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0074-00073",
@@ -107426,7 +107740,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5291
+    "id": 5291,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0122-00126",
@@ -107666,7 +107981,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5303
+    "id": 5303,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0134-00138",
@@ -108029,7 +108345,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5321
+    "id": 5321,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0152-00156",
@@ -108409,7 +108726,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5340
+    "id": 5340,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0171-00175",
@@ -110488,7 +110806,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5444
+    "id": 5444,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0276-00280",
@@ -111231,7 +111550,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5481
+    "id": 5481,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0313-00317",
@@ -111771,7 +112091,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5508
+    "id": 5508,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0340-00345",
@@ -112194,7 +112515,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5529
+    "id": 5529,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Infectious-0361-00366",
@@ -112557,7 +112879,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5547
+    "id": 5547,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0016-00384",
@@ -112623,7 +112946,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5550
+    "id": 5550,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0019-00387",
@@ -112866,7 +113190,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5562
+    "id": 5562,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0031-00400",
@@ -113009,7 +113334,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5569
+    "id": 5569,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0038-00407",
@@ -113242,7 +113568,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5581
+    "id": 5581,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0049-00420",
@@ -113305,7 +113632,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5584
+    "id": 5584,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0052-00423",
@@ -113365,7 +113693,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5587
+    "id": 5587,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0055-00426",
@@ -113405,7 +113734,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5589
+    "id": 5589,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0057-00428",
@@ -113760,7 +114090,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5606
+    "id": 5606,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0074-00445",
@@ -113780,7 +114111,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5607
+    "id": 5607,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0075-00446",
@@ -114003,7 +114335,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5618
+    "id": 5618,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0086-00457",
@@ -114472,7 +114805,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5641
+    "id": 5641,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0109-00480",
@@ -114612,7 +114946,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5648
+    "id": 5648,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0116-00487",
@@ -114815,7 +115150,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5658
+    "id": 5658,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0126-00497",
@@ -114955,7 +115291,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5665
+    "id": 5665,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0133-00504",
@@ -114995,7 +115332,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5667
+    "id": 5667,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0135-00506",
@@ -115235,7 +115573,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5679
+    "id": 5679,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0147-00518",
@@ -115375,7 +115714,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5686
+    "id": 5686,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0154-00525",
@@ -115535,7 +115875,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5694
+    "id": 5694,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0162-00533",
@@ -115575,7 +115916,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5696
+    "id": 5696,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0164-00535",
@@ -115655,7 +115997,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5700
+    "id": 5700,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PediatricD-0168-00539",
@@ -116321,7 +116664,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5733
+    "id": 5733,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Bullousand-0001-00977",
@@ -116564,7 +116908,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5745
+    "id": 5745,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Bullousand-0013-00990",
@@ -116867,7 +117212,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5760
+    "id": 5760,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Bullousand-0028-01005",
@@ -117190,7 +117536,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5776
+    "id": 5776,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Bullousand-0044-01021",
@@ -119813,7 +120160,8 @@
     "source": "ETAS 2026",
     "category": "Diseases",
     "format": "mcq",
-    "id": 5907
+    "id": 5907,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Bullousand-0176-01153",
@@ -121236,7 +121584,8 @@
     "source": "ETAS 2026",
     "category": "Immunology",
     "format": "mcq",
-    "id": 5978
+    "id": 5978,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Immunoderm-0058-00290",
@@ -122759,7 +123108,8 @@
     "source": "ETAS 2026",
     "category": "Immunology",
     "format": "mcq",
-    "id": 6054
+    "id": 6054,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Immunoderm-0134-00366",
@@ -125171,7 +125521,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6173
+    "id": 6173,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00080",
@@ -125191,7 +125542,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6174
+    "id": 6174,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00081",
@@ -125907,7 +126259,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6209
+    "id": 6209,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00116",
@@ -127401,7 +127754,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6282
+    "id": 6282,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00189",
@@ -127767,7 +128121,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6300
+    "id": 6300,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00207",
@@ -129102,7 +129457,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6366
+    "id": 6366,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00273",
@@ -129991,7 +130347,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6410
+    "id": 6410,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Surgical-00317",
@@ -131145,7 +131502,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6466
+    "id": 6466,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0022-01510",
@@ -131245,7 +131603,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6471
+    "id": 6471,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0027-01515",
@@ -132143,7 +132502,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6515
+    "id": 6515,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0071-01563",
@@ -132183,7 +132543,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6517
+    "id": 6517,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0073-01565",
@@ -132486,7 +132847,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6532
+    "id": 6532,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0088-01580",
@@ -132992,7 +133354,8 @@
     "source": "ETAS 2026",
     "category": "Surgery",
     "format": "mcq",
-    "id": 6557
+    "id": 6557,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatolog-0113-01606",
@@ -136488,7 +136851,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6729
+    "id": 6729,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00004",
@@ -136994,7 +137358,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6754
+    "id": 6754,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00029",
@@ -137174,7 +137539,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6763
+    "id": 6763,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00038",
@@ -137717,7 +138083,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6790
+    "id": 6790,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00065",
@@ -138922,7 +139289,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6849
+    "id": 6849,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00124",
@@ -140058,7 +140426,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6905
+    "id": 6905,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00180",
@@ -141167,7 +141536,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 6960
+    "id": 6960,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00235",
@@ -142424,7 +142794,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7022
+    "id": 7022,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00297",
@@ -143890,7 +144261,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7095
+    "id": 7095,
+    "media_missing": true
   },
   {
     "pdf_id": "DIR-Therapeu-00370",
@@ -144936,7 +145308,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7147
+    "id": 7147,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0042-01818",
@@ -144996,7 +145369,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7150
+    "id": 7150,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0045-01821",
@@ -145096,7 +145470,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7155
+    "id": 7155,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0050-01826",
@@ -145296,7 +145671,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7165
+    "id": 7165,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0060-01836",
@@ -145376,7 +145752,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7169
+    "id": 7169,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0064-01840",
@@ -145917,7 +146294,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7196
+    "id": 7196,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0092-01868",
@@ -148500,7 +148878,8 @@
     "source": "ETAS 2026",
     "category": "Therapeutics",
     "format": "mcq",
-    "id": 7325
+    "id": 7325,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-Dermatopha-0221-01998",
@@ -152767,7 +153146,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7538
+    "id": 7538,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0032-00603",
@@ -153271,7 +153651,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7563
+    "id": 7563,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0057-00628",
@@ -153671,7 +154052,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7583
+    "id": 7583,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0077-00649",
@@ -154234,7 +154616,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7611
+    "id": 7611,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0105-00677",
@@ -154517,7 +154900,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7625
+    "id": 7625,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0119-00691",
@@ -154557,7 +154941,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7627
+    "id": 7627,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0121-00693",
@@ -154717,7 +155102,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7635
+    "id": 7635,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0129-00701",
@@ -154817,7 +155203,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7640
+    "id": 7640,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-CutaneousM-0134-00706",
@@ -158726,7 +159113,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7835
+    "id": 7835,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0012-01348",
@@ -158866,7 +159254,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7842
+    "id": 7842,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0019-01355",
@@ -159666,7 +160055,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7882
+    "id": 7882,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0059-01395",
@@ -160338,7 +160728,8 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7915
+    "id": 7915,
+    "media_missing": true
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0092-01428",
@@ -161544,6 +161935,7 @@
     "source": "ETAS 2026",
     "category": "Others",
     "format": "mcq",
-    "id": 7975
+    "id": 7975,
+    "media_missing": true
   }
 ]
