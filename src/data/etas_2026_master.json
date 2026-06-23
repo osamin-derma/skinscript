@@ -158,7 +158,9 @@
     "category": "Basic",
     "format": "mcq",
     "id": 8,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-BasicSci-00008/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-BasicSci-00009",
@@ -382,7 +384,9 @@
     "category": "Basic",
     "format": "mcq",
     "id": 19,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-BasicSci-00019/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-BasicSci-00020",
@@ -1552,7 +1556,9 @@
     "category": "Basic",
     "format": "mcq",
     "id": 77,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-BasicSci-00077/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-BasicSci-00078",
@@ -6336,7 +6342,9 @@
     "category": "Basic",
     "format": "mcq",
     "id": 315,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BasicScien-0015-00014/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BasicScien-0016-00015",
@@ -11340,7 +11348,9 @@
     "category": "Hair & Nail",
     "format": "mcq",
     "id": 565,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Disorderso-0034-00769/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Disorderso-0035-00770",
@@ -11646,7 +11656,9 @@
     "category": "Hair & Nail",
     "format": "mcq",
     "id": 580,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Disorderso-0049-00784/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Disorderso-0050-00785",
@@ -12373,7 +12385,9 @@
     "category": "Hair & Nail",
     "format": "mcq",
     "id": 616,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Disorderso-0085-00824/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Disorderso-0086-00825",
@@ -12517,7 +12531,9 @@
     "category": "Hair & Nail",
     "format": "mcq",
     "id": 623,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Disorderso-0092-00831/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Disorderso-0093-00832",
@@ -13158,7 +13174,9 @@
     "category": "Hair & Nail",
     "format": "mcq",
     "id": 655,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Disorderso-0124-00863/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Disorderso-0125-00864",
@@ -15510,7 +15528,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 772,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00006/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00007",
@@ -15614,7 +15634,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 777,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00011/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00012",
@@ -15738,7 +15760,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 783,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00017/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00018",
@@ -15802,7 +15826,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 786,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00020/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00021",
@@ -15920,7 +15946,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 791,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00025/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00026",
@@ -15941,7 +15969,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 792,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00026/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00027",
@@ -16032,7 +16062,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 796,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00030/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00031",
@@ -16403,7 +16435,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 814,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00048/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00049",
@@ -16736,7 +16770,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 830,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00064/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00065",
@@ -17159,7 +17195,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 850,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00084/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00085",
@@ -17220,7 +17258,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 853,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00087/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00088",
@@ -17310,7 +17350,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 857,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00091/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00092",
@@ -17374,7 +17416,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 860,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00094/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00095",
@@ -18127,7 +18171,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 895,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00129/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00130",
@@ -18148,7 +18194,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 896,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00130/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00131",
@@ -18281,7 +18329,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 902,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00136/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00137",
@@ -18405,7 +18455,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 908,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00142/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00143",
@@ -18807,7 +18859,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 927,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00161/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00162",
@@ -18957,7 +19011,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 934,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00168/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00169",
@@ -19207,7 +19263,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 946,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00180/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00181",
@@ -19517,7 +19575,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 961,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00195/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00196",
@@ -19582,7 +19642,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 964,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00198/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00199",
@@ -19692,7 +19754,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 969,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00203/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00204",
@@ -19736,7 +19800,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 971,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00205/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00206",
@@ -19840,7 +19906,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 976,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00210/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00211",
@@ -19967,7 +20035,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 982,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00216/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00217",
@@ -19988,7 +20058,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 983,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00217/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00218",
@@ -20208,7 +20280,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 993,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00227/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00228",
@@ -20318,7 +20392,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 998,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00232/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00233",
@@ -20465,7 +20541,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1005,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00239/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00240",
@@ -20639,7 +20717,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1013,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00247/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00248",
@@ -20700,7 +20780,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1016,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00250/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00251",
@@ -20721,7 +20803,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1017,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00251/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00252",
@@ -20782,7 +20866,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1020,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00254/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00255",
@@ -21095,7 +21181,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1035,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00269/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00270",
@@ -21434,7 +21522,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1051,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00285/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00286",
@@ -21584,7 +21674,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1058,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00292/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Dermatop-00293",
@@ -21857,7 +21949,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1071,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Dermatop-00305/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0002-01461",
@@ -21941,7 +22035,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1075,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0005-01468/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0007-01470",
@@ -22084,7 +22180,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1082,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0013-01476/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0014-01477",
@@ -22288,7 +22386,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1092,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0023-01486/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0024-01487",
@@ -22309,7 +22409,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1093,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0024-01487/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0025-01488",
@@ -22373,7 +22475,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1096,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0027-01490/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0028-01491",
@@ -22474,7 +22578,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1101,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0032-01495/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0033-01496",
@@ -22515,7 +22621,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1103,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0034-01497/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0035-01498",
@@ -22932,7 +23040,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1123,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0054-01517/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0055-01518",
@@ -23262,7 +23372,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1139,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0070-01533/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0071-01534",
@@ -23283,7 +23395,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1140,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0071-01534/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0073-01541",
@@ -23451,7 +23565,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1148,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0080-01548/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0081-01549",
@@ -23535,7 +23651,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1152,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0084-01552/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0085-01553",
@@ -23556,7 +23674,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1153,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0085-01553/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0086-01554",
@@ -23657,7 +23777,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1158,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0090-01558/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0091-01559",
@@ -23820,7 +23942,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1166,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0098-01570/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0099-01571",
@@ -23884,7 +24008,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1169,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0101-01574/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0102-01575",
@@ -24176,7 +24302,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1183,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0115-01588/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0116-01589",
@@ -24512,7 +24640,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1199,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0131-01604/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0132-01605",
@@ -24533,7 +24663,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1200,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0132-01605/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0133-01606",
@@ -24865,7 +24997,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1216,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0149-01628/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0150-01629",
@@ -25092,7 +25226,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1227,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0160-01639/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0161-01640",
@@ -25113,7 +25249,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1228,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0161-01640/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0162-01641",
@@ -25180,7 +25318,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1231,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0164-01643/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0165-01644",
@@ -25560,7 +25700,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1249,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0182-01673/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0183-01674",
@@ -25790,7 +25932,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1260,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0193-01684/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0194-01685",
@@ -26011,7 +26155,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1271,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0204-01695/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0205-01696",
@@ -29369,7 +29515,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1436,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0369-01860/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0370-01861",
@@ -29479,7 +29627,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1441,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopat-0374-01865/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopat-0375-01866",
@@ -29758,7 +29908,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1454,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0046-01912/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0047-01913",
@@ -29839,7 +29991,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1458,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0050-01916/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0051-01917",
@@ -30208,7 +30362,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1476,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0068-01934/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0069-01935",
@@ -30589,7 +30745,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1495,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0087-01953/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0088-01954",
@@ -30850,7 +31008,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1508,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0101-01966/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0102-01967",
@@ -31518,7 +31678,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1541,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0134-01999/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0135-02000",
@@ -31703,7 +31865,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1550,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0143-02008/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0144-02009",
@@ -32470,7 +32634,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1588,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0181-02046/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0182-02047",
@@ -32491,7 +32657,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1589,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0182-02047/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0183-02048",
@@ -32512,7 +32680,9 @@
     "category": "Pathology",
     "format": "mcq",
     "id": 1590,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0183-02048/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-BenignandM-0184-02049",
@@ -33623,7 +33793,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1645,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00022/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00023",
@@ -34253,7 +34425,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1676,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00053/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00054",
@@ -34523,7 +34697,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1689,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00066/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00067",
@@ -34607,7 +34783,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1693,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00070/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00071",
@@ -35700,7 +35878,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1747,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00124/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00125",
@@ -36398,7 +36578,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1781,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00158/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00159",
@@ -36479,7 +36661,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1785,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00162/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00163",
@@ -36683,7 +36867,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1795,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00172/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00173",
@@ -36790,7 +36976,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1800,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00177/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00178",
@@ -36831,7 +37019,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1802,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00179/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00180",
@@ -37198,7 +37388,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1820,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00197/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00198",
@@ -37322,7 +37514,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1826,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00203/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00204",
@@ -37906,7 +38100,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1854,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00231/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00232",
@@ -38336,7 +38532,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1875,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00252/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00253",
@@ -38709,7 +38907,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1893,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00270/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00271",
@@ -39267,7 +39467,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1920,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00297/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00298",
@@ -39454,7 +39656,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1929,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00306/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00307",
@@ -40209,7 +40413,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 1966,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00343/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00344",
@@ -41188,7 +41394,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2014,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00391/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00392",
@@ -42453,7 +42661,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2076,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00453/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00454",
@@ -43882,7 +44092,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2146,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00523/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00524",
@@ -46030,7 +46242,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2251,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00628/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00629",
@@ -46211,7 +46425,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2260,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00637/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00638",
@@ -46825,7 +47041,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2290,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00667/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00668",
@@ -47013,7 +47231,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2299,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00676/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00677",
@@ -47054,7 +47274,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2301,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00678/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00679",
@@ -47447,7 +47669,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2320,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00697/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00698",
@@ -48738,7 +48962,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2383,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00760/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00761",
@@ -48801,7 +49027,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2386,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00763/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00764",
@@ -49331,7 +49559,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2412,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00789/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00790",
@@ -49538,7 +49768,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2422,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00799/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00800",
@@ -49622,7 +49854,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2426,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00803/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00804",
@@ -50129,7 +50363,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2451,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00828/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00829",
@@ -50290,7 +50526,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2459,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00836/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00837",
@@ -50412,7 +50650,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2465,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00842/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00843",
@@ -50639,7 +50879,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2476,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00853/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00854",
@@ -50680,7 +50922,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2478,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00855/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00856",
@@ -50721,7 +50965,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2480,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00857/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00858",
@@ -51094,7 +51340,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2498,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00875/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00876",
@@ -51978,7 +52226,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2541,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00918/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00919",
@@ -52039,7 +52289,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2544,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00921/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00922",
@@ -52652,7 +52904,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2574,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00951/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00952",
@@ -52901,7 +53155,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2586,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00963/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00964",
@@ -53042,7 +53298,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2593,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00970/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00971",
@@ -53083,7 +53341,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2595,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00972/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00973",
@@ -53264,7 +53524,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2604,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-00981/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-00982",
@@ -53708,7 +53970,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2626,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01003/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01004",
@@ -53789,7 +54053,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2630,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01007/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01008",
@@ -53830,7 +54096,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2632,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01009/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01010",
@@ -54358,7 +54626,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2658,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01035/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01036",
@@ -54462,7 +54732,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2663,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01040/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01041",
@@ -54766,7 +55038,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2678,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01055/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01056",
@@ -54847,7 +55121,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2682,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01059/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01060",
@@ -55437,7 +55713,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2711,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01088/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01089",
@@ -57049,7 +57327,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2791,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01168/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01169",
@@ -57782,7 +58062,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2827,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01204/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01205",
@@ -58249,7 +58531,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2850,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01227/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01228",
@@ -58814,7 +59098,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2878,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01255/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01256",
@@ -59152,7 +59438,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2895,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01272/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01273",
@@ -59593,7 +59881,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2917,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01294/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01295",
@@ -59614,7 +59904,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2918,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01295/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01296",
@@ -59838,7 +60130,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2929,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01306/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01307",
@@ -61034,7 +61328,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2988,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01365/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01366",
@@ -61215,7 +61511,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 2997,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01374/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01375",
@@ -61399,7 +61697,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3006,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01383/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01384",
@@ -61440,7 +61740,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3008,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01385/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01386",
@@ -61601,7 +61903,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3016,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01393/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01394",
@@ -61805,7 +62109,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3026,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01403/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01404",
@@ -62996,7 +63302,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3084,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01461/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01462",
@@ -63752,7 +64060,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3121,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01498/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01499",
@@ -63899,7 +64209,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3128,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01505/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01506",
@@ -64000,7 +64312,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3133,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01510/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01511",
@@ -64313,7 +64627,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3148,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01525/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01526",
@@ -65081,7 +65397,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3186,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01563/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01564",
@@ -65122,7 +65440,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3188,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01565/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01566",
@@ -65143,7 +65463,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3189,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01566/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01567",
@@ -65204,7 +65526,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3192,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01569/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01570",
@@ -66300,7 +66624,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3246,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01623/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01624",
@@ -66824,7 +67150,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3272,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01649/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01650",
@@ -68451,7 +68779,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3352,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01729/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01730",
@@ -68752,7 +69082,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3367,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01744/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01745",
@@ -70255,7 +70587,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3441,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01818/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01819",
@@ -70379,7 +70713,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3447,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01824/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01825",
@@ -70766,7 +71102,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3466,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01843/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01844",
@@ -71090,7 +71428,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3482,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01859/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01860",
@@ -71988,7 +72328,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3526,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01903/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01904",
@@ -72049,7 +72391,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3529,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01906/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01907",
@@ -72313,7 +72657,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3542,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01919/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01920",
@@ -72843,7 +73189,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3568,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01945/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01946",
@@ -73024,7 +73372,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3577,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01954/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01955",
@@ -73740,7 +74090,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3612,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-01989/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-01990",
@@ -74266,7 +74618,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3638,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02015/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02016",
@@ -74859,7 +75213,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3667,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02044/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02045",
@@ -75060,7 +75416,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3677,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02054/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02055",
@@ -75656,7 +76014,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3706,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02083/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02084",
@@ -76699,7 +77059,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3757,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02134/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02135",
@@ -76903,7 +77265,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3767,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02144/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02145",
@@ -78104,7 +78468,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3826,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-GeneralD-02203/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-GeneralD-02204",
@@ -78881,7 +79247,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3864,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00028/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00029",
@@ -79042,7 +79410,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3872,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00036/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00037",
@@ -80502,7 +80872,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3942,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00106/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00107",
@@ -80732,7 +81104,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3953,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00117/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00118",
@@ -80836,7 +81210,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3958,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00122/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00123",
@@ -81143,7 +81519,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 3973,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00137/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00138",
@@ -81868,7 +82246,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4008,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00172/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00173",
@@ -81889,7 +82269,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4009,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00173/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00174",
@@ -82150,7 +82532,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4022,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00186/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00187",
@@ -82171,7 +82555,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4023,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00187/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00188",
@@ -82192,7 +82578,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4024,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00188/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00189",
@@ -82253,7 +82641,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4027,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00191/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00192",
@@ -82334,7 +82724,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4031,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00195/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Pediatri-00196",
@@ -82418,7 +82810,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4035,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Pediatri-00199/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Genodermat-0001-00406",
@@ -83415,7 +83809,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4084,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Genodermat-0049-00454/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Genodermat-0050-00455",
@@ -83459,7 +83855,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4086,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Genodermat-0051-00456/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Genodermat-0052-00457",
@@ -83503,7 +83901,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4088,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Genodermat-0053-00458/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Genodermat-0054-00459",
@@ -90909,7 +91309,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4458,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0001-00830/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0002-00831",
@@ -91030,7 +91432,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4464,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0007-00839/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0008-00840",
@@ -91091,7 +91495,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4467,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0010-00842/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0011-00843",
@@ -91361,7 +91767,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4480,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0023-00855/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0024-00856",
@@ -91462,7 +91870,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4485,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0028-00860/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0029-00861",
@@ -91483,7 +91893,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4486,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0029-00861/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0030-00862",
@@ -91628,7 +92040,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4493,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0036-00869/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0037-00870",
@@ -91792,7 +92206,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4501,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0044-00881/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0045-00882",
@@ -91953,7 +92369,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4509,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0053-00889/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0054-00890",
@@ -92154,7 +92572,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4519,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0063-00903/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0064-00904",
@@ -92195,7 +92615,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4521,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0065-00905/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0066-00906",
@@ -92256,7 +92678,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4524,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0068-00908/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0069-00909",
@@ -92297,7 +92721,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4526,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0070-00910/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0071-00911",
@@ -92318,7 +92744,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4527,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0071-00911/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0072-00912",
@@ -92362,7 +92790,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4529,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0073-00913/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0074-00914",
@@ -92870,7 +93300,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4554,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0099-00958/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0100-00959",
@@ -92911,7 +93343,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4556,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0101-00960/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0102-00961",
@@ -92992,7 +93426,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4560,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0105-00964/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0106-00965",
@@ -93033,7 +93469,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4562,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0107-00966/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0108-00967",
@@ -93257,7 +93695,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4573,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0118-00981/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0119-00982",
@@ -93278,7 +93718,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4574,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0119-00982/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0120-00983",
@@ -93582,7 +94024,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4589,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0134-00997/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0135-00998",
@@ -94095,7 +94539,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4614,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0159-01034/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0160-01035",
@@ -94136,7 +94582,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4616,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0161-01036/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0162-01037",
@@ -94157,7 +94605,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4617,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0162-01037/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0163-01038",
@@ -94258,7 +94708,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4622,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0167-01042/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0168-01043",
@@ -96014,7 +96466,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4709,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0254-01130/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0255-01131",
@@ -96738,7 +97192,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4745,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0290-01166/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0291-01167",
@@ -99726,7 +100182,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 4894,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-GeneralDer-0439-01315/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-GeneralDer-0440-01316",
@@ -102687,7 +103145,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5041,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-MedicalMyc-0003-02085/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0004-02086",
@@ -102748,7 +103208,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5044,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-MedicalMyc-0006-02088/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0007-02089",
@@ -102789,7 +103251,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5046,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-MedicalMyc-0008-02090/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-MedicalMyc-0009-02091",
@@ -105351,7 +105815,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5174,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0004-00003/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0005-00004",
@@ -105432,7 +105898,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5178,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0008-00007/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0009-00008",
@@ -105636,7 +106104,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5188,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0018-00017/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0019-00018",
@@ -106026,7 +106496,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5207,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0037-00036/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0038-00037",
@@ -106189,7 +106661,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5215,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0045-00044/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0046-00045",
@@ -106497,7 +106971,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5230,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0060-00059/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0061-00060",
@@ -106538,7 +107014,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5232,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0062-00061/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0063-00062",
@@ -106747,7 +107225,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5242,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0072-00071/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0073-00072",
@@ -106768,7 +107248,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5243,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0073-00072/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0074-00073",
@@ -111551,7 +112033,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5481,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0312-00316/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0313-00317",
@@ -112516,7 +113000,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5529,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Infectious-0360-00365/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Infectious-0361-00366",
@@ -112947,7 +113433,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5550,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0018-00386/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0019-00387",
@@ -113191,7 +113679,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5562,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0030-00398/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0031-00400",
@@ -113335,7 +113825,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5569,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0037-00406/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0038-00407",
@@ -113569,7 +114061,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5581,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0048-00419/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0049-00420",
@@ -113633,7 +114127,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5584,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0051-00422/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0052-00423",
@@ -113735,7 +114231,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5589,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0056-00427/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0057-00428",
@@ -114091,7 +114589,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5606,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0073-00444/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0074-00445",
@@ -114112,7 +114612,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5607,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0074-00445/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0075-00446",
@@ -115151,7 +115653,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5658,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0125-00496/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0126-00497",
@@ -115715,7 +116219,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5686,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0153-00524/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0154-00525",
@@ -115876,7 +116382,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5694,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0161-00532/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0162-00533",
@@ -115917,7 +116425,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5696,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PediatricD-0163-00534/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PediatricD-0164-00535",
@@ -116909,7 +117419,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5745,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Bullousand-0012-00989/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Bullousand-0013-00990",
@@ -117213,7 +117725,9 @@
     "category": "Diseases",
     "format": "mcq",
     "id": 5760,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Bullousand-0027-01004/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Bullousand-0028-01005",
@@ -121585,7 +122099,9 @@
     "category": "Immunology",
     "format": "mcq",
     "id": 5978,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Immunoderm-0057-00289/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Immunoderm-0058-00290",
@@ -125522,7 +126038,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6173,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00079/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00080",
@@ -125543,7 +126061,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6174,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00080/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00081",
@@ -126260,7 +126780,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6209,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00115/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00116",
@@ -127755,7 +128277,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6282,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00188/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00189",
@@ -128122,7 +128646,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6300,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00206/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00207",
@@ -129458,7 +129984,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6366,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00272/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00273",
@@ -130348,7 +130876,9 @@
     "category": "Surgery",
     "format": "mcq",
     "id": 6410,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Surgical-00316/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Surgical-00317",
@@ -137359,7 +137889,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6754,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00028/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00029",
@@ -137540,7 +138072,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6763,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00037/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00038",
@@ -138084,7 +138618,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6790,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00064/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00065",
@@ -139290,7 +139826,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6849,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00123/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00124",
@@ -140427,7 +140965,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6905,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00179/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00180",
@@ -141537,7 +142077,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 6960,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00234/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00235",
@@ -142795,7 +143337,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 7022,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00296/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00297",
@@ -144262,7 +144806,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 7095,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/DIR-Therapeu-00369/01.jpg"
+    ]
   },
   {
     "pdf_id": "DIR-Therapeu-00370",
@@ -146295,7 +146841,9 @@
     "category": "Therapeutics",
     "format": "mcq",
     "id": 7196,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-Dermatopha-0091-01867/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-Dermatopha-0092-01868",
@@ -154617,7 +155165,9 @@
     "category": "Others",
     "format": "mcq",
     "id": 7611,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-CutaneousM-0104-00676/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-CutaneousM-0105-00677",
@@ -155204,7 +155754,9 @@
     "category": "Others",
     "format": "mcq",
     "id": 7640,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-CutaneousM-0133-00705/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-CutaneousM-0134-00706",
@@ -159114,7 +159666,9 @@
     "category": "Others",
     "format": "mcq",
     "id": 7835,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PlantsAlle-0011-01347/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0012-01348",
@@ -159255,7 +159809,9 @@
     "category": "Others",
     "format": "mcq",
     "id": 7842,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PlantsAlle-0018-01354/01.jpg"
+    ]
   },
   {
     "pdf_id": "ETAS-PlantsAlle-0019-01355",
@@ -161936,6 +162492,8 @@
     "category": "Others",
     "format": "mcq",
     "id": 7975,
-    "media_missing": true
+    "images": [
+      "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-PlantsAlle-0151-01487/01.jpg"
+    ]
   }
 ]
