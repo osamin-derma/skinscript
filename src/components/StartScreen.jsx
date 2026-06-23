@@ -66,7 +66,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   // Determine which bank a question belongs to (for search results)
   const findQuestionBank = (qid) => {
     if (!banks) return 'all'
-    for (const key of ['last11', 'makki', 'etasHairNails', 'bvHairNail']) {
+    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026']) {
       if (banks[key]?.questions?.some(q => q.id === qid)) return key
     }
     return 'all'
@@ -79,7 +79,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     // try to find by matching on the question text in each individual bank
     let bankKey = 'all'
     let originalId = result.id
-    for (const key of ['last11', 'makki', 'etasHairNails', 'bvHairNail']) {
+    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026']) {
       const found = banks[key]?.questions?.find(q =>
         q.question === result.question && q.correct_answer === result.correct_answer
       )
@@ -289,12 +289,12 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 <div className="flex flex-wrap items-center gap-1.5">
                   <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-500 mr-1">In:</span>
                   {[
-                    { key: 'all',           label: `All (${banks.all.count})` },
-                    { key: 'last11',        label: `Last 11 (${banks.last11.count})` },
-                    { key: 'makki',         label: `Makki (${banks.makki.count})` },
-                    { key: 'etasHairNails', label: `ETAS H&N (${banks.etasHairNails.count})` },
-                    { key: 'bvHairNail',    label: `BV H&N (${banks.bvHairNail.count})` },
-                  ].map(s => (
+                    { key: 'all',         label: `All (${banks.all?.count ?? 0})` },
+                    { key: 'arabBoard',   label: `Arab Board (${banks.arabBoard?.count ?? 0})` },
+                    { key: 'boardVitals', label: `Board Vitals (${banks.boardVitals?.count ?? 0})` },
+                    { key: 'makki',       label: `Makki (${banks.makki?.count ?? 0})` },
+                    { key: 'etas2026',    label: `ETAS 2026 (${banks.etas2026?.count ?? 0})` },
+                  ].filter(s => banks[s.key]).map(s => (
                     <button
                       key={s.key}
                       onClick={() => setSearchScope(s.key)}
