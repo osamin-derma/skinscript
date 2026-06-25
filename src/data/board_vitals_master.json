@@ -9345,7 +9345,7 @@
   {
     "pdf_id": "BV-Genera-0024",
     "pdf_num": 397,
-    "question": "What is the most likely diagnosis of the lesion pictured below? Squamous cell carcinoma A",
+    "question": "What is the most likely diagnosis of the lesion pictured below?",
     "choices": {},
     "correct_answer": "",
     "correct_text": "Porokeratosis",
@@ -10234,7 +10234,7 @@
       "B": "Axillae",
       "C": "Nape of the Neck",
       "D": "Dorsum of the Feet",
-      "E": "Dorsal hands Explanation Correct Answer: A. Gluteal Cleft. Keratosis follicularis (Darier Disease) typically does not involve the gluteal cleft, as opposed to Hailey-Hailey Disease. It is more commonly found involving the seborrheic areas of the face and chest, as well as the dorsal aspects of the hands and feet (where it can appear similar to Acrokeratosis Verruciformis of Hopf). It can also present with papular and/or punctate keratoses on the palms and/or soles. Like Hailey-Hailey Disease, Darier Disease can involve the axillae as well as intertriginous regions such as the groin and the infra- mammary chest. Other less common locations of Darier Disease include the hairline and the posterior scalp down, including the posterior and lateral neck, the upper back and the shoulders. The gluteal cleft is rarely, if ever involved. Incorrect Answers:"
+      "E": "Dorsal hands"
     },
     "correct_answer": "A",
     "correct_text": "Gluteal Cleft",
@@ -21343,7 +21343,7 @@
       "E": "-196°C"
     },
     "correct_answer": "A",
-    "correct_text": "5°C",
+    "correct_text": "-5°C",
     "explanation": "Melanocytes are destroyed at -5°C. Malignant skin cancers typically require a temperature of -50°C for destruction, whereas benign neoplasms require a temperature of -25°C. -196°C is the boiling point of liquid nitrogen.",
     "incorrect_rationales": {},
     "source": "Board Vitals",
@@ -22420,7 +22420,7 @@
       "B": "Esters are metabolized by plasma pseudocholinesterase",
       "C": "Esters are excreted by the kidneys",
       "D": "Amides are excreted by the liver into the entero-hepatic circulation",
-      "E": "Para-aminobenzoic acid (PABA) is a metabolic by product of ester anesthetics Explanation Correct answer: D. Amides are excreted by the liver into the entero-hepatic circulation. Choice (D) is false. Amides are metabolized by the CYP450 hepatic enzyme system (Choice A), and the kidneys excrete their metabolites. Patients with significant liver disease, such as cirrhosis, are placed at an increased risk for anesthetic toxicity with the use of amide anesthetics. Esters are metabolized by plasma pseudocholinesterase (Choice B). Patients with a deficiency of pseudocholinesterase may experience prolonged paralysis following the use of ester anesthetics. This class of anesthesia should be avoided in such patients. Metabolites of esters are excreted by the kidneys (Choice C). Para-aminobenzoic acid (PABA), is a metabolite of ester anesthetics (Choice E), and are responsible for allergic reactions associated with this class of anesthesia. Incorrect Answers:"
+      "E": "Para-aminobenzoic acid (PABA) is a metabolic by product of ester anesthetics"
     },
     "correct_answer": "D",
     "correct_text": "Amides are excreted by the liver into the entero-hepatic circulation",

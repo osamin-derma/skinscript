@@ -10618,7 +10618,7 @@
       "D": "-Neutrophil cell granules"
     },
     "correct_answer": "D",
-    "correct_text": "Neutrophil cell granules",
+    "correct_text": "-Neutrophil cell granules",
     "explanation": "",
     "incorrect_rationales": {
       "A": "-Amyloid",
@@ -19357,7 +19357,7 @@
       "D": "-Leukocyte"
     },
     "correct_answer": "A",
-    "correct_text": "Keratinocyte",
+    "correct_text": "-Keratinocyte",
     "explanation": "",
     "incorrect_rationales": {
       "B": "Histiocyte",
