@@ -3813,12 +3813,13 @@
     "pdf_num": 164,
     "question": "This patient likely overused which of the following topical medications:",
     "choices": {
-      "A": "Hydroquinone Silver nitrate B",
+      "A": "Hydroquinone",
+      "B": "Silver nitrate",
       "C": "Dihidroxyacetone",
       "D": "Erythromycin",
       "E": "Propylene glycol"
     },
-    "correct_answer": "",
+    "correct_answer": "B",
     "correct_text": "Silver nitrate",
     "explanation": "This is a histological image of argyria, a gray discoloration of the skin due to deposition of silver, either from systemic ingestion of a silver medication or topical overuse of a silver containing medication. Uniform small black particles are found around eccrine glands, hair follicles and blood vessels",
     "incorrect_rationales": {
@@ -3828,7 +3829,7 @@
     },
     "source": "Board Vitals",
     "category": "Pathology",
-    "format": "mcq_no_key",
+    "format": "mcq",
     "id": 164,
     "images": [
       "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/BV-Pathol-0040/m01.jpg",

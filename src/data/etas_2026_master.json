@@ -147,14 +147,14 @@
     "pdf_num": 8,
     "question": "A 15-year-old girl comes to the clinic with her mother for dry, itchy skin that waxes and wanes for years. The patient states it worsens in the dry winter, along with during times of stress and anxiety. Examination reveals the findings pictured. What is the function of the gene product most commonly mutated in for this condition?",
     "choices": {
-      "A": "Promotes aggregation and disulfide bonding of keratin filaments in a calcium-",
-      "B": "dependent process",
-      "C": "Cross-links structural proteins of the cornified envelope in a calcium-dependent",
-      "D": "process",
-      "E": "Initiate and maintain intercellular adhesion of keratinocytes and epithelial cells ? Regulates cutaneous barrier and water-holding ability ? Facilitates linkage between intermediate filaments and extracellular matrix of the ? basement membrane"
+      "A": "Promotes aggregation and disulfide bonding of keratin filaments in a calcium-dependent process",
+      "B": "Cross-links structural proteins of the cornified envelope in a calcium-dependent process",
+      "C": "Initiate and maintain intercellular adhesion of keratinocytes and epithelial cells",
+      "D": "Regulates cutaneous barrier and water-holding ability",
+      "E": "Facilitates linkage between intermediate filaments and extracellular matrix of the basement membrane"
     },
     "correct_answer": "A",
-    "correct_text": "Promotes aggregation and disulfide bonding of keratin filaments in a\ncalcium-",
+    "correct_text": "Promotes aggregation and disulfide bonding of keratin filaments in a calcium-dependent process",
     "explanation": "The case describes atopic dermatitis, which is associated with mutation in filaggrin. Filaggrin stands for filament aggregating protein. It is a major structural protein in the stratum corneum. Filaggrin is produced as the precursor, profilaggrin, which consists of multiple repeats of filaggrin. Profilaggrin is dephosphorylated and cleaved into functional filaggrin monomers. It is thought that filaggrin monomers aggregate and align keratin bundles in the cornified cell envelope which contributes to the strength and integrity of the stratum corneum. Breakdown products of filaggrin combined with sodium, chloride, lactate, and urea combine to form a natural moisturizing barrier, creating a skin barrier and allowing for epidermal hydration.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -1243,16 +1243,15 @@
   {
     "pdf_id": "DIR-BasicSci-00062",
     "pdf_num": 62,
-    "question": "All of the following statements regarding major histocompatibility complex molecules are true EXCEPT:",
+    "question": "All of the following statements regarding major histocompatibility complex molecules are true EXCEPT: Class I molecules such as HLA-A, B, and C, are present on all nucleated cells?",
     "choices": {
       "A": "The MHC is located on chromosome 6 in humans",
-      "B": "MHC class II molecules bind stably to peptides derived from proteins sythesized",
-      "C": "and degraded in the cytosol",
-      "D": "MHC Class II molecules bearing peptides are recognized by TH1 or TH2 cells.",
-      "E": "Class I molecules such as HLA-A, B, and C, are present on all nucleated cells ? MHC class I molecules bearing viral peptides are recognized by cytotoxic T-cells that ? subsequently kill the infected cell"
+      "B": "MHC class II molecules bind stably to peptides derived from proteins sythesized and degraded in the cytosol",
+      "C": "MHC Class II molecules bearing peptides are recognized by TH1 or TH2 cells.",
+      "D": "MHC class I molecules bearing viral peptides are recognized by cytotoxic T-cells that subsequently kill the infected cell"
     },
     "correct_answer": "B",
-    "correct_text": "MHC class II molecules bind stably to peptides derived from proteins\nsythesized",
+    "correct_text": "MHC class II molecules bind stably to peptides derived from proteins sythesized and degraded in the cytosol",
     "explanation": "MHC class I molecules bind stably to peptides derived from proteins sythesized and degraded in the cytosol.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -1409,10 +1408,10 @@
       "B": "Tumors of glomus cells are most commonly found on the tongue",
       "C": "Tumors composed of glomus cells are usually asymptomatic",
       "D": "They are of neural origin",
-      "E": "They allow rapid shunting of blood from the arterioles to venules, bypassing ? capillaries"
+      "E": "They allow rapid shunting of blood from the arterioles to venules, bypassing capillaries"
     },
     "correct_answer": "E",
-    "correct_text": "They allow rapid shunting of blood from the arterioles to venules, bypassing",
+    "correct_text": "They allow rapid shunting of blood from the arterioles to venules, bypassing capillaries",
     "explanation": "Glomus cells are derived from Suquet-Hoyer canals and allow rapid shunting of blood from the arterioles to venules, bypassing capillaries.",
     "incorrect_rationales": {
       "D": "They are of neural origin\n\n?. capillaries"
@@ -1530,8 +1529,8 @@
       "A": "Central depression within a lesion when squeezed along its margins",
       "B": "Swollen, itchy and or red after stroking the skin",
       "C": "Spreading bulla phenomenon with pressure on an intact bulla",
-      "D": "When an intact epidermis shears away from the underlying dermis, leaving a moist",
-      "E": "surface ? Disappearance of color when the lesion is pressed"
+      "D": "When an intact epidermis shears away from the underlying dermis, leaving a moist surface",
+      "E": "Disappearance of color when the lesion is pressed"
     },
     "correct_answer": "B",
     "correct_text": "Swollen, itchy and or red after stroking the skin",
@@ -1669,15 +1668,15 @@
   {
     "pdf_id": "DIR-BasicSci-00083",
     "pdf_num": 83,
-    "question": "A 37-year-old male presents to an outpatient dermatology clinic with a pruritic, vesicular eruptions with overlying erosions located on the sacral region/lateral abdomen and on bilateral elbows (see image). He had a biopsy performed with another physician last year, and he states that he was told to see a gastroenterologist (GI) for further workup. He has",
+    "question": "A 37-year-old male presents to an outpatient dermatology clinic with a pruritic, vesicular eruptions with overlying erosions located on the sacral region/lateral abdomen and on bilateral elbows (see image). He had a biopsy performed with another physician last year, and he states that he was told to see a gastroenterologist (GI) for further workup. He has not seen the GI at this time, but he is very concerned about the recurring rash. Which HLA is most associated with this condition?",
     "choices": {
-      "A": "not seen the GI at this time, but he is very concerned about the recurring rash. Which HLA",
-      "B": "is most associated with this condition?",
-      "C": "HLA-DQ2",
-      "D": "HLA-Cw6",
-      "E": "HLA-B27= ? HLA-B51 ? HLA-DR3"
+      "A": "HLA-DQ2",
+      "B": "HLA-Cw6",
+      "C": "HLA-B27",
+      "D": "HLA-B51",
+      "E": "HLA-DR3"
     },
-    "correct_answer": "C",
+    "correct_answer": "A",
     "correct_text": "HLA-DQ2",
     "explanation": "The image, along with the vignette, describes dermatitis herpetiformis (DH). The clinical presentation is very pruritic vesicles that are grouped and located symmetrically, especially on extensor surfaces. Overlying erosions can be seen due to the intense pruritus, and it can also present as papules, urticarial lesions, tense bullae, or polymorphous lesions. This rash can have cyclic exacerbations and is associated with Celiac disease. Histopathology, including direct immunofluorescence (DIF), helps aid in diagnosis – suprapapillary, neutrophil-rich, vesicles with a granular pattern on DIF with IgA>C3 along the dermal papillae. ELISA testing can also help in diagnosis, which will show antibodies against transglutaminase 3. HLA-DQ2 is commonly associated with DH, and treatment includes gluten-free diet, dapsone, and sulfapyridine.",
     "incorrect_rationales": {},
@@ -1740,11 +1739,11 @@
       "A": "Spheroid melanosomes synthesize brown-black eumelanin",
       "B": "Elliptical melanosomes have microvesicular structure",
       "C": "Spheroid melanosomes have concentric lamellae",
-      "D": "The melanosomes are positioned after the Golgi apparatus in the secretory",
-      "E": "pathway. ? Elliptical melanosomes synthesize yellow or red pheomelanin."
+      "D": "The melanosomes are positioned after the Golgi apparatus in the secretory pathway.",
+      "E": "Elliptical melanosomes synthesize yellow or red pheomelanin."
     },
     "correct_answer": "D",
-    "correct_text": "The melanosomes are positioned after the Golgi apparatus in the secretory",
+    "correct_text": "The melanosomes are positioned after the Golgi apparatus in the secretory pathway.",
     "explanation": "Melanosomes are organelles related to lysosomes and are positioned after the Golgi apparatus in the secretory pathway. Elliptical melanosomes have concentric lamellae and synthesize brown-black eumelanin. Spheroid melanosomes have microvesicular structure and synthesize yellow or red pheomelanin.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -2575,15 +2574,16 @@
   {
     "pdf_id": "DIR-BasicSci-00128",
     "pdf_num": 128,
-    "question": "Numerous neuromediators are involved in cutaneous neurobiology and many play a role in",
+    "question": "Numerous neuromediators are involved in cutaneous neurobiology and many play a role in application of capsaicin to the skin. Which of the following is the correct neuromediator?",
     "choices": {
       "A": "the development of inflammation in the skin. One such mediator can be induced by",
-      "B": "application of capsaicin to the skin. Which of the following is the correct neuromediator?",
-      "C": "Noradernaline",
-      "D": "Substance P",
-      "E": "Acetylcholine ? Neurokinin A ? Pro-opiomelanocortin"
+      "B": "Noradernaline",
+      "C": "Substance P",
+      "D": "Acetylcholine",
+      "E": "Neurokinin A",
+      "F": "Pro-opiomelanocortin"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Substance P",
     "explanation": "Substance P is a neuromediator that binds the tachykinin receptor. It is released upon stimulation of sensory nerve fibers. It has numerous cutaneous functions, including development of skin edema, erythema, and pruritus, upregulation of adhesion molecule expression, release of proinflammatory mediators, etc. Capsaicin causes release of substance P, therefore with continuous application all the substance P is released and it is therefore depleted. This has been utilized pharmacologically in conditions such as zoster, in which consistent application of capsaicin leads to depletion of substance P, which in turn can help to reduce/eliminate post-herpetic neuralgia. The other answer choices are also neuromediators that are involved in cutaneous inflammation, but their release is not induced by capsaicin.",
     "incorrect_rationales": {},
@@ -2821,7 +2821,7 @@
       "B": "Swollen, itchy and or red after stroking the skin",
       "C": "Disappearance of color when the lesion is pressed",
       "D": "Spreading bulla phenomenon with pressure on an intact bulla",
-      "E": "When an intact epidermis shears away from the underlying dermis, leaving a moist ? surface"
+      "E": "When an intact epidermis shears away from the underlying dermis, leaving a moist surface"
     },
     "correct_answer": "D",
     "correct_text": "Spreading bulla phenomenon with pressure on an intact bulla",
@@ -2881,7 +2881,8 @@
       "B": "Serum sodium",
       "C": "Serum potassium",
       "D": "Serum bicarbonate",
-      "E": "Serum creatinine ? Leukocytes"
+      "E": "Serum creatinine",
+      "F": "Leukocytes"
     },
     "correct_answer": "D",
     "correct_text": "Serum bicarbonate",
@@ -3659,8 +3660,8 @@
       "A": "The number of melanocytes increases with one exposure to UVA/visible light",
       "B": "In black and brown skin the melanosomes are smaller in diameter and length",
       "C": "In white skin the melanosomes form groups within the secondary lysosomes",
-      "D": "Facultative skin color is the amount of cutaneous melanin pigment generated according",
-      "E": "to cellular genetics ? Eumelanin produces a yellow chromophore"
+      "D": "Facultative skin color is the amount of cutaneous melanin pigment generated according to cellular genetics",
+      "E": "Eumelanin produces a yellow chromophore"
     },
     "correct_answer": "C",
     "correct_text": "In white skin the melanosomes form groups within the secondary lysosomes",
@@ -4283,12 +4284,12 @@
     "question": "Krause end bulbs are:",
     "choices": {
       "A": "Located in the deep dermis and within the subcutis in weight-bearing sites of the body",
-      "B": "Adapting mechanoreceptors found on weight-bearing sites that respond to vibrational",
-      "C": "stimul",
-      "D": "Located in the dermal papillae of digital skin",
-      "E": "Found on the vermillion border of the lips ? Found at the orifice of the hair follicle and particularly sensitive to cold"
+      "B": "Adapting mechanoreceptors found on weight-bearing sites that respond to vibrational stimul",
+      "C": "Located in the dermal papillae of digital skin",
+      "D": "Found on the vermillion border of the lips",
+      "E": "Found at the orifice of the hair follicle and particularly sensitive to cold"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Found on the vermillion border of the lips",
     "explanation": "Krause end bulbs are mucocutaneous receptors found on the glans penis, clitoris, labia minora, perianal area, and vermillion border of the lips. Papillary nerve endings are free nerve endings found at the orifice of the hair follicle and particularly sensitive to cold. Meissner's corpuscles are ovoid, elongated mechanoreceptors located in the dermal papillae of digital skin that detect touch and light pressure. Pacinian (Vater- Pacini) corpuscles exist in the deep dermis and within the subcutis in weight-bearing sites and function as adapting mechanoreceptors that respond to vibrational stimuli.",
     "incorrect_rationales": {
@@ -5756,12 +5757,12 @@
     "choices": {
       "A": "Patients being treated with nitrosurea agents are usually spared",
       "B": "Occurs within 24 to 48 hours of exposure",
-      "C": "Stimulus induces the abrupt cessation of mitotic activity in the rapidly dividing",
-      "D": "hair matrix cells",
-      "E": "Rarely seen following administration of cancer chemotherapeutic agents ? Entirely irreversible"
+      "C": "Stimulus induces the abrupt cessation of mitotic activity in the rapidly dividing hair matrix cells",
+      "D": "Rarely seen following administration of cancer chemotherapeutic agents",
+      "E": "Entirely irreversible"
     },
     "correct_answer": "C",
-    "correct_text": "Stimulus induces the abrupt cessation of mitotic activity in the rapidly\ndividing",
+    "correct_text": "Stimulus induces the abrupt cessation of mitotic activity in the rapidly dividing hair matrix cells",
     "explanation": "It is frequently seen following administration of cancer chemotherapeutic agents. Stimulus induces the abrupt cessation of mitotic activity in the rapidly dividing hair matrix cells.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -16010,7 +16011,8 @@
     "pdf_num": 789,
     "question": "The PDGF gene has been shown to be translocated into the collagen I gene in:",
     "choices": {
-      "A": "Fibrous hamartoma of infancy Angiofibroma B",
+      "A": "Fibrous hamartoma of infancy",
+      "B": "Angiofibroma",
       "C": "Solitary fibrous tumor",
       "D": "Dermatofibroma",
       "E": "Dermatofibrosarcoma protuberans"
@@ -17272,14 +17274,14 @@
     "pdf_num": 846,
     "question": "A 9 year-old girl presents for evaluation of alopecia. Physical examination reveals a bizarrely shaped patch of hair loss in the vertex area, with broken hairs of varying lengths. Biopsy is most likely to demonstrate:",
     "choices": {
-      "A": "Traumatized hair follicles with perifollicular hemorrhage, empty follicles, and",
-      "B": "deformed hair shafts",
-      "C": "Mucin within follicular epithelium",
-      "D": "Lymphoid inflammation at the level of the hair bulb",
-      "E": "Fungal spores within hair shafts ? Suppurative folliculitis"
+      "A": "Traumatized hair follicles with perifollicular hemorrhage, empty follicles, and deformed hair shafts",
+      "B": "Mucin within follicular epithelium",
+      "C": "Lymphoid inflammation at the level of the hair bulb",
+      "D": "Fungal spores within hair shafts",
+      "E": "Suppurative folliculitis"
     },
     "correct_answer": "A",
-    "correct_text": "Traumatized hair follicles with perifollicular hemorrhage, empty follicles, and",
+    "correct_text": "Traumatized hair follicles with perifollicular hemorrhage, empty follicles, and deformed hair shafts",
     "explanation": "Biopsy of trichotillomania, characterized by an abnormal urge to pull out the hair, reveals traumatized hair follicles with perifollicular hemorrhage, empty anagen follicles, many catagen hairs, deformed hair shafts (known as trichomalacia), and melanin casts within the follicular canal. Lymphoid inflammation at the level of the hair bulb is a feature of alopecia areata. Mucin within follicular epithelium is characteristic of follicular mucinosis. Tinea capitis demonstrates fungal spores within hair shafts. Suppurative folliculitis may be seen in folliculitis decalvans.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -18959,14 +18961,14 @@
     "pdf_num": 922,
     "question": "Which of the following would you NOT expect to find histologically for this diagnosis?",
     "choices": {
-      "A": "Band-like inflammatory infiltrate at the dermal-epidermal junction consisting",
-      "B": "predominantly of lymphocytes and neutrophils",
-      "C": "Wedge-shaped hypergranulosis in the epidermis",
-      "D": "Individual keratinocyte necrosis",
-      "E": "Irregular epidermal hyperplasia ? Non-specific direct immunofluorescence (usually IgM and complement) staining colloid ? bodies"
+      "A": "Band-like inflammatory infiltrate at the dermal-epidermal junction consisting predominantly of lymphocytes and neutrophils",
+      "B": "Wedge-shaped hypergranulosis in the epidermis",
+      "C": "Individual keratinocyte necrosis",
+      "D": "Irregular epidermal hyperplasia",
+      "E": "Non-specific direct immunofluorescence (usually IgM and complement) staining colloid bodies"
     },
     "correct_answer": "A",
-    "correct_text": "Band-like inflammatory infiltrate at the dermal-epidermal junction consisting",
+    "correct_text": "Band-like inflammatory infiltrate at the dermal-epidermal junction consisting predominantly of lymphocytes and neutrophils",
     "explanation": "The correct answer is A. The diagnosis is lichen planus (typically annular when on the penis), and the band-like infiltrate at the DEJ does not typically include a significant proportion of neutrophils, just lymphocytes.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -19388,11 +19390,11 @@
       "A": "Has a predilection for neck/ axillae, intertriginous areas",
       "B": "The responsible gene is ATP2C1",
       "C": "Nikolsky's sign can be positive.",
-      "D": "The responsible gene encodes a Ca2+ pump located in the endoplasmic",
-      "E": "reticulum ? Superinfection with herpes simplex virus can occur in the genital region"
+      "D": "The responsible gene encodes a Ca2+ pump located in the endoplasmic reticulum",
+      "E": "Superinfection with herpes simplex virus can occur in the genital region"
     },
     "correct_answer": "D",
-    "correct_text": "The responsible gene encodes a Ca2+ pump located in the endoplasmic",
+    "correct_text": "The responsible gene encodes a Ca2+ pump located in the endoplasmic reticulum",
     "explanation": "This biopsy reveals diffuse suprabasilar acantholysis with a \"dilapidated brick wall\" appearance, which is indicative of Hailey-Hailey disease (familial benign chronic pemphigus). The responsible gene encodes a Ca2+ pump located in the Golgi apparatus (as opposed to Darier's disease, which is due to a mutation in the ATP2A2 gene, which encodes a Ca2+ pump in the endoplasmic reticulum).",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -19698,14 +19700,14 @@
     "pdf_num": 955,
     "question": "A biopsy of the shown lesion is most likely to have which of the following histopathologic findings?",
     "choices": {
-      "A": "Squared-off biopsy with thick collagen, decreased adnexal structures, and",
-      "B": "entrapped eccrine glands higher up in the dermis",
-      "C": "Loose myxoid collagen",
-      "D": "Massive dermal edema with telangiectasias and a lichenoid infiltrate below the dermal",
-      "E": "edema ? Interface dermatitis ? Lichenoid dermatitis"
+      "A": "Squared-off biopsy with thick collagen, decreased adnexal structures, and entrapped eccrine glands higher up in the dermis",
+      "B": "Loose myxoid collagen",
+      "C": "Massive dermal edema with telangiectasias and a lichenoid infiltrate below the dermal edema",
+      "D": "Interface dermatitis",
+      "E": "Lichenoid dermatitis"
     },
     "correct_answer": "A",
-    "correct_text": "Squared-off biopsy with thick collagen, decreased adnexal structures, and",
+    "correct_text": "Squared-off biopsy with thick collagen, decreased adnexal structures, and entrapped eccrine glands higher up in the dermis",
     "explanation": "This is a clinical picture of morphea, which is characterized by a squared-off biopsy with dense fibrotic collagen, decreased adnexal structures, and entrapped eccrine glands higher up in the dermis.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -19827,15 +19829,15 @@
   {
     "pdf_id": "DIR-Dermatop-00195",
     "pdf_num": 961,
-    "question": "These areas were orange/brown macules that became more raised after examining and",
+    "question": "These areas were orange/brown macules that became more raised after examining and manipulating them, as depicted in the photograph. Which of the following stains is LEAST likely to help diagnose this condition histologically?",
     "choices": {
-      "A": "manipulating them, as depicted in the photograph. Which of the following stains is LEAST",
-      "B": "likely to help diagnose this condition histologically?",
-      "C": "Giemsa",
-      "D": "Tryptase",
-      "E": "SMA ? Toluidine blue ? CD117"
+      "A": "Giemsa",
+      "B": "Tryptase",
+      "C": "SMA",
+      "D": "Toluidine blue",
+      "E": "CD117"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "SMA",
     "explanation": "The correct answer is E. The picture shows a form of cutaneous mastocytosis and the remainder of the choices will help in identifying mast cells histologically. SMA does not stain mast cells, but a smooth muscle hamartoma is in the differential of a positive Darier sign.",
     "incorrect_rationales": {
@@ -24380,9 +24382,8 @@
     "question": "In this disorder which typically occurs on the head and neck, the cells would demonstrate which staining pattern?",
     "choices": {
       "A": "CD1a + and S100 +",
-      "B": "CD1a- and S100",
-      "C": "CD1a+ and S100D. CD1a- and S100+",
-      "E": "CD68-"
+      "B": "CD1a- and S100 C. CD1a+ and S100D. CD1a- and S100+",
+      "C": "CD68-"
     },
     "correct_answer": "B",
     "correct_text": "CD1a- and S100 C. CD1a+ and S100D. CD1a- and S100+",
@@ -30711,12 +30712,13 @@
     "pdf_num": 1463,
     "question": "Mutations in which gene would likely be found in the neoplastic cells of this lesion?",
     "choices": {
-      "A": "PATCH p53 B",
+      "A": "PATCH",
+      "B": "p53",
       "C": "Fumarate hydratase",
       "D": "CREBBP",
       "E": "p63"
     },
-    "correct_answer": "",
+    "correct_answer": "B",
     "correct_text": "p53",
     "explanation": "Squamous cell carcinoma is the second most common cancer of the skin. Mutations in the tumor suppressor p16 and p53 are commonly found in SCC's. Normally, UV damage upregulates p53 thereby delaying cell cycle progression. DNA damage can then be repaired or the cell could undergo apoptosis. In squamous cell carcinoma, p53 exhibits loss of heterozygosity due to C to T or CC to TT mutations.",
     "incorrect_rationales": {
@@ -30724,7 +30726,7 @@
     },
     "source": "ETAS 2026",
     "category": "Pathology",
-    "format": "mcq_no_key",
+    "format": "mcq",
     "id": 1463,
     "images": [
       "https://yssrtjfgkctojkzcoapt.supabase.co/storage/v1/object/public/question-images/ETAS-BenignandM-0055-01921/m01.jpg",
@@ -34296,13 +34298,13 @@
     "pdf_num": 1637,
     "question": "A 30-year-old female presents with grouped small reddish papules around the lower half of the face, particularly around the mouth. Which of the following behaviors is known to induce this common dermatologic condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 9 of 1,559",
-      "B": "Topical steroids",
-      "C": "Washing the face",
-      "D": "Toothpaste without fluoride",
-      "E": "Lack of contraceptives ? Oral antihistamines"
+      "A": "Topical steroids",
+      "B": "Washing the face",
+      "C": "Toothpaste without fluoride",
+      "D": "Lack of contraceptives",
+      "E": "Oral antihistamines"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Topical steroids",
     "explanation": "Periorificial dermatitis may be induced by: Topical steroids, whether applied deliberately to facial skin or inadvertently Nasal steroids, steroid inhalers, and oral steroids Cosmetic creams, make-ups, and sunscreens Fluorinated toothpaste Neglecting to wash the face Hormonal changes or contraceptives",
     "incorrect_rationales": {},
@@ -34891,13 +34893,13 @@
     "pdf_num": 1665,
     "question": "A 45-year-old healthy woman presents with an asymptomatic rash for the past three months, affecting her trunk and hands. The patient was told this was \"ringworm.\" She denies prior trauma to the affected area. The rash progressed despite ketoconazole cream application to the affected areas twice a day for one month. She is most distressed by the lesions on her dorsal hands. What is the most reasonable next step in management?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 29 of 1,559",
-      "B": "Intralestional corticosteroids",
-      "C": "Chest X-ray (CXR)",
-      "D": "Oral terbinafine for 2 weeks",
-      "E": "Serum angiotensin converting enzyme (ACE) level ? Tissue culture (bacteria, fungi, atypical mycobacteria)"
+      "A": "Intralestional corticosteroids",
+      "B": "Chest X-ray (CXR)",
+      "C": "Oral terbinafine for 2 weeks",
+      "D": "Serum angiotensin converting enzyme (ACE) level",
+      "E": "Tissue culture (bacteria, fungi, atypical mycobacteria)"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Intralestional corticosteroids",
     "explanation": "This is a classic presentation of granuloma annulare (GA), which presents as smooth annular to polycyclic papules and plaques; GA is commonly mistaken for tinea corporis or \"ringworm.\" The main difference between GA and tinea is that GA is considered a granulomatous infiltrative process limited to the dermis (disorders affecting the epidermis usually has associated surface changes such as scaling/crusting). The etiology of GA is unknown, but it is thought to represent a reactive process leading to delayed-type hypersensitivity. For localized GA, treatment is limited to intralesional or topical corticosteroids; for widespread disease, hydroxychloroquine or phototherapy are widely acceptable treatments. In recalcitrant disease, TNF-alpha inhibitors or Janus kinase (JAK) inhibitors would be reasonable to try.",
     "incorrect_rationales": {},
@@ -35363,13 +35365,13 @@
     "pdf_num": 1687,
     "question": "A 22-year-old man presents with a 4-month history of a red, scaly rash involving his face and body. On examination, he has widespread erythroderma with sparing of the oral mucosa. A punch biopsy from the back reveals the findings shown in the attached histology image. Direct immunofluorescence demonstrates intercellular IgG deposition targeting desmoglein-1 in the superficial epidermis. What is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 46 of 1,559",
-      "B": "Bullous pemphigoid",
-      "C": "IgA Pemphigus",
-      "D": "Pemphigus foliaceus",
-      "E": "Pemphigus vulgaris ? Subacute lupus erythematosus"
+      "A": "Bullous pemphigoid",
+      "B": "IgA Pemphigus",
+      "C": "Pemphigus foliaceus",
+      "D": "Pemphigus vulgaris",
+      "E": "Subacute lupus erythematosus"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Pemphigus foliaceus",
     "explanation": "Pemphigus foliaceus is an autoimmune blistering disorder caused by IgG autoantibodies directed against desmoglein-1, a cadherin-type adhesion molecule found in the superficial layers of the epidermis. This results in subcorneal blister formation and superficial acantholysis, as seen in the attached histology image. Clinically, it presents with erosions and scaly plaques that may resemble seborrheic dermatitis or erythroderma. A key distinguishing feature is the absence of mucosal involvement, which helps differentiate it from pemphigus vulgaris.",
     "incorrect_rationales": {},
@@ -36310,15 +36312,15 @@
   {
     "pdf_id": "DIR-GeneralD-00110",
     "pdf_num": 1733,
-    "question": "A 33-year-old female presents with the shown painful lesions that appeared abruptly one week ago. She recently had gotten over an upper respiratory infection the previous week. She is currently febrile to 38.3C with malaise and headaches. You perform a biopsy to confirm your clinical suspicions.",
+    "question": "A 33-year-old female presents with the shown painful lesions that appeared abruptly one week ago. She recently had gotten over an upper respiratory infection the previous week. She is currently febrile to 38.3C with malaise and headaches. You perform a biopsy to confirm your clinical suspicions. Which of the following medications should result in quick clearance of her skin lesions.",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 76 of 1,559",
-      "B": "Which of the following medications should result in quick clearance of her skin lesions.",
-      "C": "Colchicine",
-      "D": "Prednisone",
-      "E": "Doxycycline ? Triamcinolone ? Isotretinoin"
+      "A": "Colchicine",
+      "B": "Prednisone",
+      "C": "Doxycycline",
+      "D": "Triamcinolone",
+      "E": "Isotretinoin"
     },
-    "correct_answer": "D",
+    "correct_answer": "B",
     "correct_text": "Prednisone",
     "explanation": "The clinical presentation most likely represents Sweet syndrome (acute febrile neutrophilic dermatosis). Classical Sweet syndrome is frequently associated with recent infections, IBD and pregnancy. Diagnosis is made with 2 major and 2 minor criteria. Major criteria: 1. Abrupt onset of painful erythematous plaques 2. Histopathological evidence of a dense neutrophilic infiltrate without evidence of leukocytoclastic vasculitis Minor criteria: 1. Fever 2. Association with malignancy, inflammatory disease, pregnancy or recent URI, GI infection, vaccination 3. Excellent response to systemic steroids 4. Abnormal lab values (ESR, CRP, leukocytosis, >70% neutrophils)",
     "incorrect_rationales": {},
@@ -36755,14 +36757,14 @@
     "pdf_num": 1754,
     "question": "Which of the following statements regarding prognosis for malignant melanoma is true?",
     "choices": {
-      "A": "Patients with primary lesions located on the extremities (except acral lesions) have a worse prognosis than those with tumors located on the",
-      "B": "trunk.",
-      "C": "There is a higher survival rate for patients with palpable metastatic nodes compared to those with micrometastatic nodal disease.",
-      "D": "Male gender has a positive effect on survival.",
-      "E": "Increasing age has a positive effect on survival. ? For stage IV disease, patients with non-visceral metastases (eg skin, subcutis, distant lymph nodes) have a better prognosis ? compared with those with visceral metastases."
+      "A": "Patients with primary lesions located on the extremities (except acral lesions) have a worse prognosis than those with tumors located on the trunk.",
+      "B": "There is a higher survival rate for patients with palpable metastatic nodes compared to those with micrometastatic nodal disease.",
+      "C": "Male gender has a positive effect on survival.",
+      "D": "Increasing age has a positive effect on survival.",
+      "E": "For stage IV disease, patients with non-visceral metastases (eg skin, subcutis, distant lymph nodes) have a better prognosis compared with those with visceral metastases"
     },
     "correct_answer": "E",
-    "correct_text": "Increasing age has a positive effect on survival. ? For stage IV disease,\npatients with non-visceral metastases (eg skin, subcutis, distant lymph nodes) have a better\nprognosis ? compared with those with visceral metastases",
+    "correct_text": "For stage IV disease, patients with non-visceral metastases (eg skin, subcutis, distant lymph nodes) have a better prognosis compared with those with visceral metastases",
     "explanation": "For stage IV disease, patients with non-visceral metastases (eg skin, subcutis, distant lymph nodes) have a better prognosis compared with those with visceral metastases.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -37106,15 +37108,16 @@
   {
     "pdf_id": "DIR-GeneralD-00148",
     "pdf_num": 1771,
-    "question": "What is the most appropriate first-line therapy for the patient described?",
+    "question": "What is the most appropriate first-line therapy for the patient described? A 57-year-old female with history of leukemia undergoing bone marrow transplant is admitted for neutropenic fever and new necrotic papules at site?",
     "choices": {
-      "A": "A 57-year-old female with history of leukemia undergoing bone marrow transplant is admitted for neutropenic fever and new necrotic papules at site",
-      "B": "of recent minor skin trauma. A biopsy reveals, 3-6 µm–wide septated, non-pigmented hyphae with acute angle branching. Galactomannan antigen",
-      "C": "and 1,3-beta-D-glucan assays are positive – T2Candida assay is negative.",
-      "D": "Voriconazole and caspofungin",
-      "E": "Itraconazole and amphotericin B ? Fluconazole and caspofungin ? Caspofungin monotherapy ? Amphotericin B monotherapy"
+      "A": "of recent minor skin trauma. A biopsy reveals, 3-6 µm–wide septated, non-pigmented hyphae with acute angle branching. Galactomannan antigen and 1,3-beta-D-glucan assays are positive – T2Candida assay is negative.",
+      "B": "Voriconazole and caspofungin",
+      "C": "Itraconazole and amphotericin B",
+      "D": "Fluconazole and caspofungin",
+      "E": "Caspofungin monotherapy",
+      "F": "Amphotericin B monotherapy"
     },
-    "correct_answer": "D",
+    "correct_answer": "B",
     "correct_text": "Voriconazole and caspofungin",
     "explanation": "Primary cutaneous aspergillosis is a rare disease reported mostly frequently in children with hematologic malignancies who developed skin lesions at the site of IV cannulas. Other common presentations include immunocompromised patients (especially neutropenic patients) with recent skin trauma or burns. The question discusses a patient with clinical lesions, histopathology, and lab testing that point to a diagnosis of primary cutaneous aspergillosis that may have disseminated, in a patient with hematologic malignancy and neutropenia. Based on the below references – treatment with voriconazole and echinocandin (such as caspofungin) should be initiated.",
     "incorrect_rationales": {},
@@ -37148,11 +37151,11 @@
     "pdf_num": 1773,
     "question": "A 44-year-old female presents with various wheals and hives on her neck and upper chest which have been present for about six hours. The lesions come and go, each time returning in a different location. Associated symptoms include itching. What is the main treatment of all forms of this dermatologic skin condition in children and adults?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 106 of 1,559",
-      "B": "Phototherapy",
-      "C": "Intramuscular epinephrine",
-      "D": "Omalizumab",
-      "E": "Systemic oral corticosteroids ? Second-generation antihistamine"
+      "A": "Phototherapy",
+      "B": "Intramuscular epinephrine",
+      "C": "Omalizumab",
+      "D": "Systemic oral corticosteroids",
+      "E": "Second-generation antihistamine"
     },
     "correct_answer": "E",
     "correct_text": "Second-generation antihistamine",
@@ -38110,15 +38113,16 @@
   {
     "pdf_id": "DIR-GeneralD-00195",
     "pdf_num": 1818,
-    "question": "file:///tmp/Quiz_Questions_1778874819.html Page 141 of 1,559",
+    "question": "A 46-year-old female presented with a vesiculopapular eruption, with a predominance of pustules, as well as pruritis overlying her trunk in a circinate intraepidermal IgA deposition. Pathogenic antibodies are most likely directed against which of the following antigens?",
     "choices": {
-      "A": "A 46-year-old female presented with a vesiculopapular eruption, with a predominance of pustules, as well as pruritis overlying her trunk in a circinate",
-      "B": "pattern. Lesions display central crusting. On biopsy, intraepidermal clefting, neutrophils, and mild acantholysis are seen. Immunofluorescence reveals",
-      "C": "intraepidermal IgA deposition. Pathogenic antibodies are most likely directed against which of the following antigens?",
-      "D": "Desmoglein 1",
-      "E": "Transglutaminase 3 ? Laminin 6 ? Envoplakin ? β4-Integrin"
+      "A": "pattern. Lesions display central crusting. On biopsy, intraepidermal clefting, neutrophils, and mild acantholysis are seen. Immunofluorescence reveals",
+      "B": "Desmoglein 1",
+      "C": "Transglutaminase 3",
+      "D": "Laminin 6",
+      "E": "Envoplakin",
+      "F": "β4-Integrin"
     },
-    "correct_answer": "D",
+    "correct_answer": "B",
     "correct_text": "Desmoglein 1",
     "explanation": "This patient has IgA pemphigus characterized by the circinate rash, central crusting, and intraepidermal IgA as seen on immunofluorescence. IgA pemphigus has two subtypes: intraepidermal neutrophilic (IEN) and subcorneal pustular dermatosis (SPD); this patient has the former given the intraepidermal neutrophilic infiltrate. Both subtypes share the feature of intraepidermal IgA deposition against an antigen, either desmoglein 1 or 3 in the IEN subtype, or desmocollin 1 in the SPD subtype.",
     "incorrect_rationales": {},
@@ -38334,13 +38338,13 @@
     "pdf_num": 1828,
     "question": "A 55-year-old male presents with a dark patch on the plantar surface of his foot, as shown. He noticed it growing larger over the past 4 months. Dermoscopic evaluation reveals the findings pictured. The patient states that the lesion causes him no pain or physical limitation. What is the most common mutation observed in this lesion?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 150 of 1,559",
-      "B": "PTCH1",
-      "C": "NRAS",
-      "D": "BRAF",
-      "E": "KIT ? PTEN"
+      "A": "PTCH1",
+      "B": "NRAS",
+      "C": "BRAF",
+      "D": "KIT",
+      "E": "PTEN"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "KIT",
     "explanation": "The case presents the clinical and dermoscopic findings of acral lentiginous melanoma. Dermoscopy reveals the parallel ridge pattern and irregular, assymetric pigmentation. The mutation most commonly associated with acral lentiginous melanoma is found in the KIT gene. Activating mutations or amplifications of wild-type KIT are found in 15-40% of acral (and mucosal) melanomas.",
     "incorrect_rationales": {
@@ -38378,15 +38382,15 @@
   {
     "pdf_id": "DIR-GeneralD-00207",
     "pdf_num": 1830,
-    "question": "file:///tmp/Quiz_Questions_1778874819.html Page 152 of 1,559",
+    "question": "A 55-year-old female presents with a one month history of the following clinical pictures. She additionally has developed thickened nails with subungal debris and a few small hyperkeratotic red plaques on the abdomen. What is the most likely diagnosis?",
     "choices": {
-      "A": "A 55-year-old female presents with a one month history of the following clinical pictures. She additionally has developed thickened nails with",
-      "B": "subungal debris and a few small hyperkeratotic red plaques on the abdomen. What is the most likely diagnosis?",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 153 of 1,559",
-      "D": "Cutaneous T-cell lymphoma",
-      "E": "Pityriasis rubra pilaris ? Lichen spinulosus ? Mal de meleda syndrome ? Psoriasis vulgaris"
+      "A": "Cutaneous T-cell lymphoma",
+      "B": "Pityriasis rubra pilaris",
+      "C": "Lichen spinulosus",
+      "D": "Mal de meleda syndrome",
+      "E": "Psoriasis vulgaris"
     },
-    "correct_answer": "E",
+    "correct_answer": "B",
     "correct_text": "Pityriasis rubra pilaris",
     "explanation": "This presentation of a cutaneous eruption of palmer keratoderma, hyperkeratotic follicular papules (\"nutmeg grater\"), red-orange plaques and nail findings is most consistent with Type I pityriasis rubra pilaris.",
     "incorrect_rationales": {
@@ -38446,11 +38450,11 @@
     "pdf_num": 1833,
     "question": "An 80-year-old man presents with a growing sore pictured that has develop over the last year. He reports bleeding and pruritus. Which of the following medications is associated with an increased risk of developing this lesion?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 155 of 1,559",
-      "B": "Aspirin",
-      "C": "ACE Inhibitors",
-      "D": "Nicotinamide",
-      "E": "Angiotensin Receptor Blockers ? Thiopurine"
+      "A": "Aspirin",
+      "B": "ACE Inhibitors",
+      "C": "Nicotinamide",
+      "D": "Angiotensin Receptor Blockers",
+      "E": "Thiopurine"
     },
     "correct_answer": "E",
     "correct_text": "Thiopurine",
@@ -38676,14 +38680,14 @@
     "pdf_num": 1844,
     "question": "A 20-year-old female develops a firm fibrous papule on the left shin. You suspect a clinical diagnosis of a dermatofibroma after eliciting a positive dimple sign on physical examination. This was further supported by dermoscopy demostrating a whitish sclerotic center. A punch biopsy confirmed the diagnosis. Which of the following histologic features best represents this skin lesion on histology?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 162 of 1,559",
-      "B": "Focal areas consisting of large polymorphous cells with large nucleoli",
-      "C": "Increased cellularity with increased mitoses",
-      "D": "Epithelioid morphology with abundant eosinophilic cytoplasm with round vesicular nuclei and prominent nucleoli",
-      "E": "Cleft-like hemorrhagic spaces within the center that mimic vessels but lack an endothelial lining ? Whirling fascicles of spindle cell proliferation with excessive collagen deposition in the dermis"
+      "A": "Focal areas consisting of large polymorphous cells with large nucleoli",
+      "B": "Increased cellularity with increased mitoses",
+      "C": "Epithelioid morphology with abundant eosinophilic cytoplasm with round vesicular nuclei and prominent nucleoli",
+      "D": "Cleft-like hemorrhagic spaces within the center that mimic vessels but lack an endothelial lining",
+      "E": "Whirling fascicles of spindle cell proliferation with excessive collagen deposition in the dermis"
     },
     "correct_answer": "E",
-    "correct_text": "Cleft-like hemorrhagic spaces within the center that mimic vessels but lack\nan endothelial lining ? Whirling fascicles of spindle cell proliferation with excessive collagen\ndeposition in the dermis",
+    "correct_text": "Whirling fascicles of spindle cell proliferation with excessive collagen deposition in the dermis",
     "explanation": "Dermatofibroma is usually easy to diagnose clinically, supported by dermoscopy. The most common dermoscopic pattern is a central white area surrounded by a faint pigment network. However, different patterns may be seen in darker skin tones. Diagnostic excision or skin biopsy is undertaken if there is an atypical feature such as recent enlargement, ulceration, or asymmetrical structures and colors on dermoscopy. The pathology of dermatofibroma shows whirling fascicles of spindle cell proliferation with excessive collagen deposition in the dermis.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -38742,13 +38746,13 @@
     "pdf_num": 1847,
     "question": "A 44-year-old woman developed the findings shown in the image below. On examination, she was noted to have violaceous discoloration of her upper eyelids, an erythematous patch on her central chest, and upper back. She was unable to raise her arms above her head and could not stand up from a seated position without pushing off with her arms. On initial presentation, her creatine kinase (CK) was 1600 U/L, her pulmonary function testing was normal, and a computed tomography scan of the chest, abdomen, and pelvis was normal. She was started on a prednisone taper and plaquenil. At today's follow-up, her CK has normalized, her strength has returned, and her cutaneous findings have resolved. Which autoantibody is this patient most likely to have?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 165 of 1,559",
-      "B": "Anti-Mi2",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 166 of 1,559",
-      "D": "Anti-U1 RNP",
-      "E": "Anti-tRNA synthetase ? Anti-MDA5 (also known as anti-CADM 140) ? Anti-TIF-1gamma"
+      "A": "Anti-Mi2",
+      "B": "Anti-U1 RNP",
+      "C": "Anti-tRNA synthetase",
+      "D": "Anti-MDA5 (also known as anti-CADM 140)",
+      "E": "Anti-TIF-1gamma"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Anti-Mi2",
     "explanation": "This patient has dermatomyositis that was responsive to therapy and had no associated interstitial lung disease or cancer, as demonstrated by a normal CT chest, abdomen, and pelvis. Therefore, this presentation is most likely associated with anti-Mi2 antibodies.",
     "incorrect_rationales": {},
@@ -39768,15 +39772,16 @@
   {
     "pdf_id": "DIR-GeneralD-00273",
     "pdf_num": 1896,
-    "question": "A 20-year-old male with a family history of Hashimoto’s thyroiditis presents with sudden focal, circular patches of hair loss on the right temporal",
+    "question": "A 20-year-old male with a family history of Hashimoto’s thyroiditis presents with sudden focal, circular patches of hair loss on the right temporal patient's hair condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 200 of 1,559",
-      "B": "scalp and beard. On dermoscopy, you see exclamation point hairs and no evidence of scarring. What is the most appropriate initial treatment for this",
-      "C": "patient's hair condition?",
-      "D": "Minoxidil solution",
-      "E": "Potent topical steroids ? Ketoconazole shampoo ? Anthralin ointment ? JAK kinase inhibitor"
+      "A": "scalp and beard. On dermoscopy, you see exclamation point hairs and no evidence of scarring. What is the most appropriate initial treatment for this",
+      "B": "Minoxidil solution",
+      "C": "Potent topical steroids",
+      "D": "Ketoconazole shampoo",
+      "E": "Anthralin ointment",
+      "F": "JAK kinase inhibitor"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Potent topical steroids",
     "explanation": "The term alopecia means hair loss. In alopecia areata, one or more round bald patches appear suddenly, most often on the scalp. Alopecia areata is also called autoimmune alopecia, which can also cause diffuse alopecia. There is not yet any reliable cure for alopecia areata and other forms of autoimmune hair loss. Because spontaneous regrowth is common in alopecia areata, especially in the early stages of the disease, and research has often been of poor quality, the effectiveness of reported treatments is mostly unknown. Several topical treatments used for alopecia areata are reported to result in temporary improvement in some people. Their role and efficacy are unknown. The hair may fall out when they are stopped. These include: potent topical steroids which are the first-line therapy in initial treatment of this hair condition.",
     "incorrect_rationales": {
@@ -39876,11 +39881,11 @@
     "pdf_num": 1901,
     "question": "This 58-year-old patient, recently diagnosed with secondary syphilis, presents with this painful skin eruption. The patient completed syphilis treatment, and his RPR titer decreased by four-fold, indicating successful treatment. No new medications, and HIV was negative. A review of system was otherwise unremarkable, denied recent upper respiratory illness, constitutional symptoms, or sick contacts. Based on the clinical images, which of the following diagnostic tests is the most sensitive?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 204 of 1,559",
-      "B": "Direct fluorescent antibody (DFA)",
-      "C": "Viral culture",
-      "D": "Tzanck smear (TS)",
-      "E": "Varicella zoster IgG ? Polymerase chain reaction (PCR)"
+      "A": "Direct fluorescent antibody (DFA)",
+      "B": "Viral culture",
+      "C": "Tzanck smear (TS)",
+      "D": "Varicella zoster IgG",
+      "E": "Polymerase chain reaction (PCR)"
     },
     "correct_answer": "E",
     "correct_text": "Polymerase chain reaction (PCR)",
@@ -40073,13 +40078,13 @@
     "pdf_num": 1910,
     "question": "A patient presents with pruritic papules and plaques on sun-exposed areas that develop hours after sun exposure. Treatment of this condition might include:",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 210 of 1,559",
-      "B": "Cyclosporin",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 211 of 1,559",
-      "D": "Acitretin",
-      "E": "Hydroxychloroquine ? Cyclophosphamide ? Mycophenolate mofetil"
+      "A": "Cyclosporin",
+      "B": "Acitretin",
+      "C": "Hydroxychloroquine",
+      "D": "Cyclophosphamide",
+      "E": "Mycophenolate mofetil"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Hydroxychloroquine",
     "explanation": "Polymorphous light eruption (PMLE) is characterized by errythematous papules, vesicles, and plaques develop minutes to hours after exposure to sun exposure or tanning bed. Sun avoidance, sunblocks, protective clothing, and topical steroids are sufficient for most patients. Other patients may require hardening with UVB or PUVA. Rare patients require antimalarials.",
     "incorrect_rationales": {
@@ -40199,13 +40204,13 @@
     "pdf_num": 1916,
     "question": "The picture shown is most characteristic of what type of epidermolysis bullosa?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 215 of 1,559",
-      "B": "Dowling-Meara form of epidermolysis bullosa simplex",
-      "C": "Recessive dystrophic epidermolysis bullosa",
-      "D": "Dominant dystrophic epidermolysis bullosa",
-      "E": "Junctional epidermolysis bullosa- Herlitz type ? Junctional epidermolysis bullosa- Non Herlitz type"
+      "A": "Dowling-Meara form of epidermolysis bullosa simplex",
+      "B": "Recessive dystrophic epidermolysis bullosa",
+      "C": "Dominant dystrophic epidermolysis bullosa",
+      "D": "Junctional epidermolysis bullosa- Herlitz type",
+      "E": "Junctional epidermolysis bullosa- Non Herlitz type"
     },
-    "correct_answer": "C",
+    "correct_answer": "B",
     "correct_text": "Recessive dystrophic epidermolysis bullosa",
     "explanation": "The picture is shown is know as \"mitten hands\" and is diagnostic for the autosomal recessive form of dystrophic epidermolysis bullosa (RDEB).This is a classic kodachrome for recessive dystrophic EB. It may present with severe blistering (generalized severe RDEB) or mild disease (generalized intermediate RDEB). Generalized severe blistering is more common and involves large areas of skin and mucous membranes. Blisters heal but with scarring and deformity causing limited movement as fingers and toes may be fused together (mitten hands as demonstrated in this photo). Complications such as infection, malnutrition and dehydration may cause death in infancy. Those that survive are at great risk of developing potentially dangerous squamous cell carcinoma within chronic EB wounds. SCC look and behave differently in EB from in unaffected individuals. They are found on covered sites and grow rapidly. They present as ulcerated or keratotic nodules and plaques.",
     "incorrect_rationales": {},
@@ -40556,14 +40561,14 @@
     "pdf_num": 1933,
     "question": "A 55-year-old female presents with concerns about plaques on both of her eyelids. Which of the following statements is true regarding this patient's skin condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 228 of 1,559",
-      "B": "Lesions start off as many bumps that grow rapidly",
-      "C": "These are the least common type of xanthoma",
-      "D": "Most commonly associated with hyperglycemia",
-      "E": "Lesions arise asymmetrically ? Lesions are soft, velvety, yellowish in color (depending on skin tone), flat papules or plaques"
+      "A": "Lesions start off as many bumps that grow rapidly",
+      "B": "These are the least common type of xanthoma",
+      "C": "Most commonly associated with hyperglycemia",
+      "D": "Lesions arise asymmetrically",
+      "E": "Lesions are soft, velvety, yellowish in color (depending on skin tone), flat papules or plaques"
     },
     "correct_answer": "E",
-    "correct_text": "Lesions arise asymmetrically ? Lesions are soft, velvety, yellowish in color\n(depending on skin tone), flat papules or plaques",
+    "correct_text": "Lesions are soft, velvety, yellowish in color (depending on skin tone), flat papules or plaques",
     "explanation": "A xanthoma is a skin lesion caused by the accumulation of fat in macrophage immune cells in the skin and more rarely in the layer of fat under the skin. Some types of xanthoma are indicative of lipid metabolism disorders (eg, hyperlipidemia or high blood fats), where they may be associated with increased risk of coronary artery heart disease and occasionally with pancreatitis. Xanthomas are classified into the following types based on where they are found on the body and how they develop. Xanthelasmas are the most common type of xanthoma Lesions arise symmetrically on upper and lower eyelids Lesions are soft, velvety, yellowish in color (depending on skin tone), flat papules or plaques Lesions start off as a small bump and gradually grow larger over several months May or may not be associated with hypercholesterolemia or hypertriglyceridemia",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -41373,16 +41378,16 @@
   {
     "pdf_id": "DIR-GeneralD-00349",
     "pdf_num": 1972,
-    "question": "A 42-year-old male with HIV comes to the office with a cutaneous ulcerative nodule on the face, shown below. On routine staining with hematoxylin",
+    "question": "A 42-year-old male with HIV comes to the office with a cutaneous ulcerative nodule on the face, shown below. On routine staining with hematoxylin and eosin, pathology shows the findings below. Which of the following is the most appropriate treatment?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 256 of 1,559",
-      "B": "and eosin, pathology shows the findings below. Which of the following is the most appropriate treatment?",
-      "C": "Start antiretroviral therapy",
-      "D": "file:///tmp/Quiz_Questions_1778874819.html Page 257 of 1,559",
-      "E": "Start chemotherapy ? Start erythromycin ? Radiation ? Electrodessication and curretage"
+      "A": "Start antiretroviral therapy",
+      "B": "Start chemotherapy",
+      "C": "Start erythromycin",
+      "D": "Radiation",
+      "E": "Electrodessication and curretage"
     },
-    "correct_answer": "E",
-    "correct_text": "Start chemotherapy ? Start erythromycin ? Radiation ? Electrodessication\nand curretage",
+    "correct_answer": "C",
+    "correct_text": "Start erythromycin",
     "explanation": "Bacillary angiomatosis is characterized by vascular lesions due to infection with Bartonella henselae or Bartonella quintana. It is seen in patients with acquired immunodeficiency syndrome (AIDS) but has also been described in transplant recipients because of immunosuppression. The appropriate treatment for bacillary angiomatosis is an antibiotic, with erythromycin usually being the agent of choice. Treatment is generally for at least 8 to 12 weeks for skin lesions. Clinically, it resembles Kaposi sarcoma and pyogenic granuloma. Pathology for Kaposi sarcoma demonstrates slitlike vascular spaces (promontory sign) with lymphohistiocytic inflammation rather than the neutrophilic response seen in this vignette. Pathology for pyogenic granuloma would show a lobular pattern of vascular proliferation, inflammation and edema resembling granulation tissue and an epidermal collarette.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -42451,13 +42456,13 @@
     "pdf_num": 2024,
     "question": "What is the sensitizer for this flower?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 290 of 1,559",
-      "B": "Sesquiterpene lactone",
-      "C": "Pentadecylcatechol",
-      "D": "Primin",
-      "E": "Tuliposide A ? Diallyl disulfide"
+      "A": "Sesquiterpene lactone",
+      "B": "Pentadecylcatechol",
+      "C": "Primin",
+      "D": "Tuliposide A",
+      "E": "Diallyl disulfide"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Tuliposide A",
     "explanation": "This is a peruvian lily which has tuliposide A as its sensitizer. Poison ivy's sensitizer is pentadecylcatechol which is in the urushiol. Sesquiterpene lactone is the sensitizer for the asteraceae family. Diallyl disulfide is the sensitizer for the alliaceae family which includes onions and garlic. Primin is the sensitizer for the primrose.",
     "incorrect_rationales": {
@@ -42493,11 +42498,11 @@
     "pdf_num": 2026,
     "question": "The clinical findings in this image are associated with which disorder?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 292 of 1,559",
-      "B": "Myasthenia gravis",
-      "C": "Sarcoidosis",
-      "D": "Dermatomyositis",
-      "E": "Rheumatoid arthritis ? Graves disease"
+      "A": "Myasthenia gravis",
+      "B": "Sarcoidosis",
+      "C": "Dermatomyositis",
+      "D": "Rheumatoid arthritis",
+      "E": "Graves disease"
     },
     "correct_answer": "E",
     "correct_text": "Graves disease",
@@ -42538,13 +42543,13 @@
     "pdf_num": 2028,
     "question": "A 62-year-old patient was admitted for new-onset shortness of breath secondary to pneumonia. Dermatology was consulted to evaluate a pruritic skin eruption affecting multiple body sites. She denied prior skin problems, and antihistamines failed to improve the itch. The patient also denied muscle weakness, myalgia, and arthralgia. Based on the clinical images, which of the following is the next best step in the management of this patient?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 294 of 1,559",
-      "B": "Bone marrow biopsy",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 295 of 1,559",
-      "D": "Basic metabolic panel (BMP), liver function test (LFT)",
-      "E": "Creatine kinase (CK), aldolase ? Serum IgE levels ? Serum tryptase levels"
+      "A": "Bone marrow biopsy",
+      "B": "Basic metabolic panel (BMP), liver function test (LFT)",
+      "C": "Creatine kinase (CK), aldolase",
+      "D": "Serum IgE levels",
+      "E": "Serum tryptase levels"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Creatine kinase (CK), aldolase",
     "explanation": "This patient had dermatomyositis (DM). The cutaneous manifestations of DM can be categorized into pathognomonic, characteristic, compatible, less common, and rare. In this patient, she had one pathognomonic (Gottron papules: erythematous papules with scale on the knuckles), and several characteristic (periungual erythema, capillary dropout with thrombosis) findings. In suspected DM cases, the recommended baseline laboratory tests include CK, aldolase, aspartate aminotransferase (AST) and lactate dehydrogenase (LDH).",
     "incorrect_rationales": {
@@ -42791,14 +42796,14 @@
     "pdf_num": 2040,
     "question": "A 36-year-old male presents to the dermatology clinic with the findings depicted in this image. He states that this is the only involved area, and he denies any other associated symptoms. Two 4 mm punch biopsies are performed, one from the affected area and one from the unaffected region. Which of the following histopathologic findings are most likely associated with in this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 303 of 1,559",
-      "B": "Peribulbar lymphocytic inflammation, dilated infundibula, and increased telogen count",
-      "C": "Spongiotic or psoriasiform epidermis, atrophic sebaceous glands, markedly elevated telogen count, and increased miniaturization",
-      "D": "Distorted follicular anatomy, perifollicular hemorrhage, and pigment casts",
-      "E": "Periadnexal lymphocytes, vacuolar interface, and increased mucin ? Peribulbar inflammation with plasma cells, increased miniaturization, and increased telogen count"
+      "A": "Peribulbar lymphocytic inflammation, dilated infundibula, and increased telogen count",
+      "B": "Spongiotic or psoriasiform epidermis, atrophic sebaceous glands, markedly elevated telogen count, and increased miniaturization",
+      "C": "Distorted follicular anatomy, perifollicular hemorrhage, and pigment casts",
+      "D": "Periadnexal lymphocytes, vacuolar interface, and increased mucin",
+      "E": "Peribulbar inflammation with plasma cells, increased miniaturization, and increased telogen count"
     },
-    "correct_answer": "B",
-    "correct_text": "Peribulbar lymphocytic inflammation, dilated infundibula, and increased\ntelogen count",
+    "correct_answer": "A",
+    "correct_text": "Peribulbar lymphocytic inflammation, dilated infundibula, and increased telogen count",
     "explanation": "The image, along with the vignette, describes alopecia areata (AA). AA can present as a localized area (in this case), the entire scalp (totalis), or the whole body (universalis). On physical exam, the scalp skin looks normal with “exclamation point” hair (tapering at proximal end) and nail pits can also be seen. Some autoimmune diseases can often be associated with AA including thyroid disease, vitiligo, diabetes, systemic lupus erythematosus, and myasthenia gravis. Biopsy shows peribulbar lymphocytic inflammation (“swarm of bees”), dilated infundibula, and increased telogen count. Biopsy technique is important when evaluating alopecia. For nonscarring conditions, obtain two 4 mm punch biopsies (one from unaffected area and one from affected region). An interesting fact about AA is that it targets mostly pigmented hair, giving the illusion of an increased number of white hairs with diffuse AA.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -44336,15 +44341,16 @@
   {
     "pdf_id": "DIR-GeneralD-00491",
     "pdf_num": 2114,
-    "question": "A 40-year-old female began to develop tumors in childhood and continued to form them in adulthood. The tumors arose from the proximal or lateral nail fold and occurred most commonly around the toenails. She developed subungual tumors that originated under the nail plate and longitudinal red",
+    "question": "A 40-year-old female began to develop tumors in childhood and continued to form them in adulthood. The tumors arose from the proximal or lateral nail fold and occurred most commonly around the toenails. She developed subungual tumors that originated under the nail plate and longitudinal red tumor. Which of the following is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 353 of 1,559",
-      "B": "streaks with proximal narrowing in the fingernails. Over time, the lesions led to longitudinal grooving and distortion of the nail plate without a visible",
-      "C": "tumor. Which of the following is the most likely diagnosis?",
-      "D": "Pachydermoperiostosis",
-      "E": "Tuberous sclerosis ? Neurofibromatosis ? Onychomycosis ? Multiple endocrine neoplasia, type I"
+      "A": "streaks with proximal narrowing in the fingernails. Over time, the lesions led to longitudinal grooving and distortion of the nail plate without a visible",
+      "B": "Pachydermoperiostosis",
+      "C": "Tuberous sclerosis",
+      "D": "Neurofibromatosis",
+      "E": "Onychomycosis",
+      "F": "Multiple endocrine neoplasia, type I"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Tuberous sclerosis",
     "explanation": "In tuberous sclerosis, ungual fibromas (Koenen tumors) begin to develop later in childhood and can continue to form throughout adulthood. Periungual fibromas arise from the proximal or lateral nail fold and occur most commonly around the toenails. In contrast, subungual fibromas that originate under the nail plate and longitudinal red streaks with proximal narrowing (“red comets”) favor the fingernails. In addition, lesions can lead to distortion of the nail plate (e.g., a longitudinal groove) without a visible tumor.",
     "incorrect_rationales": {
@@ -44424,14 +44430,14 @@
     "pdf_num": 2118,
     "question": "A 16-year-old male presents with the findings seen here. The lesions have been present for 5 months and are asymptomatic. Mother is concerned that they are not going away. What is the most appropriate treatment?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 356 of 1,559",
-      "B": "Topical calcineurin inhibitor",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 357 of 1,559",
-      "D": "Potent topical steroids",
-      "E": "Topical tretinoin ? Observation ? Oral acitretin"
+      "A": "Topical calcineurin inhibitor",
+      "B": "Potent topical steroids",
+      "C": "Topical tretinoin",
+      "D": "Observation",
+      "E": "Oral acitretin"
     },
-    "correct_answer": "E",
-    "correct_text": "Topical tretinoin ? Observation ? Oral acitretin",
+    "correct_answer": "D",
+    "correct_text": "Observation",
     "explanation": "Lichen nitidus, seen here, is a benign often self-resolving dermatosis. Treatment is not needed, particularly if asymptomatic, and observation is appropriate.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -44657,13 +44663,13 @@
     "pdf_num": 2129,
     "question": "A 62-year-old patient, previously healthy, presents to the emergency department with painful, pruritic, erythematous tense blisters and erosions affecting the trunk, arms, and legs, ears, and scalp; the lesions spare the face. This rash started 2 months ago, initially on the legs. Patient denies photosensitivity. An outside hospital dermatologist prescribed the patient 20 mg of daily prednisone, but the patient did not receive a definitive diagnosis. Based on the clinical images and symptoms, which of the following is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 364 of 1,559",
-      "B": "Pemphigus vulgaris (PV)",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 365 of 1,559",
-      "D": "Arthropod bite reaction",
-      "E": "Bullous pemphigoid ? Porphyria cutanea tarda (PCT) ? Dermatitis herpetiformis (DH)"
+      "A": "Pemphigus vulgaris (PV)",
+      "B": "Arthropod bite reaction",
+      "C": "Bullous pemphigoid",
+      "D": "Porphyria cutanea tarda (PCT)",
+      "E": "Dermatitis herpetiformis (DH)"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Bullous pemphigoid",
     "explanation": "Bullous pemphigoid is the correct answer. The patient has bullous pemphigoid (BP), the most common autoimmune blistering skin disease that favors the elderly. Incidence of BP increases significantly with age, with many being older than 70 years of age. The clinical features include tense bullae on inflamed skin with pruritus being the most common complaint. BP can sometimes present as pruritic non-bullous urticarial or eczematous-like plaques; therefore, in elderly patients with new-onset itchy rash, BP should be considered in the differential. Most common affected sites are the trunk, proximal upper and lower extremities; oral and ocular lesions are less common.",
     "incorrect_rationales": {
@@ -45395,13 +45401,13 @@
     "pdf_num": 2164,
     "question": "Which of the following is the most appropriate initial treatment for the condition shown in the images?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 390 of 1,559",
-      "B": "Intralesional steroid injections",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 391 of 1,559",
-      "D": "2.4 million units IM benzathine penicillin",
-      "E": "Ruxolitinib ? Methotrexate ? Treatment for underlying lymphoma"
+      "A": "Intralesional steroid injections",
+      "B": "2.4 million units IM benzathine penicillin",
+      "C": "Ruxolitinib",
+      "D": "Methotrexate",
+      "E": "Treatment for underlying lymphoma"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Intralesional steroid injections",
     "explanation": "These images demonstrate \"exclamation point\" hairs of alopecia areata. Intralesional injection with low-potency steroids is a first-line treatment option.",
     "incorrect_rationales": {},
@@ -45522,13 +45528,13 @@
     "pdf_num": 2170,
     "question": "What is the genetic defect of this syndrome?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 394 of 1,559",
-      "B": "Transglutaminase 1 (TGM1).",
-      "C": "ABCA12 gene",
-      "D": "GJB2 (connexin 26) gene.",
-      "E": "Steroid sulfatase (STS) gene ? Profilaggrin gene"
+      "A": "Transglutaminase 1 (TGM1).",
+      "B": "ABCA12 gene",
+      "C": "GJB2 (connexin 26) gene.",
+      "D": "Steroid sulfatase (STS) gene",
+      "E": "Profilaggrin gene"
     },
-    "correct_answer": "C",
+    "correct_answer": "B",
     "correct_text": "ABCA12 gene",
     "explanation": "Mutations in the ABCA12 gene cause harlequin ichthyosis. X-linked ichthyosis (XLI) caused by a steroid sulfatase (STS) deficiency. Keratitis-ichthyosis-deafness syndrome is caused by a mutation in the GJB2 (connexin 26) gene. Ichthyosis vulgaris is caused by a defect in profilaggrin gene and lamellar ichthyosis involves a mutation in the gene for transglutaminase 1 (TGM1).",
     "incorrect_rationales": {},
@@ -45626,13 +45632,13 @@
     "pdf_num": 2175,
     "question": "The best diagnosis of this type of cicatricial alopecia shown in attached image is:",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 397 of 1,559",
-      "B": "Lichen planopilaris",
-      "C": "Alopecia mucinosa",
-      "D": "Pseudopelade of Brocq",
-      "E": "Central centrifugal cicatricial alopecia ? Chronic cutaneous lupus erythematosus"
+      "A": "Lichen planopilaris",
+      "B": "Alopecia mucinosa",
+      "C": "Pseudopelade of Brocq",
+      "D": "Central centrifugal cicatricial alopecia",
+      "E": "Chronic cutaneous lupus erythematosus"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Central centrifugal cicatricial alopecia",
     "explanation": "Central centrifugal cicatricial alopecia is a new term adopted by the NAHRS consensus group to encompass the terms hot comb alopecia, follicular degeneration syndrome, pseudopelade in African Americans, and central elliptical pseudopelade in Caucasians.In general, it is a condition that presents with flesh-colored, noninflammatory cicatricial alopecia of the central scalp that, over time, enlarges centrifugally. Pseudopelade of Brocq can mimic alopecia areata, lichen planopilaris, and DLE. In addition, central centrifugal cicatricial alopecia (CCCA), a noninflammatory condition of the central scalp that is seen primarily in black women. CCCA usually presents as a symmetric patch, unlike the irregularly bordered, typically atrophic plaques seen in classic pseudopelade of Brocq",
     "incorrect_rationales": {
@@ -46165,16 +46171,16 @@
   {
     "pdf_id": "DIR-GeneralD-00577",
     "pdf_num": 2200,
-    "question": "A 67-year-old male presented to dermatology clinic with clinical findings as seen in the photo on his bilateral hands. He thinks sun exposure makes his rash flare. It is also on his face and shoulders. His scalp has erythema, scale, and itch. He has also noted difficulty with actions such as standing",
+    "question": "A 67-year-old male presented to dermatology clinic with clinical findings as seen in the photo on his bilateral hands. He thinks sun exposure makes his rash flare. It is also on his face and shoulders. His scalp has erythema, scale, and itch. He has also noted difficulty with actions such as standing up from a chair as well as hemoptysis over the past 3 months. Detection of autoantibodies against which of the following incurs the highest risk of malignancy?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 419 of 1,559",
-      "B": "up from a chair as well as hemoptysis over the past 3 months. Detection of autoantibodies against which of the following incurs the highest risk of",
-      "C": "malignancy?",
-      "D": "NXP2",
-      "E": "HMGCR ? Jo-1 ? SAE ? TIF1-gamma"
+      "A": "NXP2",
+      "B": "HMGCR",
+      "C": "Jo-1",
+      "D": "SAE",
+      "E": "TIF1-gamma"
     },
     "correct_answer": "E",
-    "correct_text": "HMGCR ? Jo-1 ? SAE ? TIF1-gamma",
+    "correct_text": "TIF1-gamma",
     "explanation": "TIF1-γ is known to act as a tumor suppressor or promoter in different cancers. In anti-TIF1-γ cancer-associated dermatomyositis, cancer is hypothesized to be the trigger for dermatomyositis. The most frequently associated cancers are ovarian, lung, colorectal, and pancreatic. Given this strong association, yearly cancer screening is recommended for up to 5 years after diagnosis.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -47758,13 +47764,13 @@
     "pdf_num": 2276,
     "question": "This 32-year-old man has two sisters each with melanoma, and his father died from metastatic pancreatic cancer. You suspect a germline mutation in which of the following genes?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 468 of 1,559",
-      "B": "TERT",
-      "C": "BAP1",
-      "D": "PTCH",
-      "E": "CDKN2A ? MITF"
+      "A": "TERT",
+      "B": "BAP1",
+      "C": "PTCH",
+      "D": "CDKN2A",
+      "E": "MITF"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "CDKN2A",
     "explanation": "Malignant melanoma is considered the most lethal skin cancer if it is not detected and treated during its early stages. About 10% of melanoma patients report a family history of melanoma; however, individuals with features of true hereditary melanoma (ie, unilateral lineage, multigenerational, multiple primary lesions, and early onset of disease) are in fact quite rare. Although many new loci have been implicated in hereditary melanoma, CDKN2A mutations remain the most common. Familial melanoma in the presence of multiple atypical nevi should raise suspicion for a germline CDKN2A mutation. These patients have a high risk of developing multiple primary melanomas and internal organ malignancies, especially pancreatic cancer; therefore, a multidisciplinary approach is necessary in many cases. The value of dermoscopic examination and total body photography performed at regular intervals has been suggested by a number of studies, and should therefore be considered for these patients and their first-degree relatives. In addition, genetic counseling with the possibility of testing can be a valuable adjunct for familial melanoma patients. This must be performed with care, however, and only by qualified individuals trained in cancer risk analysis.",
     "incorrect_rationales": {
@@ -47844,13 +47850,13 @@
     "pdf_num": 2280,
     "question": "What is the best treatment for this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 471 of 1,559",
-      "B": "Photoprotection",
-      "C": "Aggressive chemical peels",
-      "D": "Dermabrasion",
-      "E": "Hydroquinone ? Tanning beds"
+      "A": "Photoprotection",
+      "B": "Aggressive chemical peels",
+      "C": "Dermabrasion",
+      "D": "Hydroquinone",
+      "E": "Tanning beds"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Photoprotection",
     "explanation": "This is melasma and the best treatment option is aggressive photoprotection with hats and sunscreen. Hydroquinone may work if it is only epidermal melasma. Melasma is made worse by any irritation of the skin therefore aggressive procedures and treatments are typically not recommended.",
     "incorrect_rationales": {},
@@ -49475,11 +49481,11 @@
     "pdf_num": 2357,
     "question": "A 62-year-old male presents with a receding hairline and decreased hair density on the superior portion of the scalp. He reports a positive family history for a similar pattern of hair loss. What is the most common type of hair loss this patient is presently experiencing based on his history and physical examination?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 527 of 1,559",
-      "B": "Cicatricial centrifugal alopecia",
-      "C": "Lichen planopilaris",
-      "D": "Telogen effluvium",
-      "E": "Systemic lupus erythematosus ? Androgenetic alopecia"
+      "A": "Cicatricial centrifugal alopecia",
+      "B": "Lichen planopilaris",
+      "C": "Telogen effluvium",
+      "D": "Systemic lupus erythematosus",
+      "E": "Androgenetic alopecia"
     },
     "correct_answer": "E",
     "correct_text": "Androgenetic alopecia",
@@ -50074,11 +50080,11 @@
     "pdf_num": 2386,
     "question": "A 49-year-old male presents with the progressive development of the skin findings pictured on his face, neck, and forearms. He reports mild pruritus of the lesions. He also notes difficulty forming a fist due to \"tightness\" of his fingers. Laboratory investigation reveals normal renal function, normal complete blood count, normal serum calcium and parathyroid hormone, and paraproteinemia of the IgGλ type. What is the most likely associated malignancy in this patient?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 546 of 1,559",
-      "B": "Ovarian cancer",
-      "C": "Small cell lung carcinoma",
-      "D": "Hodgkin's lymphoma",
-      "E": "Leukemia ? Multiple myeloma"
+      "A": "Ovarian cancer",
+      "B": "Small cell lung carcinoma",
+      "C": "Hodgkin's lymphoma",
+      "D": "Leukemia",
+      "E": "Multiple myeloma"
     },
     "correct_answer": "E",
     "correct_text": "Multiple myeloma",
@@ -50788,13 +50794,13 @@
     "pdf_num": 2420,
     "question": "What is deposited in the upper dermis in this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 570 of 1,559",
-      "B": "Transthyretin",
-      "C": "AA",
-      "D": "AK",
-      "E": "AL ? Beta2-microglobulin"
+      "A": "Transthyretin",
+      "B": "AA",
+      "C": "AK",
+      "D": "AL",
+      "E": "Beta2-microglobulin"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "AK",
     "explanation": "Lichen amyloidosis Also called papular amyloidosis Lichen amyloidosis is the most common form of primary localised cutaneous amyloidosis. It presents as an intensely itchy rash on the shins, thighs, feet, and forearms. Lesions consist of multiple raised spots (papules) that are scaly and red/brown. Papules may coalesce into thickened plaques. It appears to be more common in people of Chinese descent and males. It most often occurs in people 50–60 years of age. It may be a variant of lichen simplex.",
     "incorrect_rationales": {},
@@ -50811,13 +50817,13 @@
     "pdf_num": 2421,
     "question": "A 45-year-old female presents to the dermatology clinic with the eruption depicted in the image. Upon further examination, periungal telangiectasias with frayed cuticles are also noted. She endorses muscle weakness and pain. Which autoantibody, specific to this condition, renders a good prognosis when compared to the others?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 571 of 1,559",
-      "B": "Anti-ku",
-      "C": "Anti-MDA-5",
-      "D": "Anti-Mi-2",
-      "E": "Anti-Jo-1 ? Anti-TIF-1gamma"
+      "A": "Anti-ku",
+      "B": "Anti-MDA-5",
+      "C": "Anti-Mi-2",
+      "D": "Anti-Jo-1",
+      "E": "Anti-TIF-1gamma"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Anti-Mi-2",
     "explanation": "The image, along with the vignette, describes Dermatomyositis (DM). The image in the vignette shows Gottron's papules which are flat-topped, erythematous to violaceous papules over the metacarpophalangeal (MCP), proximal interphalangeal (PIP), and distal interphalangeal (DIP). Other cutaneous findings that can be seen in DM include swelling and violaceous to erythematous erythema of the periorbital skin, periungal telangiectasias with frayed cuticles, photosensitivity, \"Mechanic’s hands\" (hyperkeratosis, scaling, fissuring, and hyperpigmentation), Raynaud's phenomenon, \"shawl sign\" (poikiloderma of chest/back or lateral thighs respectively), and erythematous or urticarial patches/plaques. Muscle findings are also associated with DM, and cutaneous findings can precede muscle symptoms by 2-3 months. There are several myositis-specific autoantibodies including: ANA, Anti-Mi-2, Anti-TIF-1gamma, Anti-Jo-1, Anti-MDA5, Anti-Ku, and Anti-signal recognition particle (SRP). Out of these autoantibodies, anti-Mi-2 has a good prognosis.",
     "incorrect_rationales": {},
@@ -52862,14 +52868,14 @@
     "pdf_num": 2518,
     "question": "Which ocular finding may be seen in a patient with this skin condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 642 of 1,559",
-      "B": "Pingueculae",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 643 of 1,559",
-      "D": "Congenital hypertrophy of the retinal pigmented epithelium",
-      "E": "Retinitis pigmentosa ? Angioid streaks ? Comma-shaped corneal opacities"
+      "A": "Pingueculae",
+      "B": "Congenital hypertrophy of the retinal pigmented epithelium",
+      "C": "Retinitis pigmentosa",
+      "D": "Angioid streaks",
+      "E": "Comma-shaped corneal opacities"
     },
-    "correct_answer": "E",
-    "correct_text": "Retinitis pigmentosa ? Angioid streaks ? Comma-shaped corneal opacities",
+    "correct_answer": "D",
+    "correct_text": "Angioid streaks",
     "explanation": "Pseudoxanthoma elasticum (PXE) is caused by a genetic mutation in ABCC6. PXE can affect the skin, eyes, and cardiovascular tissue. The most common manifestation is shown in the photo, which contributes to the diseases name. This “plucked chicken skin” appearance develops most commonly over the lateral neck but also occurs in other flexural areas. Yellow-hued papules develop in the teens to 20s and coalesce to form cobblestone-like plaques (yellow papules = pseudoxanthoma). The disease causes calcification and distortion of elastic fibers (elasticum), which can be seen upon biopsy of skin lesions and highlighted by Verhoeff-van Gieson staining (calcium stain). Damage to elastic fibers in vasculature can lead to: renal hypertension, claudication, myocardial infarction, GI hemorrhage, choroidal neovascularization and hemorrhage (the latter two can lead to blindness). Angioid streaks develop when a rupture occurs in Bruch's membrane. Other conditions that are associated with angioid streaks: Ehlers-Danlos, Paget’s disease of the bone, sickle cell disease, neurofibromatosis, and others.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -53242,13 +53248,13 @@
     "pdf_num": 2536,
     "question": "A 60-year-old African American female presents with hair loss that begins at the mid-scalp and vertex and extends outward in a centripetal pattern. She reports an extensive history of haircare practices such as tight extensions, weaves, and the use of hot combs and relaxers for decades. Which of the following findings on histopathology is most likely to be seen with this patient’s hair condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 654 of 1,559",
-      "B": "Lack of fibrosis",
-      "C": "Inflammation around the hair bulb",
-      "D": "Eosinophilic infiltrate",
-      "E": "Premature desquamation or peeling of the inner root sheath ? Lack of scarring"
+      "A": "Lack of fibrosis",
+      "B": "Inflammation around the hair bulb",
+      "C": "Eosinophilic infiltrate",
+      "D": "Premature desquamation or peeling of the inner root sheath",
+      "E": "Lack of scarring"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Premature desquamation or peeling of the inner root sheath",
     "explanation": "Diagnosis of Central Centrifugal Cicatricial Alopecia (CCCA) is based on clinical features, scalp biopsy, and exclusion of other hair loss disorders. Scalp biopsy should be taken from an active edge of a patch of alopecia rather than the center of a scarred area. Histopathology reveals a lymphocytic inflammatory infiltrate (inflammatory cells) around the infundibulum (base of the hair follicle), and fibrosis (scarring). Premature desquamation (peeling) of the inner root sheath is a common feature.",
     "incorrect_rationales": {
@@ -53390,14 +53396,14 @@
     "pdf_num": 2543,
     "question": "A 40-year-old man presents with a chronic pruritic eruption. Which of the following is true?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 659 of 1,559",
-      "B": "Associated with a lymphoproliferative disorder",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 660 of 1,559",
-      "D": "Apple-green birefringence on PAS stain",
-      "E": "Improves after treating underlying infection ? Stains PAS positive and diastase resistant ? Demonstrates amyloid deposition predominantly around blood vessels"
+      "A": "Associated with a lymphoproliferative disorder",
+      "B": "Apple-green birefringence on PAS stain",
+      "C": "Improves after treating underlying infection",
+      "D": "Stains PAS positive and diastase resistant",
+      "E": "Demonstrates amyloid deposition predominantly around blood vessels"
     },
-    "correct_answer": "E",
-    "correct_text": "Improves after treating underlying infection ? Stains PAS positive and\ndiastase resistant ? Demonstrates amyloid deposition predominantly around blood vessels",
+    "correct_answer": "D",
+    "correct_text": "Stains PAS positive and diastase resistant",
     "explanation": "Lichen amyloid is PAS positive and diastase resistant.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -54129,13 +54135,13 @@
     "pdf_num": 2578,
     "question": "What percentage of patients with this histology will develop systemic lupus erythematosus?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 684 of 1,559",
-      "B": "file:///tmp/Quiz_Questions_1778874819.html Page 685 of 1,559",
-      "C": "6-21%",
-      "D": "0%",
-      "E": "43-57% ? 90-99% ? 69-81%"
+      "A": "6-21%",
+      "B": "0%",
+      "C": "43-57%",
+      "D": "90-99%",
+      "E": "69-81%"
     },
-    "correct_answer": "C",
+    "correct_answer": "A",
     "correct_text": "6-21%",
     "explanation": "The features of discoid lupus erythematosus appear in a time-dependent fashion. Biopsies of acute lupus erythematosus show only vacuolar interface dermatitis. DIF will usually be negative at this stage. Subacute lesions of lupus erythematosus show vacuolar interface dermatitis, hyperkeratosis, and follicular plugging, as well as a variable dermal infiltrate. DIF is positive in about one-third of cases. Well-established discoid lesions (of at least 3 months' duration) typically demonstrate strong DIF. Histologically, established discoid lupus erythematosus lesions are characterized by hyperkeratosis, follicular plugging, vacuolar interface dermatitis, basement membrane zone thickening, both a patchy superficial and deep perivascular and periadnexal lymphoid infiltrate, and interstitial mucin. Underlying lupus panniculitis may be present. In a systematic literature review, the risk of progression from DLE to SLE ranged from 6% to 21%. Widespread DLE lesions, arthralgia, nail changes, anemia, leukopenia, high erythrocyte sedimentation rates, and high titers of antinuclear antibodies (ANAs) were identified as potential risk factors for progression from DLE to SLE.",
     "incorrect_rationales": {},
@@ -56423,11 +56429,11 @@
     "pdf_num": 2687,
     "question": "A 32-year-old woman presents with a firm, minimally elevated papule that measures 5 mm in diameter and is hyperpigmented. On palpation, the lesion seems attached to subcutaneous tissue. On dermoscopy, a central white scar-like patch surrounded by a delicate pigment network is observed. Which of the following has not been found to be associated with multiple dermatofibromas?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 759 of 1,559",
-      "B": "Arthropod bites",
-      "C": "HIV infection",
-      "D": "Atopic dermatitis",
-      "E": "Systemic lupus erythematosus ? Melanocytic nevi"
+      "A": "Arthropod bites",
+      "B": "HIV infection",
+      "C": "Atopic dermatitis",
+      "D": "Systemic lupus erythematosus",
+      "E": "Melanocytic nevi"
     },
     "correct_answer": "E",
     "correct_text": "Melanocytic nevi",
@@ -56747,14 +56753,14 @@
     "pdf_num": 2702,
     "question": "A 35-year-old male presents with painful, erosive oral lesions, accompanied by multiple flaccid bullae on his trunk. Histopathology reveals intraepidermal acantholysis, and direct immunofluorescence shows intercellular IgG deposits in the epidermis. Which of the following is the most appropriate initial treatment for this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 771 of 1,559",
-      "B": "Doxycycline",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 772 of 1,559",
-      "D": "Methotrexate",
-      "E": "Topical calcineurin inhibitors ? Dapsone ? Systemic corticosteroids"
+      "A": "Doxycycline",
+      "B": "Methotrexate",
+      "C": "Topical calcineurin inhibitors",
+      "D": "Dapsone",
+      "E": "Systemic corticosteroids"
     },
     "correct_answer": "E",
-    "correct_text": "Topical calcineurin inhibitors ? Dapsone ? Systemic corticosteroids",
+    "correct_text": "Systemic corticosteroids",
     "explanation": "This patient’s presentation is characteristic of pemphigus vulgaris, an autoimmune blistering disorder with intraepidermal acantholysis and IgG deposits on direct immunofluorescence. The initial treatment of choice for pemphigus vulgaris is systemic corticosteroids to rapidly control inflammation and halt disease progression.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -57942,14 +57948,14 @@
     "pdf_num": 2760,
     "question": "A patient in your occupational dermatology clinic presents with mottled hyperpigmentation with areas of hypopigmentation and hair loss. She has a history of numerous SCCis (squamous cell carcinomas in situ). Upon further examination, she has many symmetric, yellow, punctate corn- like papules on both palms (shown in image). The patient likely was chronically exposed to which of the following?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 810 of 1,559",
-      "B": "Bismuth",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 811 of 1,559",
-      "D": "Lead",
-      "E": "Mercury ? Arsenic ? Chromium"
+      "A": "Bismuth",
+      "B": "Lead",
+      "C": "Mercury",
+      "D": "Arsenic",
+      "E": "Chromium"
     },
-    "correct_answer": "E",
-    "correct_text": "Mercury ? Arsenic ? Chromium",
+    "correct_answer": "D",
+    "correct_text": "Arsenic",
     "explanation": "Chronic arsenic exposure can occur through contaminated drinking water or occupational exposure. It is characterized by mottled hyperpigmentation with areas of hypopigmentation, keratoses on the palms and soles and other sites, alopecia, and multiple non-melanoma skin cancers, particularly Bowen’s disease (SCCis). Arsenical keratoses are precancerous papules on the palms and soles that are symmetric, yellow and punctate. They measure 2-10 mm in size and favor the thenar and hypothenar eminences, distal palms, lateral fingers, dorsal aspect of the interphalangeal joints, and weight-bearing plantar surfaces. They rarely occur on the trunk, proximal extremities, eyelids and genitalia and may coalesce into plaques.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -58858,11 +58864,11 @@
     "pdf_num": 2804,
     "question": "A 52-year-old, previously healthy patient presents with sudden onset painful violaceous papules and plaques on the arms and legs. Denied preceding illness, including upper respiratory or gastrointestinal complaints. Other pertinent positive reviews of system findings included fever (Tmax of 102F), myalgias, arthralgias, lethargy, and painful skin lesions. The patient is not hypotensive, diaphoretic, or tachycardic. No family history of similar illness, and the patient denied recent travel or sick contacts. Blood cultures are no growth to date. Based on the history and clinical photos, which of the following treatments is most appropriate?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 838 of 1,559",
-      "B": "Colchicine",
-      "C": "Itraconazole",
-      "D": "Vancomycin",
-      "E": "Hydroxychloroquine ? Systemic corticosteroids"
+      "A": "Colchicine",
+      "B": "Itraconazole",
+      "C": "Vancomycin",
+      "D": "Hydroxychloroquine",
+      "E": "Systemic corticosteroids"
     },
     "correct_answer": "E",
     "correct_text": "Systemic corticosteroids",
@@ -58883,13 +58889,13 @@
     "pdf_num": 2805,
     "question": "A 13-year-old boy presents with skin lesions that flare during the spring and summer, especially in temperate climates. Phototesting to both UVA and UVB is abnormal, suggesting that his skin lesions can be provoked by UVB and UVA. This example of phototesting to UVB or UVA is abnormal in approximately two-thirds of patients with which condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 840 of 1,559",
-      "B": "Reticular erythematous mucinosis",
-      "C": "Grover disease",
-      "D": "Hartnup disease",
-      "E": "Actinic prurigo ? Photorecall reaction to methotrexate"
+      "A": "Reticular erythematous mucinosis",
+      "B": "Grover disease",
+      "C": "Hartnup disease",
+      "D": "Actinic prurigo",
+      "E": "Photorecall reaction to methotrexate"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Actinic prurigo",
     "explanation": "Photoaggravated dermatoses are conditions in which the primary underlying disease is not caused, but rather exacerbated, by sun exposure, sometimes severely. Phototesting is usually normal, with lupus erythematosus being the exception. Photoaggravated dermatoses include: Hartnup disease, reticular erythematous mucinosis, and Grover disease. Actinic prurigo is triggered by UVR exposure and therefore typically flares during spring and summer, especially in temperate climates. In actinic prurigo, phototesting results are abnormal in approximately two-thirds of patients and cutaneous lesions can be provoked by UVB or UVA. Phototesting in patients taking methotrexate is normal.",
     "incorrect_rationales": {
@@ -59180,15 +59186,16 @@
   {
     "pdf_id": "DIR-GeneralD-01196",
     "pdf_num": 2819,
-    "question": "A healthy 50-year-old patient presents with three-month history of progressive hair loss and scalp redness with associated pruritus. On closer scalp examination, there is perifollicular erythema, inflammation, and scaling. There appears to be loss of follicular openings in the erythematous patch. In addition, erythematous and skin-colored papules are present throughout the forehead. Of note, the eyebrows are preserved. The patient denied",
+    "question": "A healthy 50-year-old patient presents with three-month history of progressive hair loss and scalp redness with associated pruritus. On closer scalp examination, there is perifollicular erythema, inflammation, and scaling. There appears to be loss of follicular openings in the erythematous patch. In addition, erythematous and skin-colored papules are present throughout the forehead. Of note, the eyebrows are preserved. The patient denied loss is most consistent with which diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 850 of 1,559",
-      "B": "family history premature hair loss and no preceding illness or stressors could be elicited. Based on the history and clinical pictures, this type of hair",
-      "C": "loss is most consistent with which diagnosis?",
-      "D": "Telogen effluvium (TE)",
-      "E": "Frontal fibrosing alopecia (FFA) ? Alopecia areata (AA) ? Traction alopecia (TA) ? Androgenetic alopecia (AnA)"
+      "A": "family history premature hair loss and no preceding illness or stressors could be elicited. Based on the history and clinical pictures, this type of hair",
+      "B": "Telogen effluvium (TE)",
+      "C": "Frontal fibrosing alopecia (FFA)",
+      "D": "Alopecia areata (AA)",
+      "E": "Traction alopecia (TA)",
+      "F": "Androgenetic alopecia (AnA)"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Frontal fibrosing alopecia (FFA)",
     "explanation": "The correct answer is FFA. When examining a patient with hair loss, one must determine whether there is evidence of scarring. This patient has decreased number of follicular openings in the affected areas with active disease as suggested by the scalp redness. The loss of follicular openings suggest a scarring alopecia. FFA is a scarring alopecia that affects the frontotemporal hairline and eyebrows. Other helpful clues to diagnose FFA include isolated ‘lonely’ hairs in the affected areas with erythema and scale surrounding hair follicles; conversely, scarred areas usually have less to absence of erythema and scale.",
     "incorrect_rationales": {
@@ -60985,7 +60992,8 @@
       "B": "5 mm to fascia",
       "C": "3 cm to hypodermis",
       "D": "1-2 cm to fascia",
-      "E": "5 mm to hypodermis ? 3 cm to fascia"
+      "E": "5 mm to hypodermis",
+      "F": "3 cm to fascia"
     },
     "correct_answer": "D",
     "correct_text": "1-2 cm to fascia",
@@ -63287,13 +63295,13 @@
     "pdf_num": 3016,
     "question": "A 5-year-old boy is brought to clinic by his mother for a new rash that started 4 days after they returned from a camping trip in Kentucky. Everyone in the family ended up with a tick bite, and they have removed them all. He had had a fever, headache, abdominal pain and general aches accompanying the rash. The rash pictured started on the palms, wrists, and ankle and has now spread to the trunk. What is the most appropriate treatment for this patient?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 981 of 1,559",
-      "B": "30 mg/kg body weight amoxicillin per day for 2 weeks",
-      "C": "40mg/kg body weight of cephalexin per day for 3 days",
-      "D": "2.2 mg/kg body weight of doxycycline twice daily for 5-7 days",
-      "E": "8 mg/kg body weight of trimethaprim and 40 mg/kg sulfamethoxazole per day for 10 days ? 25 mg/kg body weight of chloramphenicol every twelve hours for 2 days"
+      "A": "30 mg/kg body weight amoxicillin per day for 2 weeks",
+      "B": "40mg/kg body weight of cephalexin per day for 3 days",
+      "C": "2.2 mg/kg body weight of doxycycline twice daily for 5-7 days",
+      "D": "8 mg/kg body weight of trimethaprim and 40 mg/kg sulfamethoxazole per day for 10 days",
+      "E": "25 mg/kg body weight of chloramphenicol every twelve hours for 2 days"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "2.2 mg/kg body weight of doxycycline twice daily for 5-7 days",
     "explanation": "The case describes Rocky Mountain Spotted Fever, caused by Rickettsia ricketsii, transmitted by Dermacentor variabilis in the Easters US and D. andersoni in the Western US. The CDC and American Academy of Pediatrics both recommend treatment with doxycycline for all patients, including children less than 8-years-old and pregnant women. The recommended dose of children under 45 kg (100lbs) is 2.2 mg/kg body weight given twice a day for at least 5-7 days. Studies have shown that short courses of doxycycline (5-10 days) didn’t stain unerupted teeth.",
     "incorrect_rationales": {},
@@ -64697,13 +64705,13 @@
     "pdf_num": 3083,
     "question": "The etiology of this infection falls into what category?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,030 of 1,559",
-      "B": "Protozoa",
-      "C": "Bacteria",
-      "D": "Amoeba",
-      "E": "Fungus ? Spirochete"
+      "A": "Protozoa",
+      "B": "Bacteria",
+      "C": "Amoeba",
+      "D": "Fungus",
+      "E": "Spirochete"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Protozoa",
     "explanation": "This is granulomatous leishmania. Leishmania is a protozoa and is located within the macrophages. It is 2-3 microns in size and has a kinetoplast. It rims the macrophages.",
     "incorrect_rationales": {},
@@ -65208,13 +65216,13 @@
     "pdf_num": 3107,
     "question": "A 48-year-old woman with HIV infection presents to the dermatologist for a skin examination. She has had multiple lesions on her legs (see image), which she was previously told were benign, but she is now more bothered by them and seeks treatment. On examination, she has multiple red- brown papules on her ankles and anterior legs bilaterally. A biopsy of one of the lesions is performed, and representative histopathology is shown. Which of the following is the most appropriate next step in the management of this patient?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,048 of 1,559",
-      "B": "Blood cultures",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,049 of 1,559",
-      "D": "Azithromycin",
-      "E": "Cryosurgery ? Bleomycin injection ? Shave excision"
+      "A": "Blood cultures",
+      "B": "Azithromycin",
+      "C": "Cryosurgery",
+      "D": "Bleomycin injection",
+      "E": "Shave excision"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Blood cultures",
     "explanation": "Given the pathologic findings, HIV infection and the red-brown lesions are most consistent with a diagnosis of bacillary angiomatosis. Treatment of bacillary angiomatosis is dependent on the severity of the disease and the status of bacteremia. As such, obtaining blood cultures is the most appropriate next step in this case.",
     "incorrect_rationales": {},
@@ -65465,16 +65473,16 @@
   {
     "pdf_id": "DIR-GeneralD-01496",
     "pdf_num": 3119,
-    "question": "file:///tmp/Quiz_Questions_1778874819.html Page 1,056 of 1,559",
+    "question": "A 33-year-old man presents with multiple follicular papules on the chin and neck. A biopsy of one of the lesions is performed, which is shown. Further evaluation of the patient should involve which of the following additional tests?",
     "choices": {
-      "A": "A 33-year-old man presents with multiple follicular papules on the chin and neck. A biopsy of one of the lesions is performed, which is shown.",
-      "B": "Further evaluation of the patient should involve which of the following additional tests?",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,057 of 1,559",
-      "D": "Hepatitis testing",
-      "E": "Serum androgen level ? HIV testing ? Renal function testing ? Bone densitometry testing"
+      "A": "Hepatitis testing",
+      "B": "Serum androgen level",
+      "C": "HIV testing",
+      "D": "Renal function testing",
+      "E": "Bone densitometry testing"
     },
-    "correct_answer": "E",
-    "correct_text": "Serum androgen level ? HIV testing ? Renal function testing ? Bone\ndensitometry testing",
+    "correct_answer": "C",
+    "correct_text": "HIV testing",
     "explanation": "The presentation and pathology are consistent with eosinophilic pustular folliculitis. This condition is associated with HIV, which requires further evaluation. It is associated with other types of immunodeficiency, so further testing may be necessary beyond this depending on the results of HIV testing.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -65511,13 +65519,13 @@
     "pdf_num": 3121,
     "question": "A 65-year-old male patient with a history of chronic sun exposure presents with the lesion pictured that has developed over the past year. The histopathological findings are notable for enlarged keratinocytes infiltrating into the dermis. What type of mutation is most commonly seen in the pathogenesis of this tumor?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,058 of 1,559",
-      "B": "Pyrimidine dimer",
-      "C": "8-oxoGuanine",
-      "D": "Termination",
-      "E": "Transition ? Transversion"
+      "A": "Pyrimidine dimer",
+      "B": "8-oxoGuanine",
+      "C": "Termination",
+      "D": "Transition",
+      "E": "Transversion"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Transition",
     "explanation": "The diagnosis in this case is squamous cell carcinoma which is most commonly due to chronic sun exposure. UV light produces DNA damage that, if unrepaired, can cause a mutation via base substitution due to mispairing during S phase of the cell cycle. Pyrimidine dimers are formed when 2 adjacent pyrimidines are fused. If uncorrected prior to replication, UV light mainly lead to Cytosine (C) → Thymine (T) transitions which are also known as UV signature mutations.",
     "incorrect_rationales": {
@@ -66882,13 +66890,13 @@
     "pdf_num": 3186,
     "question": "A 26-year-old woman presents to the clinic for a new rash that started 7 days after a hiking trip in the mountains located in North Carolina. Three days prior to the rash, she had a fever, nausea, and muscle pain. Her rash appears as pictured. It started on the wrists and ankles and has now spread to the trunk, arms, and legs. What transmits the vector for this illness?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,100 of 1,559",
-      "B": "Dermacentor variabilis",
-      "C": "Ambylomma americanum",
-      "D": "Ixodes pacificus",
-      "E": "Ixodes cookie ? Ixodes scapularis"
+      "A": "Dermacentor variabilis",
+      "B": "Ambylomma americanum",
+      "C": "Ixodes pacificus",
+      "D": "Ixodes cookie",
+      "E": "Ixodes scapularis"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Dermacentor variabilis",
     "explanation": "The case describes Rocky Mountain Spotted Fever. It is caused by the bacteria Rickettsia ricketsii and is transmitted by Dermacentor variabilis in the Eastern USA. Dermacentor andersoni found in the Western USA, and Rhipicephalus sangunineus found in the Southwest USA, may also transmit RMSF.",
     "incorrect_rationales": {},
@@ -67037,13 +67045,13 @@
     "pdf_num": 3193,
     "question": "A 60-year-old male patient on dialysis develops a fixed livedo reticularis which is firm to the touch. The areas become increasingly violaceous and purpuric, eventually bullous and necrotic. The patient also similar lesions on his abdomen, buttocks and thighs. He complains of severe pain, and requires analgesia for control. What is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,106 of 1,559",
-      "B": "Calciphylaxis",
-      "C": "Livedo racemosa",
-      "D": "Disseminated intravascular coagulation",
-      "E": "Cryoglobulinemia ? Hematoma"
+      "A": "Calciphylaxis",
+      "B": "Livedo racemosa",
+      "C": "Disseminated intravascular coagulation",
+      "D": "Cryoglobulinemia",
+      "E": "Hematoma"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Calciphylaxis",
     "explanation": "Calciphylaxis begins as fixed livedo reticularis (livedo racemosa), which is frequently firm or hard to the touch. Areas within the livedo become increasingly violaceous and eventually purpuric, bullous, and necrotic. Affected tissue has reduced oxygenation. Lesions affect the legs below the knees in 90% of patients. More proximal lesions and those of the fatty areas of the thighs, buttocks, and abdomen occur in about two-thirds. Severe pain is a cardinal feature of calciphylaxis, often requiring narcotic analgesia for control.",
     "incorrect_rationales": {},
@@ -67226,13 +67234,13 @@
     "pdf_num": 3202,
     "question": "A 24-year-old male presents with the findings seen here. The phenomenon seen on the patient’s arm is seen in many diagnoses in dermatology. The linearity of the dermatosis suggests which phenomenon?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,114 of 1,559",
-      "B": "Koebnerization",
-      "C": "Phototoxic eruption",
-      "D": "Allergic contact dermatitis",
-      "E": "Pathergy ? Malingering"
+      "A": "Koebnerization",
+      "B": "Phototoxic eruption",
+      "C": "Allergic contact dermatitis",
+      "D": "Pathergy",
+      "E": "Malingering"
     },
-    "correct_answer": "B",
+    "correct_answer": "A",
     "correct_text": "Koebnerization",
     "explanation": "Koebnerization is seen in several skin conditions including lichen nitidus, seen here. It is also referred to as an isomorphic response. The skin condition can grow within areas of trauma, as seen by the linearity and nearby scratches in this photo.",
     "incorrect_rationales": {},
@@ -68215,14 +68223,14 @@
     "pdf_num": 3249,
     "question": "These lesions can occur with which of the following?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,147 of 1,559",
-      "B": "Erythema nodosum",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,148 of 1,559",
-      "D": "Leprosy",
-      "E": "Sarcoid ? Pregnancy ? Morphea"
+      "A": "Erythema nodosum",
+      "B": "Leprosy",
+      "C": "Sarcoid",
+      "D": "Pregnancy",
+      "E": "Morphea"
     },
-    "correct_answer": "E",
-    "correct_text": "Sarcoid ? Pregnancy ? Morphea",
+    "correct_answer": "D",
+    "correct_text": "Pregnancy",
     "explanation": "This is a pyogenic granuloma. In pregnancy, the lesion occurs most frequently over the buccal mucosa and gingivae.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -68589,14 +68597,14 @@
     "pdf_num": 3267,
     "question": "This 10 year-old girl presents to your office. These lesions have been present for months. She denies any other systemic complaints. What will you tell her parents?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,159 of 1,559",
-      "B": "No hematologic labs are required for evaluation",
-      "C": "She is more likely to develop systemic lupus erythematosus than an adult with these lesions",
-      "D": "She is more likely than an adult to develop cardiovascular disease",
-      "E": "She is less likely than an adult to develop renal disease ? They should expect her to get more lesions in non sun-exposed areas"
+      "A": "No hematologic labs are required for evaluation",
+      "B": "She is more likely to develop systemic lupus erythematosus than an adult with these lesions",
+      "C": "She is more likely than an adult to develop cardiovascular disease",
+      "D": "She is less likely than an adult to develop renal disease",
+      "E": "They should expect her to get more lesions in non sun-exposed areas"
     },
-    "correct_answer": "C",
-    "correct_text": "She is more likely to develop systemic lupus erythematosus than an adult\nwith these lesions",
+    "correct_answer": "B",
+    "correct_text": "She is more likely to develop systemic lupus erythematosus than an adult with these lesions",
     "explanation": "Discoid lupus erythematosus (DLE) presents with plaques characterized by scarring, atrophy, follicular plugging, and scale and photosensitivity. Children presenting with DLE have a higher incident of developing systemic lupus (SLE) than adults. Because of progression from DLE to SLE, children should be screened and followed with antinuclear antibodies and anti- DNA antibodies. Children and adolescents have a higher incidence of renal involvement. Treatment for DLE includes topical steroids, oral steroids, and hydroxychloroquine.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -68819,14 +68827,14 @@
     "pdf_num": 3278,
     "question": "Which of the following cutaneous findings are characteristic for Vohwinkles Syndrome?",
     "choices": {
-      "A": "Honeycombed diffuse palmoplantar keratoderma, pseudoainhum with autoamputation, star-shaped keratosis over knuckles, nail",
-      "B": "dystrophy, and alopecia",
-      "C": "Transient erythroderma at birth, palmoplantar keratoderma, follicular hyperkeratosis, scarring alopecia, dystrophic nails",
-      "D": "Rapidly progressive alopecia of all hair-bearing areas, onycholysis, onychoschizia, onychomadesis, hyperpigmented macules on extremities",
-      "E": "Dense depigmented lusterless hair, pili torti, doughy skin, diffuse cutaneous hypopigmentation ? Oral papillomatosis, palmoplantar keratoses, acral keratoses, lipomas, hemangiomas, scrotal tongue"
+      "A": "Honeycombed diffuse palmoplantar keratoderma, pseudoainhum with autoamputation, star-shaped keratosis over knuckles, nail dystrophy, and alopecia",
+      "B": "Transient erythroderma at birth, palmoplantar keratoderma, follicular hyperkeratosis, scarring alopecia, dystrophic nails",
+      "C": "Rapidly progressive alopecia of all hair-bearing areas, onycholysis, onychoschizia, onychomadesis, hyperpigmented macules on extremities",
+      "D": "Dense depigmented lusterless hair, pili torti, doughy skin, diffuse cutaneous hypopigmentation",
+      "E": "Oral papillomatosis, palmoplantar keratoses, acral keratoses, lipomas, hemangiomas, scrotal tongue"
     },
     "correct_answer": "A",
-    "correct_text": "Honeycombed diffuse palmoplantar keratoderma, pseudoainhum with\nautoamputation, star-shaped keratosis over knuckles, nail",
+    "correct_text": "Honeycombed diffuse palmoplantar keratoderma, pseudoainhum with autoamputation, star-shaped keratosis over knuckles, nail dystrophy, and alopecia",
     "explanation": "Vohwinkles Syndrome is an autosomal dominant disorder caused by a mutation of the GJB2 gene which encodes Connexin 26. Clinical features include deafness, as well as the cutaneous findings described in choice A.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -68879,14 +68887,14 @@
     "pdf_num": 3281,
     "question": "A 22 y/o patient presents with the following dermatologic finding. A biopsy is performed with the below findings. Which of the following is the appropriate first step?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,167 of 1,559",
-      "B": "file:///tmp/Quiz_Questions_1778874819.html Page 1,168 of 1,559",
-      "C": "Check TSH",
-      "D": "Excision of lesion",
-      "E": "Check HgbA1C ? Check platelet count ? Check ASO titer"
+      "A": "Check TSH",
+      "B": "Excision of lesion",
+      "C": "Check HgbA1C",
+      "D": "Check platelet count",
+      "E": "Check ASO titer"
     },
     "correct_answer": "E",
-    "correct_text": "Check HgbA1C ? Check platelet count ? Check ASO titer",
+    "correct_text": "Check ASO titer",
     "explanation": "This kodachrome and histologic photos show erythema nodosum. Clinically, it presents with erythematous, tender nonulcerating nodules that progress to a violaceous bruise-like color. Histologically it presents with a septal panniculities; one would see septal edema, a mixed inflammatory infiltrate, and widened septa with fibrosis. Streptococcus is the most common infectious cause of erythema nodosum (EN) and therefore ASO titers should be evaluated as a first line diagnostic test for EN. An evaluation of other infectious etiologies, a medication review, and a thorough personal and family history for rheumatologic illnesses should be taken.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -72308,14 +72316,14 @@
     "pdf_num": 3445,
     "question": "A 35-year-old woman presents to clinic with the skin lesions (shown) and joint pain. She was previously well controlled on guselkumab, but has flared since her dog was diagnosed with cancer. She has previously failed various treatments including topical steroids, methotrexate, narrow-band UVB, adalimumab, ixekizumab, and etanercept. She developed transaminitis and hepatic steatosis in response to adalimumab, and the other biologics lost efficacy after a few months of treatment. She also notably developed nephrotic-range proteinuria after her last pregnancy, which required treatment with Rituxan. Which of the following is the next best step in management?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,285 of 1,559",
-      "B": "B) Stop guselkumab, restart topical steroids",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,286 of 1,559",
-      "D": "E) stop guselkumab, start cyclosporine",
-      "E": "A) Stop guselkumab; trial narrow-band UVB ? C) Continue guselkumab, start topical steroids and low-dose methotrexate ? D) Stop guselkumab, start secukinumab"
+      "A": "Stop guselkumab; trial narrow-band UVB",
+      "B": "Stop guselkumab, restart topical steroids",
+      "C": "Continue guselkumab, start topical steroids and low-dose methotrexate",
+      "D": "Stop guselkumab, start secukinumab",
+      "E": "stop guselkumab, start cyclosporine"
     },
     "correct_answer": "C",
-    "correct_text": "file:///tmp/Quiz_Questions_1778874819.html Page 1,286 of 1,559",
+    "correct_text": "Continue guselkumab, start topical steroids and low-dose methotrexate",
     "explanation": "Combination therapy with MTX and biologics may serve as an efficacious treatment for psoriasis patients with an inadequate response to DMARD monotherapy. Adjuvant topical therapy and low-dose methotrexate to guselkumab may help preserve duration of her response to guselkumab.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -73257,11 +73265,11 @@
     "pdf_num": 3490,
     "question": "A 54-year-old woman presents with anogenital pruritus and hypopigmentation, as seen in the clinical image. A molecule involved in the pathogenesis of this condition has also been implicated in which of the following rare inherited diseases?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,321 of 1,559",
-      "B": "Epidermolysis bullosa acquisita",
-      "C": "Kindler syndrome",
-      "D": "Pseudoxanthoma elasticum",
-      "E": "Netherton syndrome ? Lipoid proteinosis"
+      "A": "Epidermolysis bullosa acquisita",
+      "B": "Kindler syndrome",
+      "C": "Pseudoxanthoma elasticum",
+      "D": "Netherton syndrome",
+      "E": "Lipoid proteinosis"
     },
     "correct_answer": "E",
     "correct_text": "Lipoid proteinosis",
@@ -74402,7 +74410,7 @@
       "B": "Referral to psychiatry",
       "C": "Perform punch biopsy for H&E and DIF",
       "D": "Perform patch testing on his back with the NACS 80 series",
-      "E": "Start betamethasone 0.05% ointment BID to areas with rash on body for allergic contact dermatitis and have him stop using every topical he is ? currently using"
+      "E": "Start betamethasone 0.05% ointment BID to areas with rash on body for allergic contact dermatitis and have him stop using every topical he is currently using"
     },
     "correct_answer": "C",
     "correct_text": "Perform punch biopsy for H&E and DIF",
@@ -74658,13 +74666,13 @@
     "pdf_num": 3558,
     "question": "A patient presents with a history of painful erythematous nodules on the lower legs, associated with fever and malaise. A skin biopsy shows a septal panniculitis without vasculitis. What is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,363 of 1,559",
-      "B": "Sweet syndrome",
-      "C": "Leukocytoclastic vasculitis",
-      "D": "Polyarteritis nodosa",
-      "E": "Erythema nodosum ? Nodular vasculitis"
+      "A": "Sweet syndrome",
+      "B": "Leukocytoclastic vasculitis",
+      "C": "Polyarteritis nodosa",
+      "D": "Erythema nodosum",
+      "E": "Nodular vasculitis"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Erythema nodosum",
     "explanation": "Erythema nodosum is the most common form of panniculitis, presenting as tender, red nodules on the lower extremities. It is associated with systemic conditions such as infections, sarcoidosis, or medications, and the histopathology shows septal panniculitis without vasculitis, which distinguishes it from other panniculitides.",
     "incorrect_rationales": {
@@ -75914,14 +75922,14 @@
     "pdf_num": 3618,
     "question": "A patient presents with a new onset nodule with the following pathology results. They are referred to oncology and started on an FDA approved treatment for this condition. What is the target of this drug?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,404 of 1,559",
-      "B": "PD-L1 receptor on T cells",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,405 of 1,559",
-      "D": "PD-1 receptor on T cells",
-      "E": "PD-1 receptor on tumor cells ? CTLA-4 receptor on tumor cells ? PD-L1 receptor on tumor cells"
+      "A": "PD-L1 receptor on T cells",
+      "B": "PD-1 receptor on T cells",
+      "C": "PD-1 receptor on tumor cells",
+      "D": "CTLA-4 receptor on tumor cells",
+      "E": "PD-L1 receptor on tumor cells"
     },
     "correct_answer": "E",
-    "correct_text": "PD-1 receptor on tumor cells ? CTLA-4 receptor on tumor cells ? PD-L1\nreceptor on tumor cells",
+    "correct_text": "PD-L1 receptor on tumor cells",
     "explanation": "This pathology is consistent with a Merkel cell carcinoma (MCC). There are sheets of small round blue cell tumor with high N:C ratio, round / oval nuclei, finely dispersed chromatin (salt and pepper), indistinct nucleoli, and scant cytoplasm. The CD20 stains in a perinuclear dot pattern. Avelumab is a PD-L1 inhibitor, approved for the treatment of MCC. It targets the PD-L1 receptor on tumor cells.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -76038,14 +76046,14 @@
     "pdf_num": 3624,
     "question": "A 37-year-old woman presents with the fingernail findings pictured. She also has visible deformities of her right elbow that restricts extension. X-rays of the knee and pelvis show absent bilateral patella and the presence of iliac horns; respectively. X-ray of the elbow show bilateral dislocation of the radius. Which of the following is the most appropriate screening test to perform for this patient?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,408 of 1,559",
-      "B": "Electrocardiogram",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,409 of 1,559",
-      "D": "Complete blood count",
-      "E": "Echocardiogram ? Annual TSH ? Annual urinalysis"
+      "A": "Electrocardiogram",
+      "B": "Complete blood count",
+      "C": "Echocardiogram",
+      "D": "Annual TSH",
+      "E": "Annual urinalysis"
     },
     "correct_answer": "E",
-    "correct_text": "Echocardiogram ? Annual TSH ? Annual urinalysis",
+    "correct_text": "Annual urinalysis",
     "explanation": "This patient has nail patella syndrome (NPS), a disorder that presents with the tetrad of fingernail dysplasia, hypoplasia or absence of the patella, presence of iliac horns, and elbow deformities, although ocular, renal, and neurological involvement often exists. Patients are at increased risk of developing kidney disease. There are two patterns of NPS nephropathy, the first is an accelerated age related loss of filtration ability involving the podocytes, the second is the development of nephrotic range proteinuria in childhood or young adulthood that can progress to ESRD. Renal involvement is often diagnosed by the presence of hematuria, proteinuria and microalbuminuria. It can also present with new onset hypertension. Therefore, an annual screening urinalysis should be performed to screen for early indications of kidney involvement.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -76323,16 +76331,16 @@
   {
     "pdf_id": "DIR-GeneralD-02015",
     "pdf_num": 3638,
-    "question": "A previously healthy 55-year-old patient presents with a four-month history of the pictured indurated papules and plaques. History does not reveal prior skin problems. The lesions started on the cheeks and are now affecting the forehead. The sun seems to exacerbate the condition, causing mild burning and pruritus. Patient complains of cheek swelling that worsens in the morning and improves as the day progresses. Prior treatments included oral doxycycline, sulfur- based face washes, and topical metronidazole, all with minimal improvement. Which of the following medications is most",
+    "question": "A previously healthy 55-year-old patient presents with a four-month history of the pictured indurated papules and plaques. History does not reveal prior skin problems. The lesions started on the cheeks and are now affecting the forehead. The sun seems to exacerbate the condition, causing mild burning and pruritus. Patient complains of cheek swelling that worsens in the morning and improves as the day progresses. Prior treatments included oral doxycycline, sulfur- based face washes, and topical metronidazole, all with minimal improvement. Which of the following medications is most appropriate for this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,416 of 1,559",
-      "B": "appropriate for this condition?",
-      "C": "Topical permethrin",
-      "D": "Propranolol",
-      "E": "Oral metronidazole ? Isotretinoin ? Tretinoin cream"
+      "A": "Topical permethrin",
+      "B": "Propranolol",
+      "C": "Oral metronidazole",
+      "D": "Isotretinoin",
+      "E": "Tretinoin cream"
     },
-    "correct_answer": "E",
-    "correct_text": "Oral metronidazole ? Isotretinoin ? Tretinoin cream",
+    "correct_answer": "D",
+    "correct_text": "Isotretinoin",
     "explanation": "The correct answer is isotretinoin. This patient has granulomatous rosacea (GR), a rare subtype of rosacea. Rosacea is a chronic inflammatory skin condition that affects the central face. UV exposure, spices, stress, exercise, and heat can exacerbate the condition. GR is very challenging to treat, becoming often treatment-resistant to the common topical (metronidazole, azelaic acid) and oral agents (low dose doxycycline at 50 mg/day or less). Since the patient failed to respond adequately to three months of doxycycline, the next best step is the initiation of isotretinoin. The typical isotretinoin dosing for GR is between 0.3-0.5 mg/kg/day. It has been demonstrated that isotretinoin had superior efficacy compared to doxycycline. The mechanism of action of isotretinoin is downregulation of the pro-inflammatory Toll-like receptor 2 (TLR2) expression on monocytes.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -77274,11 +77282,11 @@
     "pdf_num": 3683,
     "question": "A 59 year old African American woman presents with the following lesion. She states she is currently applying topical clobetasol and takes oral hydroxychloroquine, prednisone, and mycophenolate daily. She is interested in discussing ways to improve the appearance of this lesion. Which of the following is NOT true?",
     "choices": {
-      "A": "Disease reactivation after reconstructive filler injection is high.",
-      "B": "Patient can undergo treatment with pulsed dye laser and Q-switched neodymium-doped yttrium aluminum garnet or for lesions that remain active",
-      "C": "despite medical management.",
-      "D": "Fat transfer for atrophic lesions can be performed when disease is inactive and patient is off immunosuppressive medications.",
-      "E": "Systemic prednisone is associated with poorer outcomes after fat transfer . ? Patient should contine with strict photoprotection given the photosensitive nature of her disease."
+      "A": "Disease reactivation after reconstructive filler injection is high",
+      "B": "Patient can undergo treatment with pulsed dye laser and Q-switched neodymium-doped yttrium aluminum garnet or for lesions that remain active despite medical management.",
+      "C": "Fat transfer for atrophic lesions can be performed when disease is inactive and patient is off immunosuppressive medications.",
+      "D": "Systemic prednisone is associated with poorer outcomes after fat transfer .",
+      "E": "Patient should contine with strict photoprotection given the photosensitive nature of her disease."
     },
     "correct_answer": "A",
     "correct_text": "Disease reactivation after reconstructive filler injection is high",
@@ -77666,13 +77674,13 @@
     "pdf_num": 3702,
     "question": "A 23-year-old man presents for evaluation of an ulcerated plaque on his left eyelid, as shown. He recently arrived with his family from Mexico. A biopsy of the lesion is performed, which is also shown. Which of the following is the most likely diagnosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,465 of 1,559",
-      "B": "Tuberculosis",
-      "C": "file:///tmp/Quiz_Questions_1778874819.html Page 1,466 of 1,559",
-      "D": "Sarcoidosis",
-      "E": "Leishmaniasis ? Pyoderma gangrenosum ? Chagas disease"
+      "A": "Tuberculosis",
+      "B": "Sarcoidosis",
+      "C": "Leishmaniasis",
+      "D": "Pyoderma gangrenosum",
+      "E": "Chagas disease"
     },
-    "correct_answer": "E",
+    "correct_answer": "C",
     "correct_text": "Leishmaniasis",
     "explanation": "The presence of an ulcerated plaque and the pathology shown given the patient’s recent travel is suspicious for leishmaniasis. Note the pathology findings of the classic \"marquee\" sign, where the tiny organisms line up in the periphery of histiocytes.",
     "incorrect_rationales": {
@@ -77883,13 +77891,13 @@
     "pdf_num": 3712,
     "question": "40-year-old patient referred to dermatology for a rash. The patient is undergoing evaluation for interstitial lung disease (ILD) with worsening shortness of breath (SOB). Review of system is positive for SOB, skin tightness, cold sensitivity, and initially swollen fingers. Based on the clinical images, which autoantibodies is associated with the worst overall prognosis?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,473 of 1,559",
-      "B": "Anti-centromere (ACA)",
-      "C": "Anti-nuclear antibody (ANA)",
-      "D": "Anti-topoisomerase-I (Scl-70)",
-      "E": "Anti-U3 small nuclear ribonucleoprotein (U3-RNP) ? Erythrocyte sedimentation rate (ESR)"
+      "A": "Anti-centromere (ACA)",
+      "B": "Anti-nuclear antibody (ANA)",
+      "C": "Anti-topoisomerase-I (Scl-70)",
+      "D": "Anti-U3 small nuclear ribonucleoprotein (U3-RNP)",
+      "E": "Erythrocyte sedimentation rate (ESR)"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Anti-topoisomerase-I (Scl-70)",
     "explanation": "The correct answer is Scl-70. The patient has diffuse cutaneous scleroderma/systemic sclerosis (dcSSc). Scleroderma (SSc) is classified as either limited (lcSSc) or dcSSc. This is a case of dcSSc because of the following features: skin thickening affecting the proximal and distal extremities, salt and pepper leukoderma, joint contractures, sclerodactyly, digital tip ulcers and pitting scars. Generally, dcSSc with Scl-70 has the worst prognosis, with 46.5% survival at 20 years; Scl-70 is associated with high risk of early ILD, scleroderma renal crisis (SRC) and cardiac involvement.",
     "incorrect_rationales": {},
@@ -78529,16 +78537,16 @@
   {
     "pdf_id": "DIR-GeneralD-02120",
     "pdf_num": 3743,
-    "question": "A 35-year-old man presents with some round to oval, hypomelanotic macules several centimeters in diameter on his back. There is associated fine scale apparent upon scratching the skin. The distribution is symmetric and is mostly on the posterior trunk and shoulders. While the contrast between the hypomelanotic infected skin and the surrounding normal skin is striking in darkly pigmented patients or following a tan in lightly",
+    "question": "A 35-year-old man presents with some round to oval, hypomelanotic macules several centimeters in diameter on his back. There is associated fine scale apparent upon scratching the skin. The distribution is symmetric and is mostly on the posterior trunk and shoulders. While the contrast between the hypomelanotic infected skin and the surrounding normal skin is striking in darkly pigmented patients or following a tan in lightly pigmented patients, Wood's lamp examination may be required to locate all the lesions. Which of the following mechanisms does NOT play a role leading to decreased melanin synthesis in this condition?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,492 of 1,559",
-      "B": "pigmented patients, Wood's lamp examination may be required to locate all the lesions. Which of the following mechanisms does NOT play a role",
-      "C": "leading to decreased melanin synthesis in this condition?",
-      "D": "Damage to melanocytes",
-      "E": "Azelaic acid ? Impairment in melanosome transfer ? Decreased number of melanosomes in keratinocytes ? Reduction of unsaturated fatty acids"
+      "A": "Damage to melanocytes",
+      "B": "Azelaic acid",
+      "C": "Impairment in melanosome transfer",
+      "D": "Decreased number of melanosomes in keratinocytes",
+      "E": "Reduction of unsaturated fatty acids"
     },
     "correct_answer": "E",
-    "correct_text": "Azelaic acid ? Impairment in melanosome transfer ? Decreased number of\nmelanosomes in keratinocytes ? Reduction of unsaturated fatty acids",
+    "correct_text": "Reduction of unsaturated fatty acids",
     "explanation": "Pityriasis versicolor (PV), also known as tinea versicolor, is a superficial fungal infection caused by conversion of Malassezia from its yeast to its mycelial form. The hypopigmented variant of PV is known as pityriasis versicolor alba (PVa). Electron microscopy of PVa lesions reveals damaged melanocytes and decreased number of melanosomes in keratinocytes, suggesting impairment in melanosome transfer. The underlying etiology is thought to involve oxidation of unsaturated fatty acids by Malassezia, leading to production of lipoperoxides and dicarboxylic acids, such as azelaic acid. These byproducts have been shown to competitively inhibit tyrosinase in vitro, thereby decreasing melanin synthesis. Conversion of tryptophan into the indole compound malassezin, which induces melanocyte apoptosis, may also play a role. On the other hand, hyperpigmented lesions (more commonly noted in lighter skin tones) may result from a hyperemic inflammatory response elicited by Malassezia species, more tonofilaments in the granulosum, a thicker stratum corneum, and abnormally large melanosomes.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -78763,13 +78771,13 @@
     "pdf_num": 3754,
     "question": "A 65-year-old patient presents with this painful, itchy rash on the right dorsal foot. The pain has made ambulating difficult. Prior unsuccessful treatments included topical betamethasone and clotrimazole. Based on the image provided, which of the following treatments have the highest cure rate?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,500 of 1,559",
-      "B": "Topical efinaconazole",
-      "C": "Oral ketoconazole",
-      "D": "Oral terbinafine",
-      "E": "Topical ciclopirox nail lacquer ? Oral itraconazole"
+      "A": "Topical efinaconazole",
+      "B": "Oral ketoconazole",
+      "C": "Oral terbinafine",
+      "D": "Topical ciclopirox nail lacquer",
+      "E": "Oral itraconazole"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Oral terbinafine",
     "explanation": "The correct answer is oral terbinafine. This patient has onychomycosis complicated by severe tinea pedis/incognito. The combination of betamethasone and clotrimazole allowed the fungus to spread to the dorsal and lateral aspects of the right foot. A nail clipping was sent to pathology, which confirmed the presence of dermatophytes in the nail plate. When treating tinea, it is important to address the onychomycosis as well, this is to prevent recurrences. The patient had greater than three nails affected, so oral therapy is indicated to treat both the onychomycosis and tinea pedis. Systemic treatments approved for onychomycosis include oral terbinafine and itraconazole. Due to higher cure rates with terbinafine and fewer drug interactions, terbinafine is usually preferred over itraconazole. For the toenails, terbinafine and itraconazole have a complete cure rate of 38% and 14%, respectively. Terbinafine’s most common side effects are headache, gastrointestinal symptoms, and rash. Terbinafine-induced idiosyncratic liver injury is rare: the FDA recommends baseline serum transaminases but data are lacking on laboratory monitoring.",
     "incorrect_rationales": {},
@@ -79011,11 +79019,11 @@
       "A": "Begin acitretin 25 mg PO daily after checking CBC, CMP, lipid panel",
       "B": "Begin Otezla (apremilast) starter pack by mouth as directed with goal to titrate up to 30 mg two times a day",
       "C": "Start mometasone 0.1 ointment BID to affected areas on body, advise face to feet moisturizer at least BID",
-      "D": "Test the patient for tuberculosis and if negative start Humira (adalimumab) subcu injection 80 mg initial dose on day 1 followed by 40 mg subcu",
-      "E": "injection on day 8 and 40 mg subcu every two weeks thereafter ? Start cyclosporine and monitor renal function and blood pressure"
+      "D": "Test the patient for tuberculosis and if negative start Humira (adalimumab) subcu injection 80 mg initial dose on day 1 followed by 40 mg subcu injection on day 8 and 40 mg subcu every two weeks thereafter",
+      "E": "Start cyclosporine and monitor renal function and blood pressure"
     },
     "correct_answer": "C",
-    "correct_text": "Start mometasone 0.1 ointment BID to affected areas on body, advise face to\nfeet moisturizer at least BID",
+    "correct_text": "Start mometasone 0.1 ointment BID to affected areas on body, advise face to feet moisturizer at least BID",
     "explanation": "The correct answer is to begin topical steroid two times a day to the rash and use emollient at least two times a day to the body in patient with 8% BSA psoriasis who has not tried any prescription treatments.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -79722,13 +79730,13 @@
     "pdf_num": 3799,
     "question": "Inhibition of which of the following enzymes is most likely to improve the patient’s condition, as shown in the images?",
     "choices": {
-      "A": "file:///tmp/Quiz_Questions_1778874819.html Page 1,536 of 1,559",
-      "B": "Calcineurin",
-      "C": "Inosine monophosphate dehydrogenase",
-      "D": "Myeloperoxidase",
-      "E": "Ribonucleotide diphosphate reductase ? Dihydrofolate reductase"
+      "A": "Calcineurin",
+      "B": "Inosine monophosphate dehydrogenase",
+      "C": "Myeloperoxidase",
+      "D": "Ribonucleotide diphosphate reductase",
+      "E": "Dihydrofolate reductase"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "Myeloperoxidase",
     "explanation": "Note the lesions on the abdomen, for which histopathology shows findings confirming a diagnosis of dermatitis herpetiformis. The treatment of choice for dermatitis herpetiformis is dapsone. Dapsone works by inhibition of myeloperoxidase, leading to decreased neutrophilic oxidative damage.",
     "incorrect_rationales": {},
@@ -81951,10 +81959,10 @@
       "B": "Nail shedding, onychomadesis, can occur but results in normal nail plate growth",
       "C": "Brittle hair often results 2-3 weeks after the eruption subsides",
       "D": "Risk of testicular involvement is high and close monitoring is recommended",
-      "E": "Severe birth defects have been seen when women are exposed in early pregnancy so ? contact and respiratory isolation is needed"
+      "E": "Severe birth defects have been seen when women are exposed in early pregnancy so contact and respiratory isolation is needed"
     },
     "correct_answer": "B",
-    "correct_text": "Nail shedding, onychomadesis, can occur but results in normal nail plate\ngrowth",
+    "correct_text": "Nail shedding, onychomadesis, can occur but results in normal nail plate growth",
     "explanation": "This vignette describes hand-foot-mouth syndrome. A common finding after the viral illness is to have shedding of the fingernails, onychomadesis. Afterwards the nails grow back normally and reassurance is important for patients and parents.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -81965,15 +81973,16 @@
   {
     "pdf_id": "DIR-Pediatri-00069",
     "pdf_num": 3905,
-    "question": "A 14-year-old child is brought to the dermatologist for evaluation of facial skin lesions, as shown. The child has a history of developmental disability and seizure disorder. Which of",
+    "question": "A 14-year-old child is brought to the dermatologist for evaluation of facial skin lesions, as shown. The child has a history of developmental disability and seizure disorder. Which of patient?",
     "choices": {
       "A": "the following is the most appropriate recommendation regarding skin screening in this",
-      "B": "patient?",
-      "C": "Every 6 months",
-      "D": "Every 3 years",
-      "E": "Every 1 year ? Every 3 months ? Every 5 years"
+      "B": "Every 6 months",
+      "C": "Every 3 years",
+      "D": "Every 1 year",
+      "E": "Every 3 months",
+      "F": "Every 5 years"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Every 1 year",
     "explanation": "The patient’s skin lesions are consistent with facial angiofibromas; combined with the history of developmental disability and seizure disorder, these raise significant concerns for tuberous sclerosis. A joint committee on this disease recommends an annual examination with dermatology for the inspection and management of related skin lesions.",
     "incorrect_rationales": {
@@ -81994,11 +82003,11 @@
     "choices": {
       "A": "Netherton syndrome; genetic testing for SPINK5 mutation",
       "B": "Hyper-IgE syndrome; STAT3 gene sequencing",
-      "C": "Staphylococcal scalded skin syndrome; blood cultures and anti-staphylococcal",
-      "D": "antibiotics",
-      "E": "Omenn syndrome; flow cytometry and lymphocyte subset analysis ? Lamellar ichthyosis; genetic testing for TGM1 mutation"
+      "C": "Staphylococcal scalded skin syndrome; blood cultures and anti-staphylococcal antibiotics",
+      "D": "Omenn syndrome; flow cytometry and lymphocyte subset analysis",
+      "E": "Lamellar ichthyosis; genetic testing for TGM1 mutation"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "Omenn syndrome; flow cytometry and lymphocyte subset analysis",
     "explanation": "B) Omenn syndrome. Key features of Omenn syndrome include neonatal onset erythroderma with generalized scaling and sparse hair (including eyebrows). Patients have elevated IgE and eosinophilia with failure to thrive and recurrent bacterial infections. Mutations in either RAG1/RAG2 will result in defective T-cell production.",
     "incorrect_rationales": {
@@ -82079,11 +82088,11 @@
     "choices": {
       "A": "Mixed cellular infiltrate in a “ball and claw” pattern",
       "B": "CD1a-, S100- cells with reniform nuclei",
-      "C": "Superficial perivascular infiltrate with mild spongiosis and neutrophil containing scale",
-      "D": "crust",
-      "E": "Foamy histiocytes with Touton giant cells ? CD1a+, S100+ cells with reniform nuclei"
+      "C": "Superficial perivascular infiltrate with mild spongiosis and neutrophil containing scale crust",
+      "D": "Foamy histiocytes with Touton giant cells",
+      "E": "CD1a+, S100+ cells with reniform nuclei"
     },
-    "correct_answer": "B",
+    "correct_answer": "E",
     "correct_text": "CD1a+, S100+ cells with reniform nuclei",
     "explanation": "This patient most likely has Langerhans cell histiocytosis. Langerhans cells are CD1a and S100 positive. The nuclei are described as kidney-shaped, or reniform.",
     "incorrect_rationales": {
@@ -82465,16 +82474,17 @@
   {
     "pdf_id": "DIR-Pediatri-00092",
     "pdf_num": 3928,
-    "question": "A 4-month-old African-American male presents for the rash shown. The rash has been",
+    "question": "A 4-month-old African-American male presents for the rash shown. The rash has been present for the past two months. The mother describes that the baby tends to be bothered Which of the following tests should be performed next?",
     "choices": {
-      "A": "present for the past two months. The mother describes that the baby tends to be bothered",
-      "B": "by this rash and can be seen trying to rub his feet together.",
-      "C": "Which of the following tests should be performed next?",
-      "D": "Fungal culture",
-      "E": "KOH ? Skin biopsy ? Mineral oil prep ? Bacterial culture"
+      "A": "by this rash and can be seen trying to rub his feet together.",
+      "B": "Fungal culture",
+      "C": "KOH",
+      "D": "Skin biopsy",
+      "E": "Mineral oil prep",
+      "F": "Bacterial culture"
     },
     "correct_answer": "E",
-    "correct_text": "KOH ? Skin biopsy ? Mineral oil prep ? Bacterial culture",
+    "correct_text": "Mineral oil prep",
     "explanation": "This clinical image and scenario most likely represents Infantile acropustulosis (IA), which is a benign vesiculopustular condition with an often chronic course in infants. The etiology is unknown. Some studies suggest that African-American male infants are more commonly affected. IA is characterized by recurrent crops of intensely pruritic vesiculopustules on the palms and soles. The diagnosis is based on clinical features and given the similar appearance, scabies should be ruled-out with a mineral oil prep.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -82899,16 +82909,17 @@
   {
     "pdf_id": "DIR-Pediatri-00112",
     "pdf_num": 3948,
-    "question": "A patient presents for Mohs surgery of this lesion. Upon further questioning, he notes his",
+    "question": "A patient presents for Mohs surgery of this lesion. Upon further questioning, he notes his next step in management?",
     "choices": {
       "A": "father was diagnosed with colon cancer at the age of 40. What is the most appropriate",
-      "B": "next step in management?",
-      "C": "Check BUN/Cr",
-      "D": "CT Head",
-      "E": "Check TSH/T4 ? Urinary cytology ? PET scan"
+      "B": "Check BUN/Cr",
+      "C": "CT Head",
+      "D": "Check TSH/T4",
+      "E": "Urinary cytology",
+      "F": "PET scan"
     },
     "correct_answer": "E",
-    "correct_text": "Check TSH/T4 ? Urinary cytology ? PET scan",
+    "correct_text": "Urinary cytology",
     "explanation": "This pathologic image is consistent with sebaceous carcinoma. This, in conjunction with a first degree relative with a history of colon cancer, causes concern for Muir- Torre syndrome. This is an autosomal dominant syndrome caused by mutations in MLH1, MSH2, and MSH6 (DNA mismatch repair proteins). Patients can present with sebaceous gland tumors, such as sebaceous adenomas and carcinomas as well as keratoacanthomas. Furthermore, patients are at risk for several internal malignancies, most commonly gastrointestinal followed by genitourinary. Therefore, a workup including colonoscopy, endoscopy, urinary cytology, and CBC should be undertaken.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -83053,16 +83064,16 @@
   {
     "pdf_id": "DIR-Pediatri-00119",
     "pdf_num": 3955,
-    "question": "A 6-year-old non-toxic-appearing child with no past medical history presents with pruritic, maroon, polycyclic papules and plaques favoring the trunk and extremities; edema of the extremities could be appreciated. Pertinent history and review of systems include recently resolved rhinorrhea of unknown etiology; no recent medication and vaccine exposures. Physical exam was notable for dermographism and individual lesions lasted less than 24",
+    "question": "A 6-year-old non-toxic-appearing child with no past medical history presents with pruritic, maroon, polycyclic papules and plaques favoring the trunk and extremities; edema of the extremities could be appreciated. Pertinent history and review of systems include recently resolved rhinorrhea of unknown etiology; no recent medication and vaccine exposures. Physical exam was notable for dermographism and individual lesions lasted less than 24 hours. Laboratory findings were negative for elevated inflammatory markers (ESR, CRP, ferritin) of clinical significance. Based on the history and clinical photos, which of the following is the most likely diagnosis?",
     "choices": {
-      "A": "hours. Laboratory findings were negative for elevated inflammatory markers (ESR, CRP,",
-      "B": "ferritin) of clinical significance. Based on the history and clinical photos, which of the",
-      "C": "following is the most likely diagnosis?",
-      "D": "Urticarial vasculitis (UV)",
-      "E": "Serum-sickness reaction ? Systemic lupus erythematous (SLE) ? Urticaria multiforme (UM) ? Still disease (SD)"
+      "A": "Urticarial vasculitis (UV)",
+      "B": "Serum-sickness reaction",
+      "C": "Systemic lupus erythematous (SLE)",
+      "D": "Urticaria multiforme (UM)",
+      "E": "Still disease (SD)"
     },
-    "correct_answer": "E",
-    "correct_text": "Serum-sickness reaction ? Systemic lupus erythematous (SLE) ? Urticaria\nmultiforme (UM) ? Still disease (SD)",
+    "correct_answer": "D",
+    "correct_text": "Urticaria multiforme (UM)",
     "explanation": "The correct answer is UM. UM is a common, benign hypersensitivity reaction mediated by histamine. This entity often presents after a preceding illness, medication exposure, or vaccination. Patients are usually non-toxic-appearing and skin findings include polycyclic, annular erythematous wheals on the face, trunk, and extremities. Dermographism can be elicited in many patients because UM is mediated by histamine; moreover, the lesions are usually pruritic, not painful, and last less than 24 hours.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -83146,16 +83157,17 @@
   {
     "pdf_id": "DIR-Pediatri-00123",
     "pdf_num": 3959,
-    "question": "A 1-month-old child is brought by her father to the office for evaluation of a rash in the diaper region, as shown. The father reports appropriate feeding and no change in the",
+    "question": "A 1-month-old child is brought by her father to the office for evaluation of a rash in the diaper region, as shown. The father reports appropriate feeding and no change in the in good health. Which of the following is the most likely diagnosis?",
     "choices": {
       "A": "number of wet diapers daily. The child is fussy during diaper changes, but otherwise, she is",
-      "B": "in good health. Which of the following is the most likely diagnosis?",
-      "C": "Seborrheic dermatitis",
-      "D": "Irritant dermatitis",
-      "E": "Psoriasis ? Candidiasis ? Langerhans cell histiocytosis"
+      "B": "Seborrheic dermatitis",
+      "C": "Irritant dermatitis",
+      "D": "Psoriasis",
+      "E": "Candidiasis",
+      "F": "Langerhans cell histiocytosis"
     },
     "correct_answer": "E",
-    "correct_text": "Psoriasis ? Candidiasis ? Langerhans cell histiocytosis",
+    "correct_text": "Candidiasis",
     "explanation": "The bright red patches with intertriginous involvement in the diaper area along with satellite lesions in this infant are consistent most with diaper dermatitis with candidiasis.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -83658,15 +83670,15 @@
   {
     "pdf_id": "DIR-Pediatri-00146",
     "pdf_num": 3982,
-    "question": "A 9-year-old boy is brought to the office by his parents with the shown lesion. He has a",
+    "question": "A 9-year-old boy is brought to the office by his parents with the shown lesion. He has a history of seizures and developmental delay. Which of the following evaluations is most appropriate to identify associated conditions in this disease?",
     "choices": {
-      "A": "history of seizures and developmental delay. Which of the following evaluations is most",
-      "B": "appropriate to identify associated conditions in this disease?",
-      "C": "Echocardiography",
-      "D": "Skeletal radiography",
-      "E": "Vascular imaging ? Liver ultrasound ? Thyroid scintigraphy scan"
+      "A": "Echocardiography",
+      "B": "Skeletal radiography",
+      "C": "Vascular imaging",
+      "D": "Liver ultrasound",
+      "E": "Thyroid scintigraphy scan"
     },
-    "correct_answer": "D",
+    "correct_answer": "B",
     "correct_text": "Skeletal radiography",
     "explanation": "In patients with nevus sebaceous where it is believed to be related to a syndrome, such as Schimmelpenning syndrome, additional evaluation may be necessary. This can include studies around the brain or skull in particular. Given the patient’s other neurologic symptoms, evaluation of possible skull defects should be essential, thus skeletal radiography is the next appropriate step for this patient.",
     "incorrect_rationales": {},
@@ -83901,12 +83913,12 @@
     "question": "What is the function of the gene which is defective in ataxia-telangiectasia?",
     "choices": {
       "A": "Gap junction protein",
-      "B": "Cross-linking of structural proteins in the protein and lipid envelope of the upper",
-      "C": "epidermis",
-      "D": "DNA repair protein",
-      "E": "Pathway of cholesterol biosynthesis ? Tumor supressor protein"
+      "B": "Cross-linking of structural proteins in the protein and lipid envelope of the upper epidermis",
+      "C": "DNA repair protein",
+      "D": "Pathway of cholesterol biosynthesis",
+      "E": "Tumor supressor protein"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "DNA repair protein",
     "explanation": "The defective gene is ataxia-telangiectasia (Louis-Bar syndrome) is the ATM gene, which is responsible for DNA repair, especially after ionizing radiation. Ataxia telangiectasia (A-T) is an autosomal recessive disorder primarily characterized by cerebellar degeneration, telangiectasia, immunodeficiency, cancer susceptibility and radiation sensitivity.",
     "incorrect_rationales": {},
@@ -84368,16 +84380,16 @@
   {
     "pdf_id": "DIR-Pediatri-00179",
     "pdf_num": 4015,
-    "question": "A 15 year old boy is brought to the office for hair loss. As an infant he was especially sensitive to the sun and frequently developed erythema, edema, and blisters on his cheeks. He is short for his age with diffuse telangiectasias and hyperpigmentation on his face. You notice that his thumbs are short and he is missing eyebrows and eyelashes. Genetic testing highlights a mutation in RECQL4.",
+    "question": "A 15 year old boy is brought to the office for hair loss. As an infant he was especially sensitive to the sun and frequently developed erythema, edema, and blisters on his cheeks. He is short for his age with diffuse telangiectasias and hyperpigmentation on his face. You notice that his thumbs are short and he is missing eyebrows and eyelashes. Genetic testing highlights a mutation in RECQL4. In addition to counseling the family on the development of non-melanoma skin cancers, which non-dermatologic condition most commonly associated with this disorder should you discuss?",
     "choices": {
-      "A": "In addition to counseling the family on the development of non-melanoma skin cancers,",
-      "B": "which non-dermatologic condition most commonly associated with this disorder should",
-      "C": "you discuss?",
-      "D": "Atherosclerosis",
-      "E": "Pulmonary fibrosis ? Lymphoma ? Osteosarcoma ? Cachexia"
+      "A": "Atherosclerosis",
+      "B": "Pulmonary fibrosis",
+      "C": "Lymphoma",
+      "D": "Osteosarcoma",
+      "E": "Cachexia"
     },
-    "correct_answer": "E",
-    "correct_text": "Pulmonary fibrosis ? Lymphoma ? Osteosarcoma ? Cachexia",
+    "correct_answer": "D",
+    "correct_text": "Osteosarcoma",
     "explanation": "Sarcomas, specifically osteosarcoma and fibrosarcoma are pathopnemonic for Rothmund- Thompson, also called poikiloderma congenita, which has a genetic mutation in RECQL4. 30% of patients with Rothmund-Thompson will develop osteosarcomas, making this highly important to counsel patients and parents on. Later in life, these patients may also develop a number of verrucous keratoses on their palms and non-melanoma skin cancers.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -94075,7 +94087,8 @@
     "question": "A 24-year-old male presents with the findings seen here. The phenomenon seen on the patient’s arm is seen in many diagnoses in dermatology. The linearity of the dermatosis suggests which phenomenon?",
     "choices": {
       "A": "Koebnerization",
-      "B": "Allergic contact dermatitis B Pathergy",
+      "B": "Allergic contact dermatitis",
+      "C": "Pathergy",
       "D": "Malingering",
       "E": "Phototoxic eruption"
     },
@@ -97363,7 +97376,8 @@
     "pdf_num": 4640,
     "question": "The most appropriate treatment for the condition shown is:",
     "choices": {
-      "A": "Topical clindamycin 1% lotion Topical metronidazole 0.75% gel B",
+      "A": "Topical clindamycin 1% lotion",
+      "B": "Topical metronidazole 0.75% gel",
       "C": "Azelaic acid 20% cream",
       "D": "Salicylic acid 2% wash",
       "E": "Adapalene 0.1% gel"
@@ -126883,9 +126897,9 @@
     "choices": {
       "A": "CD4+/CD7+",
       "B": "CD8+/CD7C. CD4-/CD7+",
-      "D": "CD4+/CD7E. CD8+/CD7+"
+      "C": "CD4+/CD7E. CD8+/CD7+"
     },
-    "correct_answer": "D",
+    "correct_answer": "C",
     "correct_text": "CD4+/CD7E. CD8+/CD7+",
     "explanation": "Sezary syndrome is the leukemia phase of mycosis fungoides (cutaneous T-cell lymphoma) and is usually a TH2-biased CD4+ leukemia.",
     "incorrect_rationales": {},
@@ -127339,14 +127353,14 @@
     "pdf_num": 6095,
     "question": "What nerve innervates this structure?",
     "choices": {
-      "A": "0U21",
-      "B": "DUUR",
-      "C": "Infratrochlear",
-      "D": "Zygomaticotemporal",
-      "E": "Buccal ? Anterior ethmoidal ? Infraorbital"
+      "A": "Infratrochlear",
+      "B": "Zygomaticotemporal",
+      "C": "Buccal",
+      "D": "Anterior ethmoidal",
+      "E": "Infraorbital"
     },
-    "correct_answer": "E",
-    "correct_text": "Buccal ? Anterior ethmoidal ? Infraorbital",
+    "correct_answer": "D",
+    "correct_text": "Anterior ethmoidal",
     "explanation": "The external nasal nerve innervates the columella and nasal tip. It is a branch of the anterior ethmoidal nerve, which provides branches of V1. The infratrochlear is also a branch of V1 but it supplies the nasal root and medial canthus. The infraorbital and zygomaticotemporal are branches of V2. The buccal is a branch of V3.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -127865,7 +127879,8 @@
       "B": "T1A, 5 mm",
       "C": "T1A, 2 cm",
       "D": "T1B, 1 cm",
-      "E": "T1B, 5 mm ? T1B, 2 cm"
+      "E": "T1B, 5 mm",
+      "F": "T1B, 2 cm"
     },
     "correct_answer": "A",
     "correct_text": "T1A, 1 cm",
@@ -128965,7 +128980,8 @@
       "B": "Ferguson-Smith, AD",
       "C": "Grzbowski, XLD",
       "D": "Ferguson-Smith, AR",
-      "E": "Grzbowski, AD ? Ferguson-Smith, XLD"
+      "E": "Grzbowski, AD",
+      "F": "Ferguson-Smith, XLD"
     },
     "correct_answer": "B",
     "correct_text": "Ferguson-Smith, AD",
@@ -130266,13 +130282,13 @@
     "question": "A 68-year-old man presents with a 2.1 cm poorly defined basal cell carcinoma on the right temple. The biopsy reveals an infiltrative subtype and perineural invasion involving a small- caliber nerve. He has no neurologic symptoms. What is the most appropriate next step in management?",
     "choices": {
       "A": "Radiation therapy alone",
-      "B": "Mohs micrographic surgery with staged peripheral and deep sectioning and consideration of adjuvant",
-      "C": "radiation",
-      "D": "MRI with contrast to assess for extent of perineural spread",
-      "E": "Wide local excision with 1 cm margins ? Mohs micrographic surgery with standard tissue mapping"
+      "B": "Mohs micrographic surgery with staged peripheral and deep sectioning and consideration of adjuvant radiation",
+      "C": "MRI with contrast to assess for extent of perineural spread",
+      "D": "Wide local excision with 1 cm margins",
+      "E": "Mohs micrographic surgery with standard tissue mapping"
     },
     "correct_answer": "B",
-    "correct_text": "Mohs micrographic surgery with staged peripheral and deep sectioning and\nconsideration of adjuvant",
+    "correct_text": "Mohs micrographic surgery with staged peripheral and deep sectioning and consideration of adjuvant radiation",
     "explanation": "Infiltrative BCC with incidental perineural invasion of a small-caliber nerve and no symptoms is best managed with Mohs surgery using enhanced margin control, especially in a high-risk anatomic area like the temple. This allows for careful tracking of perineural involvement, deep sectioning and immunostaining if needed and margin clearance before considering adjuvant therapy. Adjuvant radiation may be considered depending on final pathology (i.e, extensive PNI, close/positive margins, large nerve involvement).",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -132163,12 +132179,12 @@
     "choices": {
       "A": "Medical therapy is used in conjunction with hair transplant to maximize hair density",
       "B": "Additional hair transplants will not be needed in the future",
-      "C": "The hairs grown or maintained by use of minoxidil and finasteride will stay in place once these medications are",
-      "D": "stopped",
-      "E": "Stop minoxidil and finasteride, he will no longer need it after hair transplant ? Androgenetic alopecia progresses until age 50"
+      "C": "The hairs grown or maintained by use of minoxidil and finasteride will stay in place once these medications are stopped",
+      "D": "Stop minoxidil and finasteride, he will no longer need it after hair transplant",
+      "E": "Androgenetic alopecia progresses until age 50"
     },
     "correct_answer": "A",
-    "correct_text": "Medical therapy is used in conjunction with hair transplant to maximize hair\ndensity",
+    "correct_text": "Medical therapy is used in conjunction with hair transplant to maximize hair density",
     "explanation": "Medical therapy such as minoxidil and finasteride are often used in conjunction with hair transplantation to maximize density and minimize ongoing hair loss. The physician should emphasize before the procedure how ongoing hair loss will affect the density and cosmetic appearance of the transplant.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -141302,11 +141318,11 @@
       "A": "He should stop taking methotrexate and wait 1 year before attempting to conceive",
       "B": "He should stop taking methotrexate and wait 1 month before attempting to conceive",
       "C": "He does not need to stop the medication",
-      "D": "He should stop taking methotrexate and wait 3 months before attempting to",
-      "E": "conceive ? He should stop taking methotrexate and wait 3 years before attempting to concieve"
+      "D": "He should stop taking methotrexate and wait 3 months before attempting to conceive",
+      "E": "He should stop taking methotrexate and wait 3 years before attempting to concieve"
     },
     "correct_answer": "D",
-    "correct_text": "He should stop taking methotrexate and wait 3 months before attempting to",
+    "correct_text": "He should stop taking methotrexate and wait 3 months before attempting to conceive",
     "explanation": "He should stop taking methotrexate and wait 3 months before attempting to conceive. Methotrexate damages dividing cells and may cause reversible oligospermia or azoospermia.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -141320,16 +141336,16 @@
   {
     "pdf_id": "DIR-Therapeu-00042",
     "pdf_num": 6768,
-    "question": "A 35-year-old woman presents to the office for 6 months of lesions as shown on her knees and elbows. Treatment is initiated, and three weeks later, the patient presents to the",
+    "question": "A 35-year-old woman presents to the office for 6 months of lesions as shown on her knees and elbows. Treatment is initiated, and three weeks later, the patient presents to the emergency department with fatigue, headache, and shortness of breath. Which of the following is the next best step in the management of this patient?",
     "choices": {
-      "A": "emergency department with fatigue, headache, and shortness of breath. Which of the",
-      "B": "following is the next best step in the management of this patient?",
-      "C": "Provide supplemental oxygen",
-      "D": "Start intravenous fluids",
-      "E": "Obtain chest x-ray ? Initiate methylene blue therapy ? Transfuse fresh frozen plasma"
+      "A": "Provide supplemental oxygen",
+      "B": "Start intravenous fluids",
+      "C": "Obtain chest x-ray",
+      "D": "Initiate methylene blue therapy",
+      "E": "Transfuse fresh frozen plasma"
     },
-    "correct_answer": "E",
-    "correct_text": "Obtain chest x-ray ? Initiate methylene blue therapy ? Transfuse fresh frozen\nplasma",
+    "correct_answer": "D",
+    "correct_text": "Initiate methylene blue therapy",
     "explanation": "After initiation of dapsone for dermatitis herpetiformis, the patient is presenting with symptoms concerning for methemoglobinemia, an adverse effect of dapsone. As such, initiation of methylene blue therapy due to these effects is an important first step to managing the effect of this medication.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -141907,15 +141923,16 @@
   {
     "pdf_id": "DIR-Therapeu-00071",
     "pdf_num": 6797,
-    "question": "A 5-year-old boy has moderate to severe atopic dermatitis. The rash on his body responds to topical steroids, but he has persistent involvement in the periocular regions bilaterally. You prescribe a course of crisaborale ointment. At 4 weeks follow-up, he has persistent erythema, scale, and significant pruritus. After discussing the risks associated with topical",
+    "question": "A 5-year-old boy has moderate to severe atopic dermatitis. The rash on his body responds to topical steroids, but he has persistent involvement in the periocular regions bilaterally. You prescribe a course of crisaborale ointment. At 4 weeks follow-up, he has persistent erythema, scale, and significant pruritus. After discussing the risks associated with topical topical medication exerts its effect through binding with which of the following?",
     "choices": {
       "A": "steroids, his mother would prefer to try a non-steroidal treatment. A appropriate choice of",
-      "B": "topical medication exerts its effect through binding with which of the following?",
-      "C": "Nuclear factor of activated T-cells (NFAT-1)",
-      "D": "Phosphodiesterase-4 (PDE4)",
-      "E": "FK506-binding protein ? Cyclophilin ? Calcineurin"
+      "B": "Nuclear factor of activated T-cells (NFAT-1)",
+      "C": "Phosphodiesterase-4 (PDE4)",
+      "D": "FK506-binding protein",
+      "E": "Cyclophilin",
+      "F": "Calcineurin"
     },
-    "correct_answer": "E",
+    "correct_answer": "D",
     "correct_text": "FK506-binding protein",
     "explanation": "The purpose of this question is to understand the target and mechanism of topical calcineurin inhibitors. Topical calcineurin inhibitors, such as tacrolimus and pimecrolimus, are often used for atopic dermatitis as an alternative to topical corticosteroids on areas such as the face, as they do not cause the side effects often associated with corticosteroids (atrophy, hypopigmentation). Tacrolimus binds to FK506-binding protein, which then binds to calcineurin and blocks it from dephosphorylating NFAT-1. This blocks the transcription of the IL-2 gene, which blocks T-cell activation, proliferation and cytokine production. FK506 is the original name of tacrolimus during the trials by the Fujisawa Pharmaceutical Company (Kusuri=medicine in Japanese; Fujisawa Kusuri-FK).",
     "incorrect_rationales": {
@@ -142172,16 +142189,16 @@
   {
     "pdf_id": "DIR-Therapeu-00084",
     "pdf_num": 6810,
-    "question": "A 24-year-old pregnant female with history of severe cutaneous lupus erythematosus (CLE) presents for prenatal counseling. She has been well-controlled on hydroxychloroquine (HCQ) and PRN topical corticosteroids and is concerned about its safety during pregnancy. A Which of the following describes the role of hydroxychloroquine in pregnancy for patients B with CLE? C HCQ should only be continued if the patient has systemic lupus erythematosus (SLE), D as it has no benefit in CLE E HCQ should be continued, as it reduces lupus flares and is not associated with",
+    "question": "A 24-year-old pregnant female with history of severe cutaneous lupus erythematosus (CLE) presents for prenatal counseling. She has been well-controlled on hydroxychloroquine (HCQ) and PRN topical corticosteroids and is concerned about its safety during pregnancy. A Which of the following describes the role of hydroxychloroquine in pregnancy for patients B with CLE? C HCQ should only be continued if the patient has systemic lupus erythematosus (SLE), D as it has no benefit in CLE E HCQ should be continued, as it reduces lupus flares and is not associated with?",
     "choices": {
-      "A": "significant fetal harm",
-      "B": "HCQ increases the risk of congenital heart block and should be stopped in all lupus",
-      "C": "patients during pregnancy",
-      "D": "HCQ should be replaced with systemic corticosteroids to prevent pregnancy",
-      "E": "complications ? HCQ should be discontinued due to potential teratogenicity"
+      "A": "as it has no benefit in CLE",
+      "B": "HCQ should be continued, as it reduces lupus flares and is not associated with significant fetal harm",
+      "C": "HCQ increases the risk of congenital heart block and should be stopped in all lupus patients during pregnancy",
+      "D": "HCQ should be replaced with systemic corticosteroids to prevent pregnancy complications",
+      "E": "HCQ should be discontinued due to potential teratogenicity"
     },
-    "correct_answer": "E",
-    "correct_text": "HCQ should be continued, as it reduces lupus flares and is not associated\nwith",
+    "correct_answer": "B",
+    "correct_text": "HCQ should be continued, as it reduces lupus flares and is not associated with significant fetal harm",
     "explanation": "HCQ should be continued, as it reduces lupus flares and is not associated with significant fetal harm. Continuing HCQ during pregnancy helps maintain disease remission and prevents flares, which is crucial for both maternal and fetal health, particularly in this patient with history of severe CLE. tudies have shown that HCQ use during pregnancy is not associated with an increased risk of major congenital malformations, spontaneous abortions, or preterm deliveries.",
     "incorrect_rationales": {
       "A": "Which of the following describes the role of hydroxychloroquine in pregnancy for patients",
@@ -142660,16 +142677,17 @@
   {
     "pdf_id": "DIR-Therapeu-00107",
     "pdf_num": 6833,
-    "question": "An otherwise healthy patient presents to the dermatology clinic with these lesions. This process has been ongoing for the past six months. Review of system is positive for skin pain, pruritus, scar formation, and hair loss. The patient denied photosensitivity, dry eyes and mouth, and arthralgias. Prior treatments were directed against scabies and seborrheic dermatitis, but the rash progressed and the symptoms worsened. There is no family history of autoimmune disorders including lupus, rheumatoid arthritis, and thyroiditis. The patient",
+    "question": "An otherwise healthy patient presents to the dermatology clinic with these lesions. This process has been ongoing for the past six months. Review of system is positive for skin pain, pruritus, scar formation, and hair loss. The patient denied photosensitivity, dry eyes and mouth, and arthralgias. Prior treatments were directed against scabies and seborrheic dermatitis, but the rash progressed and the symptoms worsened. There is no family history of autoimmune disorders including lupus, rheumatoid arthritis, and thyroiditis. The patient follow-up with which specialists?",
     "choices": {
-      "A": "did not have prior skin problems and is alarmed by this painful and disfiguring rash. Based",
-      "B": "on the history and clinical images, a common first-line treatment option requires interval",
-      "C": "follow-up with which specialists?",
-      "D": "Cardiology",
-      "E": "Neurology ? Ophthalmology ? Endocrinology ? Hematology"
+      "A": "did not have prior skin problems and is alarmed by this painful and disfiguring rash. Based on the history and clinical images, a common first-line treatment option requires interval",
+      "B": "Cardiology",
+      "C": "Neurology",
+      "D": "Ophthalmology",
+      "E": "Endocrinology",
+      "F": "Hematology"
     },
-    "correct_answer": "E",
-    "correct_text": "Neurology ? Ophthalmology ? Endocrinology ? Hematology",
+    "correct_answer": "D",
+    "correct_text": "Ophthalmology",
     "explanation": "The correct answer is ophthalmology. The patient has chronic cutaneous lupus erythematosus (CCLE), discoid type (DLE), with involvement of photoprotected sites (areas below the head and neck) - this increases the likelihood of progression to systemic lupus erythematosus (SLE). In patients with systemic and skin-limited lupus, antimalarials such as hydroxychloroquine (HCQ), chloroquine (CQ), and quinacrine are commonly used as first-line agents. HCQ and CQ are associated with irreversible retinal toxicity/retinopathy (CQ>HCQ). To reduce the risk of retinopathy, the dosing recommendations for HCQ and CQ are no more than 5 and 2.3 mg/kg of actual body weight/day, respectively. The current American Academy of Ophthalmology recommends that all patient have baseline exams within the first year of antimalarial therapy. Annual follow-up with ophthalmology should start after 5 years of continuous therapy. To summarize, antimalarials’ monitoring guideline stresses ophthalmology evaluation and not other specialists.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -142829,14 +142847,14 @@
     "pdf_num": 6841,
     "question": "Which of the following is true of the live attenuated varicella vaccine when given to healthy adults?",
     "choices": {
-      "A": "It protects individuals who never had seroconversion, or whose antibody levels",
-      "B": "are undetectable, from severe varicella zoster viral disease",
-      "C": "It is marginally effective",
-      "D": "It provides only short term protection (6 months)",
-      "E": "The disease process will be accelerated if infected after immunization ? Disseminated zoster is frequently seen as a complication soon after immunization"
+      "A": "It protects individuals who never had seroconversion, or whose antibody levels are undetectable, from severe varicella zoster viral disease",
+      "B": "It is marginally effective",
+      "C": "It provides only short term protection (6 months)",
+      "D": "The disease process will be accelerated if infected after immunization",
+      "E": "Disseminated zoster is frequently seen as a complication soon after immunization"
     },
     "correct_answer": "A",
-    "correct_text": "It protects individuals who never had seroconversion, or whose antibody\nlevels",
+    "correct_text": "It protects individuals who never had seroconversion, or whose antibody levels are undetectable, from severe varicella zoster viral disease",
     "explanation": "When live attenuated varicella vaccine is given to healthy adults, it protects even individuals who never had seroconversion, or whose antibody levels were undetectable, from severe varicella zoster viral disease.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -143793,12 +143811,12 @@
     "choices": {
       "A": "Penicillin as a child for rheumatic fever",
       "B": "Clindamycin as a child for deep soft tissue infection",
-      "C": "Tetracycline as a child for recurrent ear and throat infections with evidence of",
-      "D": "prior veneers",
-      "E": "Calcium deprivation as a child ? Poor hygiene alone"
+      "C": "Tetracycline as a child for recurrent ear and throat infections with evidence of prior veneers",
+      "D": "Calcium deprivation as a child",
+      "E": "Poor hygiene alone"
     },
     "correct_answer": "C",
-    "correct_text": "Tetracycline as a child for recurrent ear and throat infections with evidence of",
+    "correct_text": "Tetracycline as a child for recurrent ear and throat infections with evidence of prior veneers",
     "explanation": "The patient received tetracycline as a child for recurrent ear and throat infections leading to staining of his teeth. He attempted prior cosmetic covering with veneers, the evidence of which you can see in the photograph. The patient should be instructed on careful hygiene and referred to a cosmetic dentist after discussion of the likely etiology.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -143975,14 +143993,14 @@
     "pdf_num": 6897,
     "question": "Which of the following statements regarding drug interactions is FALSE?",
     "choices": {
-      "A": "Drugs that induce CYP3A enzymes may decrease levels of drugs which act as",
-      "B": "substrates for CYP3A",
-      "C": "Tobacco induces P-450 enzymes",
-      "D": "Terbinafine is not metabolized by cytochrome P-4503A4",
-      "E": "CYP3A inhibitors may increase levels and cause toxicity of drugs metabolized by ? cytochrome P-450 ? Griseofulvin inhibits P-450 enzymes"
+      "A": "Drugs that induce CYP3A enzymes may decrease levels of drugs which act as substrates for CYP3A",
+      "B": "Tobacco induces P-450 enzymes",
+      "C": "Terbinafine is not metabolized by cytochrome P-4503A4",
+      "D": "CYP3A inhibitors may increase levels and cause toxicity of drugs metabolized by cytochrome P-450",
+      "E": "Griseofulvin inhibits P-450 enzymes"
     },
     "correct_answer": "E",
-    "correct_text": "CYP3A inhibitors may increase levels and cause toxicity of drugs\nmetabolized by ? cytochrome P-450 ? Griseofulvin inhibits P-450 enzymes",
+    "correct_text": "Griseofulvin inhibits P-450 enzymes",
     "explanation": "The most relevant drug interactions in dermatology involve the hepatic biotransformation pathways catalyzed by the cytochrome P-450 isoenzymes from the subfamilies CYP3A3/4. Griseofulvin induces P-450 enzymes.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -144139,16 +144157,17 @@
   {
     "pdf_id": "DIR-Therapeu-00179",
     "pdf_num": 6905,
-    "question": "A 35-year-old female presents to dermatology clinic for the pictured rash, which has been",
+    "question": "A 35-year-old female presents to dermatology clinic for the pictured rash, which has been recurring at least once per week for the past six months. Which of the following treatment inhibition?",
     "choices": {
-      "A": "recurring at least once per week for the past six months. Which of the following treatment",
-      "B": "options works by reducing mast cell degranulation through Bruton tyrosine kinase",
-      "C": "inhibition?",
-      "D": "Omalizumab",
-      "E": "Dupilumab ? Benralizumab ? Cromolyn sodium ? Remibrutinib"
+      "A": "options works by reducing mast cell degranulation through Bruton tyrosine kinase",
+      "B": "Omalizumab",
+      "C": "Dupilumab",
+      "D": "Benralizumab",
+      "E": "Cromolyn sodium",
+      "F": "Remibrutinib"
     },
-    "correct_answer": "E",
-    "correct_text": "Dupilumab ? Benralizumab ? Cromolyn sodium ? Remibrutinib",
+    "correct_answer": "F",
+    "correct_text": "Remibrutinib",
     "explanation": "Remibrutinib. Remibrutinib is an oral Bruton’s tyrosine kinase (BTK) inhibitor under development for the treatment of chronic spontaneous urticaria (CSU). Results from Phase III trials are promising, demonstrating sustained efficacy and a favorable safety profile over 52 weeks. FDA approval could be anticipated in 2025. The BTK is crucial for mast cell activation in CSU. When an allergen cross-links IgE bound to FcεRI, it triggers phosphorylation of ITAMs, leading to activation of Syk kinase, which in turn activates BTK. BTK activation leads to mast cell degranulation. Remibrutinib blocks BTK, preventing mast cell activation and reducing urticaria symptoms. Most/all BTK inhibitors end in -nib and contain -brutin somewhere in their name! Most are used for hematologic malignancies and/or autoimmune diseases, as BTK is heavily involved in survival and proliferation of B cells, however BTK inhibitors are increasingly being studied in the use of asthma and allergy.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -144347,9 +144366,9 @@
     "choices": {
       "A": "Inhibits viral DNA polymerase",
       "B": "Acts on viral thymidine kinase",
-      "C": "Is a non-competitive inhibitor of viral DNA polymerase at the pyrophosphate binding",
-      "D": "site",
-      "E": "Enhances CD8+ T-cell function leading to immune destruction of the virally infected ? cells ? Inhibits viral RNA polymerase"
+      "C": "Is a non-competitive inhibitor of viral DNA polymerase at the pyrophosphate binding site",
+      "D": "Enhances CD8+ T-cell function leading to immune destruction of the virally infected cells",
+      "E": "Inhibits viral RNA polymerase"
     },
     "correct_answer": "A",
     "correct_text": "Inhibits viral DNA polymerase",
@@ -144737,13 +144756,13 @@
     "question": "A 35 year-old otherwise healthy man presents with moderate-to-severe plaque psoriasis, improved on cyclosporine. The patient weighs 70 kilograms and is taking a dose of 300 mg/day. His baseline creatinine was 0.8; on follow-up testing it is 1.1. All other exam and laboratory parameters are within normal limits. The patient is pleased with his treatment and asks to continue it. Which of the following is the most appropriate next step?",
     "choices": {
       "A": "You offer a decrease of the cyclosporine dose to 225 mg/day and close follow-up",
-      "B": "The cyclosporine should be stopped immediately; the patient must avoid cyclosporine",
-      "C": "in the future",
-      "D": "The creatinine should be rechecked in 2 weeks and then the patient reassessed.",
-      "E": "The change in creatinine is not significant, no change is needed ? Cyclosporine rarely has renal toxicity in young, healthy individuals; thus you must work- ? up other causes of the increased creatinine"
+      "B": "The cyclosporine should be stopped immediately; the patient must avoid cyclosporine in the future",
+      "C": "The creatinine should be rechecked in 2 weeks and then the patient reassessed",
+      "D": "The change in creatinine is not significant, no change is needed",
+      "E": "Cyclosporine rarely has renal toxicity in young, healthy individuals; thus you must work-up other causes of the increased creatinine"
     },
-    "correct_answer": "D",
-    "correct_text": "The creatinine should be rechecked in 2 weeks and then the patient\nreassessed",
+    "correct_answer": "C",
+    "correct_text": "The creatinine should be rechecked in 2 weeks and then the patient reassessed",
     "explanation": "Cyclosporine is highly effective in most patients with severe chronic plaque-type psoriasis. Doses start at 2.5 to 4mg/kg/day and can go as high as 5.5mg/kg/day. Renal impairment may occur and is often reversible. If the creatinine increases 30% or greater from baseline, it should be repeated in 2 weeks to verify the increase is persistent and then the dose should be reduced by 25% and the patient followed closely.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -144803,7 +144822,8 @@
       "B": "Obtain blood cultures",
       "C": "Perform complete blood count",
       "D": "Recommend NSAID use",
-      "E": "Obtain spinal x-ray ? Initiate systemic corticosteroids"
+      "E": "Obtain spinal x-ray",
+      "F": "Initiate systemic corticosteroids"
     },
     "correct_answer": "D",
     "correct_text": "Recommend NSAID use",
@@ -145990,11 +146010,11 @@
     "pdf_num": 6995,
     "question": "Which of the following statements is true regarding the absorption of antibiotics?",
     "choices": {
-      "A": "Minocycline absorption is not significantly impaired by the ingestion of calcium",
-      "B": "products but it should be taken on an empty stomach",
-      "C": "Doxycycline absorption is not impaired by the ingestion of dairy products and calcium",
-      "D": "Fluoroquinolone absorption is not altered by antacids",
-      "E": "Tetracycline absorption is impaired by the ingestion of calcium products but not iron ? Cephalosporin absorption is not altered by fatty food consumption"
+      "A": "Minocycline absorption is not significantly impaired by the ingestion of calcium products but it should be taken on an empty stomach",
+      "B": "Doxycycline absorption is not impaired by the ingestion of dairy products and calcium",
+      "C": "Fluoroquinolone absorption is not altered by antacids",
+      "D": "Tetracycline absorption is impaired by the ingestion of calcium products but not iron",
+      "E": "Cephalosporin absorption is not altered by fatty food consumption"
     },
     "correct_answer": "E",
     "correct_text": "Cephalosporin absorption is not altered by fatty food consumption",
@@ -146095,14 +146115,14 @@
     "pdf_num": 7000,
     "question": "A 65 year-old female with multiple actinic keratosis on the face is under treatment with 5- FU. According to the image and aforementioned information, you may conclude that:",
     "choices": {
-      "A": "The patient has been compliant with 5-FU treatment and the appearance of",
-      "B": "inflammation, erythema and erosions are expected",
-      "C": "The image is not relevant to 5-FU treatment",
-      "D": "The presumed diagnosis of actinic keratosis was incorrect.",
-      "E": "She requires intravenous acyclovir treatment. ? The patient must immediately stop treatment since unexpected side effects have ? developed"
+      "A": "The patient has been compliant with 5-FU treatment and the appearance of inflammation, erythema and erosions are expected",
+      "B": "The image is not relevant to 5-FU treatment",
+      "C": "The presumed diagnosis of actinic keratosis was incorrect.",
+      "D": "She requires intravenous acyclovir treatment.",
+      "E": "The patient must immediately stop treatment since unexpected side effects have developed"
     },
     "correct_answer": "A",
-    "correct_text": "The patient has been compliant with 5-FU treatment and the appearance of",
+    "correct_text": "The patient has been compliant with 5-FU treatment and the appearance of inflammation, erythema and erosions are expected",
     "explanation": "Compliance is a key feature in treatment with 5-FU. Erythema, inflammation and erosion must develop and is considered a sign of successful treatment.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -147158,11 +147178,11 @@
       "A": "Switch biologic to guselkumab",
       "B": "Begin prednisone 5 mg by mouth the morning of each injection",
       "C": "Stop ixekizumab and start infliximab",
-      "D": "Pre-medicate with acetaminophen 1 g by mouth, diphenhydramine 25 mg by",
-      "E": "mouth, and allow the injection to reach room temperature prior to injection ? Space the injections out by an additional 2 weeks"
+      "D": "Pre-medicate with acetaminophen 1 g by mouth, diphenhydramine 25 mg by mouth, and allow the injection to reach room temperature prior to injection",
+      "E": "Space the injections out by an additional 2 weeks"
     },
     "correct_answer": "D",
-    "correct_text": "Pre-medicate with acetaminophen 1 g by mouth, diphenhydramine 25 mg by",
+    "correct_text": "Pre-medicate with acetaminophen 1 g by mouth, diphenhydramine 25 mg by mouth, and allow the injection to reach room temperature prior to injection",
     "explanation": "Premedication and allowing the medication to reach room temperature reduce injection site reactions.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -147881,14 +147901,14 @@
     "pdf_num": 7088,
     "question": "All of the following statements are true regarding cyclosporin A EXCEPT:",
     "choices": {
-      "A": "The most common eletrolyte abnormalities are hypokalemia and",
-      "B": "hypermagnesemia",
-      "C": "NSAIDs can potentiate renal toxicity when combined with cyclosporine",
-      "D": "Forms a complex with cyclophilin, blocking its ability to activate calcineurin, thus",
-      "E": "preventing calcineurin from de-phosphorylation NFAT-1 ? Adverse effects include hypertrichosis and gingival hyperplasia ? Metabolized by the hepatic cytochrome P-450 3A4 enzyme system"
+      "A": "The most common eletrolyte abnormalities are hypokalemia and hypermagnesemia",
+      "B": "NSAIDs can potentiate renal toxicity when combined with cyclosporine",
+      "C": "Forms a complex with cyclophilin, blocking its ability to activate calcineurin, thus preventing calcineurin from de-phosphorylation NFAT-1",
+      "D": "Adverse effects include hypertrichosis and gingival hyperplasia",
+      "E": "Metabolized by the hepatic cytochrome P-450 3A4 enzyme system"
     },
     "correct_answer": "A",
-    "correct_text": "The most common eletrolyte abnormalities are hypokalemia and",
+    "correct_text": "The most common eletrolyte abnormalities are hypokalemia and hypermagnesemia",
     "explanation": "The most common electrolyte abnormalities associated with cyclosporin A are hyperkalemia, hyperuricemia, and hypomagnesemia.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
