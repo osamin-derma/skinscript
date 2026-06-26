@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
+import Notebook from './Notebook'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -103,7 +104,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: bankKey, questionId: originalId })
   }
 
-  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [] } = state
+  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {} } = state
   const unusedCount = totalQuestions - globalUsed.length
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
@@ -640,9 +641,10 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
         {/* Tab bar */}
         <div className="flex gap-1 mb-4 p-1 rounded-xl bg-gray-100 dark:bg-gray-800/70 dark:border dark:border-gray-700">
           {[
-            { key: 'create', icon: <Sparkles size={14} />, label: 'Create Quiz' },
+            { key: 'create', icon: <Sparkles size={14} />, label: 'Create' },
             { key: 'history', icon: <History size={14} />, label: 'History' },
-            { key: 'performance', icon: <BarChart3 size={14} />, label: 'Performance' },
+            { key: 'performance', icon: <BarChart3 size={14} />, label: 'Stats' },
+            { key: 'notebook', icon: <BookOpen size={14} />, label: 'Notebook' },
           ].map(t => (
             <button
               key={t.key}
@@ -1052,6 +1054,16 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               })}
             />
           </div>
+        )}
+
+        {/* NOTEBOOK TAB */}
+        {tab === 'notebook' && (
+          <Notebook
+            notes={notes}
+            lookupQuestion={lookupQuestion}
+            onNote={(pdfId, text) => dispatch({ type: 'SET_NOTE', pdfId, text })}
+            darkMode={darkMode}
+          />
         )}
 
         <p className="text-center text-xs text-gray-400 mt-4 pb-4">Created by Dr. Osama Al Rawi</p>
