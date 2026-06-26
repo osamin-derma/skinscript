@@ -121,7 +121,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
   const handleNext = () => {
     if (currentIndex < totalQ - 1) dispatch({ type: 'NEXT' })
-    else dispatch({ type: 'END_QUIZ' })
+    else dispatch({ type: 'END_QUIZ', questions })
   }
 
   const handleSkip = () => {
@@ -218,7 +218,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             </button>
 
             <button
-              onClick={() => dispatch({ type: 'END_QUIZ' })}
+              onClick={() => dispatch({ type: 'END_QUIZ', questions })}
               className="px-3 py-1 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-900/30"
             >
               End Quiz

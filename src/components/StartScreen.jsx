@@ -13,6 +13,12 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const [showHistory, setShowHistory] = useState(false)
   const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance'
   const [showAccount, setShowAccount] = useState(false)
+  // pdf_id → question, for reopening a past exam in the account drawer.
+  const questionByPdfId = useMemo(() => {
+    const m = new Map()
+    ;(banks?.all?.questions || []).forEach((q) => { if (q.pdf_id) m.set(q.pdf_id, q) })
+    return m
+  }, [banks])
   const [activeBank, setActiveBankLocal] = useState(state.activeBank || 'all')
   const setActiveBank = (bank) => {
     setActiveBankLocal(bank)
@@ -173,6 +179,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             darkMode={darkMode}
             onClose={() => setShowAccount(false)}
             onSignOut={onSignOut}
+            lookupQuestion={(pdfId) => questionByPdfId.get(pdfId)}
           />
         )}
         {/* Header */}

@@ -69,6 +69,7 @@ function rowToHistoryEntry(r) {
     incorrect: r.incorrect,
     score: r.score,
     timePerQ: r.time_per_q,
+    detail: r.detail || null,
   }
 }
 
@@ -134,22 +135,29 @@ export async function addUsed(questionId) {
 
 export async function insertHistory(entry) {
   const userId = await uid(); if (!userId) return null
-  const { data, error } = await supabase
+  const base = {
+    user_id:         userId,
+    mode:            entry.mode,
+    source:          entry.source,
+    bank:            entry.bank,
+    total_questions: entry.totalQuestions,
+    answered:        entry.answered,
+    correct:         entry.correct,
+    incorrect:       entry.incorrect,
+    score:           entry.score,
+    time_per_q:      entry.timePerQ,
+  }
+  let { data, error } = await supabase
     .from('quiz_history')
-    .insert({
-      user_id:         userId,
-      mode:            entry.mode,
-      source:          entry.source,
-      bank:            entry.bank,
-      total_questions: entry.totalQuestions,
-      answered:        entry.answered,
-      correct:         entry.correct,
-      incorrect:       entry.incorrect,
-      score:           entry.score,
-      time_per_q:      entry.timePerQ,
-    })
+    .insert({ ...base, detail: entry.detail || null })
     .select()
     .single()
+  // The `detail` column ships before its migration may be run (07_quiz_history_detail.sql).
+  // If it's missing, fall back to inserting without it so history still syncs;
+  // per-exam review just won't persist to the cloud until the column exists.
+  if (error && /detail/i.test(`${error.message} ${error.details || ''}`)) {
+    ;({ data, error } = await supabase.from('quiz_history').insert(base).select().single())
+  }
   warn('insertHistory', error)
   return data ? rowToHistoryEntry(data) : null
 }

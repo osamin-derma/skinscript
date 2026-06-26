@@ -1,27 +1,32 @@
 import { useState, useEffect, useRef } from 'react'
-import { X, Mail, Phone, Lock, Trophy, User, CalendarDays, Check, AlertCircle, LogOut } from 'lucide-react'
+import { X, Mail, Phone, Lock, Trophy, User, CalendarDays, Check, AlertCircle, LogOut, ChevronRight } from 'lucide-react'
 import PhoneInput from './PhoneInput'
+import ExamReview from './ExamReview'
 import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, normalizePhone } from '../lib/auth'
 
 /**
- * Account panel — opened by clicking the username chip on the StartScreen.
+ * Account panel — a side drawer opened by clicking the username chip on the
+ * StartScreen (full-width on mobile, fixed sidebar on desktop).
  *
  * Shows the user's name, email, and join date, lets them change their email,
- * mobile number, and password (each through the proper Supabase flow:
- * email + phone require confirmation, password is immediate), and lists their
- * recent quizzes.
+ * mobile number, and password (each through the proper Supabase flow), and
+ * lists every past exam — click one to review the whole exam question by
+ * question (rendered by ExamReview via `lookupQuestion`).
  */
-export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut }) {
+export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut, lookupQuestion }) {
   const brand = '#2c3e3f'
   const closeRef = useRef(null)
+  const [shown, setShown] = useState(false)
+  const [selectedExam, setSelectedExam] = useState(null)
 
-  // Close on Escape; move focus into the dialog on open.
+  // Slide in on mount; close on Escape; move focus into the drawer on open.
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    setShown(true)
+    const onKey = (e) => { if (e.key === 'Escape') { if (selectedExam) setSelectedExam(null); else onClose() } }
     document.addEventListener('keydown', onKey)
     closeRef.current?.focus()
     return () => document.removeEventListener('keydown', onKey)
-  }, [onClose])
+  }, [onClose, selectedExam])
 
   const name = currentUser?.username || (currentUser?.email || '').split('@')[0] || 'You'
   const initial = (name[0] || 'U').toUpperCase()
@@ -37,14 +42,14 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[60] flex justify-end bg-black/50 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="account-modal-title"
     >
       <div
-        className={`relative w-full max-w-md rounded-2xl border shadow-2xl ${card} max-h-[90vh] overflow-y-auto`}
+        className={`relative h-full w-full sm:max-w-md border-l shadow-2xl ${card} overflow-y-auto transform transition-transform duration-300 ease-out sm:rounded-l-2xl ${shown ? 'translate-x-0' : 'translate-x-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -56,82 +61,103 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
           <X size={18} />
         </button>
 
-        {/* Profile header */}
-        <div className="p-6 pb-5 text-center border-b border-gray-100 dark:border-gray-700">
-          <div
-            className="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center text-2xl font-bold text-white"
-            style={{ backgroundColor: brand }}
-          >
-            {initial}
+        {selectedExam ? (
+          <div className="p-5">
+            <ExamReview exam={selectedExam} lookupQuestion={lookupQuestion} darkMode={darkMode} onBack={() => setSelectedExam(null)} />
           </div>
-          <h2 id="account-modal-title" className="text-lg font-bold tracking-tight" style={{ color: darkMode ? '#7fb5b5' : brand }}>{name}</h2>
-          {currentUser?.email && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 flex items-center justify-center gap-1">
-              <Mail size={11} /> {currentUser.email}
-            </p>
-          )}
-          {joined && (
-            <p className="text-[11px] text-gray-400 mt-1 flex items-center justify-center gap-1">
-              <CalendarDays size={11} /> Joined {joined}
-            </p>
-          )}
-        </div>
-
-        <div className="p-5 space-y-4">
-          <EmailSection currentEmail={currentUser?.email} inputCls={inputCls} sub={sub} brand={brand} />
-          <PhoneSection currentPhone={currentUser?.phone} inputCls={inputCls} sub={sub} brand={brand} darkMode={darkMode} />
-          <PasswordSection email={currentUser?.email} inputCls={inputCls} sub={sub} brand={brand} />
-
-          {/* Previous quizzes */}
-          <div className={`rounded-xl border p-4 ${sub}`}>
-            <div className="flex items-center gap-2 mb-3">
-              <Trophy size={15} style={{ color: brand }} />
-              <span className="text-sm font-semibold">Previous quizzes</span>
-              <span className="ml-auto text-[11px] text-gray-400">{history.length} total</span>
+        ) : (
+          <>
+            {/* Profile header */}
+            <div className="p-6 pb-5 text-center border-b border-gray-100 dark:border-gray-700">
+              <div
+                className="w-16 h-16 mx-auto mb-3 rounded-full flex items-center justify-center text-2xl font-bold text-white"
+                style={{ backgroundColor: brand }}
+              >
+                {initial}
+              </div>
+              <h2 id="account-modal-title" className="text-lg font-bold tracking-tight" style={{ color: darkMode ? '#7fb5b5' : brand }}>{name}</h2>
+              {currentUser?.email && (
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 flex items-center justify-center gap-1">
+                  <Mail size={11} /> {currentUser.email}
+                </p>
+              )}
+              {joined && (
+                <p className="text-[11px] text-gray-400 mt-1 flex items-center justify-center gap-1">
+                  <CalendarDays size={11} /> Joined {joined}
+                </p>
+              )}
             </div>
-            {history.length === 0 ? (
-              <p className="text-xs text-gray-400 text-center py-3">No quizzes yet — start one to see it here.</p>
-            ) : (
-              <div className="space-y-2">
-                {history.slice(0, 6).map((h) => (
-                  <div key={h.id} className="flex items-center gap-3">
-                    <span
-                      className="text-sm font-bold w-12 text-right"
-                      style={{ color: h.score >= 70 ? '#16a34a' : h.score >= 50 ? '#d97706' : '#dc2626' }}
-                    >
-                      {h.score}%
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-1.5 text-[11px] text-gray-500 dark:text-gray-400">
-                        <span className="capitalize truncate">{h.source}</span>
-                        <span>•</span>
-                        <span>{h.correct}/{h.totalQuestions}</span>
-                        <span>•</span>
-                        <span className="capitalize">{h.mode}</span>
-                      </div>
-                      <div className="w-full h-1 bg-gray-200 dark:bg-gray-700 rounded-full mt-1 overflow-hidden">
-                        <div className="h-full rounded-full" style={{ width: `${h.score}%`, backgroundColor: h.score >= 70 ? '#22c55e' : h.score >= 50 ? '#f59e0b' : '#ef4444' }} />
-                      </div>
-                    </div>
-                    <span className="text-[10px] text-gray-400 whitespace-nowrap">{new Date(h.date).toLocaleDateString()}</span>
+
+            <div className="p-5 space-y-4">
+              <EmailSection currentEmail={currentUser?.email} inputCls={inputCls} sub={sub} brand={brand} />
+              <PhoneSection currentPhone={currentUser?.phone} inputCls={inputCls} sub={sub} brand={brand} darkMode={darkMode} />
+              <PasswordSection email={currentUser?.email} inputCls={inputCls} sub={sub} brand={brand} />
+
+              {/* Previous exams — full list; click one to review it */}
+              <div className={`rounded-xl border p-4 ${sub}`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <Trophy size={15} style={{ color: brand }} />
+                  <span className="text-sm font-semibold">Previous exams</span>
+                  <span className="ml-auto text-[11px] text-gray-400">{history.length} total</span>
+                </div>
+                {history.length === 0 ? (
+                  <p className="text-xs text-gray-400 text-center py-3">No exams yet — start one to see it here.</p>
+                ) : (
+                  <div className="space-y-1">
+                    {history.map((h) => {
+                      const reviewable = Array.isArray(h.detail) && h.detail.length > 0
+                      const color = h.score >= 70 ? '#16a34a' : h.score >= 50 ? '#d97706' : '#dc2626'
+                      const bar = h.score >= 70 ? '#22c55e' : h.score >= 50 ? '#f59e0b' : '#ef4444'
+                      const inner = (
+                        <>
+                          <span className="text-sm font-bold w-11 text-right flex-shrink-0" style={{ color }}>{h.score}%</span>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1.5 text-[11px] text-gray-500 dark:text-gray-400">
+                              <span className="capitalize truncate">{h.source}</span>
+                              <span>•</span>
+                              <span className="whitespace-nowrap">{h.correct}/{h.totalQuestions}</span>
+                              <span>•</span>
+                              <span className="capitalize">{h.mode}</span>
+                            </div>
+                            <div className="w-full h-1 bg-gray-200 dark:bg-gray-700 rounded-full mt-1 overflow-hidden">
+                              <div className="h-full rounded-full" style={{ width: `${h.score}%`, backgroundColor: bar }} />
+                            </div>
+                          </div>
+                          <span className="text-[10px] text-gray-400 whitespace-nowrap flex-shrink-0">{new Date(h.date).toLocaleDateString()}</span>
+                        </>
+                      )
+                      return reviewable ? (
+                        <button
+                          key={h.id}
+                          onClick={() => setSelectedExam(h)}
+                          className="w-full flex items-center gap-2.5 text-left p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 transition"
+                          title="Review this exam"
+                        >
+                          {inner}
+                          <ChevronRight size={14} className="text-gray-400 flex-shrink-0 -ml-1" />
+                        </button>
+                      ) : (
+                        <div key={h.id} className="flex items-center gap-2.5 p-1.5 opacity-90" title="Summary only — taken before exam review was added">
+                          {inner}
+                          <span className="w-3.5 flex-shrink-0" />
+                        </div>
+                      )
+                    })}
                   </div>
-                ))}
-                {history.length > 6 && (
-                  <p className="text-[10px] text-gray-400 text-center pt-1">+ {history.length - 6} more in the History tab</p>
                 )}
               </div>
-            )}
-          </div>
 
-          {onSignOut && (
-            <button
-              onClick={() => { if (confirm('Sign out?')) onSignOut() }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition border border-red-200 dark:border-red-900/40"
-            >
-              <LogOut size={15} /> Sign out
-            </button>
-          )}
-        </div>
+              {onSignOut && (
+                <button
+                  onClick={() => { if (confirm('Sign out?')) onSignOut() }}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition border border-red-200 dark:border-red-900/40"
+                >
+                  <LogOut size={15} /> Sign out
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

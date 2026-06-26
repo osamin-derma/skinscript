@@ -274,6 +274,22 @@ function reducer(state, action) {
       const correct = Object.values(state.answers).filter(a => a.correct).length
       const score = total > 0 ? Math.round((correct / total) * 100) : 0
 
+      // Compact per-question detail so this exam can be reopened/reviewed later.
+      // Only the question id + the user's pick is stored; everything else
+      // (text, choices, correct answer, explanation) is re-resolved from the
+      // bank at review time. `action.questions` is the bank array passed by the
+      // QuizScreen so we can map order-indices → stable question ids.
+      // Key on pdf_id (globally unique + stable across banks) rather than the
+      // numeric id, which is offset-remapped in the combined "All" bank.
+      const reviewQs = action.questions || []
+      const detail = state.questionOrder
+        .map((qi) => {
+          const q = reviewQs[qi]
+          if (!q) return null
+          return { pdf_id: q.pdf_id, selected: state.answers[q.id]?.selected ?? null }
+        })
+        .filter((d) => d && d.pdf_id)
+
       const historyEntry = {
         id: Date.now(),
         date: new Date().toISOString(),
@@ -285,6 +301,7 @@ function reducer(state, action) {
         incorrect: answered - correct,
         score,
         timePerQ: state.timerSetting,
+        detail,
       }
 
       const newHistory = [historyEntry, ...state.history].slice(0, 50)
