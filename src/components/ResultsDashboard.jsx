@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Trophy, RotateCcw, Flag, Eye, CheckCircle, XCircle, ChevronDown, ChevronUp } from 'lucide-react'
 
 export default function ResultsDashboard({ state, questions, dispatch }) {
-  const { questionOrder, answers, flagged, darkMode } = state
+  const { questionOrder, answers, flagged, darkMode, isAssessment } = state
   const [expandedQ, setExpandedQ] = useState(null)
   const [filter, setFilter] = useState('all')
 
@@ -61,6 +61,19 @@ export default function ResultsDashboard({ state, questions, dispatch }) {
           </div>
 
           <p className={`text-lg font-semibold ${grade.color}`}>{grade.label}</p>
+
+          {isAssessment && (() => {
+            const band = score >= 75 ? { t: 'On track', c: '#16a34a', bg: 'bg-green-50 dark:bg-green-900/20' }
+              : score >= 60 ? { t: 'Borderline', c: '#d97706', bg: 'bg-amber-50 dark:bg-amber-900/20' }
+              : { t: 'Needs work', c: '#dc2626', bg: 'bg-red-50 dark:bg-red-900/20' }
+            return (
+              <div className={`mt-5 mx-auto max-w-sm rounded-xl p-3 ${band.bg}`}>
+                <div className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-0.5">Self-assessment exam · readiness</div>
+                <div className="text-lg font-bold" style={{ color: band.c }}>{band.t}</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">A timed-exam snapshot. Your lifetime readiness is in Stats.</div>
+              </div>
+            )
+          })()}
 
           <div className="grid grid-cols-3 gap-4 mt-6">
             <div className="p-3 rounded-xl bg-green-50 dark:bg-green-900/20">

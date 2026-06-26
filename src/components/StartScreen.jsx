@@ -727,6 +727,22 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               )}
             </div>
 
+            {/* Self-assessment exam */}
+            <button
+              onClick={() => onStart({ source: 'all', bank: 'all', categoryFilter: 'all', count: 40, mode: 'timed', timer: 75, shuffle: true, assessment: true })}
+              className="w-full flex items-center gap-3 p-3.5 mb-6 rounded-xl border-2 transition hover:opacity-90 text-left"
+              style={{ borderColor: goldDark, backgroundColor: darkMode ? '#2a2618' : '#fdf9ee' }}
+            >
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: goldDark }}>
+                <Trophy size={18} className="text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-bold" style={{ color: darkMode ? '#d4b966' : '#8a6d2b' }}>Self-assessment exam</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-400">40 questions · timed · predicts your readiness</div>
+              </div>
+              <ChevronDown size={16} className="-rotate-90 text-gray-400 flex-shrink-0" />
+            </button>
+
             {/* Question Source */}
             <div className="mb-5">
               <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">Question Source</label>

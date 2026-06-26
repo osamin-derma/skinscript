@@ -140,6 +140,7 @@ const initialState = {
   notes: {}, // { [pdf_id]: text } — personal note per question
   highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
   schedule: {}, // { [pdf_id]: { box, interval, due, reps } } — spaced-repetition
+  isAssessment: false, // current quiz is a timed self-assessment exam
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
   // and END_QUIZ.  Independent from `answers` — striking a choice and
@@ -251,6 +252,7 @@ function reducer(state, action) {
         strikethroughs: {},
         quizSource: action.source || 'all',
         activeBank: bankKey,
+        isAssessment: !!action.assessment,
         // Persist the category filter the pool was actually built with, so the
         // render array (getBankQuestions(activeBank, categoryFilter)) matches
         // the questionOrder indices — otherwise a programmatic categoryFilter
@@ -338,6 +340,7 @@ function reducer(state, action) {
         incorrect: answered - correct,
         score,
         timePerQ: state.timerSetting,
+        isAssessment: state.isAssessment,
         detail,
       }
 
