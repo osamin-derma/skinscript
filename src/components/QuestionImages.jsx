@@ -54,7 +54,10 @@ export default function QuestionImages({ images, darkMode, compact = false, medi
               src={url}
               alt={`Clinical image ${i + 1}`}
               loading="lazy"
-              className={`w-full object-contain ${compact ? 'max-h-40' : 'max-h-72'}`}
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              className={`w-full object-contain select-none ${compact ? 'max-h-40' : 'max-h-72'}`}
+              style={{ WebkitUserDrag: 'none', WebkitTouchCallout: 'none' }}
               onError={(e) => { e.currentTarget.style.display = 'none' }}
             />
             <div className="absolute top-2 right-2 p-1.5 rounded-full bg-black/40 text-white opacity-0 group-hover:opacity-100 transition">
@@ -68,6 +71,7 @@ export default function QuestionImages({ images, darkMode, compact = false, medi
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 cursor-zoom-out"
           onClick={() => setOpen(null)}
+          onContextMenu={(e) => e.preventDefault()}
           role="dialog"
         >
           <button
@@ -81,7 +85,10 @@ export default function QuestionImages({ images, darkMode, compact = false, medi
           <img
             src={images[open]}
             alt={`Clinical image ${open + 1}`}
-            className="max-h-[92vh] max-w-[92vw] object-contain rounded-lg shadow-2xl"
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
+            className="max-h-[92vh] max-w-[92vw] object-contain rounded-lg shadow-2xl select-none"
+            style={{ WebkitUserDrag: 'none', WebkitTouchCallout: 'none' }}
             onClick={(e) => e.stopPropagation()}
           />
           {images.length > 1 && (

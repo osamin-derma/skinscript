@@ -64,6 +64,7 @@ function getBankQuestions(bankKey, categoryFilter = null) {
 import StartScreen from './components/StartScreen'
 import QuizScreen from './components/QuizScreen'
 import ResultsDashboard from './components/ResultsDashboard'
+import Watermark from './components/Watermark'
 
 // Master Edition 2026 — versioned keys so old user data is preserved
 // but new banks start fresh.
@@ -580,6 +581,9 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${state.darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      {/* Identity watermark — traceable overlay for every signed-in screen */}
+      <Watermark email={session?.user?.email} />
+
       {/* WELCOME / RESET NOTICE — shown once per DATA_VERSION */}
       {showWelcome && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
