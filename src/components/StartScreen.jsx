@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
 import AccountModal from './AccountModal'
+import PerformanceAnalytics from './PerformanceAnalytics'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -1038,25 +1039,16 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               </div>
             </div>
 
-            {/* Score trend */}
-            {history.length > 1 && (
-              <div className="mb-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">Recent Scores</h3>
-                <div className="flex items-end gap-1 h-20">
-                  {history.slice(0, 20).reverse().map((h, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center">
-                      <div
-                        className="w-full rounded-t"
-                        style={{
-                          height: `${Math.max(h.score * 0.8, 4)}px`,
-                          backgroundColor: h.score >= 70 ? '#22c55e' : h.score >= 50 ? '#f59e0b' : '#ef4444',
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* Deep analytics: readiness · trend · weak areas · per-category */}
+            <PerformanceAnalytics
+              history={history}
+              lookupQuestion={(pid) => questionByPdfId.get(pid)}
+              darkMode={darkMode}
+              onPracticeCategory={(category) => onStart({
+                source: 'topics', topics: [category], bank: 'all',
+                count: 20, mode: 'tutor', timer: timer, shuffle: true,
+              })}
+            />
           </div>
         )}
 
