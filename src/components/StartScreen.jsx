@@ -24,6 +24,11 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   }, [banks])
   // Stable reference so analytics memos don't re-run every keystroke.
   const lookupQuestion = useCallback((pid) => questionByPdfId.get(pid), [questionByPdfId])
+  // Count only due questions that are actually quizzable (match what a Due quiz starts).
+  const dueCount = useMemo(() => duePdfIds(schedule).filter((pid) => {
+    const q = questionByPdfId.get(pid)
+    return q && q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
+  }).length, [schedule, questionByPdfId])
   const [activeBank, setActiveBankLocal] = useState(state.activeBank || 'all')
   const setActiveBank = (bank) => {
     setActiveBankLocal(bank)
@@ -106,7 +111,6 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   }
 
   const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {} } = state
-  const dueCount = useMemo(() => duePdfIds(schedule).length, [schedule])
   const unusedCount = totalQuestions - globalUsed.length
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'

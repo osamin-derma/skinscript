@@ -123,9 +123,10 @@ export default function QuizScreen({ state, questions, dispatch }) {
     if (!selected && !isSubmitted) return
     const isCorrect = selected === q.correct_answer
     dispatch({ type: 'ANSWER', questionId: q.id, selected, correct: isCorrect })
-    // Advance the spaced-repetition schedule (keyed on stable pdf_id).
-    if (q.pdf_id) dispatch({ type: 'RECORD_REVIEW', pdfId: q.pdf_id, correct: isCorrect })
-  }, [selected, q, dispatch])
+    // Advance the spaced-repetition schedule (keyed on stable pdf_id) — but not
+    // in 'review' mode (opening a question to look it up must not score it).
+    if (q.pdf_id && mode !== 'review' && !isSubmitted) dispatch({ type: 'RECORD_REVIEW', pdfId: q.pdf_id, correct: isCorrect })
+  }, [selected, q, dispatch, mode, isSubmitted])
 
   const handleNext = () => {
     if (currentIndex < totalQ - 1) dispatch({ type: 'NEXT' })

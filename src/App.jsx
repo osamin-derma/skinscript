@@ -171,8 +171,12 @@ function reducer(state, action) {
       }
     }
     case 'RECORD_REVIEW': {
-      // Advance this question's spaced-repetition schedule on every answer.
+      // Advance the spaced-repetition schedule only on a genuine review: the
+      // first-ever exposure (no entry) or a question that is actually due.
+      // Answering an early/not-yet-due question (cramming) must NOT inflate the
+      // ladder, so we leave its schedule untouched.
       const prev = state.schedule[action.pdfId]
+      if (prev && !isDue(prev)) return state
       const entry = nextSchedule(prev, action.correct)
       return { ...state, schedule: { ...state.schedule, [action.pdfId]: entry } }
     }
@@ -247,6 +251,11 @@ function reducer(state, action) {
         strikethroughs: {},
         quizSource: action.source || 'all',
         activeBank: bankKey,
+        // Persist the category filter the pool was actually built with, so the
+        // render array (getBankQuestions(activeBank, categoryFilter)) matches
+        // the questionOrder indices — otherwise a programmatic categoryFilter
+        // (e.g. Due/Practice using 'all') renders the wrong questions.
+        categoryFilter: catFilter,
       }
     }
     case 'ANSWER': {
