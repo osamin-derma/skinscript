@@ -42,14 +42,14 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex justify-end bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-[60] flex justify-start bg-black/50 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="account-modal-title"
     >
       <div
-        className={`relative h-full w-full sm:max-w-md border-l shadow-2xl ${card} overflow-y-auto transform transition-transform duration-300 ease-out sm:rounded-l-2xl ${shown ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`relative h-full w-full sm:max-w-md border-r shadow-2xl ${card} overflow-y-auto transform transition-transform duration-300 ease-out sm:rounded-r-2xl ${shown ? 'translate-x-0' : '-translate-x-full'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button

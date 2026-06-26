@@ -171,7 +171,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl lg:max-w-6xl mx-auto">
         {showAccount && (
           <AccountModal
             currentUser={currentUser}

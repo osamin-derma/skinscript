@@ -48,7 +48,7 @@ export default function ResultsDashboard({ state, questions, dispatch }) {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl lg:max-w-6xl mx-auto">
         {/* Score Card */}
         <div className={`${bg} rounded-2xl shadow-xl p-8 mb-6 text-center`}>
           <div className="text-5xl mb-3">{grade.emoji}</div>
