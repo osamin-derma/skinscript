@@ -5779,13 +5779,13 @@
       "D": "13 weeks of estimated gestational age...",
       "E": "15 weeks of estimated gestational age"
     },
-    "correct_answer": "",
-    "correct_text": "9",
+    "correct_answer": "B",
+    "correct_text": "9 weeks of estimated gestational age",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",
     "category": "Basic",
-    "format": "mcq_no_key",
+    "format": "mcq",
     "id": 232
   },
   {
@@ -11749,7 +11749,7 @@
       "E": "K85"
     },
     "correct_answer": "C",
-    "correct_text": "OR E",
+    "correct_text": "K37",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",
@@ -11969,7 +11969,7 @@
       "E": "The medial nail fold"
     },
     "correct_answer": "C",
-    "correct_text": "(Melanocytic hyperplasia is typically associated with the nail matrix, particularly\nthe",
+    "correct_text": "The distal nail matrix",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",
@@ -11989,7 +11989,7 @@
       "E": "The medial nail fold"
     },
     "correct_answer": "B",
-    "correct_text": "(The concerning features described, such as variation in line thickness and",
+    "correct_text": "The proximal nail matrix",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",
@@ -28562,7 +28562,7 @@
       "E": "Basocytes"
     },
     "correct_answer": "C",
-    "correct_text": "(This question seems to have incorrect options. Epithelial cells are not derived\nfrom",
+    "correct_text": "Astrocytes",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",
@@ -28757,7 +28757,7 @@
       "E": "MHC II"
     },
     "correct_answer": "A",
-    "correct_text": "((CD21) receptor to infect B cells)",
+    "correct_text": "CR2",
     "explanation": "",
     "incorrect_rationales": {},
     "source": "Makki",

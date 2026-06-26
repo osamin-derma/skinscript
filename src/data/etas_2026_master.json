@@ -881,13 +881,14 @@
     "pdf_num": 44,
     "question": "Which of the following statements is true about eccrine glands? A Postganglionic sympathetic fibers with acetylcholine as the principal B neurotransmitter C Postganglionic parasympathetic fibers with norepinephrine as the principal D neurotransmitter E Postganglionic parasympathetic fibers with acetylcholine as the principal",
     "choices": {
-      "A": "neurotransmitter",
-      "B": "Postganglionic sympathetic fibers with norepinephrine as the principal neurotransmitter",
-      "C": "Postganglionic sympathetic fibers with both norepinephrine and acetylcholine as the",
-      "D": "principal neurotransmitters"
+      "A": "Postganglionic sympathetic fibers with acetylcholine as the principal neurotransmitter",
+      "B": "Postganglionic parasympathetic fibers with norepinephrine as the principal neurotransmitter",
+      "C": "Postganglionic parasympathetic fibers with acetylcholine as the principal neurotransmitter",
+      "D": "Postganglionic sympathetic fibers with norepinephrine as the principal neurotransmitter",
+      "E": "Postganglionic sympathetic fibers with both norepinephrine and acetylcholine as the principal neurotransmitters"
     },
     "correct_answer": "A",
-    "correct_text": "Postganglionic sympathetic fibers with acetylcholine as the principal",
+    "correct_text": "Postganglionic sympathetic fibers with acetylcholine as the principal neurotransmitter",
     "explanation": "Eccrine glands are innervated by postganglionic sympathetic fibers with acetylcholine as the principal neurotransmitter. This explains why medications associated with anticholinergic side effects may be associated with hypohidrosis.",
     "incorrect_rationales": {
       "B": "neurotransmitter",
@@ -93607,7 +93608,8 @@
       "A": "The disorder can be inherited in an autosomal dominant fashion, but most cases are sporadic.",
       "B": "This condition does not undergo malignant degeneration",
       "C": "The characteristic finding on histopathology is a keratin-filled epidermal invagination with an angulated parakeratotic tier",
-      "D": "All of the above are correct"
+      "D": "Both A and C are correct",
+      "E": "All of the above are correct"
     },
     "correct_answer": "D",
     "correct_text": "Both A and C are correct",
@@ -115939,7 +115941,7 @@
       "E": "The infant will develop coordination and speech problems"
     },
     "correct_answer": "B",
-    "correct_text": "Growth of the lesion dover the next year is expected and systemic\npropranolol therapy at weight-based dosing would be optimal but the patient should undergo MRI/\nMRA of the head, neck, and chest",
+    "correct_text": "Growth of the lesion dover the next year is expected and systemic propranolol therapy at weight-based dosing would be optimal but the patient should undergo MRI/MRA of the head, neck, and chest",
     "explanation": "The infant has PHACES syndrome with evidence of infantile hemangioma of the eye and nose. Infantile hemangiomas tend to grow during the first year of life prior to involution. In the setting of PHACES syndrome with a large hemangioma over sensitive areas such as the eyes and nose, the patient should initiate systemic propranolol therapy and undergo MRI/MRA of the head, neck, and chest to evaluate for arterial abnormalities. Topical treatment is insufficient for the infantile hemangioma described in this vignette. The lesion will not resolve within 3 months. The infant does not have an increased risk of spina bifida and will not necessarily develop any coordination or speech problems.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",

@@ -2901,9 +2901,10 @@
     "pdf_num": 135,
     "question": "Which of the following is not true about reticular dermis:",
     "choices": {
-      "A": "Decrease BV",
+      "A": "Thin collagen",
       "B": "Cross-link elastin",
-      "C": "Low fibroblast"
+      "C": "Low fibroblast",
+      "D": "Decrease BV"
     },
     "correct_answer": "A",
     "correct_text": "Thin collagen",
@@ -13952,7 +13953,7 @@
       "D": "37 C"
     },
     "correct_answer": "B",
-    "correct_text": "5 C",
+    "correct_text": "5C",
     "explanation": "",
     "incorrect_rationales": {
       "A": "- 5 C",
@@ -14495,7 +14496,7 @@
       "D": "37 C"
     },
     "correct_answer": "B",
-    "correct_text": "5 C",
+    "correct_text": "5C",
     "explanation": "",
     "incorrect_rationales": {
       "A": "-5 C",
@@ -28319,7 +28320,7 @@
       "E": "37 C"
     },
     "correct_answer": "A",
-    "correct_text": "4 C",
+    "correct_text": "4C",
     "explanation": "",
     "incorrect_rationales": {
       "B": "-20 C",
