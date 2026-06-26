@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { CheckCircle, XCircle, StickyNote, Layers, Check } from 'lucide-react'
 import QuestionImages from './QuestionImages'
+import TutorPanel from './TutorPanel'
 
 /**
  * ExplanationPanel — renders the answer/explanation block in the layout
@@ -161,6 +162,9 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
             <p className="text-xs text-blue-600 dark:text-blue-300 whitespace-pre-line leading-relaxed">{question.bolognia_note}</p>
           </div>
         )}
+
+        {/* AI Tutor (hidden unless the tutor function is configured) */}
+        <TutorPanel question={question} darkMode={darkMode} />
 
         {/* Make flashcard */}
         {onAddCard && (
