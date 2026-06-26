@@ -7973,7 +7973,7 @@
       "B": "dihydrotestosterone (DHT)",
       "C": "prolactin",
       "D": "adrenocorticotropin hormone (ACTH)",
-      "E": "alpha-melanocyte stimulating hormone (MSH)Question 66 Explanation"
+      "E": "alpha-melanocyte stimulating hormone (MSH)"
     },
     "correct_answer": "A",
     "correct_text": "All the options are correct",
@@ -8413,7 +8413,7 @@
       "B": "on the trunk",
       "C": "on the lateral thighs",
       "D": "on the genital skin",
-      "E": "on the faceQuestion 88 Explanation"
+      "E": "on the face"
     },
     "correct_answer": "A",
     "correct_text": "on hands/feet",
@@ -24382,12 +24382,14 @@
     "pdf_num": 1166,
     "question": "In this disorder which typically occurs on the head and neck, the cells would demonstrate which staining pattern?",
     "choices": {
-      "A": "CD1a + and S100 +",
-      "B": "CD1a- and S100 C. CD1a+ and S100D. CD1a- and S100+",
-      "C": "CD68-"
+      "A": "CD1a+ and S100+",
+      "B": "CD1a- and S100-",
+      "C": "CD1a+ and S100-",
+      "D": "CD1a- and S100+",
+      "E": "CD68-"
     },
     "correct_answer": "B",
-    "correct_text": "CD1a- and S100 C. CD1a+ and S100D. CD1a- and S100+",
+    "correct_text": "CD1a- and S100-",
     "explanation": "children. It is a non-Langerhans cell histiocytosis; hence, it is CD1a and S100 negative but is CD68 positive.",
     "incorrect_rationales": {},
     "source": "ETAS 2026",
@@ -71222,7 +71224,7 @@
       "B": "No loss of sensation or sweating",
       "C": "Lepromin test +",
       "D": "Multibacillary",
-      "E": "IL4, IL-10,"
+      "E": "IL4, IL-10"
     },
     "correct_answer": "C",
     "correct_text": "Lepromin test +",
@@ -112404,9 +112406,10 @@
     "question": "The characteristics of tuberculoid leprosy or TT is:",
     "choices": {
       "A": "Lepromin test +",
-      "B": "IL4, IL-10,",
+      "B": "IL4, IL-10",
       "C": "Multibacillary",
-      "D": "Lepromin test E. No loss of sensation or sweating"
+      "D": "Lepromin test -",
+      "E": "No loss of sensation or sweating"
     },
     "correct_answer": "A",
     "correct_text": "Lepromin test +",

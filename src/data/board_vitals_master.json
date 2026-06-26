@@ -9402,7 +9402,7 @@
       "B": "Excision",
       "C": "Treatment with imiquimod",
       "D": "Circumcision",
-      "E": "Biopsy Explanation Correct Answer:"
+      "E": "Biopsy"
     },
     "correct_answer": "D",
     "correct_text": "Circumcision",
