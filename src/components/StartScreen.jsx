@@ -3,6 +3,7 @@ import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Tras
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
+import StreakCard from './StreakCard'
 import { duePdfIds } from '../lib/srs'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
@@ -1028,6 +1029,9 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 <Trash2 size={12} /> Reset Everything
               </button>
             </div>
+
+            {/* Streak + daily goal */}
+            <StreakCard history={history} darkMode={darkMode} />
 
             {/* Summary cards */}
             <div className="grid grid-cols-2 gap-3 mb-6">

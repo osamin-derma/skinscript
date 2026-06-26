@@ -100,3 +100,41 @@ export function computeReadiness(categoryStats, history) {
   else if (pct >= 60) band = 'borderline'
   return { enoughData, pct, attempts, quizzes, band }
 }
+
+// ── Streaks & daily goal (derived from quiz history dates) ──────────────
+
+function dayKey(ts) {
+  const d = new Date(ts)
+  return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
+}
+
+// Current + longest run of consecutive calendar days with a quiz (local dates).
+// "current" counts the run ending today or yesterday, so a streak isn't lost
+// until a full day has actually been skipped.
+export function computeStreak(history, now = Date.now()) {
+  const DAY = 86400000
+  const days = new Set((history || []).filter((h) => h.date).map((h) => dayKey(h.date)))
+
+  let current = 0
+  let cursor = now
+  if (!days.has(dayKey(cursor))) cursor -= DAY
+  while (days.has(dayKey(cursor))) { current += 1; cursor -= DAY }
+
+  let longest = 0
+  for (const k of days) {
+    const [y, m, d] = k.split('-').map(Number)
+    if (days.has(dayKey(new Date(y, m, d).getTime() - DAY))) continue // not a run start
+    let run = 0, t = new Date(y, m, d).getTime()
+    while (days.has(dayKey(t))) { run += 1; t += DAY }
+    if (run > longest) longest = run
+  }
+  return { current, longest, studyDays: days.size }
+}
+
+// Questions answered today (sum across today's quizzes).
+export function todayAnswered(history, now = Date.now()) {
+  const today = dayKey(now)
+  return (history || [])
+    .filter((h) => h.date && dayKey(h.date) === today)
+    .reduce((a, h) => a + (h.answered ?? h.totalQuestions ?? 0), 0)
+}
