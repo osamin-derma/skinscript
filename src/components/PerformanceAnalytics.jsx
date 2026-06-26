@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { TrendingUp, TrendingDown, Target, GraduationCap, ArrowRight } from 'lucide-react'
-import { computeCategoryStats, computeTrend, rankWeakCategories, computeReadiness } from '../lib/analytics'
+import { TrendingUp, TrendingDown, Target, GraduationCap, ArrowRight, Gauge } from 'lucide-react'
+import { computeCategoryStats, computeTrend, rankWeakCategories, computeReadiness, computeConfidenceStats } from '../lib/analytics'
 
 const accColor = (a) => (a >= 75 ? '#22c55e' : a >= 55 ? '#f59e0b' : '#ef4444')
 
@@ -14,6 +14,7 @@ export default function PerformanceAnalytics({ history, lookupQuestion, darkMode
   const trend = useMemo(() => computeTrend(history), [history])
   const weak = useMemo(() => rankWeakCategories(stats), [stats])
   const readiness = useMemo(() => computeReadiness(stats, history), [stats, history])
+  const calibration = useMemo(() => computeConfidenceStats(history, lookupQuestion), [history, lookupQuestion])
 
   const sub = darkMode ? 'bg-gray-900/40 border-gray-700' : 'bg-gray-50 border-gray-200'
   const heading = 'text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2'
@@ -102,6 +103,43 @@ export default function PerformanceAnalytics({ history, lookupQuestion, darkMode
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Confidence calibration */}
+      {calibration.length > 0 && (
+        <div className={`rounded-xl border p-4 ${sub}`}>
+          <div className="flex items-center gap-1.5 mb-1">
+            <Gauge size={14} style={{ color: brand }} />
+            <span className="text-sm font-semibold">Confidence calibration</span>
+          </div>
+          <p className="text-[11px] text-gray-400 mb-3">How often you were right at each confidence level.</p>
+          <div className="space-y-2.5">
+            {calibration.map((c) => {
+              const label = c.level[0].toUpperCase() + c.level.slice(1)
+              return (
+                <div key={c.level}>
+                  <div className="flex items-center justify-between text-xs mb-1">
+                    <span className="capitalize">{label}</span>
+                    <span className="text-gray-400">
+                      <span className="font-semibold" style={{ color: accColor(c.accuracy) }}>{c.accuracy}%</span>
+                      <span className="ml-1">({c.correct}/{c.attempts})</span>
+                    </span>
+                  </div>
+                  <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full" style={{ width: `${c.accuracy}%`, backgroundColor: accColor(c.accuracy) }} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          {(() => {
+            const sure = calibration.find((c) => c.level === 'sure')
+            if (sure && sure.attempts >= 10 && sure.accuracy < 80) {
+              return <p className="text-[11px] mt-2.5 text-amber-600 dark:text-amber-400">⚠ Overconfidence: you were “sure” but wrong {100 - sure.accuracy}% of the time.</p>
+            }
+            return null
+          })()}
         </div>
       )}
 

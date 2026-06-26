@@ -261,7 +261,7 @@ function reducer(state, action) {
     case 'ANSWER': {
       // Cloud sync for globalUsed / globalWrong is handled by the
       // watch-and-diff effects in App() — no localStorage write here.
-      const newAnswers = { ...state.answers, [action.questionId]: { selected: action.selected, correct: action.correct, submitted: true } }
+      const newAnswers = { ...state.answers, [action.questionId]: { selected: action.selected, correct: action.correct, submitted: true, confidence: action.confidence ?? null } }
       const newUsed = [...new Set([...state.globalUsed, action.questionId])]
       const newWrong = action.correct
         ? state.globalWrong.filter(id => id !== action.questionId)
@@ -322,7 +322,8 @@ function reducer(state, action) {
         .map((qi) => {
           const q = reviewQs[qi]
           if (!q) return null
-          return { pdf_id: q.pdf_id, selected: state.answers[q.id]?.selected ?? null }
+          const a = state.answers[q.id]
+          return { pdf_id: q.pdf_id, selected: a?.selected ?? null, conf: a?.confidence ?? null }
         })
         .filter((d) => d && d.pdf_id)
 

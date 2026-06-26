@@ -21,6 +21,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
   const totalQ = questionOrder.length
 
   const [selected, setSelected] = useState(null)
+  const [confidence, setConfidence] = useState(null) // 'guessed' | 'unsure' | 'sure'
   const [timeLeft, setTimeLeft] = useState(timerSetting)
   const [paused, setPaused] = useState(false)
   const [showNav, setShowNav] = useState(false)
@@ -105,6 +106,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
   // Reset selection when navigating
   useEffect(() => {
     setSelected(answered?.selected || null)
+    setConfidence(answered?.confidence || null)
     setTimeLeft(timerSetting)
   }, [currentIndex, q?.id])
 
@@ -122,11 +124,11 @@ export default function QuizScreen({ state, questions, dispatch }) {
   const handleSubmit = useCallback(() => {
     if (!selected && !isSubmitted) return
     const isCorrect = selected === q.correct_answer
-    dispatch({ type: 'ANSWER', questionId: q.id, selected, correct: isCorrect })
+    dispatch({ type: 'ANSWER', questionId: q.id, selected, correct: isCorrect, confidence })
     // Advance the spaced-repetition schedule (keyed on stable pdf_id) — but not
     // in 'review' mode (opening a question to look it up must not score it).
-    if (q.pdf_id && mode !== 'review' && !isSubmitted) dispatch({ type: 'RECORD_REVIEW', pdfId: q.pdf_id, correct: isCorrect })
-  }, [selected, q, dispatch, mode, isSubmitted])
+    if (q.pdf_id && mode !== 'review' && !isSubmitted) dispatch({ type: 'RECORD_REVIEW', pdfId: q.pdf_id, correct: isCorrect, confidence })
+  }, [selected, q, dispatch, mode, isSubmitted, confidence])
 
   const handleNext = () => {
     if (currentIndex < totalQ - 1) dispatch({ type: 'NEXT' })
@@ -357,6 +359,32 @@ export default function QuizScreen({ state, questions, dispatch }) {
                 })}
               </div>
             </div>
+
+            {/* Confidence selector — capture before revealing the answer */}
+            {!isSubmitted && selected && (
+              <div className="flex items-center gap-2 mt-5">
+                <span className="text-xs text-gray-500 dark:text-gray-400">How sure?</span>
+                {[
+                  { key: 'guessed', label: 'Guessed' },
+                  { key: 'unsure', label: 'Unsure' },
+                  { key: 'sure', label: 'Sure' },
+                ].map((c) => (
+                  <button
+                    key={c.key}
+                    type="button"
+                    onClick={() => setConfidence((prev) => prev === c.key ? null : c.key)}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium border transition ${
+                      confidence === c.key
+                        ? 'text-white border-transparent'
+                        : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
+                    }`}
+                    style={confidence === c.key ? { backgroundColor: '#2c3e3f' } : {}}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Action buttons */}
             <div className="flex gap-3 mt-6">

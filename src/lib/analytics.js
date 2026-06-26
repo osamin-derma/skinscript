@@ -66,6 +66,27 @@ export function rankWeakCategories(stats, { minAttempts = 8, limit = 3 } = {}) {
   return (stats || []).filter((s) => s.attempts >= minAttempts).slice(0, limit)
 }
 
+// Calibration: accuracy at each confidence level (guessed/unsure/sure), from
+// saved exam detail ({pdf_id, selected, conf}). Surfaces overconfidence — being
+// "sure" yet wrong.
+export function computeConfidenceStats(history, lookupQuestion) {
+  const order = ['sure', 'unsure', 'guessed']
+  const by = { sure: { attempts: 0, correct: 0 }, unsure: { attempts: 0, correct: 0 }, guessed: { attempts: 0, correct: 0 } }
+  for (const h of history || []) {
+    if (!Array.isArray(h.detail)) continue
+    for (const item of h.detail) {
+      if (!item.conf || !by[item.conf]) continue
+      const q = lookupQuestion(item.pdf_id)
+      if (!q) continue
+      by[item.conf].attempts += 1
+      if (item.selected != null && item.selected === q.correct_answer) by[item.conf].correct += 1
+    }
+  }
+  return order
+    .map((level) => ({ level, ...by[level], accuracy: by[level].attempts ? Math.round((by[level].correct / by[level].attempts) * 100) : 0 }))
+    .filter((s) => s.attempts > 0)
+}
+
 // A cautious readiness read. Gated behind a data floor so a sparse user sees
 // "keep practicing", never a false green. Heuristic only — clearly labeled.
 export function computeReadiness(categoryStats, history) {
