@@ -3,6 +3,7 @@ import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Tras
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
+import { duePdfIds } from '../lib/srs'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -104,7 +105,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: bankKey, questionId: originalId })
   }
 
-  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {} } = state
+  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {} } = state
+  const dueCount = useMemo(() => duePdfIds(schedule).length, [schedule])
   const unusedCount = totalQuestions - globalUsed.length
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
@@ -681,6 +683,17 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 >
                   <XCircle size={18} className="text-red-500" />
                   <span className="text-[10px] font-semibold text-red-600">Wrong ({globalWrong.length})</span>
+                </button>
+              )}
+              {dueCount > 0 && (
+                <button
+                  onClick={() => onStart({ source: 'due', bank: 'all', categoryFilter: 'all', count: Math.min(20, dueCount), mode: 'tutor', timer, shuffle: true })}
+                  className="flex flex-col items-center gap-1 p-3 rounded-xl border-2 transition hover:opacity-90"
+                  style={{ borderColor: '#7fb5b5', backgroundColor: darkMode ? '#1e2e2f' : '#eef3f2' }}
+                  title="Spaced-repetition: questions due to review now"
+                >
+                  <Clock size={18} style={{ color: '#2c3e3f' }} />
+                  <span className="text-[10px] font-semibold" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}>Due ({dueCount})</span>
                 </button>
               )}
               {unusedCount > 0 && (

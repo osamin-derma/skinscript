@@ -8,6 +8,7 @@ import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
 import { onAuthStateChange, signOut } from './lib/auth'
 import * as userdata from './lib/userdata'
+import { nextSchedule, isDue } from './lib/srs'
 
 // Tag each question with its source so they can be combined
 const arabBoardTagged = arabBoardRaw.map(q => ({ ...q, source: q.source || 'Arab Board' }))
@@ -138,6 +139,7 @@ const initialState = {
   globalUsed: [],
   notes: {}, // { [pdf_id]: text } — personal note per question
   highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
+  schedule: {}, // { [pdf_id]: { box, interval, due, reps } } — spaced-repetition
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
   // and END_QUIZ.  Independent from `answers` — striking a choice and
@@ -165,7 +167,14 @@ function reducer(state, action) {
         globalUsed:    action.data?.used    || [],
         notes:         action.data?.notes   || {},
         highlights:    action.data?.highlights || {},
+        schedule:      action.data?.schedule || {},
       }
+    }
+    case 'RECORD_REVIEW': {
+      // Advance this question's spaced-repetition schedule on every answer.
+      const prev = state.schedule[action.pdfId]
+      const entry = nextSchedule(prev, action.correct)
+      return { ...state, schedule: { ...state.schedule, [action.pdfId]: entry } }
     }
     case 'SET_NOTE': {
       const notes = { ...state.notes }
@@ -208,6 +217,8 @@ function reducer(state, action) {
         pool = pool.filter(i => state.globalWrong.includes(bankQuestions[i].id))
       } else if (action.source === 'unused') {
         pool = pool.filter(i => !state.globalUsed.includes(bankQuestions[i].id))
+      } else if (action.source === 'due') {
+        pool = pool.filter(i => isDue(state.schedule[bankQuestions[i].pdf_id]))
       } else if (action.source === 'topics' && action.topics?.length > 0) {
         // The question field is `category` (not `topic`). Without this
         // fix the pool was always empty and the quiz never started.
@@ -431,6 +442,7 @@ export default function App() {
   const prevHistoryRef = useRef([])
   const prevNotesRef   = useRef({})
   const prevHlRef      = useRef({})
+  const prevSchedRef   = useRef({})
   const cloudReadyRef  = useRef(false)
 
   useEffect(() => {
@@ -446,6 +458,7 @@ export default function App() {
       prevHistoryRef.current = data.history
       prevNotesRef.current   = data.notes || {}
       prevHlRef.current      = data.highlights || {}
+      prevSchedRef.current   = data.schedule || {}
       dispatch({ type: 'INIT_FROM_CLOUD', data })
       cloudReadyRef.current = true
     })
@@ -487,6 +500,17 @@ export default function App() {
     const t = setTimeout(flushHighlights, 700)
     return () => clearTimeout(t)
   }, [state.highlights])
+
+  // ── Watch spaced-repetition schedule → cloud (changed entries only) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = prevSchedRef.current || {}
+    const curr = state.schedule || {}
+    for (const pid of Object.keys(curr)) {
+      if (JSON.stringify(prev[pid] || null) !== JSON.stringify(curr[pid])) userdata.saveScheduleEntry(pid, curr[pid])
+    }
+    prevSchedRef.current = curr
+  }, [state.schedule])
 
   // Don't lose a trailing edit if the page is hidden/closed within the debounce.
   useEffect(() => {

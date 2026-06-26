@@ -31,9 +31,9 @@ function warn(label, err) {
 
 export async function fetchAllUserData() {
   const userId = await uid()
-  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {} }
+  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {} }
 
-  const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes] = await Promise.all([
+  const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes, schedRes] = await Promise.all([
     supabase.from('user_flags').select('question_id'),
     supabase.from('user_wrong').select('question_id'),
     supabase.from('user_used').select('question_id'),
@@ -43,6 +43,7 @@ export async function fetchAllUserData() {
       .limit(100),
     supabase.from('user_notes').select('pdf_id, note'),
     supabase.from('user_highlights').select('pdf_id, ranges'),
+    supabase.from('user_review_schedule').select('pdf_id, box, interval_days, due_at, reps, last_grade'),
   ])
 
   warn('fetch flags',      flagsRes.error)
@@ -51,11 +52,16 @@ export async function fetchAllUserData() {
   warn('fetch history',    historyRes.error)
   warn('fetch notes',      notesRes.error)
   warn('fetch highlights', hlRes.error)
+  warn('fetch schedule',   schedRes.error)
 
   const notes = {}
   for (const r of notesRes.data || []) { if (r.note) notes[r.pdf_id] = r.note }
   const highlights = {}
   for (const r of hlRes.data || []) { if (Array.isArray(r.ranges) && r.ranges.length) highlights[r.pdf_id] = r.ranges }
+  const schedule = {}
+  for (const r of schedRes.data || []) {
+    schedule[r.pdf_id] = { box: r.box, interval: r.interval_days, due: r.due_at, reps: r.reps, lastGrade: r.last_grade }
+  }
 
   return {
     flags:   (flagsRes.data   || []).map(r => r.question_id),
@@ -64,6 +70,7 @@ export async function fetchAllUserData() {
     history: (historyRes.data || []).map(rowToHistoryEntry),
     notes,
     highlights,
+    schedule,
   }
 }
 
@@ -148,6 +155,29 @@ export async function saveHighlights(pdfId, ranges) {
     .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString() },
             { onConflict: 'user_id,pdf_id' })
   warn('saveHighlights', error)
+}
+
+
+// ── Spaced-repetition schedule ───────────────────────────────────────────
+
+// Upsert one question's review schedule entry (fire-and-forget on answer).
+export async function saveScheduleEntry(pdfId, entry) {
+  const userId = await uid(); if (!userId) return
+  const { error } = await supabase
+    .from('user_review_schedule')
+    .upsert({
+      user_id: userId, pdf_id: pdfId,
+      box: entry.box, interval_days: entry.interval, due_at: entry.due,
+      reps: entry.reps, last_grade: entry.lastGrade,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'user_id,pdf_id' })
+  warn('saveScheduleEntry', error)
+}
+
+export async function clearSchedule() {
+  const userId = await uid(); if (!userId) return
+  const { error } = await supabase.from('user_review_schedule').delete().eq('user_id', userId)
+  warn('clearSchedule', error)
 }
 
 
@@ -267,6 +297,8 @@ export async function clearEverything() {
   if (notesRes.error) console.error('[userdata] notes delete failed:', notesRes.error)
   const hlRes = await supabase.from('user_highlights').delete().eq('user_id', userId)
   if (hlRes.error) console.error('[userdata] highlights delete failed:', hlRes.error)
+  const schedRes = await supabase.from('user_review_schedule').delete().eq('user_id', userId)
+  if (schedRes.error) console.error('[userdata] schedule delete failed:', schedRes.error)
   const progressOk = await clearProgress()
-  return !histRes.error && !notesRes.error && !hlRes.error && progressOk
+  return !histRes.error && !notesRes.error && !hlRes.error && !schedRes.error && progressOk
 }
