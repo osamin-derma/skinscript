@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
+import AccountModal from './AccountModal'
 
 export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -11,6 +12,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const [showTopics, setShowTopics] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance'
+  const [showAccount, setShowAccount] = useState(false)
   const [activeBank, setActiveBankLocal] = useState(state.activeBank || 'all')
   const setActiveBank = (bank) => {
     setActiveBankLocal(bank)
@@ -164,15 +166,31 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   return (
     <div className="min-h-screen p-4 md:p-8">
       <div className="max-w-2xl mx-auto">
+        {showAccount && (
+          <AccountModal
+            currentUser={currentUser}
+            history={history}
+            darkMode={darkMode}
+            onClose={() => setShowAccount(false)}
+            onSignOut={onSignOut}
+          />
+        )}
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           {currentUser ? (
-            <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-700 shadow-sm border border-gray-200'}`}>
+            <button
+              type="button"
+              onClick={() => setShowAccount(true)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs transition hover:shadow-md ${darkMode ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' : 'bg-white text-gray-700 shadow-sm border border-gray-200 hover:border-gray-300'}`}
+              aria-label="Open account"
+              title="Account settings"
+            >
               <User size={13} className="text-gray-400" />
               <span className="font-medium max-w-[140px] truncate">
                 {currentUser.username || currentUser.email}
               </span>
-            </div>
+              <ChevronDown size={12} className="text-gray-400" />
+            </button>
           ) : <div />}
           <div className="flex items-center gap-1">
             <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Toggle dark mode">

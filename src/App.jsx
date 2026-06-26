@@ -672,6 +672,8 @@ export default function App() {
           currentUser={{
             email: session?.user?.email,
             username: session?.user?.user_metadata?.username,
+            phone: session?.user?.phone,
+            createdAt: session?.user?.created_at,
           }}
           onSignOut={handleSignOut}
           onResetAll={handleResetAll}

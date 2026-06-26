@@ -148,6 +148,56 @@ export async function requestPasswordReset(email) {
 }
 
 
+// ── Account self-service (for the signed-in user's profile panel) ───────
+
+// Change email. Supabase sends a confirmation link to the new address (and,
+// per project config, the old one); the change only applies once confirmed.
+export async function updateEmail(newEmail) {
+  const ee = validateEmail(newEmail)
+  if (ee) throw new Error(ee)
+  const { error } = await supabase.auth.updateUser(
+    { email: newEmail.trim() },
+    { emailRedirectTo: window.location.origin },
+  )
+  if (error) throw error
+  return { pending: true }
+}
+
+// Change password. Re-authenticates with the current password first — this
+// proves the person at the keyboard knows the old password (so an unlocked,
+// already-signed-in device can't be used to silently take over the account),
+// and it refreshes the session so updateUser({password}) won't demand an
+// emailed nonce on an older session.
+export async function updatePassword({ email, currentPassword, newPassword }) {
+  const pe = validatePassword(newPassword)
+  if (pe) throw new Error(pe)
+  if (!currentPassword) throw new Error('Enter your current password.')
+  if (!email) throw new Error('Changing the password needs an email account. Use “Forgot password” instead.')
+  const { error: reauthErr } = await supabase.auth.signInWithPassword({ email, password: currentPassword })
+  if (reauthErr) throw new Error('Your current password is incorrect.')
+  const { error } = await supabase.auth.updateUser({ password: newPassword })
+  if (error) throw error
+  return { ok: true }
+}
+
+// Start a mobile-number change: Supabase texts an OTP to the NEW number.
+export async function startPhoneChange(phoneInput) {
+  const phone = normalizePhone(phoneInput)
+  const pe = validatePhone(phone)
+  if (pe) throw new Error(pe)
+  const { error } = await supabase.auth.updateUser({ phone })
+  if (error) throw error
+  return { phone, pending: true }
+}
+
+// Finish the mobile-number change with the code texted to the new number.
+export async function confirmPhoneChange(phone, token) {
+  const { error } = await supabase.auth.verifyOtp({ phone, token, type: 'phone_change' })
+  if (error) throw error
+  return { ok: true }
+}
+
+
 // ── Phone OTP (SMS) ─────────────────────────────────────────────────────
 //
 // signInWithOtp creates the auth user on first use and ignores the
