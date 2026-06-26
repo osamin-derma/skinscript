@@ -140,6 +140,7 @@ const initialState = {
   notes: {}, // { [pdf_id]: text } — personal note per question
   highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
   schedule: {}, // { [pdf_id]: { box, interval, due, reps } } — spaced-repetition
+  flashcards: {}, // { [id]: { id, pdf_id, front, back, box, interval, due, reps } }
   isAssessment: false, // current quiz is a timed self-assessment exam
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
@@ -169,7 +170,22 @@ function reducer(state, action) {
         notes:         action.data?.notes   || {},
         highlights:    action.data?.highlights || {},
         schedule:      action.data?.schedule || {},
+        flashcards:    action.data?.flashcards || {},
       }
+    }
+    case 'ADD_FLASHCARD': {
+      return { ...state, flashcards: { ...state.flashcards, [action.card.id]: action.card } }
+    }
+    case 'DELETE_FLASHCARD': {
+      const flashcards = { ...state.flashcards }
+      delete flashcards[action.id]
+      return { ...state, flashcards }
+    }
+    case 'REVIEW_FLASHCARD': {
+      const c = state.flashcards[action.id]
+      if (!c) return state
+      const s = nextSchedule(c, action.correct)
+      return { ...state, flashcards: { ...state.flashcards, [action.id]: { ...c, box: s.box, interval: s.interval, due: s.due, reps: s.reps } } }
     }
     case 'RECORD_REVIEW': {
       // Advance the spaced-repetition schedule only on a genuine review: the
@@ -456,6 +472,7 @@ export default function App() {
   const prevNotesRef   = useRef({})
   const prevHlRef      = useRef({})
   const prevSchedRef   = useRef({})
+  const prevFcRef      = useRef({})
   const cloudReadyRef  = useRef(false)
 
   useEffect(() => {
@@ -472,6 +489,7 @@ export default function App() {
       prevNotesRef.current   = data.notes || {}
       prevHlRef.current      = data.highlights || {}
       prevSchedRef.current   = data.schedule || {}
+      prevFcRef.current      = data.flashcards || {}
       dispatch({ type: 'INIT_FROM_CLOUD', data })
       cloudReadyRef.current = true
     })
@@ -524,6 +542,20 @@ export default function App() {
     }
     prevSchedRef.current = curr
   }, [state.schedule])
+
+  // ── Watch flashcards → cloud (add/update + delete) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = prevFcRef.current || {}
+    const curr = state.flashcards || {}
+    for (const id of Object.keys(curr)) {
+      if (JSON.stringify(prev[id] || null) !== JSON.stringify(curr[id])) userdata.saveFlashcard(curr[id])
+    }
+    for (const id of Object.keys(prev)) {
+      if (!curr[id]) userdata.deleteFlashcard(id)
+    }
+    prevFcRef.current = curr
+  }, [state.flashcards])
 
   // Don't lose a trailing edit if the page is hidden/closed within the debounce.
   useEffect(() => {

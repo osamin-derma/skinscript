@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
+import Flashcards from './Flashcards'
 import StreakCard from './StreakCard'
 import { duePdfIds } from '../lib/srs'
 
@@ -15,7 +16,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const [selectedTopics, setSelectedTopics] = useState([])
   const [showTopics, setShowTopics] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
-  const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance'
+  const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance' | 'notebook'
+  const [notebookView, setNotebookView] = useState('notes') // 'notes' | 'cards'
   const [showAccount, setShowAccount] = useState(false)
   // pdf_id → question, for reopening a past exam in the account drawer.
   const questionByPdfId = useMemo(() => {
@@ -111,7 +113,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: bankKey, questionId: originalId })
   }
 
-  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {} } = state
+  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {}, flashcards = {} } = state
   const unusedCount = totalQuestions - globalUsed.length
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
@@ -1095,12 +1097,42 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
 
         {/* NOTEBOOK TAB */}
         {tab === 'notebook' && (
-          <Notebook
-            notes={notes}
-            lookupQuestion={lookupQuestion}
-            onNote={(pdfId, text) => dispatch({ type: 'SET_NOTE', pdfId, text })}
-            darkMode={darkMode}
-          />
+          <div>
+            <div className="flex gap-1 mb-3 p-1 rounded-xl bg-gray-100 dark:bg-gray-800/70 dark:border dark:border-gray-700">
+              {[
+                { key: 'notes', icon: <BookOpen size={13} />, label: 'Notes' },
+                { key: 'cards', icon: <Layers size={13} />, label: `Cards${Object.keys(flashcards).length ? ` (${Object.keys(flashcards).length})` : ''}` },
+              ].map((v) => (
+                <button
+                  key={v.key}
+                  onClick={() => setNotebookView(v.key)}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs transition ${
+                    notebookView === v.key
+                      ? 'bg-white dark:bg-gray-700 shadow-sm font-bold text-gray-900 dark:text-gray-50'
+                      : 'font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/70'
+                  }`}
+                >
+                  {v.icon} {v.label}
+                </button>
+              ))}
+            </div>
+
+            {notebookView === 'notes' ? (
+              <Notebook
+                notes={notes}
+                lookupQuestion={lookupQuestion}
+                onNote={(pdfId, text) => dispatch({ type: 'SET_NOTE', pdfId, text })}
+                darkMode={darkMode}
+              />
+            ) : (
+              <Flashcards
+                flashcards={flashcards}
+                onReview={(id, correct) => dispatch({ type: 'REVIEW_FLASHCARD', id, correct })}
+                onDelete={(id) => dispatch({ type: 'DELETE_FLASHCARD', id })}
+                darkMode={darkMode}
+              />
+            )}
+          </div>
         )}
 
         <p className="text-center text-xs text-gray-400 mt-4 pb-4">Created by Dr. Osama Al Rawi</p>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { CheckCircle, XCircle, StickyNote } from 'lucide-react'
+import { CheckCircle, XCircle, StickyNote, Layers, Check } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 
 /**
@@ -27,7 +27,7 @@ import QuestionImages from './QuestionImages'
  * On top we keep a small Correct/Incorrect chip so the student knows their
  * result without searching for it.
  */
-export default function ExplanationPanel({ question, answer, darkMode, note, onNote }) {
+export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard }) {
   const isCorrect = answer?.correct
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const teal = '#2c3e3f'
@@ -162,12 +162,48 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
           </div>
         )}
 
+        {/* Make flashcard */}
+        {onAddCard && (
+          <AddCardButton
+            key={`fc-${question.pdf_id}`}
+            darkMode={darkMode}
+            teal={teal}
+            onAdd={() => onAddCard(
+              question.question,
+              `${correctLetter ? `(${correctLetter}) ` : ''}${correctText}${question.explanation ? `\n\n${question.explanation}` : ''}`,
+              question.pdf_id,
+            )}
+          />
+        )}
+
         {/* Personal note (synced) */}
         {onNote && (
           <NoteEditor key={question.pdf_id} note={note} onNote={onNote} darkMode={darkMode} teal={teal} />
         )}
       </div>
     </div>
+  )
+}
+
+function AddCardButton({ onAdd, darkMode, teal }) {
+  const [added, setAdded] = useState(false)
+  return (
+    <button
+      type="button"
+      onClick={() => { if (added) return; onAdd(); setAdded(true) }}
+      disabled={added}
+      className={`mt-4 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
+        added
+          ? 'border-green-300 dark:border-green-700 text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/20 cursor-default'
+          : darkMode
+            ? 'border-gray-600 text-gray-200 hover:bg-gray-700'
+            : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+      }`}
+      style={!added ? { color: darkMode ? '#7fb5b5' : teal } : undefined}
+    >
+      {added ? <Check size={15} /> : <Layers size={15} />}
+      {added ? 'Added to flashcards' : 'Make flashcard'}
+    </button>
   )
 }
 

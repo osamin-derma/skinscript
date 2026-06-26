@@ -428,6 +428,15 @@ export default function QuizScreen({ state, questions, dispatch }) {
             darkMode={darkMode}
             note={state.notes?.[q.pdf_id] || ''}
             onNote={(text) => dispatch({ type: 'SET_NOTE', pdfId: q.pdf_id, text })}
+            onAddCard={(front, back, pdfId) => dispatch({
+              type: 'ADD_FLASHCARD',
+              card: {
+                id: crypto.randomUUID(),
+                pdf_id: pdfId || null,
+                front, back,
+                box: 0, interval: 1, due: new Date().toISOString(), reps: 0,
+              },
+            })}
           />
         )}
       </div>
