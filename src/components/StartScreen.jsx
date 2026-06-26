@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
 import Flashcards from './Flashcards'
+import Atlas from './Atlas'
 import StreakCard from './StreakCard'
 import { duePdfIds } from '../lib/srs'
 
@@ -654,17 +655,19 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             { key: 'history', icon: <History size={14} />, label: 'History' },
             { key: 'performance', icon: <BarChart3 size={14} />, label: 'Stats' },
             { key: 'notebook', icon: <BookOpen size={14} />, label: 'Notebook' },
+            { key: 'atlas', icon: <Images size={14} />, label: 'Atlas' },
           ].map(t => (
             <button
               key={t.key}
               onClick={() => setTab(t.key)}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs transition ${
+              className={`flex-1 min-w-0 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-0.5 rounded-lg text-[11px] sm:text-xs transition ${
                 tab === t.key
                   ? 'bg-white dark:bg-gray-700 shadow-sm font-bold text-gray-900 dark:text-gray-50'
                   : 'font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/70'
               }`}
             >
-              {t.icon} {t.label}
+              <span className="shrink-0">{t.icon}</span>
+              <span className="truncate">{t.label}</span>
             </button>
           ))}
         </div>
@@ -1133,6 +1136,15 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
               />
             )}
           </div>
+        )}
+
+        {/* ATLAS TAB */}
+        {tab === 'atlas' && (
+          <Atlas
+            questions={banks?.all?.questions || []}
+            darkMode={darkMode}
+            onOpenQuestion={(q) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: 'all', questionId: q.id })}
+          />
         )}
 
         <p className="text-center text-xs text-gray-400 mt-4 pb-4">Created by Dr. Osama Al Rawi</p>
