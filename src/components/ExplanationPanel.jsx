@@ -1,4 +1,5 @@
-import { CheckCircle, XCircle } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { CheckCircle, XCircle, StickyNote } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 
 /**
@@ -26,7 +27,7 @@ import QuestionImages from './QuestionImages'
  * On top we keep a small Correct/Incorrect chip so the student knows their
  * result without searching for it.
  */
-export default function ExplanationPanel({ question, answer, darkMode }) {
+export default function ExplanationPanel({ question, answer, darkMode, note, onNote }) {
   const isCorrect = answer?.correct
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const teal = '#2c3e3f'
@@ -160,7 +161,35 @@ export default function ExplanationPanel({ question, answer, darkMode }) {
             <p className="text-xs text-blue-600 dark:text-blue-300 whitespace-pre-line leading-relaxed">{question.bolognia_note}</p>
           </div>
         )}
+
+        {/* Personal note (synced) */}
+        {onNote && (
+          <NoteEditor key={question.pdf_id} note={note} onNote={onNote} darkMode={darkMode} teal={teal} />
+        )}
       </div>
+    </div>
+  )
+}
+
+function NoteEditor({ note, onNote, darkMode, teal }) {
+  const [text, setText] = useState(note || '')
+  useEffect(() => { setText(note || '') }, [note])
+  return (
+    <div className="mt-4">
+      <div className="flex items-center gap-1.5 mb-1.5">
+        <StickyNote size={13} style={{ color: darkMode ? '#d4b966' : teal }} />
+        <span className="text-xs font-semibold" style={{ color: darkMode ? '#d4b966' : teal }}>My note</span>
+        {text?.trim() && <span className="text-[10px] text-gray-400">· saved to your account</span>}
+      </div>
+      <textarea
+        value={text}
+        onChange={(e) => { setText(e.target.value); onNote(e.target.value) }}
+        placeholder="Add a personal note — a mnemonic, a key point, anything. It'll show every time you see this question."
+        rows={3}
+        className={`w-full px-3 py-2 rounded-lg text-sm border outline-none focus:ring-2 resize-y ${
+          darkMode ? 'bg-gray-900 border-gray-600 text-gray-100 placeholder-gray-500' : 'bg-amber-50/40 border-amber-200 text-gray-900 placeholder-gray-400'
+        }`}
+      />
     </div>
   )
 }

@@ -385,7 +385,13 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
         {/* Right: Explanation */}
         {isSubmitted && (mode === 'tutor' || mode === 'review') && (
-          <ExplanationPanel question={q} answer={answered} darkMode={darkMode} />
+          <ExplanationPanel
+            question={q}
+            answer={answered}
+            darkMode={darkMode}
+            note={state.notes?.[q.pdf_id] || ''}
+            onNote={(text) => dispatch({ type: 'SET_NOTE', pdfId: q.pdf_id, text })}
+          />
         )}
       </div>
 

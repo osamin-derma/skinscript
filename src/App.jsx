@@ -136,6 +136,7 @@ const initialState = {
   globalFlagged: [],
   globalWrong: [],
   globalUsed: [],
+  notes: {}, // { [pdf_id]: text } — personal note per question
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
   // and END_QUIZ.  Independent from `answers` — striking a choice and
@@ -161,7 +162,14 @@ function reducer(state, action) {
         globalFlagged: action.data?.flags   || [],
         globalWrong:   action.data?.wrong   || [],
         globalUsed:    action.data?.used    || [],
+        notes:         action.data?.notes   || {},
       }
+    }
+    case 'SET_NOTE': {
+      const notes = { ...state.notes }
+      if ((action.text || '').trim()) notes[action.pdfId] = action.text
+      else delete notes[action.pdfId]
+      return { ...state, notes }
     }
     case 'SET_BANK': {
       return { ...state, activeBank: action.bank }
@@ -413,6 +421,7 @@ export default function App() {
   const prevWrongRef   = useRef([])
   const prevUsedRef    = useRef([])
   const prevHistoryRef = useRef([])
+  const prevNotesRef   = useRef({})
   const cloudReadyRef  = useRef(false)
 
   useEffect(() => {
@@ -426,10 +435,26 @@ export default function App() {
       prevWrongRef.current   = data.wrong
       prevUsedRef.current    = data.used
       prevHistoryRef.current = data.history
+      prevNotesRef.current   = data.notes || {}
       dispatch({ type: 'INIT_FROM_CLOUD', data })
       cloudReadyRef.current = true
     })
   }, [session?.user?.id])
+
+  // ── Watch notes → cloud (debounced; persist only changed pdf_ids) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const t = setTimeout(() => {
+      const prev = prevNotesRef.current || {}
+      const curr = state.notes || {}
+      const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
+      for (const pid of ids) {
+        if ((prev[pid] || '') !== (curr[pid] || '')) userdata.saveNote(pid, curr[pid] || '')
+      }
+      prevNotesRef.current = curr
+    }, 700)
+    return () => clearTimeout(t)
+  }, [state.notes])
 
   // ── Watch flags → cloud (additions + removals) ──
   useEffect(() => {

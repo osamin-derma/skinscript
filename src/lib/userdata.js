@@ -31,9 +31,9 @@ function warn(label, err) {
 
 export async function fetchAllUserData() {
   const userId = await uid()
-  if (!userId) return { flags: [], wrong: [], used: [], history: [] }
+  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {} }
 
-  const [flagsRes, wrongRes, usedRes, historyRes] = await Promise.all([
+  const [flagsRes, wrongRes, usedRes, historyRes, notesRes] = await Promise.all([
     supabase.from('user_flags').select('question_id'),
     supabase.from('user_wrong').select('question_id'),
     supabase.from('user_used').select('question_id'),
@@ -41,18 +41,24 @@ export async function fetchAllUserData() {
       .select('*')
       .order('taken_at', { ascending: false })
       .limit(100),
+    supabase.from('user_notes').select('pdf_id, note'),
   ])
 
   warn('fetch flags',   flagsRes.error)
   warn('fetch wrong',   wrongRes.error)
   warn('fetch used',    usedRes.error)
   warn('fetch history', historyRes.error)
+  warn('fetch notes',   notesRes.error)
+
+  const notes = {}
+  for (const r of notesRes.data || []) { if (r.note) notes[r.pdf_id] = r.note }
 
   return {
     flags:   (flagsRes.data   || []).map(r => r.question_id),
     wrong:   (wrongRes.data   || []).map(r => r.question_id),
     used:    (usedRes.data    || []).map(r => r.question_id),
     history: (historyRes.data || []).map(rowToHistoryEntry),
+    notes,
   }
 }
 
@@ -92,6 +98,29 @@ export async function removeFlag(questionId) {
     .eq('user_id', userId)
     .eq('question_id', questionId)
   warn('removeFlag', error)
+}
+
+
+// ── Per-question notes ───────────────────────────────────────────────────
+
+// Empty text deletes the note; otherwise upsert. Keyed on pdf_id.
+export async function saveNote(pdfId, note) {
+  const userId = await uid(); if (!userId) return
+  const text = (note || '').trim()
+  if (!text) {
+    const { error } = await supabase
+      .from('user_notes')
+      .delete()
+      .eq('user_id', userId)
+      .eq('pdf_id', pdfId)
+    warn('deleteNote', error)
+    return
+  }
+  const { error } = await supabase
+    .from('user_notes')
+    .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString() },
+            { onConflict: 'user_id,pdf_id' })
+  warn('saveNote', error)
 }
 
 
