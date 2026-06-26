@@ -27,7 +27,7 @@ import QuestionImages from './QuestionImages'
  * On top we keep a small Correct/Incorrect chip so the student knows their
  * result without searching for it.
  */
-export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard }) {
+export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard, alreadyCarded }) {
   const isCorrect = answer?.correct
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const teal = '#2c3e3f'
@@ -168,6 +168,7 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
             key={`fc-${question.pdf_id}`}
             darkMode={darkMode}
             teal={teal}
+            already={!!alreadyCarded}
             onAdd={() => onAddCard(
               question.question,
               `${correctLetter ? `(${correctLetter}) ` : ''}${correctText}${question.explanation ? `\n\n${question.explanation}` : ''}`,
@@ -185,12 +186,13 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
   )
 }
 
-function AddCardButton({ onAdd, darkMode, teal }) {
-  const [added, setAdded] = useState(false)
+function AddCardButton({ onAdd, already, darkMode, teal }) {
+  const [clicked, setClicked] = useState(false)
+  const added = already || clicked
   return (
     <button
       type="button"
-      onClick={() => { if (added) return; onAdd(); setAdded(true) }}
+      onClick={() => { if (added) return; onAdd(); setClicked(true) }}
       disabled={added}
       className={`mt-4 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
         added

@@ -108,24 +108,33 @@ function dayKey(ts) {
   return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
 }
 
+// Step a timestamp by ±n LOCAL calendar days. Reconstructs the date from its
+// Y/M/D fields each time so the runtime resolves the real local midnight —
+// DST-safe. A fixed-ms offset (±86,400,000) would desync from the local
+// dayKey buckets on 23h/25h DST days, miscounting the streak in both
+// directions (a lost day each spring, a phantom day each fall).
+function addDays(ts, n) {
+  const d = new Date(ts)
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n).getTime()
+}
+
 // Current + longest run of consecutive calendar days with a quiz (local dates).
 // "current" counts the run ending today or yesterday, so a streak isn't lost
 // until a full day has actually been skipped.
 export function computeStreak(history, now = Date.now()) {
-  const DAY = 86400000
   const days = new Set((history || []).filter((h) => h.date).map((h) => dayKey(h.date)))
 
   let current = 0
   let cursor = now
-  if (!days.has(dayKey(cursor))) cursor -= DAY
-  while (days.has(dayKey(cursor))) { current += 1; cursor -= DAY }
+  if (!days.has(dayKey(cursor))) cursor = addDays(cursor, -1)
+  while (days.has(dayKey(cursor))) { current += 1; cursor = addDays(cursor, -1) }
 
   let longest = 0
   for (const k of days) {
     const [y, m, d] = k.split('-').map(Number)
-    if (days.has(dayKey(new Date(y, m, d).getTime() - DAY))) continue // not a run start
+    if (days.has(dayKey(new Date(y, m, d - 1).getTime()))) continue // not a run start
     let run = 0, t = new Date(y, m, d).getTime()
-    while (days.has(dayKey(t))) { run += 1; t += DAY }
+    while (days.has(dayKey(t))) { run += 1; t = addDays(t, 1) }
     if (run > longest) longest = run
   }
   return { current, longest, studyDays: days.size }

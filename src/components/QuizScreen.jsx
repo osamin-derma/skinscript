@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
@@ -19,6 +19,13 @@ export default function QuizScreen({ state, questions, dispatch }) {
   const qIdx = questionOrder[currentIndex]
   const q = questions[qIdx]
   const totalQ = questionOrder.length
+
+  // Source-question ids that already have a flashcard, so the "Make flashcard"
+  // button can show its added state up-front (and avoid offering a duplicate).
+  const cardedPdfIds = useMemo(
+    () => new Set(Object.values(state.flashcards || {}).map((c) => c.pdf_id).filter(Boolean)),
+    [state.flashcards],
+  )
 
   const [selected, setSelected] = useState(null)
   const [confidence, setConfidence] = useState(null) // 'guessed' | 'unsure' | 'sure'
@@ -428,6 +435,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             darkMode={darkMode}
             note={state.notes?.[q.pdf_id] || ''}
             onNote={(text) => dispatch({ type: 'SET_NOTE', pdfId: q.pdf_id, text })}
+            alreadyCarded={cardedPdfIds.has(q.pdf_id)}
             onAddCard={(front, back, pdfId) => dispatch({
               type: 'ADD_FLASHCARD',
               card: {

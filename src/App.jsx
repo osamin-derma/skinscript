@@ -174,7 +174,12 @@ function reducer(state, action) {
       }
     }
     case 'ADD_FLASHCARD': {
-      return { ...state, flashcards: { ...state.flashcards, [action.card.id]: action.card } }
+      // Idempotent per source question: if a card already exists for this
+      // pdf_id, keep it rather than minting a second UUID-distinct duplicate
+      // (revisiting a question — reload, or Next→Prev — must not re-add).
+      const card = action.card
+      if (card.pdf_id && Object.values(state.flashcards).some((c) => c.pdf_id === card.pdf_id)) return state
+      return { ...state, flashcards: { ...state.flashcards, [card.id]: card } }
     }
     case 'DELETE_FLASHCARD': {
       const flashcards = { ...state.flashcards }
