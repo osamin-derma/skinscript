@@ -137,6 +137,7 @@ const initialState = {
   globalWrong: [],
   globalUsed: [],
   notes: {}, // { [pdf_id]: text } — personal note per question
+  highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
   // and END_QUIZ.  Independent from `answers` — striking a choice and
@@ -163,6 +164,7 @@ function reducer(state, action) {
         globalWrong:   action.data?.wrong   || [],
         globalUsed:    action.data?.used    || [],
         notes:         action.data?.notes   || {},
+        highlights:    action.data?.highlights || {},
       }
     }
     case 'SET_NOTE': {
@@ -170,6 +172,12 @@ function reducer(state, action) {
       if ((action.text || '').trim()) notes[action.pdfId] = action.text
       else delete notes[action.pdfId]
       return { ...state, notes }
+    }
+    case 'SET_HIGHLIGHTS': {
+      const highlights = { ...state.highlights }
+      if (Array.isArray(action.ranges) && action.ranges.length) highlights[action.pdfId] = action.ranges
+      else delete highlights[action.pdfId]
+      return { ...state, highlights }
     }
     case 'SET_BANK': {
       return { ...state, activeBank: action.bank }
@@ -422,6 +430,7 @@ export default function App() {
   const prevUsedRef    = useRef([])
   const prevHistoryRef = useRef([])
   const prevNotesRef   = useRef({})
+  const prevHlRef      = useRef({})
   const cloudReadyRef  = useRef(false)
 
   useEffect(() => {
@@ -436,6 +445,7 @@ export default function App() {
       prevUsedRef.current    = data.used
       prevHistoryRef.current = data.history
       prevNotesRef.current   = data.notes || {}
+      prevHlRef.current      = data.highlights || {}
       dispatch({ type: 'INIT_FROM_CLOUD', data })
       cloudReadyRef.current = true
     })
@@ -459,14 +469,34 @@ export default function App() {
     const t = setTimeout(flushNotes, 700)
     return () => clearTimeout(t)
   }, [state.notes])
+  // ── Watch highlights → cloud (debounced; persist only changed pdf_ids) ──
+  const latestHlRef = useRef({})
+  useEffect(() => { latestHlRef.current = state.highlights || {} }, [state.highlights])
+  const flushHighlights = () => {
+    if (!cloudReadyRef.current) return
+    const prev = prevHlRef.current || {}
+    const curr = latestHlRef.current || {}
+    const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
+    for (const pid of ids) {
+      if (JSON.stringify(prev[pid] || []) !== JSON.stringify(curr[pid] || [])) userdata.saveHighlights(pid, curr[pid] || [])
+    }
+    prevHlRef.current = { ...curr }
+  }
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const t = setTimeout(flushHighlights, 700)
+    return () => clearTimeout(t)
+  }, [state.highlights])
+
   // Don't lose a trailing edit if the page is hidden/closed within the debounce.
   useEffect(() => {
-    const onHide = () => { if (document.visibilityState === 'hidden') flushNotes() }
+    const onHide = () => { if (document.visibilityState === 'hidden') { flushNotes(); flushHighlights() } }
     document.addEventListener('visibilitychange', onHide)
-    window.addEventListener('pagehide', flushNotes)
+    const onPageHide = () => { flushNotes(); flushHighlights() }
+    window.addEventListener('pagehide', onPageHide)
     return () => {
       document.removeEventListener('visibilitychange', onHide)
-      window.removeEventListener('pagehide', flushNotes)
+      window.removeEventListener('pagehide', onPageHide)
     }
   }, [])
 

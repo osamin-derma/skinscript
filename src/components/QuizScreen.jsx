@@ -3,13 +3,16 @@ import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
 
-const HIGHLIGHTS_KEY = 'last11-quiz-highlights'
-
-function loadHighlights() {
-  try { return JSON.parse(localStorage.getItem(HIGHLIGHTS_KEY)) || {} }
-  catch { return {} }
+// Accurate char offset of a selection boundary within `root`, robust to
+// repeated words and existing <mark> spans (unlike indexOf).
+function offsetInRoot(root, container, nodeOffset) {
+  try {
+    const r = document.createRange()
+    r.setStart(root, 0)
+    r.setEnd(container, nodeOffset)
+    return r.toString().length
+  } catch { return null }
 }
-function saveHighlights(h) { localStorage.setItem(HIGHLIGHTS_KEY, JSON.stringify(h)) }
 
 export default function QuizScreen({ state, questions, dispatch }) {
   const { questionOrder, currentIndex, answers, flagged, mode, timerSetting, darkMode } = state
@@ -24,60 +27,60 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
   // Highlighter state
   const [highlightMode, setHighlightMode] = useState(false)
-  const [allHighlights, setAllHighlights] = useState(loadHighlights())
   const stemRef = useRef(null)
 
   const answered = answers[q?.id]
   const isSubmitted = answered?.submitted
 
-  // Persist highlights
-  useEffect(() => { saveHighlights(allHighlights) }, [allHighlights])
+  // Highlights are synced cloud state, keyed on the stable pdf_id.
+  const qHighlights = (q?.pdf_id && state.highlights?.[q.pdf_id]) || []
 
-  // Get highlights for current question (array of {start, end})
-  const qHighlights = (q?.id && allHighlights[q.id]) || []
-
-  // Apply highlight on selection
+  // Apply highlight on selection (accurate offsets, merged ranges)
   const handleHighlight = useCallback(() => {
-    if (!highlightMode || !q?.id) return
+    if (!highlightMode || !q?.pdf_id) return
     const sel = window.getSelection()
-    if (!sel || sel.isCollapsed) return
+    if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return
     const range = sel.getRangeAt(0)
-    if (!stemRef.current || !stemRef.current.contains(range.commonAncestorContainer)) return
+    const root = stemRef.current
+    if (!root || !root.contains(range.startContainer) || !root.contains(range.endContainer)) return
 
-    // Compute character offsets within the question text
     const fullText = q.question || ''
-    const selectedText = sel.toString()
-    if (!selectedText.trim()) return
-    const start = fullText.indexOf(selectedText)
-    if (start < 0) return
-    const end = start + selectedText.length
+    let start = offsetInRoot(root, range.startContainer, range.startOffset)
+    let end = offsetInRoot(root, range.endContainer, range.endOffset)
+    if (start == null || end == null) return
+    if (start > end) [start, end] = [end, start]
+    start = Math.max(0, start); end = Math.min(fullText.length, end)
+    if (end - start < 1) return
 
-    setAllHighlights(prev => {
-      const cur = prev[q.id] || []
-      // Merge overlapping ranges
-      const merged = [...cur, { start, end }].sort((a, b) => a.start - b.start)
-      const out = []
-      for (const r of merged) {
-        if (out.length && r.start <= out[out.length - 1].end) {
-          out[out.length - 1].end = Math.max(out[out.length - 1].end, r.end)
-        } else out.push({ ...r })
-      }
-      return { ...prev, [q.id]: out }
-    })
+    const cur = state.highlights?.[q.pdf_id] || []
+    const merged = [...cur, { start, end }].sort((a, b) => a.start - b.start)
+    const out = []
+    for (const r of merged) {
+      if (out.length && r.start <= out[out.length - 1].end) {
+        out[out.length - 1].end = Math.max(out[out.length - 1].end, r.end)
+      } else out.push({ start: r.start, end: r.end })
+    }
+    dispatch({ type: 'SET_HIGHLIGHTS', pdfId: q.pdf_id, ranges: out })
     sel.removeAllRanges()
-  }, [highlightMode, q?.id, q?.question])
+  }, [highlightMode, q?.pdf_id, q?.question, state.highlights, dispatch])
 
-  // Render question stem with highlights applied
+  // Render question stem with highlights applied. Clamp to the current text
+  // length so a content rebuild can never crash or mis-slice the render.
   const renderHighlightedStem = (text) => {
     if (!qHighlights.length) return text
     const parts = []
     let cursor = 0
-    for (const { start, end } of qHighlights) {
+    for (const r of qHighlights) {
+      const start = Math.max(cursor, Math.min(text.length, r.start))
+      const end = Math.max(start, Math.min(text.length, r.end))
+      if (end <= cursor) continue
       if (start > cursor) parts.push(<span key={`p${cursor}`}>{text.slice(cursor, start)}</span>)
       parts.push(
         <mark
           key={`h${start}`}
-          className="rounded px-0.5"
+          onClick={() => removeHighlightAt(r.start)}
+          title="Click to remove this highlight"
+          className="rounded px-0.5 cursor-pointer"
           style={{ backgroundColor: '#fef08a', color: 'inherit' }}
         >{text.slice(start, end)}</mark>
       )
@@ -87,13 +90,16 @@ export default function QuizScreen({ state, questions, dispatch }) {
     return parts
   }
 
+  // Remove the single highlight covering a given start offset (click-to-remove).
+  const removeHighlightAt = (start) => {
+    if (!q?.pdf_id) return
+    const next = (state.highlights?.[q.pdf_id] || []).filter(r => r.start !== start)
+    dispatch({ type: 'SET_HIGHLIGHTS', pdfId: q.pdf_id, ranges: next })
+  }
+
   const clearHighlights = () => {
-    if (!q?.id) return
-    setAllHighlights(prev => {
-      const next = { ...prev }
-      delete next[q.id]
-      return next
-    })
+    if (!q?.pdf_id) return
+    dispatch({ type: 'SET_HIGHLIGHTS', pdfId: q.pdf_id, ranges: [] })
   }
 
   // Reset selection when navigating

@@ -31,9 +31,9 @@ function warn(label, err) {
 
 export async function fetchAllUserData() {
   const userId = await uid()
-  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {} }
+  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {} }
 
-  const [flagsRes, wrongRes, usedRes, historyRes, notesRes] = await Promise.all([
+  const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes] = await Promise.all([
     supabase.from('user_flags').select('question_id'),
     supabase.from('user_wrong').select('question_id'),
     supabase.from('user_used').select('question_id'),
@@ -42,16 +42,20 @@ export async function fetchAllUserData() {
       .order('taken_at', { ascending: false })
       .limit(100),
     supabase.from('user_notes').select('pdf_id, note'),
+    supabase.from('user_highlights').select('pdf_id, ranges'),
   ])
 
-  warn('fetch flags',   flagsRes.error)
-  warn('fetch wrong',   wrongRes.error)
-  warn('fetch used',    usedRes.error)
-  warn('fetch history', historyRes.error)
-  warn('fetch notes',   notesRes.error)
+  warn('fetch flags',      flagsRes.error)
+  warn('fetch wrong',      wrongRes.error)
+  warn('fetch used',       usedRes.error)
+  warn('fetch history',    historyRes.error)
+  warn('fetch notes',      notesRes.error)
+  warn('fetch highlights', hlRes.error)
 
   const notes = {}
   for (const r of notesRes.data || []) { if (r.note) notes[r.pdf_id] = r.note }
+  const highlights = {}
+  for (const r of hlRes.data || []) { if (Array.isArray(r.ranges) && r.ranges.length) highlights[r.pdf_id] = r.ranges }
 
   return {
     flags:   (flagsRes.data   || []).map(r => r.question_id),
@@ -59,6 +63,7 @@ export async function fetchAllUserData() {
     used:    (usedRes.data    || []).map(r => r.question_id),
     history: (historyRes.data || []).map(rowToHistoryEntry),
     notes,
+    highlights,
   }
 }
 
@@ -121,6 +126,28 @@ export async function saveNote(pdfId, note) {
     .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString() },
             { onConflict: 'user_id,pdf_id' })
   warn('saveNote', error)
+}
+
+
+// ── Persistent highlights ────────────────────────────────────────────────
+
+// Empty ranges deletes the row; otherwise upsert. Keyed on pdf_id.
+export async function saveHighlights(pdfId, ranges) {
+  const userId = await uid(); if (!userId) return
+  if (!Array.isArray(ranges) || ranges.length === 0) {
+    const { error } = await supabase
+      .from('user_highlights')
+      .delete()
+      .eq('user_id', userId)
+      .eq('pdf_id', pdfId)
+    warn('deleteHighlights', error)
+    return
+  }
+  const { error } = await supabase
+    .from('user_highlights')
+    .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString() },
+            { onConflict: 'user_id,pdf_id' })
+  warn('saveHighlights', error)
 }
 
 
