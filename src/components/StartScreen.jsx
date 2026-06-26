@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
@@ -20,6 +20,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     ;(banks?.all?.questions || []).forEach((q) => { if (q.pdf_id) m.set(q.pdf_id, q) })
     return m
   }, [banks])
+  // Stable reference so analytics memos don't re-run every keystroke.
+  const lookupQuestion = useCallback((pid) => questionByPdfId.get(pid), [questionByPdfId])
   const [activeBank, setActiveBankLocal] = useState(state.activeBank || 'all')
   const setActiveBank = (bank) => {
     setActiveBankLocal(bank)
@@ -180,7 +182,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             darkMode={darkMode}
             onClose={() => setShowAccount(false)}
             onSignOut={onSignOut}
-            lookupQuestion={(pdfId) => questionByPdfId.get(pdfId)}
+            lookupQuestion={lookupQuestion}
           />
         )}
         {/* Header */}
@@ -1042,11 +1044,11 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             {/* Deep analytics: readiness · trend · weak areas · per-category */}
             <PerformanceAnalytics
               history={history}
-              lookupQuestion={(pid) => questionByPdfId.get(pid)}
+              lookupQuestion={lookupQuestion}
               darkMode={darkMode}
               onPracticeCategory={(category) => onStart({
                 source: 'topics', topics: [category], bank: 'all',
-                count: 20, mode: 'tutor', timer: timer, shuffle: true,
+                categoryFilter: 'all', count: 20, mode: 'tutor', timer: timer, shuffle: true,
               })}
             />
           </div>

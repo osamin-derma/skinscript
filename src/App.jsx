@@ -442,19 +442,33 @@ export default function App() {
   }, [session?.user?.id])
 
   // ── Watch notes → cloud (debounced; persist only changed pdf_ids) ──
+  const latestNotesRef = useRef({})
+  useEffect(() => { latestNotesRef.current = state.notes || {} }, [state.notes])
+  const flushNotes = () => {
+    if (!cloudReadyRef.current) return
+    const prev = prevNotesRef.current || {}
+    const curr = latestNotesRef.current || {}
+    const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
+    for (const pid of ids) {
+      if ((prev[pid] || '') !== (curr[pid] || '')) userdata.saveNote(pid, curr[pid] || '')
+    }
+    prevNotesRef.current = { ...curr }
+  }
   useEffect(() => {
     if (!cloudReadyRef.current) return
-    const t = setTimeout(() => {
-      const prev = prevNotesRef.current || {}
-      const curr = state.notes || {}
-      const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
-      for (const pid of ids) {
-        if ((prev[pid] || '') !== (curr[pid] || '')) userdata.saveNote(pid, curr[pid] || '')
-      }
-      prevNotesRef.current = curr
-    }, 700)
+    const t = setTimeout(flushNotes, 700)
     return () => clearTimeout(t)
   }, [state.notes])
+  // Don't lose a trailing edit if the page is hidden/closed within the debounce.
+  useEffect(() => {
+    const onHide = () => { if (document.visibilityState === 'hidden') flushNotes() }
+    document.addEventListener('visibilitychange', onHide)
+    window.addEventListener('pagehide', flushNotes)
+    return () => {
+      document.removeEventListener('visibilitychange', onHide)
+      window.removeEventListener('pagehide', flushNotes)
+    }
+  }, [])
 
   // ── Watch flags → cloud (additions + removals) ──
   useEffect(() => {
