@@ -2,6 +2,26 @@ import { useState, useMemo } from 'react'
 import { BookOpen, Search, ChevronDown, ChevronUp, Trash2, X as XIcon } from 'lucide-react'
 
 /**
+ * Editable note box with local state. Emptying the box does NOT delete the
+ * note (which would unmount this card mid-edit) — only non-empty edits sync;
+ * deletion is the explicit Delete button. Keyed by pdf_id so it remounts per
+ * question with the right starting text.
+ */
+function NoteBox({ pdfId, note, onNote, darkMode }) {
+  const [text, setText] = useState(note || '')
+  return (
+    <textarea
+      value={text}
+      onChange={(e) => { const v = e.target.value; setText(v); if (v.trim()) onNote(pdfId, v) }}
+      rows={3}
+      className={`w-full px-3 py-2 rounded-lg text-sm border outline-none focus:ring-2 resize-y ${
+        darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-amber-50/40 border-amber-200 text-gray-900'
+      }`}
+    />
+  )
+}
+
+/**
  * Notebook — every question the user has written a note on, in one place.
  * Each entry expands to the full question, choices (correct highlighted),
  * explanation, and the editable note. Reads `notes` (pdf_id -> text) and
@@ -13,18 +33,21 @@ export default function Notebook({ notes = {}, lookupQuestion, onNote, darkMode 
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(null)
 
-  const items = useMemo(() => {
+  // Notes that have text AND resolve to a question in the current bank.
+  const resolvable = useMemo(() => {
     return Object.entries(notes)
       .map(([pdf_id, note]) => ({ pdf_id, note, q: lookupQuestion(pdf_id) }))
       .filter((it) => it.q && (it.note || '').trim())
-      .filter((it) => {
-        if (!query.trim()) return true
-        const hay = `${it.note} ${it.q.question} ${it.q.category || ''}`.toLowerCase()
-        return hay.includes(query.toLowerCase())
-      })
-  }, [notes, lookupQuestion, query])
+  }, [notes, lookupQuestion])
 
-  const total = Object.values(notes).filter((n) => (n || '').trim()).length
+  const items = useMemo(() => {
+    if (!query.trim()) return resolvable
+    const ql = query.toLowerCase()
+    return resolvable.filter((it) => `${it.note} ${it.q.question} ${it.q.category || ''}`.toLowerCase().includes(ql))
+  }, [resolvable, query])
+
+  // Count + empty-state track what's actually shown (not orphaned/unresolvable notes).
+  const total = resolvable.length
   const card = darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
 
@@ -104,14 +127,7 @@ export default function Notebook({ notes = {}, lookupQuestion, onNote, darkMode 
                             <Trash2 size={11} /> Delete
                           </button>
                         </div>
-                        <textarea
-                          defaultValue={it.note}
-                          onChange={(e) => onNote(it.pdf_id, e.target.value)}
-                          rows={3}
-                          className={`w-full px-3 py-2 rounded-lg text-sm border outline-none focus:ring-2 resize-y ${
-                            darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-amber-50/40 border-amber-200 text-gray-900'
-                          }`}
-                        />
+                        <NoteBox key={it.pdf_id} pdfId={it.pdf_id} note={it.note} onNote={onNote} darkMode={darkMode} />
                       </div>
                     )}
                   </div>

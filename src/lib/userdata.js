@@ -261,6 +261,12 @@ export async function clearEverything() {
   const histRes = await supabase.from('quiz_history').delete().eq('user_id', userId)
   if (histRes.error) console.error('[userdata] history delete failed:', histRes.error)
   else console.log('[userdata] cleared history for user', userId)
+  // Also wipe per-question annotations so "start fresh" is truly clean and they
+  // don't silently rehydrate (both keyed on the stable pdf_id).
+  const notesRes = await supabase.from('user_notes').delete().eq('user_id', userId)
+  if (notesRes.error) console.error('[userdata] notes delete failed:', notesRes.error)
+  const hlRes = await supabase.from('user_highlights').delete().eq('user_id', userId)
+  if (hlRes.error) console.error('[userdata] highlights delete failed:', hlRes.error)
   const progressOk = await clearProgress()
-  return !histRes.error && progressOk
+  return !histRes.error && !notesRes.error && !hlRes.error && progressOk
 }
