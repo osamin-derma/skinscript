@@ -20,6 +20,11 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance' | 'notebook'
   const [notebookView, setNotebookView] = useState('notes') // 'notes' | 'cards'
   const [showAccount, setShowAccount] = useState(false)
+  // Pull per-user state up-front: `schedule` (and friends) are read by the
+  // memos below, so this must precede them — destructuring it later is a
+  // temporal-dead-zone crash ("Cannot access 'schedule' before initialization")
+  // the moment StartScreen renders.
+  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {}, flashcards = {} } = state
   // pdf_id → question, for reopening a past exam in the account drawer.
   const questionByPdfId = useMemo(() => {
     const m = new Map()
@@ -114,7 +119,6 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: bankKey, questionId: originalId })
   }
 
-  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {}, flashcards = {} } = state
   const unusedCount = totalQuestions - globalUsed.length
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
