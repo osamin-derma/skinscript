@@ -389,9 +389,9 @@ function reducer(state, action) {
       return { ...state, screen: 'quiz', mode: 'tutor', questionOrder: flaggedOrder, currentIndex: 0, answers: {}, flagged: [], quizSource: 'flagged' }
     }
     case 'OPEN_SINGLE_QUESTION': {
-      // Jump directly to a single question (from search results)
+      // Jump directly to a single question (from search results or the Atlas).
       const bankKey = action.bank || state.activeBank
-      const bankQs = getBankQuestions(bankKey)
+      const bankQs = getBankQuestions(bankKey)          // unfiltered — idx is into THIS array
       const idx = bankQs.findIndex(q => q.id === action.questionId)
       if (idx < 0) return state
       return {
@@ -404,6 +404,10 @@ function reducer(state, action) {
         flagged: [],
         quizSource: 'search',
         activeBank: bankKey,
+        // idx is computed against the UNFILTERED bank, so the render array must
+        // be unfiltered too — otherwise a sticky category filter makes
+        // QuizScreen index the wrong (or no) question. Mirrors START_QUIZ.
+        categoryFilter: 'all',
       }
     }
     case 'REVIEW_WRONG': {

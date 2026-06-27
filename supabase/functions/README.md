@@ -6,11 +6,19 @@ browser bundle, so it can't be extracted). Until the function is deployed *and*
 the key is set, the tutor stays completely hidden — the rest of the app is
 unaffected.
 
+## Prerequisite
+
+The function meters every request per-user via `public.rate_guard(...)`, so the
+rate-limit migration must be applied first (idempotent):
+`supabase/05_rate_limit_sessions.sql`. If it isn't present, the tutor fails
+closed (503) rather than letting requests through unmetered.
+
 ## Steps
 
 1. Install the Supabase CLI (once): `brew install supabase/tap/supabase`
 2. Log in: `supabase login`
-3. From the repo root (`last11-quiz-app/`), deploy the function:
+3. From the repo root (`last11-quiz-app/`), deploy the function (the bundled
+   `supabase/config.toml` pins `verify_jwt = true` — never pass `--no-verify-jwt`):
 
    ```sh
    supabase functions deploy tutor --project-ref yssrtjfgkctojkzcoapt

@@ -163,15 +163,24 @@ export default function QuizScreen({ state, questions, dispatch }) {
         if (!isSubmitted && idx < keys.length) { e.preventDefault(); setSelected(keys[idx]) }
         return
       }
+      // Advance one question — but NEVER end the quiz from a key in 'review'
+      // mode (a single-question lookup from search/Atlas, totalQ===1, where
+      // handleNext() would dispatch END_QUIZ and drop the user on a bogus
+      // results screen). In a real quiz, Enter on the last question still
+      // finishes it (mirrors the "Finish Quiz" button).
+      const advance = () => {
+        if (currentIndex < totalQ - 1) handleNext()
+        else if (mode !== 'review') handleNext()
+      }
       switch (e.key) {
         case 'Enter':
           e.preventDefault()
           if (!isSubmitted && mode !== 'review') { if (selected) handleSubmit() }
-          else handleNext()
+          else advance()
           break
         case 'ArrowRight':
           e.preventDefault()
-          if (isSubmitted || mode === 'review') handleNext(); else handleSkip()
+          if (!isSubmitted && mode !== 'review') handleSkip(); else advance()
           break
         case 'ArrowLeft':
           e.preventDefault()

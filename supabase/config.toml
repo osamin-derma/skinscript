@@ -1,0 +1,10 @@
+# Supabase project config (project ref yssrtjfgkctojkzcoapt).
+# Pins edge-function settings so they're enforced on every deploy and visible
+# in code review — not left to platform defaults or CLI flags.
+
+[functions.tutor]
+# REQUIRED: only authenticated callers may invoke the AI tutor. The function
+# also re-validates the JWT itself (defense in depth), but this guarantees the
+# gateway rejects anonymous traffic so the owner's Anthropic key can never be
+# hit by the open internet. Do NOT deploy with --no-verify-jwt.
+verify_jwt = true

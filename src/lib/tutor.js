@@ -9,18 +9,17 @@ import { supabase } from './supabase'
 // ─────────────────────────────────────────────────────────────────────────
 
 const CAP_KEY = 'skinscript-tutor-cap'
-const CAP_TTL = 30 * 60 * 1000 // re-probe at most every 30 min
-let _mem // in-memory result for this tab: true | false | undefined
+const POS_TTL = 30 * 60 * 1000 // trust an "available" result for 30 min
+const NEG_TTL = 90 * 1000      // re-probe an "unavailable" result after 90s
+let _mem // ONLY pinned true once available; never pinned false (a transient
+         // probe failure must not hide the tutor for the whole tab session)
 let _inflight // de-dupe concurrent probes
 
 export async function tutorAvailable() {
-  if (_mem !== undefined) return _mem
+  if (_mem === true) return true
   try {
     const cached = JSON.parse(localStorage.getItem(CAP_KEY) || 'null')
-    if (cached && Date.now() - cached.t < CAP_TTL) {
-      _mem = !!cached.v
-      return _mem
-    }
+    if (cached && Date.now() - cached.t < (cached.v ? POS_TTL : NEG_TTL)) return !!cached.v
   } catch { /* ignore */ }
 
   if (!_inflight) {
@@ -30,7 +29,9 @@ export async function tutorAvailable() {
         const { data, error } = await supabase.functions.invoke('tutor', { body: { ping: true } })
         ok = !error && !!data?.ok && !!data?.configured
       } catch { ok = false }
-      _mem = ok
+      if (ok) _mem = true // pin positives only
+      // Negatives get a short TTL so a transient blip doesn't hide the tutor
+      // for 30 min; a genuine "not deployed" simply re-probes every ~90s.
       try { localStorage.setItem(CAP_KEY, JSON.stringify({ v: ok, t: Date.now() })) } catch { /* ignore */ }
       _inflight = null
       return ok
