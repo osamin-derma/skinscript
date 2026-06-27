@@ -146,6 +146,48 @@ export default function QuizScreen({ state, questions, dispatch }) {
     if (currentIndex < totalQ - 1) dispatch({ type: 'NEXT' })
   }
 
+  // ── Keyboard shortcuts (UWorld-style) ──
+  // 1–9 select a choice · Enter submit/next · ←/→ navigate · F flag.
+  // Ignored while typing in a field or holding a modifier.
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return
+      const el = e.target
+      const tag = el?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || el?.isContentEditable) return
+      if (!q) return
+      const keys = Object.keys(q.choices || {}).sort()
+
+      if (/^[1-9]$/.test(e.key)) {
+        const idx = Number(e.key) - 1
+        if (!isSubmitted && idx < keys.length) { e.preventDefault(); setSelected(keys[idx]) }
+        return
+      }
+      switch (e.key) {
+        case 'Enter':
+          e.preventDefault()
+          if (!isSubmitted && mode !== 'review') { if (selected) handleSubmit() }
+          else handleNext()
+          break
+        case 'ArrowRight':
+          e.preventDefault()
+          if (isSubmitted || mode === 'review') handleNext(); else handleSkip()
+          break
+        case 'ArrowLeft':
+          e.preventDefault()
+          if (currentIndex > 0) dispatch({ type: 'PREV' })
+          break
+        case 'f': case 'F':
+          e.preventDefault()
+          dispatch({ type: 'FLAG', questionId: q.id })
+          break
+        default:
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [q, isSubmitted, selected, mode, currentIndex, totalQ, handleSubmit, dispatch])
+
   if (!q) return null
 
   const progress = ((currentIndex + 1) / totalQ) * 100
@@ -424,6 +466,13 @@ export default function QuizScreen({ state, questions, dispatch }) {
                 </button>
               )}
             </div>
+
+            {/* Keyboard hint (desktop only) */}
+            <p className="hidden lg:block text-[11px] text-gray-400 dark:text-gray-500 mt-3 text-center">
+              {!isSubmitted && mode !== 'review'
+                ? <><Kbd>1</Kbd>–<Kbd>{choiceKeys.length}</Kbd> choose · <Kbd>↵</Kbd> submit · <Kbd>F</Kbd> flag</>
+                : <><Kbd>↵</Kbd> / <Kbd>→</Kbd> next · <Kbd>←</Kbd> back · <Kbd>F</Kbd> flag</>}
+            </p>
           </div>
         </div>
 
@@ -469,5 +518,14 @@ export default function QuizScreen({ state, questions, dispatch }) {
         </button>
       </footer>
     </div>
+  )
+}
+
+// Small keycap for the keyboard-shortcut hint.
+function Kbd({ children }) {
+  return (
+    <kbd className="inline-block min-w-[1.1rem] px-1 py-0.5 mx-0.5 rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-[10px] font-mono leading-none text-center align-middle">
+      {children}
+    </kbd>
   )
 }

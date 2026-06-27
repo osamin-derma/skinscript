@@ -723,8 +723,17 @@ export default function App() {
     return (
       <div className={`min-h-screen flex items-center justify-center ${state.darkMode ? 'bg-gray-900 text-gray-200' : 'bg-gray-50 text-gray-700'}`}>
         <div className="text-center">
-          <div className="inline-block w-10 h-10 border-4 border-current border-t-transparent rounded-full animate-spin mb-3" style={{ color: '#2c3e3f' }} />
-          <p className="text-sm">Loading SkinScript…</p>
+          <div className="relative inline-flex items-center justify-center mb-4">
+            <span className="absolute inline-block w-16 h-16 rounded-full border-2 border-current opacity-20 animate-ping" style={{ color: '#2c3e3f' }} />
+            <img
+              src={`${import.meta.env.BASE_URL}icon.png`}
+              alt="SkinScript"
+              className="w-14 h-14 rounded-full shadow-md object-cover"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          </div>
+          <p className="text-sm font-semibold tracking-wide" style={{ color: state.darkMode ? '#7fb5b5' : '#2c3e3f' }}>SkinScript</p>
+          <p className="text-xs text-gray-400 mt-0.5">Loading your study session…</p>
         </div>
       </div>
     )
