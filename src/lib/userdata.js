@@ -1,22 +1,22 @@
 import { supabase } from './supabase'
+import * as localdb from './localdb'
 
 // ─────────────────────────────────────────────────────────────────────────
-// User-data cloud sync.
+// User-data cloud sync — now LOCAL-FIRST.
 //
-// All progress that used to live in localStorage (history / flags / wrong /
-// used) is now per-user in Supabase.  These helpers are thin wrappers
-// around the REST + RPC API that the React reducer fires-and-forgets
-// when state changes.
+// Reads: see fetchAllUserData. The app hydrates from the local snapshot
+// (localdb) first, so it works offline; when online it then reconciles with
+// the cloud.
 //
-// Errors are logged but never thrown into the UI — a flaky network
-// shouldn't crash a study session.
+// Writes: every incremental mutation goes through mutate(kind, args). When
+// offline (or a write fails on the network) the op is appended to the
+// IndexedDB outbox and replayed by flushOutbox() on reconnect. Every op is an
+// idempotent upsert/delete/insert-with-id, so replaying twice is harmless.
+//
+// Errors are logged but never thrown into the UI — a flaky network shouldn't
+// crash a study session.
 // ─────────────────────────────────────────────────────────────────────────
 
-// Read the current user id from the cached session (synchronous after the
-// initial auth bootstrap — no network call).  getUser() makes a request
-// to /auth/v1/user and would silently return null on a flaky network,
-// which is exactly the kind of failure that left old rows behind on
-// "Reset ALL" → that's why this is now getSession().
 async function uid() {
   const { data } = await supabase.auth.getSession()
   return data?.session?.user?.id || null
@@ -24,6 +24,15 @@ async function uid() {
 
 function warn(label, err) {
   if (err) console.warn('[userdata]', label, err.message || err)
+}
+
+const isOffline = () => typeof navigator !== 'undefined' && navigator.onLine === false
+
+function isNetworkError(err) {
+  if (!err) return false
+  const m = (err.message || String(err)).toLowerCase()
+  return m.includes('fetch') || m.includes('network') || m.includes('failed to send')
+    || m.includes('timeout') || err.name === 'TypeError'
 }
 
 
@@ -99,182 +108,181 @@ function rowToHistoryEntry(r) {
 }
 
 
-// ── Flags ────────────────────────────────────────────────────────────────
+// ── Raw executors (one per mutation kind) ────────────────────────────────
+// Each performs the Supabase write and RETURNS the error (or null). They are
+// the single source of truth for the write, used both for live writes and for
+// replaying the offline outbox — so they MUST be idempotent.
 
-export async function addFlag(questionId) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_flags')
-    .upsert({ user_id: userId, question_id: questionId }, { onConflict: 'user_id,question_id' })
-  warn('addFlag', error)
+const EXECUTORS = {
+  async saveNote(pdfId, note) {
+    const userId = await uid(); if (!userId) return null
+    const text = (note || '').trim()
+    if (!text) {
+      const { error } = await supabase.from('user_notes').delete().eq('user_id', userId).eq('pdf_id', pdfId)
+      return error
+    }
+    const { error } = await supabase.from('user_notes')
+      .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+    return error
+  },
+  async saveHighlights(pdfId, ranges) {
+    const userId = await uid(); if (!userId) return null
+    if (!Array.isArray(ranges) || ranges.length === 0) {
+      const { error } = await supabase.from('user_highlights').delete().eq('user_id', userId).eq('pdf_id', pdfId)
+      return error
+    }
+    const { error } = await supabase.from('user_highlights')
+      .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+    return error
+  },
+  async saveScheduleEntry(pdfId, entry) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_review_schedule')
+      .upsert({
+        user_id: userId, pdf_id: pdfId,
+        box: entry.box, interval_days: entry.interval, due_at: entry.due,
+        reps: entry.reps, last_grade: entry.lastGrade, updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,pdf_id' })
+    return error
+  },
+  async saveFlashcard(card) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_flashcards')
+      .upsert({
+        id: card.id, user_id: userId, pdf_id: card.pdf_id || null,
+        front: card.front, back: card.back,
+        box: card.box, interval_days: card.interval, due_at: card.due, reps: card.reps,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id,id' })
+    return error
+  },
+  async deleteFlashcard(id) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_flashcards').delete().eq('user_id', userId).eq('id', id)
+    return error
+  },
+  async addFlag(questionId) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_flags')
+      .upsert({ user_id: userId, question_id: questionId }, { onConflict: 'user_id,question_id' })
+    return error
+  },
+  async removeFlag(questionId) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_flags').delete().eq('user_id', userId).eq('question_id', questionId)
+    return error
+  },
+  async addWrong(questionId) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_wrong')
+      .upsert({ user_id: userId, question_id: questionId, last_wrong_at: new Date().toISOString() }, { onConflict: 'user_id,question_id' })
+    return error
+  },
+  async removeWrong(questionId) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_wrong').delete().eq('user_id', userId).eq('question_id', questionId)
+    return error
+  },
+  async addUsed(questionId) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_used')
+      .upsert({ user_id: userId, question_id: questionId, last_used_at: new Date().toISOString() }, { onConflict: 'user_id,question_id' })
+    return error
+  },
+  async insertHistory(entry) {
+    const userId = await uid(); if (!userId) return null
+    // Client-generated uuid id (set by END_QUIZ) → upsert is idempotent, so a
+    // queued offline insert can be replayed safely without duplicating rows.
+    const base = {
+      id: entry.id, user_id: userId,
+      mode: entry.mode, source: entry.source, bank: entry.bank,
+      total_questions: entry.totalQuestions, answered: entry.answered,
+      correct: entry.correct, incorrect: entry.incorrect, score: entry.score,
+      time_per_q: entry.timePerQ,
+      taken_at: entry.date || new Date().toISOString(),
+    }
+    let { error } = await supabase.from('quiz_history').upsert({ ...base, detail: entry.detail || null }, { onConflict: 'id' })
+    // `detail` ships before its migration may be run; fall back without it.
+    if (error && /detail/i.test(`${error.message} ${error.details || ''}`)) {
+      ;({ error } = await supabase.from('quiz_history').upsert(base, { onConflict: 'id' }))
+    }
+    return error
+  },
 }
 
-export async function removeFlag(questionId) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_flags')
-    .delete()
-    .eq('user_id', userId)
-    .eq('question_id', questionId)
-  warn('removeFlag', error)
-}
 
+// ── mutate(): the local-first write path ─────────────────────────────────
+// Offline → queue. Online → run; if it fails on the network, queue.
 
-// ── Per-question notes ───────────────────────────────────────────────────
-
-// Empty text deletes the note; otherwise upsert. Keyed on pdf_id.
-export async function saveNote(pdfId, note) {
-  const userId = await uid(); if (!userId) return
-  const text = (note || '').trim()
-  if (!text) {
-    const { error } = await supabase
-      .from('user_notes')
-      .delete()
-      .eq('user_id', userId)
-      .eq('pdf_id', pdfId)
-    warn('deleteNote', error)
-    return
+async function mutate(kind, args) {
+  if (isOffline()) { await localdb.enqueueOp({ kind, args }); return }
+  try {
+    const error = await EXECUTORS[kind](...args)
+    if (error && (isNetworkError(error) || isOffline())) await localdb.enqueueOp({ kind, args })
+    else warn(kind, error)
+  } catch (e) {
+    if (isNetworkError(e) || isOffline()) await localdb.enqueueOp({ kind, args })
+    else warn(kind, e)
   }
-  const { error } = await supabase
-    .from('user_notes')
-    .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString() },
-            { onConflict: 'user_id,pdf_id' })
-  warn('saveNote', error)
 }
 
-
-// ── Persistent highlights ────────────────────────────────────────────────
-
-// Empty ranges deletes the row; otherwise upsert. Keyed on pdf_id.
-export async function saveHighlights(pdfId, ranges) {
-  const userId = await uid(); if (!userId) return
-  if (!Array.isArray(ranges) || ranges.length === 0) {
-    const { error } = await supabase
-      .from('user_highlights')
-      .delete()
-      .eq('user_id', userId)
-      .eq('pdf_id', pdfId)
-    warn('deleteHighlights', error)
-    return
+// Replay queued offline writes, oldest first. Stops on the first network
+// failure and keeps the rest for the next attempt (so order is preserved).
+let _flushing = false
+export async function flushOutbox() {
+  if (_flushing || isOffline()) return
+  _flushing = true
+  try {
+    const ops = await localdb.getOps()
+    for (const op of ops) {
+      if (isOffline()) break
+      let error = null
+      try { error = await EXECUTORS[op.kind]?.(...op.args) } catch (e) { error = e }
+      if (error && (isNetworkError(error) || isOffline())) break // still offline-ish; retry later
+      await localdb.removeOp(op.seq)                              // success (or a non-retryable error we drop)
+    }
+  } finally {
+    _flushing = false
   }
-  const { error } = await supabase
-    .from('user_highlights')
-    .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString() },
-            { onConflict: 'user_id,pdf_id' })
-  warn('saveHighlights', error)
 }
 
+export async function outboxCount() { return localdb.outboxCount() }
 
-// ── Spaced-repetition schedule ───────────────────────────────────────────
 
-// Upsert one question's review schedule entry (fire-and-forget on answer).
-export async function saveScheduleEntry(pdfId, entry) {
+// ── Offline snapshot (instant hydration / read-while-offline) ────────────
+// Stores/loads the full INIT_FROM_CLOUD-shaped object for the current user.
+
+export async function loadSnapshot() {
+  const userId = await uid(); if (!userId) return null
+  return localdb.getSnapshot(userId)
+}
+export async function saveSnapshot(data) {
   const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_review_schedule')
-    .upsert({
-      user_id: userId, pdf_id: pdfId,
-      box: entry.box, interval_days: entry.interval, due_at: entry.due,
-      reps: entry.reps, last_grade: entry.lastGrade,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'user_id,pdf_id' })
-  warn('saveScheduleEntry', error)
+  await localdb.setSnapshot(userId, data)
 }
+
+
+// ── Public write helpers (unchanged signatures) ──────────────────────────
+
+export const addFlag           = (questionId) => mutate('addFlag', [questionId])
+export const removeFlag        = (questionId) => mutate('removeFlag', [questionId])
+export const saveNote          = (pdfId, note) => mutate('saveNote', [pdfId, note])
+export const saveHighlights    = (pdfId, ranges) => mutate('saveHighlights', [pdfId, ranges])
+export const saveScheduleEntry = (pdfId, e) => mutate('saveScheduleEntry', [pdfId, e])
+export const saveFlashcard     = (card) => mutate('saveFlashcard', [card])
+export const deleteFlashcard   = (id) => mutate('deleteFlashcard', [id])
+export const addWrong          = (questionId) => mutate('addWrong', [questionId])
+export const removeWrong       = (questionId) => mutate('removeWrong', [questionId])
+export const addUsed           = (questionId) => mutate('addUsed', [questionId])
+export const insertHistory     = (entry) => mutate('insertHistory', [entry])
+
+
+// ── Bulk resets — direct (not queued); also clear local cache + outbox ───
 
 export async function clearSchedule() {
   const userId = await uid(); if (!userId) return
   const { error } = await supabase.from('user_review_schedule').delete().eq('user_id', userId)
   warn('clearSchedule', error)
-}
-
-
-// ── Flashcards ───────────────────────────────────────────────────────────
-
-export async function saveFlashcard(card) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_flashcards')
-    .upsert({
-      id: card.id, user_id: userId, pdf_id: card.pdf_id || null,
-      front: card.front, back: card.back,
-      box: card.box, interval_days: card.interval, due_at: card.due, reps: card.reps,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'user_id,id' })
-  warn('saveFlashcard', error)
-}
-
-export async function deleteFlashcard(id) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase.from('user_flashcards').delete().eq('user_id', userId).eq('id', id)
-  warn('deleteFlashcard', error)
-}
-
-
-// ── Wrong ────────────────────────────────────────────────────────────────
-
-export async function addWrong(questionId) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_wrong')
-    .upsert({ user_id: userId, question_id: questionId, last_wrong_at: new Date().toISOString() },
-            { onConflict: 'user_id,question_id' })
-  warn('addWrong', error)
-}
-
-export async function removeWrong(questionId) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_wrong')
-    .delete()
-    .eq('user_id', userId)
-    .eq('question_id', questionId)
-  warn('removeWrong', error)
-}
-
-
-// ── Used ─────────────────────────────────────────────────────────────────
-// "Used" only ever grows during normal play; we never selectively remove a
-// single entry. Clearing happens via clearProgress() below.
-
-export async function addUsed(questionId) {
-  const userId = await uid(); if (!userId) return
-  const { error } = await supabase
-    .from('user_used')
-    .upsert({ user_id: userId, question_id: questionId, last_used_at: new Date().toISOString() },
-            { onConflict: 'user_id,question_id' })
-  warn('addUsed', error)
-}
-
-
-// ── History ──────────────────────────────────────────────────────────────
-
-export async function insertHistory(entry) {
-  const userId = await uid(); if (!userId) return null
-  const base = {
-    user_id:         userId,
-    mode:            entry.mode,
-    source:          entry.source,
-    bank:            entry.bank,
-    total_questions: entry.totalQuestions,
-    answered:        entry.answered,
-    correct:         entry.correct,
-    incorrect:       entry.incorrect,
-    score:           entry.score,
-    time_per_q:      entry.timePerQ,
-  }
-  let { data, error } = await supabase
-    .from('quiz_history')
-    .insert({ ...base, detail: entry.detail || null })
-    .select()
-    .single()
-  // The `detail` column ships before its migration may be run (07_quiz_history_detail.sql).
-  // If it's missing, fall back to inserting without it so history still syncs;
-  // per-exam review just won't persist to the cloud until the column exists.
-  if (error && /detail/i.test(`${error.message} ${error.details || ''}`)) {
-    ;({ data, error } = await supabase.from('quiz_history').insert(base).select().single())
-  }
-  warn('insertHistory', error)
-  return data ? rowToHistoryEntry(data) : null
 }
 
 export async function clearHistory() {
@@ -283,15 +291,9 @@ export async function clearHistory() {
   warn('clearHistory', error)
 }
 
-
-// ── Bulk reset (matches the existing "Reset Performance" + RESET_ALL) ────
-
 export async function clearProgress() {
   const userId = await uid()
-  if (!userId) {
-    console.warn('[userdata] clearProgress: no user id, nothing to clear')
-    return false
-  }
+  if (!userId) { console.warn('[userdata] clearProgress: no user id, nothing to clear'); return false }
   const results = await Promise.all([
     supabase.from('user_flags').delete().eq('user_id', userId),
     supabase.from('user_wrong').delete().eq('user_id', userId),
@@ -300,28 +302,20 @@ export async function clearProgress() {
   let ok = true
   results.forEach((r, i) => {
     const label = ['flags', 'wrong', 'used'][i]
-    if (r.error) {
-      console.error('[userdata] clearProgress', label, 'failed:', r.error)
-      ok = false
-    } else {
-      console.log('[userdata] cleared', label, 'for user', userId)
-    }
+    if (r.error) { console.error('[userdata] clearProgress', label, 'failed:', r.error); ok = false }
   })
   return ok
 }
 
 export async function clearEverything() {
   const userId = await uid()
-  if (!userId) {
-    console.warn('[userdata] clearEverything: no user id, aborting')
-    return false
-  }
-  console.log('[userdata] clearEverything starting for user', userId)
+  if (!userId) { console.warn('[userdata] clearEverything: no user id, aborting'); return false }
+  // Drop any pending offline writes + local snapshot so a reset can't be
+  // undone by a stale queued op replaying later.
+  await localdb.clearOutbox()
+  await localdb.clearSnapshot(userId)
   const histRes = await supabase.from('quiz_history').delete().eq('user_id', userId)
   if (histRes.error) console.error('[userdata] history delete failed:', histRes.error)
-  else console.log('[userdata] cleared history for user', userId)
-  // Also wipe per-question annotations so "start fresh" is truly clean and they
-  // don't silently rehydrate (both keyed on the stable pdf_id).
   const notesRes = await supabase.from('user_notes').delete().eq('user_id', userId)
   if (notesRes.error) console.error('[userdata] notes delete failed:', notesRes.error)
   const hlRes = await supabase.from('user_highlights').delete().eq('user_id', userId)

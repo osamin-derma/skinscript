@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { X, Mail, Phone, Lock, Trophy, User, CalendarDays, Check, AlertCircle, LogOut, ChevronRight } from 'lucide-react'
 import PhoneInput from './PhoneInput'
 import ExamReview from './ExamReview'
+import OfflineDownload from './OfflineDownload'
 import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, normalizePhone } from '../lib/auth'
 
 /**
@@ -13,7 +14,7 @@ import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, norm
  * lists every past exam — click one to review the whole exam question by
  * question (rendered by ExamReview via `lookupQuestion`).
  */
-export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut, lookupQuestion }) {
+export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut, lookupQuestion, imageUrls = [] }) {
   const brand = '#2c3e3f'
   const closeRef = useRef(null)
   const [shown, setShown] = useState(false)
@@ -146,6 +147,9 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
                   </div>
                 )}
               </div>
+
+              {/* Offline access — pre-download all clinical images */}
+              <OfflineDownload imageUrls={imageUrls} darkMode={darkMode} />
 
               {onSignOut && (
                 <button

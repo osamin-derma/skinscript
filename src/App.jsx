@@ -351,7 +351,9 @@ function reducer(state, action) {
         .filter((d) => d && d.pdf_id)
 
       const historyEntry = {
-        id: Date.now(),
+        // Client-generated uuid (stable across offline→online) so the cloud
+        // upsert is idempotent and never needs a temp-id swap.
+        id: (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `${Date.now()}-${Math.round(Math.random() * 1e9)}`,
         date: new Date().toISOString(),
         mode: state.mode,
         source: state.quizSource,
@@ -484,25 +486,88 @@ export default function App() {
   const prevFcRef      = useRef({})
   const cloudReadyRef  = useRef(false)
 
+  // Seed the diff baselines so the watch effects don't re-send a freshly
+  // hydrated snapshot back to the cloud.
+  const seedPrevRefs = (data) => {
+    prevFlagsRef.current   = data.flags || []
+    prevWrongRef.current   = data.wrong || []
+    prevUsedRef.current    = data.used || []
+    prevHistoryRef.current = data.history || []
+    prevNotesRef.current   = data.notes || {}
+    prevHlRef.current      = data.highlights || {}
+    prevSchedRef.current   = data.schedule || {}
+    prevFcRef.current      = data.flashcards || {}
+  }
+
+  // ── Local-first boot ──
+  // 1. Hydrate instantly from the on-device snapshot (works fully offline).
+  // 2. If online: flush any queued offline writes, THEN pull the authoritative
+  //    cloud state (so it already includes the just-flushed edits) and cache it.
   useEffect(() => {
     if (!session?.user?.id) {
       cloudReadyRef.current = false
       return
     }
+    let cancelled = false
     cloudReadyRef.current = false
-    userdata.fetchAllUserData().then(data => {
-      prevFlagsRef.current   = data.flags
-      prevWrongRef.current   = data.wrong
-      prevUsedRef.current    = data.used
-      prevHistoryRef.current = data.history
-      prevNotesRef.current   = data.notes || {}
-      prevHlRef.current      = data.highlights || {}
-      prevSchedRef.current   = data.schedule || {}
-      prevFcRef.current      = data.flashcards || {}
-      dispatch({ type: 'INIT_FROM_CLOUD', data })
-      cloudReadyRef.current = true
-    })
+    ;(async () => {
+      try {
+        const snap = await userdata.loadSnapshot()
+        if (cancelled) return
+        if (snap) {
+          seedPrevRefs(snap)
+          dispatch({ type: 'INIT_FROM_CLOUD', data: snap })
+          cloudReadyRef.current = true   // capture edits even before/without network
+        }
+        const online = typeof navigator === 'undefined' || navigator.onLine
+        if (online) {
+          await userdata.flushOutbox()
+          if (cancelled) return
+          const data = await userdata.fetchAllUserData()
+          if (cancelled) return
+          seedPrevRefs(data)
+          dispatch({ type: 'INIT_FROM_CLOUD', data })
+          userdata.saveSnapshot(data)
+        }
+      } catch (e) {
+        console.warn('[boot] sync failed', e)
+      } finally {
+        // Always allow edits to flow (to local cache + outbox) even if the
+        // initial cloud sync errored — never leave the user unable to save.
+        if (!cancelled) cloudReadyRef.current = true
+      }
+    })()
+    return () => { cancelled = true }
   }, [session?.user?.id])
+
+  // ── Reconnect: flush queued writes, then re-pull authoritative state ──
+  useEffect(() => {
+    const onOnline = async () => {
+      if (!session?.user?.id) return
+      try {
+        await userdata.flushOutbox()
+        const data = await userdata.fetchAllUserData()
+        seedPrevRefs(data)
+        dispatch({ type: 'INIT_FROM_CLOUD', data })
+        userdata.saveSnapshot(data)
+      } catch (e) { console.warn('[reconnect] sync failed', e) }
+    }
+    window.addEventListener('online', onOnline)
+    return () => window.removeEventListener('online', onOnline)
+  }, [session?.user?.id])
+
+  // ── Keep the offline snapshot current as synced state changes (debounced) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const t = setTimeout(() => {
+      userdata.saveSnapshot({
+        flags: state.globalFlagged, wrong: state.globalWrong, used: state.globalUsed,
+        history: state.history, notes: state.notes, highlights: state.highlights,
+        schedule: state.schedule, flashcards: state.flashcards,
+      })
+    }, 500)
+    return () => clearTimeout(t)
+  }, [state.globalFlagged, state.globalWrong, state.globalUsed, state.history, state.notes, state.highlights, state.schedule, state.flashcards])
 
   // ── Watch notes → cloud (debounced; persist only changed pdf_ids) ──
   const latestNotesRef = useRef({})
@@ -611,16 +676,10 @@ export default function App() {
     if (!cloudReadyRef.current) return
     const prev = prevHistoryRef.current
     const curr = state.history
-    // New entry inserted at the front by END_QUIZ?
+    // New entry inserted at the front by END_QUIZ? Its id is a stable client
+    // uuid, so insertHistory upserts idempotently — no temp-id swap needed.
     if (curr.length > 0 && (prev.length === 0 || curr[0]?.id !== prev[0]?.id)) {
-      const justAdded = curr[0]
-      // The reducer used Date.now() for the id; replace with the cloud id
-      // after insert so future diffs match.
-      userdata.insertHistory(justAdded).then((cloudRow) => {
-        if (cloudRow) {
-          prevHistoryRef.current = [cloudRow, ...prevHistoryRef.current.filter(h => h.id !== justAdded.id)]
-        }
-      })
+      userdata.insertHistory(curr[0])
     } else if (prev.length > 0 && curr.length === 0) {
       // CLEAR_HISTORY / RESET_ALL emptied the list
       userdata.clearHistory()

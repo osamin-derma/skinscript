@@ -33,6 +33,14 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   }, [banks])
   // Stable reference so analytics memos don't re-run every keystroke.
   const lookupQuestion = useCallback((pid) => questionByPdfId.get(pid), [questionByPdfId])
+  // Every unique clinical-image URL across the bank, for the offline download.
+  const allImageUrls = useMemo(() => {
+    const set = new Set()
+    for (const q of banks?.all?.questions || []) {
+      for (const url of (Array.isArray(q.images) ? q.images : [])) set.add(url)
+    }
+    return [...set]
+  }, [banks])
   // Count only due questions that are actually quizzable (match what a Due quiz starts).
   const dueCount = useMemo(() => duePdfIds(schedule).filter((pid) => {
     const q = questionByPdfId.get(pid)
@@ -198,6 +206,7 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             onClose={() => setShowAccount(false)}
             onSignOut={onSignOut}
             lookupQuestion={lookupQuestion}
+            imageUrls={allImageUrls}
           />
         )}
         {/* Header */}

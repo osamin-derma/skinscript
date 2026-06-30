@@ -53,8 +53,9 @@ export default defineConfig({
             options: {
               cacheName: 'question-images',
               expiration: {
-                maxEntries: 1500,            // a bit above our 1,077 total
-                maxAgeSeconds: 60 * 60 * 24 * 90,    // 90 days
+                maxEntries: 3500,            // above our ~2,950 image files so a
+                                             // full "download for offline" isn't evicted
+                maxAgeSeconds: 60 * 60 * 24 * 180,   // 180 days
               },
               cacheableResponse: { statuses: [0, 200] },
             },
