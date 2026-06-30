@@ -67,6 +67,20 @@ import QuizScreen from './components/QuizScreen'
 import ResultsDashboard from './components/ResultsDashboard'
 import Watermark from './components/Watermark'
 
+// RFC-4122 v4 uuid. crypto.randomUUID where available; otherwise built from
+// crypto.getRandomValues so the result still satisfies a uuid PK column
+// (a `${Date.now()}-${rand}` string would NOT — the history upsert would fail).
+function uuidv4() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID()
+  const b = new Uint8Array(16)
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) crypto.getRandomValues(b)
+  else for (let i = 0; i < 16; i++) b[i] = Math.floor(Math.random() * 256)
+  b[6] = (b[6] & 0x0f) | 0x40
+  b[8] = (b[8] & 0x3f) | 0x80
+  const h = [...b].map((x) => x.toString(16).padStart(2, '0'))
+  return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`
+}
+
 // Master Edition 2026 — versioned keys so old user data is preserved
 // but new banks start fresh.
 const APP_VERSION = 'master2026'
@@ -353,7 +367,7 @@ function reducer(state, action) {
       const historyEntry = {
         // Client-generated uuid (stable across offline→online) so the cloud
         // upsert is idempotent and never needs a temp-id swap.
-        id: (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `${Date.now()}-${Math.round(Math.random() * 1e9)}`,
+        id: uuidv4(),
         date: new Date().toISOString(),
         mode: state.mode,
         source: state.quizSource,
@@ -485,6 +499,10 @@ export default function App() {
   const prevSchedRef   = useRef({})
   const prevFcRef      = useRef({})
   const cloudReadyRef  = useRef(false)
+  // Live mirrors of the debounced text slices (declared up here so the boot /
+  // reconnect sync can preserve an in-flight edit).
+  const latestNotesRef = useRef({})
+  const latestHlRef    = useRef({})
 
   // Seed the diff baselines so the watch effects don't re-send a freshly
   // hydrated snapshot back to the cloud.
@@ -499,6 +517,26 @@ export default function App() {
     prevFcRef.current      = data.flashcards || {}
   }
 
+  // Apply authoritative cloud data WITHOUT clobbering a note/highlight the user
+  // is editing right now (still inside the 700ms debounce, not yet synced).
+  // Such in-flight edits are merged on top of the cloud data; baselines are
+  // seeded to the pure cloud data so the watch effects then sync those edits.
+  const applyAuthoritative = (data, userId) => {
+    const pendNotes = {}, pendHl = {}
+    const ln = latestNotesRef.current || {}, pn = prevNotesRef.current || {}
+    for (const pid of Object.keys(ln)) if ((ln[pid] || '') !== (pn[pid] || '')) pendNotes[pid] = ln[pid]
+    const lh = latestHlRef.current || {}, ph = prevHlRef.current || {}
+    for (const pid of Object.keys(lh)) if (JSON.stringify(lh[pid] || []) !== JSON.stringify(ph[pid] || [])) pendHl[pid] = lh[pid]
+    const merged = {
+      ...data,
+      notes: { ...(data.notes || {}), ...pendNotes },
+      highlights: { ...(data.highlights || {}), ...pendHl },
+    }
+    seedPrevRefs(data)                                  // baseline = pure cloud
+    dispatch({ type: 'INIT_FROM_CLOUD', data: merged }) // UI = cloud + in-flight edits
+    userdata.saveSnapshot(userId, merged)
+  }
+
   // ── Local-first boot ──
   // 1. Hydrate instantly from the on-device snapshot (works fully offline).
   // 2. If online: flush any queued offline writes, THEN pull the authoritative
@@ -508,6 +546,7 @@ export default function App() {
       cloudReadyRef.current = false
       return
     }
+    const userId = session.user.id
     let cancelled = false
     cloudReadyRef.current = false
     ;(async () => {
@@ -525,9 +564,7 @@ export default function App() {
           if (cancelled) return
           const data = await userdata.fetchAllUserData()
           if (cancelled) return
-          seedPrevRefs(data)
-          dispatch({ type: 'INIT_FROM_CLOUD', data })
-          userdata.saveSnapshot(data)
+          applyAuthoritative(data, userId)
         }
       } catch (e) {
         console.warn('[boot] sync failed', e)
@@ -542,35 +579,36 @@ export default function App() {
 
   // ── Reconnect: flush queued writes, then re-pull authoritative state ──
   useEffect(() => {
+    if (!session?.user?.id) return
+    const userId = session.user.id
+    let cancelled = false
     const onOnline = async () => {
-      if (!session?.user?.id) return
       try {
         await userdata.flushOutbox()
         const data = await userdata.fetchAllUserData()
-        seedPrevRefs(data)
-        dispatch({ type: 'INIT_FROM_CLOUD', data })
-        userdata.saveSnapshot(data)
+        if (cancelled) return
+        applyAuthoritative(data, userId)
       } catch (e) { console.warn('[reconnect] sync failed', e) }
     }
     window.addEventListener('online', onOnline)
-    return () => window.removeEventListener('online', onOnline)
+    return () => { cancelled = true; window.removeEventListener('online', onOnline) }
   }, [session?.user?.id])
 
   // ── Keep the offline snapshot current as synced state changes (debounced) ──
   useEffect(() => {
-    if (!cloudReadyRef.current) return
+    if (!cloudReadyRef.current || !session?.user?.id) return
+    const userId = session.user.id
     const t = setTimeout(() => {
-      userdata.saveSnapshot({
+      userdata.saveSnapshot(userId, {
         flags: state.globalFlagged, wrong: state.globalWrong, used: state.globalUsed,
         history: state.history, notes: state.notes, highlights: state.highlights,
         schedule: state.schedule, flashcards: state.flashcards,
       })
     }, 500)
     return () => clearTimeout(t)
-  }, [state.globalFlagged, state.globalWrong, state.globalUsed, state.history, state.notes, state.highlights, state.schedule, state.flashcards])
+  }, [session?.user?.id, state.globalFlagged, state.globalWrong, state.globalUsed, state.history, state.notes, state.highlights, state.schedule, state.flashcards])
 
   // ── Watch notes → cloud (debounced; persist only changed pdf_ids) ──
-  const latestNotesRef = useRef({})
   useEffect(() => { latestNotesRef.current = state.notes || {} }, [state.notes])
   const flushNotes = () => {
     if (!cloudReadyRef.current) return
@@ -588,7 +626,6 @@ export default function App() {
     return () => clearTimeout(t)
   }, [state.notes])
   // ── Watch highlights → cloud (debounced; persist only changed pdf_ids) ──
-  const latestHlRef = useRef({})
   useEffect(() => { latestHlRef.current = state.highlights || {} }, [state.highlights])
   const flushHighlights = () => {
     if (!cloudReadyRef.current) return

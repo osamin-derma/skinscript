@@ -79,6 +79,11 @@ export async function removeOp(seq) {
   try { await tx(OUTBOX, 'readwrite', (s) => s.delete(seq)) }
   catch { /* ignore */ }
 }
+export async function updateOp(op) {
+  // op already has its `seq` (keyPath), so put() replaces it in place.
+  try { await tx(OUTBOX, 'readwrite', (s) => s.put(op)) }
+  catch { /* ignore */ }
+}
 export async function clearOutbox() {
   try { await tx(OUTBOX, 'readwrite', (s) => s.clear()) }
   catch { /* ignore */ }

@@ -1,21 +1,34 @@
 import { useState, useRef, useEffect } from 'react'
-import { Download, Check, WifiOff, Loader2, X as XIcon } from 'lucide-react'
+import { Download, Check, WifiOff, Loader2, X as XIcon, AlertCircle, RotateCcw } from 'lucide-react'
 
 /**
  * OfflineDownload — pre-fetches every clinical image so the Atlas and all
  * question photos work fully offline. Each image is loaded via <img> (which
  * the service worker intercepts and caches; opaque/status-0 responses are
- * cacheable per the SW config), so there's no CORS dependency. Concurrency is
- * pooled and the run is abortable; progress + a "done" flag persist in
- * localStorage.
+ * cacheable per the SW config), so there's no CORS dependency.
+ *
+ * Correctness guards:
+ *  - the run only starts when the service worker is CONTROLLING the page,
+ *    otherwise images would load from the network and never be cached;
+ *  - only successful loads count, and we VERIFY the SW cache actually grew
+ *    before declaring "done" (a failed/opaque load is not proof of caching).
  */
 const DONE_KEY = 'skinscript-images-cached'
 const CONCURRENCY = 8
 
+async function imageCacheCount() {
+  try {
+    for (const name of await caches.keys()) {
+      if (/question-images/.test(name)) return (await (await caches.open(name)).keys()).length
+    }
+  } catch { /* ignore */ }
+  return 0
+}
+
 export default function OfflineDownload({ imageUrls = [], darkMode }) {
   const brand = '#2c3e3f'
   const total = imageUrls.length
-  const [phase, setPhase] = useState('idle') // idle | running | done | error
+  const [phase, setPhase] = useState('idle') // idle | running | done | partial | needsReload | error
   const [done, setDone] = useState(0)
   const abortRef = useRef(false)
   const [alreadyDone, setAlreadyDone] = useState(false)
@@ -23,7 +36,7 @@ export default function OfflineDownload({ imageUrls = [], darkMode }) {
   useEffect(() => {
     try {
       const rec = JSON.parse(localStorage.getItem(DONE_KEY) || 'null')
-      if (rec && rec.count >= total && total > 0) setAlreadyDone(true)
+      if (rec && rec.count >= Math.floor(total * 0.9) && total > 0) setAlreadyDone(true)
     } catch { /* ignore */ }
   }, [total])
 
@@ -36,26 +49,40 @@ export default function OfflineDownload({ imageUrls = [], darkMode }) {
 
   const run = async () => {
     if (total === 0) return
+    // The SW must control the page, else <img> loads bypass the cache.
+    if (!('serviceWorker' in navigator)) { setPhase('error'); return }
+    if (!navigator.serviceWorker.controller) {
+      try { await navigator.serviceWorker.ready } catch { /* ignore */ }
+      if (!navigator.serviceWorker.controller) { setPhase('needsReload'); return }
+    }
+    const before = await imageCacheCount()
     abortRef.current = false
     setPhase('running')
     setDone(0)
-    let completed = 0
+    let attempted = 0, succeeded = 0
     const queue = [...imageUrls]
     const worker = async () => {
       while (queue.length && !abortRef.current) {
         const url = queue.shift()
-        await loadOne(url)
-        completed += 1
-        setDone(completed)
+        const ok = await loadOne(url)
+        attempted += 1
+        if (ok) succeeded += 1
+        setDone(attempted)
       }
     }
-    try {
-      await Promise.all(Array.from({ length: Math.min(CONCURRENCY, total) }, worker))
-      if (abortRef.current) { setPhase('idle'); return }
-      try { localStorage.setItem(DONE_KEY, JSON.stringify({ count: completed, at: Date.now() })) } catch { /* ignore */ }
+    await Promise.all(Array.from({ length: Math.min(CONCURRENCY, total) }, worker))
+    if (abortRef.current) { setPhase('idle'); return }
+
+    const after = await imageCacheCount()
+    const cacheGrew = after > before || after >= total
+    if (!cacheGrew) { setPhase('needsReload'); return }   // loaded but not cached → SW not active
+    if (succeeded >= Math.floor(total * 0.9)) {
+      try { localStorage.setItem(DONE_KEY, JSON.stringify({ count: succeeded, cached: after, at: Date.now() })) } catch { /* ignore */ }
       setAlreadyDone(true)
       setPhase('done')
-    } catch {
+    } else if (succeeded > 0) {
+      setPhase('partial')
+    } else {
       setPhase('error')
     }
   }
@@ -100,10 +127,22 @@ export default function OfflineDownload({ imageUrls = [], darkMode }) {
           }`}
           style={!(phase === 'done' || alreadyDone) ? { backgroundColor: brand } : undefined}
         >
-          {phase === 'done' || alreadyDone ? <><Check size={16} /> Images downloaded {phase === 'idle' ? '· re-download' : ''}</> : <><Download size={16} /> Download images for offline</>}
+          {phase === 'done' || alreadyDone
+            ? <><Check size={16} /> Images saved for offline{phase !== 'running' ? ' · re-download' : ''}</>
+            : phase === 'partial'
+              ? <><RotateCcw size={16} /> Resume download</>
+              : <><Download size={16} /> Download images for offline</>}
         </button>
       )}
-      {phase === 'error' && <p className="text-xs text-red-500 mt-2">Download interrupted — tap to retry.</p>}
+
+      {phase === 'needsReload' && (
+        <p className="text-xs text-amber-600 dark:text-amber-400 mt-2 flex items-start gap-1.5">
+          <AlertCircle size={13} className="mt-0.5 flex-shrink-0" />
+          Reload the app once so offline caching activates, then tap again.
+        </p>
+      )}
+      {phase === 'partial' && <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">Some images haven’t downloaded yet — tap to finish (already-saved ones are skipped).</p>}
+      {phase === 'error' && <p className="text-xs text-red-500 mt-2">Download didn’t work — check your connection and retry.</p>}
     </div>
   )
 }

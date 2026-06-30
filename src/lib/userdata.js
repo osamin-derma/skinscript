@@ -28,13 +28,6 @@ function warn(label, err) {
 
 const isOffline = () => typeof navigator !== 'undefined' && navigator.onLine === false
 
-function isNetworkError(err) {
-  if (!err) return false
-  const m = (err.message || String(err)).toLowerCase()
-  return m.includes('fetch') || m.includes('network') || m.includes('failed to send')
-    || m.includes('timeout') || err.name === 'TypeError'
-}
-
 
 // ── Initial load ─────────────────────────────────────────────────────────
 
@@ -212,34 +205,65 @@ const EXECUTORS = {
 
 
 // ── mutate(): the local-first write path ─────────────────────────────────
-// Offline → queue. Online → run; if it fails on the network, queue.
+// Each op is stamped with the user it belongs to, so a queued write can never
+// replay into a different account. A write goes through the outbox whenever
+// we're offline, OR while the outbox already has pending ops / a flush is in
+// flight — otherwise a fresh "live" write could land in the cloud BEFORE an
+// older queued write for the same key, leaving the wrong final value.
+
+const MAX_ATTEMPTS = 8
+let _flushing = false
+let _flushTimer = null
+
+function scheduleFlush() {
+  if (_flushTimer || isOffline()) return
+  _flushTimer = setTimeout(() => { _flushTimer = null; flushOutbox() }, 4000)
+}
 
 async function mutate(kind, args) {
-  if (isOffline()) { await localdb.enqueueOp({ kind, args }); return }
-  try {
-    const error = await EXECUTORS[kind](...args)
-    if (error && (isNetworkError(error) || isOffline())) await localdb.enqueueOp({ kind, args })
-    else warn(kind, error)
-  } catch (e) {
-    if (isNetworkError(e) || isOffline()) await localdb.enqueueOp({ kind, args })
-    else warn(kind, e)
+  const userId = await uid()
+  if (!userId) return // not signed in — nothing to persist
+  const pending = await localdb.outboxCount()
+  if (isOffline() || pending > 0 || _flushing) {
+    await localdb.enqueueOp({ kind, args, userId, attempts: 0 })
+    scheduleFlush()
+    return
+  }
+  let error = null
+  try { error = await EXECUTORS[kind](...args) } catch (e) { error = e }
+  if (error) {
+    // Queue for retry on ANY error — executors are idempotent, so re-running
+    // is safe, and dropping a write (the old behaviour) silently lost data.
+    await localdb.enqueueOp({ kind, args, userId, attempts: 0 })
+    scheduleFlush()
   }
 }
 
-// Replay queued offline writes, oldest first. Stops on the first network
-// failure and keeps the rest for the next attempt (so order is preserved).
-let _flushing = false
+// Replay queued writes, oldest first. Only the CURRENT user's ops are run;
+// another account's queued ops are left untouched for when they sign back in.
+// A failed op is retried (with an attempt cap) rather than dropped, and we
+// stop on the first failure so ordering is preserved.
 export async function flushOutbox() {
   if (_flushing || isOffline()) return
+  const userId = await uid()
+  if (!userId) return // never flush without a confirmed session (would mis-attribute)
   _flushing = true
   try {
     const ops = await localdb.getOps()
     for (const op of ops) {
       if (isOffline()) break
+      if (op.userId && op.userId !== userId) continue // belongs to another account
       let error = null
       try { error = await EXECUTORS[op.kind]?.(...op.args) } catch (e) { error = e }
-      if (error && (isNetworkError(error) || isOffline())) break // still offline-ish; retry later
-      await localdb.removeOp(op.seq)                              // success (or a non-retryable error we drop)
+      if (!error) { await localdb.removeOp(op.seq); continue } // applied
+      const attempts = (op.attempts || 0) + 1
+      if (attempts >= MAX_ATTEMPTS) {
+        console.warn('[outbox] dropping op after', MAX_ATTEMPTS, 'attempts:', op.kind, error?.message || error)
+        await localdb.removeOp(op.seq)
+        continue
+      }
+      await localdb.updateOp({ ...op, attempts })
+      break // keep order; retry the rest later
     }
   } finally {
     _flushing = false
@@ -256,8 +280,12 @@ export async function loadSnapshot() {
   const userId = await uid(); if (!userId) return null
   return localdb.getSnapshot(userId)
 }
-export async function saveSnapshot(data) {
-  const userId = await uid(); if (!userId) return
+// Caller passes the user id the data belongs to (captured at call time). We
+// only write if it still matches the live session, so an in-flight save can't
+// land under a different account after a same-tab sign-in switch.
+export async function saveSnapshot(expectedUserId, data) {
+  const userId = await uid()
+  if (!userId || (expectedUserId && userId !== expectedUserId)) return
   await localdb.setSnapshot(userId, data)
 }
 
