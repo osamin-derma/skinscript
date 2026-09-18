@@ -733,9 +733,13 @@ export default function App() {
   // modal BEFORE rehydrating any reducer state — so stale history/flags
   // don't briefly flash on screen.
   const [hadPriorData, setHadPriorData] = useState(false)
+  // The data version this device was on before (null = brand-new device /
+  // cleared storage). Only a genuine OLD->NEW version migration may reset.
+  const [priorVersion, setPriorVersion] = useState(null)
   useEffect(() => {
     const seenVersion = localStorage.getItem(DATA_VERSION_KEY)
     if (seenVersion !== DATA_VERSION) {
+      setPriorVersion(seenVersion)
       // First visit to this data version. Check whether they had any
       // prior app data so the modal copy can adapt.
       let hadAny = false
@@ -755,10 +759,21 @@ export default function App() {
   }, [])
 
   const dismissWelcome = async () => {
-    // 1) Clear cloud progress FIRST. localStorage-only wipes don't survive
-    //    the next page load because the cloud-sync layer re-fetches the
-    //    user's history / flags / wrong / used from Supabase and
-    //    re-populates state. Await this so the reload truly starts clean.
+    // A brand-new device (or cleared site data) has no DATA_VERSION key and
+    // no local data. That is NOT a reason to touch the user's cloud progress:
+    // a returning student signing in on a new phone must keep everything.
+    // (This path used to call clearEverything() unconditionally and wiped
+    // real accounts — see the 2026-09-18 incident.)
+    const genuineMigration = priorVersion !== null && hadPriorData
+    if (!genuineMigration) {
+      localStorage.setItem(DATA_VERSION_KEY, DATA_VERSION)
+      setShowWelcome(false)
+      dispatch({ type: 'INIT' })
+      return
+    }
+    // Genuine OLD->NEW data-version migration with prior local data:
+    // 1) Clear cloud progress FIRST (localStorage-only wipes don't survive the
+    //    next load — the cloud layer would re-populate stale rows).
     try {
       await userdata.clearEverything()
     } catch (e) {
