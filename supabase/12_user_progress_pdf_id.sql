@@ -37,14 +37,16 @@ alter table public.user_used  alter column pdf_id set not null;
 alter table public.user_wrong alter column pdf_id set not null;
 alter table public.user_flags alter column pdf_id set not null;
 
+-- Drop the old (user_id, question_id) key FIRST — a column can't be made
+-- nullable while it is still part of a primary key.
+alter table public.user_used  drop constraint if exists user_used_pkey;
+alter table public.user_wrong drop constraint if exists user_wrong_pkey;
+alter table public.user_flags drop constraint if exists user_flags_pkey;
+
 -- question_id is now informational only (kept for audit), so it may be null.
 alter table public.user_used  alter column question_id drop not null;
 alter table public.user_wrong alter column question_id drop not null;
 alter table public.user_flags alter column question_id drop not null;
-
-alter table public.user_used  drop constraint if exists user_used_pkey;
-alter table public.user_wrong drop constraint if exists user_wrong_pkey;
-alter table public.user_flags drop constraint if exists user_flags_pkey;
 alter table public.user_used  add primary key (user_id, pdf_id);
 alter table public.user_wrong add primary key (user_id, pdf_id);
 alter table public.user_flags add primary key (user_id, pdf_id);
