@@ -8,3 +8,9 @@
 # gateway rejects anonymous traffic so the owner's Anthropic key can never be
 # hit by the open internet. Do NOT deploy with --no-verify-jwt.
 verify_jwt = true
+
+[functions.push-reminders]
+# Called by pg_cron (net.http_post), which has no user JWT. The function
+# authenticates the caller with the x-cron-secret header instead (fails closed
+# when the PUSH_CRON_SECRET secret is unset) and only ever runs server-side logic.
+verify_jwt = false

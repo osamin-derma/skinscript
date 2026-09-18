@@ -4,6 +4,7 @@ import PhoneInput from './PhoneInput'
 import ExamReview from './ExamReview'
 import OfflineDownload from './OfflineDownload'
 import RefreshButton from './RefreshButton'
+import RemindersToggle from './RemindersToggle'
 import { Download } from 'lucide-react'
 import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, normalizePhone } from '../lib/auth'
 
@@ -155,6 +156,7 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
                 <button onClick={onExport} className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium border transition ${darkMode ? 'border-gray-600 text-gray-200 hover:bg-gray-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}><Download size={15} /> Export progress</button>
                 <RefreshButton darkMode={darkMode} />
               </div>
+              <RemindersToggle darkMode={darkMode} />
               {/* Offline access — pre-download all clinical images */}
               <OfflineDownload imageUrls={imageUrls} darkMode={darkMode} />
 

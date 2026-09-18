@@ -11,6 +11,7 @@ import RefreshButton from './RefreshButton'
 import StudyPlanner from './StudyPlanner'
 import RemindersBanner from './RemindersBanner'
 import Leaderboard from './Leaderboard'
+import StudyBrief from './StudyBrief'
 import Mistakes from './Mistakes'
 import AdminDashboard from './AdminDashboard'
 import { downloadProgressCsv } from '../lib/exportCsv'
@@ -1115,6 +1116,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
 
             {/* Streak + daily goal */}
             <StreakCard history={history} darkMode={darkMode} dailyGoal={settings.dailyGoal} onGoal={(g) => onSettings({ dailyGoal: g })} />
+            <StudyBrief history={history} lookupQuestion={lookupQuestion} settings={settings} mistakes={mistakes} unusedCount={unusedCount} darkMode={darkMode} />
             <div className="mb-6"><Leaderboard settings={settings} onSettings={onSettings} darkMode={darkMode} /></div>
 
             {/* Summary cards */}

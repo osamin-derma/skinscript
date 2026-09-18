@@ -54,3 +54,11 @@ export async function askTutor(question, messages) {
   if (data?.error) throw new Error(data.error)
   return data?.reply || ''
 }
+
+// AI study brief: send a compact performance snapshot, get a personalized plan.
+export async function askSummary(summary) {
+  const { data, error } = await supabase.functions.invoke('tutor', { body: { summary } })
+  if (error) throw new Error(error.message || 'request_failed')
+  if (data?.error) throw new Error(data.error)
+  return data?.reply || ''
+}

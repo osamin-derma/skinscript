@@ -38,6 +38,8 @@ export default defineConfig({
         categories: ['education', 'medical'],
       },
       workbox: {
+        // Web Push handlers live in public/sw-push.js (see that file).
+        importScripts: ['sw-push.js?v=1'],
         // The data JSON files for the question banks are big — raise the
         // pre-cache size cap so the build doesn't refuse them.
         maximumFileSizeToCacheInBytes: 20 * 1024 * 1024,    // 20 MB

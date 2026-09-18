@@ -1,11 +1,20 @@
 import { useEffect, useState } from 'react'
 import { BellRing, Flame, Bell } from 'lucide-react'
+import { pushSupported, enablePush, getPushSubscription } from '../lib/push'
 
 /** In-app reminders: due reviews + streak at risk; optional browser notification when the app opens. */
 export default function RemindersBanner({ dueCount = 0, streakCurrent = 0, todayAnswered = 0, onStartDue, darkMode }) {
   const brand = '#2c3e3f'
   const [perm, setPerm] = useState(typeof Notification !== 'undefined' ? Notification.permission : 'unsupported')
   const streakAtRisk = streakCurrent > 0 && todayAnswered === 0
+  const [pushOn, setPushOn] = useState(false)
+  useEffect(() => { let alive = true; getPushSubscription().then((s) => { if (alive) setPushOn(!!s) }); return () => { alive = false } }, [])
+  const enable = async () => {
+    try {
+      if (pushSupported()) { await enablePush(); setPushOn(true); setPerm('granted') }
+      else { setPerm(await Notification.requestPermission()) }
+    } catch (e) { if (String(e?.message) === 'denied') setPerm('denied') }
+  }
   useEffect(() => {
     if (perm !== 'granted' || dueCount === 0) return
     const key = 'skinscript-notified-' + new Date().toISOString().slice(0, 10)
@@ -25,7 +34,7 @@ export default function RemindersBanner({ dueCount = 0, streakCurrent = 0, today
         {streakAtRisk && <span className="text-orange-600 dark:text-orange-400">Answer 1 question to keep your {streakCurrent}-day streak</span>}
       </div>
       {dueCount > 0 && onStartDue && <button onClick={onStartDue} className="text-xs font-semibold text-white px-3 py-1.5 rounded-lg" style={{ backgroundColor: brand }}>Review now</button>}
-      {perm === 'default' && <button onClick={() => Notification.requestPermission().then(setPerm)} title="Enable reminders" className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600"><Bell size={15} /></button>}
+      {!pushOn && perm !== 'denied' && perm !== 'unsupported' && <button onClick={enable} title="Enable daily reminders" aria-label="Enable daily reminders" className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600"><Bell size={15} /></button>}
     </div>
   )
 }

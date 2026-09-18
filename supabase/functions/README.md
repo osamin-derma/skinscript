@@ -1,49 +1,61 @@
-# SkinScript AI Tutor — activation (one-time)
+# SkinScript edge functions
 
-The "Ask AI Tutor" chat under each question's explanation calls the `tutor`
-edge function, which holds the Anthropic API key **server-side** (never in the
-browser bundle, so it can't be extracted). Until the function is deployed *and*
-the key is set, the tutor stays completely hidden — the rest of the app is
-unaffected.
+Both functions are **deployed** (via the Supabase Management API, no CLI
+needed) and their non-billable secrets are set. Status:
 
-## Prerequisite
+| function | purpose | auth | state |
+|---|---|---|---|
+| `tutor` | AI tutor chat + AI study brief (Anthropic key server-side) | JWT (`verify_jwt = true`) + per-user `rate_guard` | deployed — **needs `ANTHROPIC_API_KEY`** |
+| `push-reminders` | daily Web Push study reminders | `x-cron-secret` header (called hourly by pg_cron) | deployed + running |
 
-The function meters every request per-user via `public.rate_guard(...)`, so the
-rate-limit migration must be applied first (idempotent):
-`supabase/05_rate_limit_sessions.sql`. If it isn't present, the tutor fails
-closed (503) rather than letting requests through unmetered.
+## The one remaining step: the Anthropic key
 
-## Steps
+The tutor and the study brief stay hidden in the app until the key exists.
+Set it once (billed to **your** Anthropic account, never shipped to browsers):
 
-1. Install the Supabase CLI (once): `brew install supabase/tap/supabase`
-2. Log in: `supabase login`
-3. From the repo root (`last11-quiz-app/`), deploy the function (the bundled
-   `supabase/config.toml` pins `verify_jwt = true` — never pass `--no-verify-jwt`):
+- Dashboard: Project Settings → Edge Functions → Secrets → add
+  `ANTHROPIC_API_KEY` = `sk-ant-…`, **or**
+- CLI: `supabase secrets set ANTHROPIC_API_KEY=sk-ant-… --project-ref yssrtjfgkctojkzcoapt`
 
-   ```sh
-   supabase functions deploy tutor --project-ref yssrtjfgkctojkzcoapt
-   ```
+Optional: `TUTOR_MODEL` (default `claude-haiku-4-5-20251001`), `TUTOR_RATE_MAX`
+(default 60 messages/hour/user; the study brief is capped at 6/hour/user).
+The UI re-probes within ~90 s of the key being set.
 
-4. Set the Anthropic key as a secret (get one at console.anthropic.com — this is
-   billed to **your** Anthropic account, so keep it server-side only):
+To redeploy after editing `index.ts` (Management API, multipart):
 
-   ```sh
-   supabase secrets set ANTHROPIC_API_KEY=sk-ant-xxxxx --project-ref yssrtjfgkctojkzcoapt
-   # optional — defaults to claude-haiku-4-5-20251001 (cheap + fast):
-   # supabase secrets set TUTOR_MODEL=claude-haiku-4-5-20251001 --project-ref yssrtjfgkctojkzcoapt
-   ```
+```sh
+curl -X POST -H "Authorization: Bearer $SUPABASE_PAT" \
+  "https://api.supabase.com/v1/projects/yssrtjfgkctojkzcoapt/functions/deploy?slug=tutor" \
+  -F 'metadata={"entrypoint_path":"index.ts","name":"tutor","verify_jwt":true};type=application/json' \
+  -F "file=@supabase/functions/tutor/index.ts;filename=index.ts"
+```
 
-That's it. Within ~30 minutes (the client caches the capability probe) the
-"Ask AI Tutor" panel appears for signed-in users; clear site data to see it
-immediately.
+(`push-reminders` is deployed the same way with `"verify_jwt":false` — it is
+secret-gated instead, see `supabase/config.toml`.)
+
+## push-reminders
+
+- Client: `src/lib/push.js` subscribes the browser (VAPID public key) and
+  stores it in `public.push_subscriptions`; toggle in the account drawer
+  (`RemindersToggle.jsx`) and the bell on the Create-tab reminders banner.
+- Service worker: `public/sw-push.js` (imported by the generated Workbox SW).
+- Server: `supabase/15_push_reminders.sql` schedules `push-reminders-hourly`
+  (`5 * * * *`) → `net.http_post` to the function with the secret stored in
+  `private.push_cron`. The function sends at ~18:00 **local** time per
+  subscription (`PUSH_LOCAL_HOUR` to change), once per day, when reviews are
+  due or a streak is at risk; dead subscriptions (404/410) are pruned.
+- Secrets: `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`,
+  `PUSH_CRON_SECRET` (set). Rotate by generating a new VAPID pair, updating
+  the secret + `VAPID_PUBLIC_KEY` in `src/lib/push.js`; users re-subscribe.
+- Test: `POST /functions/v1/push-reminders` with header `x-cron-secret` and
+  body `{"dry_run":true,"test_user_id":"<uuid>","tz_offset_min":180}` returns
+  the message that user would get, without sending.
+- iOS: Web Push only works for the app installed to the Home Screen (16.4+);
+  the toggle explains this in-app.
 
 ## Cost & safety notes
 
-- Supabase verifies the caller's JWT by default, so **only signed-in users**
-  can invoke the function (it's not an open proxy).
-- The function caps history to the last 12 turns and `max_tokens` to 1024 to
-  bound per-message cost.
-- Haiku is the default model for low cost; switch `TUTOR_MODEL` to a larger
-  model if you want stronger answers at higher cost.
-- To turn the tutor **off** again: `supabase functions delete tutor` (or unset
-  the key) — the UI hides itself automatically on the next probe.
+- Only signed-in users can invoke the tutor; history capped at 12 turns,
+  `max_tokens` 1024 (brief: 1400); upstream errors are never reflected back.
+- To turn the tutor off: delete the `ANTHROPIC_API_KEY` secret — the UI hides
+  itself on the next probe.
