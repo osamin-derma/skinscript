@@ -36,9 +36,9 @@ export async function fetchAllUserData() {
   if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {} }
 
   const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes, schedRes, fcRes] = await Promise.all([
-    supabase.from('user_flags').select('question_id'),
-    supabase.from('user_wrong').select('question_id'),
-    supabase.from('user_used').select('question_id'),
+    supabase.from('user_flags').select('pdf_id'),
+    supabase.from('user_wrong').select('pdf_id'),
+    supabase.from('user_used').select('pdf_id'),
     supabase.from('quiz_history')
       .select('*')
       .order('taken_at', { ascending: false })
@@ -72,9 +72,10 @@ export async function fetchAllUserData() {
   }
 
   return {
-    flags:   (flagsRes.data   || []).map(r => r.question_id),
-    wrong:   (wrongRes.data   || []).map(r => r.question_id),
-    used:    (usedRes.data    || []).map(r => r.question_id),
+    // Keyed on stable pdf_id (globally unique; numeric ids collide across banks).
+    flags:   (flagsRes.data   || []).map(r => r.pdf_id).filter(Boolean),
+    wrong:   (wrongRes.data   || []).map(r => r.pdf_id).filter(Boolean),
+    used:    (usedRes.data    || []).map(r => r.pdf_id).filter(Boolean),
     history: (historyRes.data || []).map(rowToHistoryEntry),
     notes,
     highlights,
@@ -154,32 +155,40 @@ const EXECUTORS = {
     const { error } = await supabase.from('user_flashcards').delete().eq('user_id', userId).eq('id', id)
     return error
   },
-  async addFlag(questionId) {
+  // used / wrong / flags are keyed on the stable pdf_id (text). A non-string
+  // id is a legacy numeric op from a pre-migration outbox — drop it (return
+  // null = 'applied') rather than write a bogus "44" row.
+  async addFlag(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
     const { error } = await supabase.from('user_flags')
-      .upsert({ user_id: userId, question_id: questionId }, { onConflict: 'user_id,question_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId }, { onConflict: 'user_id,pdf_id' })
     return error
   },
-  async removeFlag(questionId) {
+  async removeFlag(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
-    const { error } = await supabase.from('user_flags').delete().eq('user_id', userId).eq('question_id', questionId)
+    const { error } = await supabase.from('user_flags').delete().eq('user_id', userId).eq('pdf_id', pdfId)
     return error
   },
-  async addWrong(questionId) {
+  async addWrong(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
     const { error } = await supabase.from('user_wrong')
-      .upsert({ user_id: userId, question_id: questionId, last_wrong_at: new Date().toISOString() }, { onConflict: 'user_id,question_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId, last_wrong_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
     return error
   },
-  async removeWrong(questionId) {
+  async removeWrong(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
-    const { error } = await supabase.from('user_wrong').delete().eq('user_id', userId).eq('question_id', questionId)
+    const { error } = await supabase.from('user_wrong').delete().eq('user_id', userId).eq('pdf_id', pdfId)
     return error
   },
-  async addUsed(questionId) {
+  async addUsed(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
     const { error } = await supabase.from('user_used')
-      .upsert({ user_id: userId, question_id: questionId, last_used_at: new Date().toISOString() }, { onConflict: 'user_id,question_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId, last_used_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
     return error
   },
   async insertHistory(entry) {

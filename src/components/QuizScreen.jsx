@@ -131,7 +131,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
   const handleSubmit = useCallback(() => {
     if (!selected && !isSubmitted) return
     const isCorrect = selected === q.correct_answer
-    dispatch({ type: 'ANSWER', questionId: q.id, selected, correct: isCorrect, confidence })
+    dispatch({ type: 'ANSWER', questionId: q.id, pdfId: q.pdf_id, selected, correct: isCorrect, confidence })
     // Advance the spaced-repetition schedule (keyed on stable pdf_id) — but not
     // in 'review' mode (opening a question to look it up must not score it).
     if (q.pdf_id && mode !== 'review' && !isSubmitted) dispatch({ type: 'RECORD_REVIEW', pdfId: q.pdf_id, correct: isCorrect, confidence })
@@ -188,7 +188,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
           break
         case 'f': case 'F':
           e.preventDefault()
-          dispatch({ type: 'FLAG', questionId: q.id })
+          dispatch({ type: 'FLAG', questionId: q.id, pdfId: q.pdf_id })
           break
         default:
       }
@@ -269,7 +269,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             )}
 
             <button
-              onClick={() => dispatch({ type: 'FLAG', questionId: q.id })}
+              onClick={() => dispatch({ type: 'FLAG', questionId: q.id, pdfId: q.pdf_id })}
               className={`p-1.5 rounded-lg transition ${isFlagged ? 'text-orange-500 bg-orange-50 dark:bg-orange-900/30' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
             >
               <Flag size={16} fill={isFlagged ? 'currentColor' : 'none'} />

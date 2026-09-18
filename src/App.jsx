@@ -178,9 +178,10 @@ function reducer(state, action) {
       return {
         ...state,
         history:       action.data?.history || [],
-        globalFlagged: action.data?.flags   || [],
-        globalWrong:   action.data?.wrong   || [],
-        globalUsed:    action.data?.used    || [],
+        // Keyed on stable pdf_id; drop any legacy numeric ids (pre-migration snapshots).
+        globalFlagged: (action.data?.flags || []).filter(x => typeof x === 'string'),
+        globalWrong:   (action.data?.wrong || []).filter(x => typeof x === 'string'),
+        globalUsed:    (action.data?.used  || []).filter(x => typeof x === 'string'),
         notes:         action.data?.notes   || {},
         highlights:    action.data?.highlights || {},
         schedule:      action.data?.schedule || {},
@@ -252,11 +253,11 @@ function reducer(state, action) {
 
       // Filter by source
       if (action.source === 'flagged') {
-        pool = pool.filter(i => state.globalFlagged.includes(bankQuestions[i].id))
+        pool = pool.filter(i => state.globalFlagged.includes(bankQuestions[i].pdf_id))
       } else if (action.source === 'wrong') {
-        pool = pool.filter(i => state.globalWrong.includes(bankQuestions[i].id))
+        pool = pool.filter(i => state.globalWrong.includes(bankQuestions[i].pdf_id))
       } else if (action.source === 'unused') {
-        pool = pool.filter(i => !state.globalUsed.includes(bankQuestions[i].id))
+        pool = pool.filter(i => !state.globalUsed.includes(bankQuestions[i].pdf_id))
       } else if (action.source === 'due') {
         pool = pool.filter(i => isDue(state.schedule[bankQuestions[i].pdf_id]))
       } else if (action.source === 'topics' && action.topics?.length > 0) {
@@ -299,10 +300,13 @@ function reducer(state, action) {
       // Cloud sync for globalUsed / globalWrong is handled by the
       // watch-and-diff effects in App() — no localStorage write here.
       const newAnswers = { ...state.answers, [action.questionId]: { selected: action.selected, correct: action.correct, submitted: true, confidence: action.confidence ?? null } }
-      const newUsed = [...new Set([...state.globalUsed, action.questionId])]
-      const newWrong = action.correct
-        ? state.globalWrong.filter(id => id !== action.questionId)
-        : [...new Set([...state.globalWrong, action.questionId])]
+      // Persistent used/wrong are keyed on the stable, globally-unique pdf_id
+      // (numeric ids collide across banks and are offset in the 'All' bank).
+      const pid = action.pdfId
+      const newUsed = pid ? [...new Set([...state.globalUsed, pid])] : state.globalUsed
+      const newWrong = !pid ? state.globalWrong
+        : action.correct ? state.globalWrong.filter(id => id !== pid)
+        : [...new Set([...state.globalWrong, pid])]
       return { ...state, answers: newAnswers, globalUsed: newUsed, globalWrong: newWrong }
     }
     case 'TOGGLE_STRIKE': {
@@ -332,13 +336,13 @@ function reducer(state, action) {
       const f = [...state.flagged]
       const gf = [...state.globalFlagged]
       const idx = f.indexOf(action.questionId)
-      const gIdx = gf.indexOf(action.questionId)
+      const pid = action.pdfId
+      const gIdx = pid ? gf.indexOf(pid) : -1
 
       if (idx >= 0) f.splice(idx, 1)
       else f.push(action.questionId)
 
-      if (gIdx >= 0) gf.splice(gIdx, 1)
-      else gf.push(action.questionId)
+      if (pid) { if (gIdx >= 0) gf.splice(gIdx, 1); else gf.push(pid) }
       return { ...state, flagged: f, globalFlagged: gf }
     }
     case 'END_QUIZ': {
@@ -400,7 +404,7 @@ function reducer(state, action) {
       return { ...action.saved, history: state.history, globalFlagged: state.globalFlagged, globalWrong: state.globalWrong, globalUsed: state.globalUsed }
     case 'REVIEW_FLAGGED': {
       const bankQs = getBankQuestions(state.activeBank)
-      const flaggedOrder = bankQs.map((_, i) => i).filter(i => state.globalFlagged.includes(bankQs[i]?.id))
+      const flaggedOrder = bankQs.map((_, i) => i).filter(i => state.globalFlagged.includes(bankQs[i]?.pdf_id))
       if (flaggedOrder.length === 0) return state
       return { ...state, screen: 'quiz', mode: 'tutor', questionOrder: flaggedOrder, currentIndex: 0, answers: {}, flagged: [], quizSource: 'flagged' }
     }
@@ -428,7 +432,7 @@ function reducer(state, action) {
     }
     case 'REVIEW_WRONG': {
       const bankQs = getBankQuestions(state.activeBank)
-      const wrongOrder = bankQs.map((_, i) => i).filter(i => state.globalWrong.includes(bankQs[i]?.id))
+      const wrongOrder = bankQs.map((_, i) => i).filter(i => state.globalWrong.includes(bankQs[i]?.pdf_id))
       if (wrongOrder.length === 0) return state
       return { ...state, screen: 'quiz', mode: 'tutor', questionOrder: shuffleArray(wrongOrder), currentIndex: 0, answers: {}, flagged: [], quizSource: 'wrong' }
     }
@@ -920,6 +924,7 @@ export default function App() {
       {state.screen === 'start' && (
         <StartScreen
           totalQuestions={activeQuestions.length}
+          activeQuestions={activeQuestions}
           topics={topics}
           darkMode={state.darkMode}
           state={state}

@@ -8,7 +8,7 @@ import Atlas from './Atlas'
 import StreakCard from './StreakCard'
 import { duePdfIds } from '../lib/srs'
 
-export default function StartScreen({ totalQuestions, topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
+export default function StartScreen({ totalQuestions, activeQuestions = [], topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
   const [timer, setTimer] = useState(90)
   const [shuffle, setShuffle] = useState(true)
@@ -127,7 +127,17 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
     dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: bankKey, questionId: originalId })
   }
 
-  const unusedCount = totalQuestions - globalUsed.length
+  // Progress is keyed on pdf_id and stored globally across banks, so every
+  // count shown here is scoped to the questions actually in view (active bank
+  // + category filter). The old `totalQuestions - usedInBank` subtracted
+  // the GLOBAL used total from the CURRENT bank's size and went negative.
+  const usedSet    = useMemo(() => new Set(globalUsed),    [globalUsed])
+  const wrongSet   = useMemo(() => new Set(globalWrong),   [globalWrong])
+  const flaggedSet = useMemo(() => new Set(globalFlagged), [globalFlagged])
+  const usedInBank    = useMemo(() => activeQuestions.filter(q => usedSet.has(q.pdf_id)).length,    [activeQuestions, usedSet])
+  const wrongInBank   = useMemo(() => activeQuestions.filter(q => wrongSet.has(q.pdf_id)).length,   [activeQuestions, wrongSet])
+  const flaggedInBank = useMemo(() => activeQuestions.filter(q => flaggedSet.has(q.pdf_id)).length, [activeQuestions, flaggedSet])
+  const unusedCount = Math.max(0, totalQuestions - usedInBank)
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const cardBg = darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
@@ -153,8 +163,8 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
   const goldDark    = darkMode ? '#d4b966' : gold             // brighter gold in dark
 
   const getPoolSize = () => {
-    if (source === 'flagged') return globalFlagged.length
-    if (source === 'wrong') return globalWrong.length
+    if (source === 'flagged') return flaggedInBank
+    if (source === 'wrong') return wrongInBank
     if (source === 'unused') return unusedCount
     if (source === 'topics') return selectedTopics.length > 0 ? totalQuestions : 0
     return totalQuestions
@@ -267,15 +277,15 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Total</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold tabular-nums text-green-600 dark:text-green-400">{globalUsed.length}</div>
+            <div className="text-xl font-bold tabular-nums text-green-600 dark:text-green-400">{usedInBank}</div>
             <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Used</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold tabular-nums text-red-600 dark:text-red-400">{globalWrong.length}</div>
+            <div className="text-xl font-bold tabular-nums text-red-600 dark:text-red-400">{wrongInBank}</div>
             <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Incorrect</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold tabular-nums text-orange-500 dark:text-orange-400">{globalFlagged.length}</div>
+            <div className="text-xl font-bold tabular-nums text-orange-500 dark:text-orange-400">{flaggedInBank}</div>
             <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Flagged</div>
           </div>
         </div>
@@ -690,22 +700,22 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
           <div className={`${bg} rounded-2xl shadow-xl p-6`}>
             {/* Quick action buttons */}
             <div className="grid grid-cols-3 gap-2 mb-6">
-              {globalFlagged.length > 0 && (
+              {flaggedInBank > 0 && (
                 <button
                   onClick={() => dispatch({ type: 'REVIEW_FLAGGED' })}
                   className="flex flex-col items-center gap-1 p-3 rounded-xl border-2 border-orange-200 bg-orange-50 dark:bg-orange-900/20 dark:border-orange-800 hover:border-orange-400 transition"
                 >
                   <Flag size={18} className="text-orange-500" />
-                  <span className="text-[10px] font-semibold text-orange-600">Flagged ({globalFlagged.length})</span>
+                  <span className="text-[10px] font-semibold text-orange-600">Flagged ({flaggedInBank})</span>
                 </button>
               )}
-              {globalWrong.length > 0 && (
+              {wrongInBank > 0 && (
                 <button
                   onClick={() => dispatch({ type: 'REVIEW_WRONG' })}
                   className="flex flex-col items-center gap-1 p-3 rounded-xl border-2 border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800 hover:border-red-400 transition"
                 >
                   <XCircle size={18} className="text-red-500" />
-                  <span className="text-[10px] font-semibold text-red-600">Wrong ({globalWrong.length})</span>
+                  <span className="text-[10px] font-semibold text-red-600">Wrong ({wrongInBank})</span>
                 </button>
               )}
               {dueCount > 0 && (
@@ -768,13 +778,13 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 {[
                   { key: 'all', label: 'All Questions', count: totalQuestions },
                   { key: 'unused', label: 'Unused Only', count: unusedCount },
-                  { key: 'wrong', label: 'Incorrect Only', count: globalWrong.length },
-                  { key: 'flagged', label: 'Flagged Only', count: globalFlagged.length },
+                  { key: 'wrong', label: 'Incorrect Only', count: wrongInBank },
+                  { key: 'flagged', label: 'Flagged Only', count: flaggedInBank },
                   { key: 'topics', label: 'By Topic', count: null },
                 ].map(s => {
-                  const disabled = (s.key === 'wrong' && globalWrong.length === 0)
+                  const disabled = (s.key === 'wrong' && wrongInBank === 0)
                     || (s.key === 'unused' && unusedCount === 0)
-                    || (s.key === 'flagged' && globalFlagged.length === 0)
+                    || (s.key === 'flagged' && flaggedInBank === 0)
                   const isActive = !disabled && source === s.key
                   return (
                     <button
@@ -1078,11 +1088,11 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
                 <div className="text-xs text-gray-500">Average Score</div>
               </div>
               <div className="p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-center">
-                <div className="text-3xl font-bold text-purple-600">{globalUsed.length}</div>
+                <div className="text-3xl font-bold text-purple-600">{usedInBank}</div>
                 <div className="text-xs text-gray-500">Questions Seen</div>
               </div>
               <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-700 text-center">
-                <div className="text-3xl font-bold text-gray-600">{totalQuestions > 0 ? Math.round((globalUsed.length / totalQuestions) * 100) : 0}%</div>
+                <div className="text-3xl font-bold text-gray-600">{totalQuestions > 0 ? Math.round((usedInBank / totalQuestions) * 100) : 0}%</div>
                 <div className="text-xs text-gray-500">Completion</div>
               </div>
             </div>
@@ -1091,10 +1101,10 @@ export default function StartScreen({ totalQuestions, topics, darkMode, state, o
             <div className="mb-6">
               <div className="flex justify-between text-xs text-gray-500 mb-1">
                 <span>Question Bank Completion</span>
-                <span>{globalUsed.length}/{totalQuestions}</span>
+                <span>{usedInBank}/{totalQuestions}</span>
               </div>
               <div className="w-full h-3 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
-                <div className="h-full rounded-full transition-all" style={{ width: `${totalQuestions > 0 ? (globalUsed.length / totalQuestions) * 100 : 0}%`, backgroundColor: brand }} />
+                <div className="h-full rounded-full transition-all" style={{ width: `${totalQuestions > 0 ? (usedInBank / totalQuestions) * 100 : 0}%`, backgroundColor: brand }} />
               </div>
             </div>
 
