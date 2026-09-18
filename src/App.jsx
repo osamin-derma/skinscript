@@ -3,6 +3,7 @@ import arabBoardRaw from './data/arab_board_master.json'
 import boardVitalsRaw from './data/board_vitals_master.json'
 import makkiRaw from './data/makki_master.json'
 import etas2026Raw from './data/etas_2026_master.json'
+import subtopicsRaw from './data/subtopics.json'
 import AuthScreen from './components/AuthScreen'
 import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
@@ -10,11 +11,15 @@ import { onAuthStateChange, signOut } from './lib/auth'
 import * as userdata from './lib/userdata'
 import { nextSchedule, isDue } from './lib/srs'
 
-// Tag each question with its source so they can be combined
-const arabBoardTagged = arabBoardRaw.map(q => ({ ...q, source: q.source || 'Arab Board' }))
-const boardVitalsTagged = boardVitalsRaw.map(q => ({ ...q, source: q.source || 'Board Vitals' }))
-const makkiTagged = makkiRaw.map(q => ({ ...q, source: q.source || 'Makki' }))
-const etas2026Tagged = etas2026Raw.map(q => ({ ...q, source: q.source || 'ETAS 2026' }))
+// Subtopic per question (scripts/tag_subtopics.py -> data/subtopics.json).
+const SUBTOPIC_OF = new Map(Object.entries(subtopicsRaw.map).map(([pid, i]) => [pid, subtopicsRaw.names[i]]))
+const withMeta = (q, src) => ({ ...q, source: q.source || src, subtopic: SUBTOPIC_OF.get(q.pdf_id) || q.category || 'General dermatology' })
+
+// Tag each question with its source (+ subtopic) so they can be combined
+const arabBoardTagged = arabBoardRaw.map(q => withMeta(q, 'Arab Board'))
+const boardVitalsTagged = boardVitalsRaw.map(q => withMeta(q, 'Board Vitals'))
+const makkiTagged = makkiRaw.map(q => withMeta(q, 'Makki'))
+const etas2026Tagged = etas2026Raw.map(q => withMeta(q, 'ETAS 2026'))
 
 // Combined "All" bank: offset IDs from each bank to avoid collisions
 const combinedAll = [
@@ -176,6 +181,10 @@ const initialState = {
   highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
   schedule: {}, // { [pdf_id]: { box, interval, due, reps } } — spaced-repetition
   flashcards: {}, // { [id]: { id, pdf_id, front, back, box, interval, due, reps } }
+  settings: { examDate: null, dailyGoal: 30, leaderboardOptIn: false, displayName: null }, // synced user_settings
+  mistakes: {}, // { [pdf_id]: { reason, note, at } } — why a question was missed
+  peerStats: {}, // { [pdf_id]: { n, counts } } — anonymous cohort answer distribution (read-only)
+  isAdmin: false,
   isAssessment: false, // current quiz is a timed self-assessment exam
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
@@ -208,8 +217,21 @@ function reducer(state, action) {
         highlights:    action.data?.highlights || {},
         schedule:      action.data?.schedule || {},
         flashcards:    action.data?.flashcards || {},
+        settings:      { ...state.settings, ...(action.data?.settings || {}) },
+        mistakes:      action.data?.mistakes || {},
       }
     }
+    case 'SET_SETTINGS':
+      return { ...state, settings: { ...state.settings, ...action.patch } }
+    case 'SET_MISTAKE':
+      return { ...state, mistakes: { ...state.mistakes, [action.pdfId]: { reason: action.reason, note: action.note || '', at: new Date().toISOString() } } }
+    case 'CLEAR_MISTAKE': {
+      const mistakes = { ...state.mistakes }; delete mistakes[action.pdfId]; return { ...state, mistakes }
+    }
+    case 'SET_PEER_STATS':
+      return { ...state, peerStats: action.stats || {} }
+    case 'SET_ADMIN':
+      return { ...state, isAdmin: !!action.isAdmin }
     case 'ADD_FLASHCARD': {
       // Idempotent per source question: if a card already exists for this
       // pdf_id, keep it rather than minting a second UUID-distinct duplicate
@@ -282,6 +304,12 @@ function reducer(state, action) {
         pool = pool.filter(i => !state.globalUsed.includes(bankQuestions[i].pdf_id))
       } else if (action.source === 'due') {
         pool = pool.filter(i => isDue(state.schedule[bankQuestions[i].pdf_id]))
+      } else if (action.source === 'images') {
+        // Spot-diagnosis drill: only questions that carry a clinical image
+        pool = pool.filter(i => Array.isArray(bankQuestions[i].images) && bankQuestions[i].images.length > 0)
+      } else if (action.source === 'subtopic' && action.subtopics?.length > 0) {
+        const want = new Set(action.subtopics)
+        pool = pool.filter(i => want.has(bankQuestions[i].subtopic))
       } else if (action.source === 'topics' && action.topics?.length > 0) {
         // The question field is `category` (not `topic`). Without this
         // fix the pool was always empty and the quiz never started.
@@ -524,6 +552,8 @@ export default function App() {
   const prevHlRef      = useRef({})
   const prevSchedRef   = useRef({})
   const prevFcRef      = useRef({})
+  const prevSettingsRef = useRef(null)
+  const prevMistakesRef = useRef({})
   const cloudReadyRef  = useRef(false)
   // Live mirrors of the debounced text slices (declared up here so the boot /
   // reconnect sync can preserve an in-flight edit).
@@ -541,13 +571,15 @@ export default function App() {
     prevHlRef.current      = data.highlights || {}
     prevSchedRef.current   = data.schedule || {}
     prevFcRef.current      = data.flashcards || {}
+    prevSettingsRef.current = data.settings || null
+    prevMistakesRef.current = data.mistakes || {}
   }
 
   // Apply authoritative cloud data WITHOUT clobbering a note/highlight the user
   // is editing right now (still inside the 700ms debounce, not yet synced).
   // Such in-flight edits are merged on top of the cloud data; baselines are
   // seeded to the pure cloud data so the watch effects then sync those edits.
-  const EMPTY_SYNC = { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {} }
+  const EMPTY_SYNC = { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {}, settings: null, mistakes: {} }
   const applyAuthoritative = (data, userId, localSnap) => {
     // ── Safeguard: never let an EMPTY cloud erase a device that has progress ──
     // If the cloud holds no progress at all but this device's snapshot does
@@ -614,6 +646,9 @@ export default function App() {
           const data = await userdata.fetchAllUserData()
           if (cancelled) return
           applyAuthoritative(data, userId, snap)
+          // Read-only extras (not part of the sync/snapshot model)
+          userdata.fetchPeerStats().then((stats) => { if (!cancelled) dispatch({ type: 'SET_PEER_STATS', stats }) })
+          userdata.checkIsAdmin().then((isAdmin) => { if (!cancelled) dispatch({ type: 'SET_ADMIN', isAdmin }) })
         }
       } catch (e) {
         console.warn('[boot] sync failed', e)
@@ -653,10 +688,11 @@ export default function App() {
         flags: state.globalFlagged, wrong: state.globalWrong, used: state.globalUsed,
         history: state.history, notes: state.notes, highlights: state.highlights,
         schedule: state.schedule, flashcards: state.flashcards,
+        settings: state.settings, mistakes: state.mistakes,
       })
     }, 500)
     return () => clearTimeout(t)
-  }, [session?.user?.id, state.globalFlagged, state.globalWrong, state.globalUsed, state.history, state.notes, state.highlights, state.schedule, state.flashcards])
+  }, [session?.user?.id, state.globalFlagged, state.globalWrong, state.globalUsed, state.history, state.notes, state.highlights, state.schedule, state.flashcards, state.settings, state.mistakes])
 
   // ── Watch notes → cloud (debounced; persist only changed pdf_ids) ──
   useEffect(() => { latestNotesRef.current = state.notes || {} }, [state.notes])
@@ -717,6 +753,30 @@ export default function App() {
     }
     prevFcRef.current = curr
   }, [state.flashcards])
+
+  // ── Watch settings → cloud (debounced; whole row) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const t = setTimeout(() => {
+      if (JSON.stringify(prevSettingsRef.current) !== JSON.stringify(state.settings)) {
+        userdata.saveSettings(state.settings)
+        prevSettingsRef.current = state.settings
+      }
+    }, 500)
+    return () => clearTimeout(t)
+  }, [state.settings])
+
+  // ── Watch mistakes → cloud (set + delete) ──
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const prev = prevMistakesRef.current || {}
+    const curr = state.mistakes || {}
+    for (const pid of Object.keys(curr)) {
+      if (JSON.stringify(prev[pid] || null) !== JSON.stringify(curr[pid])) userdata.saveMistake(pid, curr[pid].reason, curr[pid].note)
+    }
+    for (const pid of Object.keys(prev)) if (!curr[pid]) userdata.deleteMistake(pid)
+    prevMistakesRef.current = curr
+  }, [state.mistakes])
 
   // Don't lose a trailing edit if the page is hidden/closed within the debounce.
   useEffect(() => {

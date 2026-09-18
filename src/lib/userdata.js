@@ -51,9 +51,9 @@ async function selectAll(table, columns, orderBy) {
 
 export async function fetchAllUserData() {
   const userId = await uid()
-  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {} }
+  if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {}, settings: null, mistakes: {} }
 
-  const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes, schedRes, fcRes] = await Promise.all([
+  const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes, schedRes, fcRes, setRes, misRes] = await Promise.all([
     selectAll('user_flags', 'pdf_id', 'pdf_id'),
     selectAll('user_wrong', 'pdf_id', 'pdf_id'),
     selectAll('user_used', 'pdf_id', 'pdf_id'),
@@ -65,6 +65,8 @@ export async function fetchAllUserData() {
     selectAll('user_highlights', 'pdf_id, ranges', 'pdf_id'),
     selectAll('user_review_schedule', 'pdf_id, box, interval_days, due_at, reps, last_grade', 'pdf_id'),
     selectAll('user_flashcards', 'id, pdf_id, front, back, box, interval_days, due_at, reps', 'id'),
+    supabase.from('user_settings').select('exam_date, daily_goal, leaderboard_opt_in, display_name').maybeSingle(),
+    selectAll('user_mistakes', 'pdf_id, reason, note, at', 'pdf_id'),
   ])
 
   warn('fetch flags',      flagsRes.error)
@@ -75,6 +77,8 @@ export async function fetchAllUserData() {
   warn('fetch highlights', hlRes.error)
   warn('fetch schedule',   schedRes.error)
   warn('fetch flashcards', fcRes.error)
+  warn('fetch settings',   setRes.error)
+  warn('fetch mistakes',   misRes.error)
 
   const notes = {}
   for (const r of notesRes.data || []) { if (r.note) notes[r.pdf_id] = r.note }
@@ -89,7 +93,14 @@ export async function fetchAllUserData() {
     flashcards[r.id] = { id: r.id, pdf_id: r.pdf_id, front: r.front, back: r.back, box: r.box, interval: r.interval_days, due: r.due_at, reps: r.reps }
   }
 
+  const sr = setRes.data || {}
+  const settings = { examDate: sr.exam_date || null, dailyGoal: sr.daily_goal ?? 30, leaderboardOptIn: !!sr.leaderboard_opt_in, displayName: sr.display_name || null }
+  const mistakes = {}
+  for (const r of misRes.data || []) mistakes[r.pdf_id] = { reason: r.reason, note: r.note || '', at: r.at }
+
   return {
+    settings,
+    mistakes,
     // Keyed on stable pdf_id (globally unique; numeric ids collide across banks).
     flags:   (flagsRes.data   || []).map(r => r.pdf_id).filter(Boolean),
     wrong:   (wrongRes.data   || []).map(r => r.pdf_id).filter(Boolean),
@@ -207,6 +218,34 @@ const EXECUTORS = {
     const userId = await uid(); if (!userId) return null
     const { error } = await supabase.from('user_used')
       .upsert({ user_id: userId, pdf_id: pdfId, last_used_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+    return error
+  },
+  async saveSettings(s) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_settings').upsert({
+      user_id: userId, exam_date: s.examDate || null, daily_goal: s.dailyGoal ?? 30,
+      leaderboard_opt_in: !!s.leaderboardOptIn, display_name: s.displayName || null,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: 'user_id' })
+    return error
+  },
+  async saveMistake(pdfId, reason, note) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_mistakes')
+      .upsert({ user_id: userId, pdf_id: pdfId, reason, note: note || null, at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+    return error
+  },
+  async deleteMistake(pdfId) {
+    if (typeof pdfId !== 'string' || !pdfId) return null
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('user_mistakes').delete().eq('user_id', userId).eq('pdf_id', pdfId)
+    return error
+  },
+  async reportQuestion(id, pdfId, reason, comment) {
+    const userId = await uid(); if (!userId) return null
+    const { error } = await supabase.from('question_reports')
+      .upsert({ id, user_id: userId, pdf_id: pdfId, reason, comment: comment || null }, { onConflict: 'id' })
     return error
   },
   async insertHistory(entry) {
@@ -330,6 +369,34 @@ export const addWrong          = (questionId) => mutate('addWrong', [questionId]
 export const removeWrong       = (questionId) => mutate('removeWrong', [questionId])
 export const addUsed           = (questionId) => mutate('addUsed', [questionId])
 export const insertHistory     = (entry) => mutate('insertHistory', [entry])
+export const saveSettings      = (s) => mutate('saveSettings', [s])
+export const saveMistake       = (pdfId, reason, note) => mutate('saveMistake', [pdfId, reason, note])
+export const deleteMistake     = (pdfId) => mutate('deleteMistake', [pdfId])
+export const reportQuestion    = (id, pdfId, reason, comment) => mutate('reportQuestion', [id, pdfId, reason, comment])
+
+// ── Read-only RPCs (not synced; fetched when online) ─────────────────────
+export async function fetchPeerStats() {
+  const { data, error } = await supabase.rpc('peer_stats'); warn('peer_stats', error)
+  const out = {}
+  for (const r of data || []) out[r.pdf_id] = { n: Number(r.n), counts: r.counts || {} }
+  return out
+}
+export async function fetchCohortStats() {
+  const { data, error } = await supabase.rpc('cohort_stats'); warn('cohort_stats', error); return data || []
+}
+export async function fetchLeaderboard() {
+  const { data, error } = await supabase.rpc('leaderboard'); warn('leaderboard', error); return data || []
+}
+export async function checkIsAdmin() {
+  const { data, error } = await supabase.rpc('is_admin'); warn('is_admin', error); return !!data
+}
+export async function fetchReports() {
+  const { data, error } = await supabase.from('question_reports').select('id, pdf_id, reason, comment, status, created_at').order('created_at', { ascending: false }).limit(200)
+  warn('reports', error); return data || []
+}
+export async function setReportStatus(id, status) {
+  const { error } = await supabase.from('question_reports').update({ status }).eq('id', id); warn('report status', error)
+}
 
 
 // ── Bulk resets — direct (not queued); also clear local cache + outbox ───

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { CheckCircle, XCircle, StickyNote, Layers, Check } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 import TutorPanel from './TutorPanel'
+import { PeerStats, MistakeTagger, ReportQuestion, RelatedQuestions } from './QuestionExtras'
 
 /**
  * ExplanationPanel — renders the answer/explanation block in the layout
@@ -28,7 +29,7 @@ import TutorPanel from './TutorPanel'
  * On top we keep a small Correct/Incorrect chip so the student knows their
  * result without searching for it.
  */
-export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard, alreadyCarded }) {
+export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard, alreadyCarded, peerStats, mistake, onMistake, onReport, related, onOpenQuestion }) {
   const isCorrect = answer?.correct
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const teal = '#2c3e3f'
@@ -112,6 +113,12 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
           }
         </p>
 
+        {/* Cohort stats + error typing */}
+        {peerStats && <PeerStats stats={peerStats} correct={correctLetter} darkMode={darkMode} />}
+        {answer?.submitted && !isCorrect && onMistake && question.pdf_id && (
+          <MistakeTagger pdfId={question.pdf_id} mistake={mistake} onMistake={onMistake} darkMode={darkMode} />
+        )}
+
         {/* Narrative explanation */}
         {question.explanation && (
           <div className="text-[15px] leading-relaxed text-gray-800 dark:text-gray-200 whitespace-pre-line mb-5">
@@ -165,6 +172,9 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
 
         {/* AI Tutor (hidden unless the tutor function is configured) */}
         <TutorPanel question={question} darkMode={darkMode} />
+
+        {related?.length > 0 && onOpenQuestion && <RelatedQuestions related={related} onOpen={onOpenQuestion} darkMode={darkMode} />}
+        {onReport && <ReportQuestion onReport={onReport} darkMode={darkMode} />}
 
         {/* Make flashcard */}
         {onAddCard && (

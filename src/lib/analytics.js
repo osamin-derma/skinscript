@@ -28,6 +28,28 @@ export function computeCategoryStats(history, lookupQuestion) {
     .sort((a, b) => a.accuracy - b.accuracy || b.attempts - a.attempts)
 }
 
+// Same as computeCategoryStats but keyed on the finer-grained `subtopic` tag.
+// Only subtopics with >= minAttempts are returned so a single miss doesn't rank.
+export function computeSubtopicStats(history, lookupQuestion, minAttempts = 3) {
+  const by = new Map()
+  for (const h of history || []) {
+    if (!Array.isArray(h.detail)) continue
+    for (const item of h.detail) {
+      const q = lookupQuestion(item.pdf_id)
+      const st = q?.subtopic
+      if (!q || !st) continue
+      if (!by.has(st)) by.set(st, { subtopic: st, attempts: 0, correct: 0 })
+      const s = by.get(st)
+      s.attempts += 1
+      if (item.selected != null && item.selected === q.correct_answer) s.correct += 1
+    }
+  }
+  return [...by.values()]
+    .filter((s) => s.attempts >= minAttempts)
+    .map((s) => ({ ...s, accuracy: s.attempts ? Math.round((s.correct / s.attempts) * 100) : 0 }))
+    .sort((a, b) => a.accuracy - b.accuracy || b.attempts - a.attempts)
+}
+
 // Overall attempts/correct from saved detail (independent of category coverage).
 export function computeOverall(history) {
   let attempts = 0

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
+import * as userdata from '../lib/userdata'
 
 // Accurate char offset of a selection boundary within `root`, robust to
 // repeated words and existing <mark> spans (unlike indexOf).
@@ -26,6 +27,9 @@ export default function QuizScreen({ state, questions, dispatch }) {
     () => new Set(Object.values(state.flashcards || {}).map((c) => c.pdf_id).filter(Boolean)),
     [state.flashcards],
   )
+
+  // Related questions (same subtopic) — only in single-question review, never mid-quiz
+  const related = useMemo(() => (mode === 'review' && q) ? questions.filter((x) => x.subtopic === q.subtopic && x.pdf_id !== q.pdf_id).slice(0, 5) : [], [mode, q, questions])
 
   const [selected, setSelected] = useState(null)
   const [confidence, setConfidence] = useState(null) // 'guessed' | 'unsure' | 'sure'
@@ -494,6 +498,12 @@ export default function QuizScreen({ state, questions, dispatch }) {
             note={state.notes?.[q.pdf_id] || ''}
             onNote={(text) => dispatch({ type: 'SET_NOTE', pdfId: q.pdf_id, text })}
             alreadyCarded={cardedPdfIds.has(q.pdf_id)}
+            peerStats={state.peerStats?.[q.pdf_id]}
+            mistake={state.mistakes?.[q.pdf_id]}
+            onMistake={(pid, reason, note) => dispatch({ type: 'SET_MISTAKE', pdfId: pid, reason, note })}
+            onReport={(reason, comment) => userdata.reportQuestion(crypto.randomUUID(), q.pdf_id, reason, comment)}
+            related={related}
+            onOpenQuestion={(rq) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: state.activeBank, questionId: rq.id })}
             onAddCard={(front, back, pdfId) => dispatch({
               type: 'ADD_FLASHCARD',
               card: {

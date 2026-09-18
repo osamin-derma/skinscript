@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { Flame, Target } from 'lucide-react'
 import { computeStreak, todayAnswered } from '../lib/analytics'
 
@@ -10,15 +10,16 @@ const GOALS = [10, 20, 30, 50]
  * the daily goal is a device preference (localStorage). Today's progress is the
  * number of questions answered across today's quizzes.
  */
-export default function StreakCard({ history, darkMode }) {
+export default function StreakCard({ history, darkMode, dailyGoal, onGoal }) {
   const brand = '#2c3e3f'
-  const [goal, setGoal] = useState(() => Number(localStorage.getItem(GOAL_KEY)) || 30)
+  const [goal, setGoal] = useState(() => dailyGoal ?? (Number(localStorage.getItem(GOAL_KEY)) || 30))
+  useEffect(() => { if (dailyGoal != null) setGoal(dailyGoal) }, [dailyGoal])
   const streak = useMemo(() => computeStreak(history), [history])
   const today = useMemo(() => todayAnswered(history), [history])
   const pct = Math.min(100, Math.round((today / Math.max(1, goal)) * 100))
   const met = today >= goal
 
-  const setG = (g) => { setGoal(g); localStorage.setItem(GOAL_KEY, String(g)) }
+  const setG = (g) => { setGoal(g); localStorage.setItem(GOAL_KEY, String(g)); onGoal?.(g) }
   const sub = darkMode ? 'bg-gray-900/40 border-gray-700' : 'bg-gray-50 border-gray-200'
 
   return (

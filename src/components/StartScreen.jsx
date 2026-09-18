@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images, AlertOctagon, Users, Camera, ClipboardList } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
@@ -7,6 +7,14 @@ import Flashcards from './Flashcards'
 import Atlas from './Atlas'
 import StreakCard from './StreakCard'
 import { duePdfIds } from '../lib/srs'
+import RefreshButton from './RefreshButton'
+import StudyPlanner from './StudyPlanner'
+import RemindersBanner from './RemindersBanner'
+import Leaderboard from './Leaderboard'
+import Mistakes from './Mistakes'
+import AdminDashboard from './AdminDashboard'
+import { downloadProgressCsv } from '../lib/exportCsv'
+import { computeStreak, todayAnswered } from '../lib/analytics'
 
 export default function StartScreen({ totalQuestions, activeQuestions = [], topics, darkMode, state, onToggleDark, onStart, dispatch, banks, categoryFilter, setCategoryFilter, allCategories, currentUser, onSignOut, onResetAll }) {
   const [mode, setMode] = useState('tutor')
@@ -17,14 +25,19 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const [selectedTopics, setSelectedTopics] = useState([])
   const [showTopics, setShowTopics] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
-  const [tab, setTab] = useState('create') // 'create' | 'history' | 'performance' | 'notebook'
-  const [notebookView, setNotebookView] = useState('notes') // 'notes' | 'cards'
+  const [tab, setTab] = useState('create')
+  const [notebookView, setNotebookView] = useState('notes') // 'notes' | 'cards' | 'mistakes'
   const [showAccount, setShowAccount] = useState(false)
   // Pull per-user state up-front: `schedule` (and friends) are read by the
   // memos below, so this must precede them — destructuring it later is a
   // temporal-dead-zone crash ("Cannot access 'schedule' before initialization")
   // the moment StartScreen renders.
-  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {}, flashcards = {} } = state
+  const { history = [], globalFlagged = [], globalWrong = [], globalUsed = [], notes = {}, schedule = {}, flashcards = {}, settings = {}, mistakes = {}, isAdmin = false } = state
+  const onSettings = (patch) => dispatch({ type: 'SET_SETTINGS', patch })
+  const today = useMemo(() => todayAnswered(history), [history])
+  const streak = useMemo(() => computeStreak(history), [history])
+  const [practiceSub, setPracticeSub] = useState('')
+  const subtopics = useMemo(() => { const c = new Map(); for (const q of activeQuestions) c.set(q.subtopic, (c.get(q.subtopic) || 0) + 1); return [...c.entries()].sort((a, b) => a[0].localeCompare(b[0])) }, [activeQuestions])
   // pdf_id → question, for reopening a past exam in the account drawer.
   const questionByPdfId = useMemo(() => {
     const m = new Map()
@@ -217,6 +230,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             onSignOut={onSignOut}
             lookupQuestion={lookupQuestion}
             imageUrls={allImageUrls}
+            onExport={() => downloadProgressCsv(state, lookupQuestion)}
           />
         )}
         {/* Header */}
@@ -237,6 +251,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             </button>
           ) : <div />}
           <div className="flex items-center gap-1">
+            <RefreshButton compact darkMode={darkMode} />
             <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Toggle dark mode">
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -679,6 +694,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             { key: 'performance', icon: <BarChart3 size={14} />, label: 'Stats' },
             { key: 'notebook', icon: <BookOpen size={14} />, label: 'Notebook' },
             { key: 'atlas', icon: <Images size={14} />, label: 'Atlas' },
+            ...(isAdmin ? [{ key: 'admin', icon: <Users size={14} />, label: 'Cohort' }] : []),
           ].map(t => (
             <button
               key={t.key}
@@ -698,6 +714,9 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
         {/* CREATE TAB */}
         {tab === 'create' && (
           <div className={`${bg} rounded-2xl shadow-xl p-6`}>
+            <RemindersBanner dueCount={dueCount} streakCurrent={streak.current} todayAnswered={today} darkMode={darkMode}
+              onStartDue={() => onStart({ source: 'due', bank: 'all', categoryFilter: 'all', count: Math.min(20, dueCount), mode: 'tutor', timer, shuffle: true })} />
+            <div className="mb-4"><StudyPlanner settings={settings} onSettings={onSettings} unusedCount={unusedCount} todayAnswered={today} darkMode={darkMode} /></div>
             {/* Quick action buttons */}
             <div className="grid grid-cols-3 gap-2 mb-6">
               {flaggedInBank > 0 && (
@@ -755,6 +774,26 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
               )}
             </div>
 
+            {/* Spot diagnosis + full mock */}
+            <div className="grid grid-cols-2 gap-2 mb-3">
+              <button onClick={() => onStart({ source: 'images', bank: 'all', categoryFilter: 'all', count: 30, mode: 'timed', timer: 45, shuffle: true })} className={`rounded-xl border p-3 text-left hover:shadow-sm ${cardBg}`}>
+                <div className="flex items-center gap-1.5 text-sm font-bold" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}><Camera size={15} /> Spot diagnosis</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-300">30 image questions · 45 s each</div>
+              </button>
+              <button onClick={() => onStart({ source: 'all', bank: 'all', categoryFilter: 'all', count: 100, mode: 'timed', timer: 72, shuffle: true, assessment: true })} className={`rounded-xl border p-3 text-left hover:shadow-sm ${cardBg}`}>
+                <div className="flex items-center gap-1.5 text-sm font-bold" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}><ClipboardList size={15} /> Full mock exam</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-300">100 questions · 2 hours · scored</div>
+              </button>
+            </div>
+            {/* Practice by subtopic */}
+            <div className={`rounded-xl border p-3 mb-3 flex items-center gap-2 ${cardBg}`}>
+              <span className="text-xs font-semibold whitespace-nowrap">Practice a subtopic</span>
+              <select value={practiceSub} onChange={(e) => setPracticeSub(e.target.value)} className={`flex-1 min-w-0 text-xs px-2 py-1 rounded border ${darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`}>
+                <option value="">Choose…</option>
+                {subtopics.map(([s, n]) => <option key={s} value={s}>{s} ({n})</option>)}
+              </select>
+              <button disabled={!practiceSub} onClick={() => onStart({ source: 'subtopic', subtopics: [practiceSub], bank: activeBank, categoryFilter: 'all', count: Math.min(20, subtopics.find(([s]) => s === practiceSub)?.[1] || 20), mode, timer, shuffle: true })} className="text-xs font-semibold text-white px-3 py-1.5 rounded-lg disabled:opacity-40" style={{ backgroundColor: '#2c3e3f' }}>Start</button>
+            </div>
             {/* Self-assessment exam */}
             <button
               onClick={() => onStart({ source: 'all', bank: 'all', categoryFilter: 'all', count: 40, mode: 'timed', timer: 75, shuffle: true, assessment: true })}
@@ -1075,7 +1114,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             </div>
 
             {/* Streak + daily goal */}
-            <StreakCard history={history} darkMode={darkMode} />
+            <StreakCard history={history} darkMode={darkMode} dailyGoal={settings.dailyGoal} onGoal={(g) => onSettings({ dailyGoal: g })} />
+            <div className="mb-6"><Leaderboard settings={settings} onSettings={onSettings} darkMode={darkMode} /></div>
 
             {/* Summary cards */}
             <div className="grid grid-cols-2 gap-3 mb-6">
@@ -1110,6 +1150,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
 
             {/* Deep analytics: readiness · trend · weak areas · per-category */}
             <PerformanceAnalytics
+              onPracticeSubtopic={(s) => onStart({ source: 'subtopic', subtopics: [s], bank: 'all', categoryFilter: 'all', count: 20, mode: 'tutor', timer, shuffle: true })}
               history={history}
               lookupQuestion={lookupQuestion}
               darkMode={darkMode}
@@ -1128,6 +1169,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
               {[
                 { key: 'notes', icon: <BookOpen size={13} />, label: 'Notes' },
                 { key: 'cards', icon: <Layers size={13} />, label: `Cards${Object.keys(flashcards).length ? ` (${Object.keys(flashcards).length})` : ''}` },
+                { key: 'mistakes', icon: <AlertOctagon size={13} />, label: `Mistakes${globalWrong.length ? ` (${globalWrong.length})` : ''}` },
               ].map((v) => (
                 <button
                   key={v.key}
@@ -1150,6 +1192,11 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 onNote={(pdfId, text) => dispatch({ type: 'SET_NOTE', pdfId, text })}
                 darkMode={darkMode}
               />
+            ) : notebookView === 'mistakes' ? (
+              <Mistakes mistakes={mistakes} globalWrong={globalWrong} lookupQuestion={lookupQuestion} darkMode={darkMode}
+                onMistake={(pid, reason, note) => dispatch({ type: 'SET_MISTAKE', pdfId: pid, reason, note })}
+                onClear={(pid) => dispatch({ type: 'CLEAR_MISTAKE', pdfId: pid })}
+                onOpenQuestion={(q) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: 'all', questionId: q.id })} />
             ) : (
               <Flashcards
                 flashcards={flashcards}
@@ -1168,6 +1215,11 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             darkMode={darkMode}
             onOpenQuestion={(q) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: 'all', questionId: q.id })}
           />
+        )}
+
+        {/* ADMIN TAB (owner only) */}
+        {tab === 'admin' && isAdmin && (
+          <AdminDashboard darkMode={darkMode} lookupQuestion={lookupQuestion} onOpenQuestion={(q) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: 'all', questionId: q.id })} />
         )}
 
         <p className="text-center text-xs text-gray-400 mt-4 pb-4">Created by Dr. Osama Al Rawi</p>

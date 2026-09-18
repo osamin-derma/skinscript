@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { TrendingUp, TrendingDown, Target, GraduationCap, ArrowRight, Gauge } from 'lucide-react'
-import { computeCategoryStats, computeTrend, rankWeakCategories, computeReadiness, computeConfidenceStats } from '../lib/analytics'
+import { computeCategoryStats, computeTrend, rankWeakCategories, computeReadiness, computeConfidenceStats, computeSubtopicStats } from '../lib/analytics'
 
 const accColor = (a) => (a >= 75 ? '#22c55e' : a >= 55 ? '#f59e0b' : '#ef4444')
 
@@ -8,13 +8,14 @@ const accColor = (a) => (a >= 75 ? '#22c55e' : a >= 55 ? '#f59e0b' : '#ef4444')
  * Phase 1 analytics: board-readiness, score trend, per-category accuracy, and
  * weakest areas with one-tap practice. All derived from saved exam detail.
  */
-export default function PerformanceAnalytics({ history, lookupQuestion, darkMode, onPracticeCategory }) {
+export default function PerformanceAnalytics({ history, lookupQuestion, darkMode, onPracticeCategory, onPracticeSubtopic }) {
   const brand = '#2c3e3f'
   const stats = useMemo(() => computeCategoryStats(history, lookupQuestion), [history, lookupQuestion])
   const trend = useMemo(() => computeTrend(history), [history])
   const weak = useMemo(() => rankWeakCategories(stats), [stats])
   const readiness = useMemo(() => computeReadiness(stats, history), [stats, history])
   const calibration = useMemo(() => computeConfidenceStats(history, lookupQuestion), [history, lookupQuestion])
+  const weakSub = useMemo(() => computeSubtopicStats(history, lookupQuestion).filter((s) => s.accuracy < 75).slice(0, 5), [history, lookupQuestion])
 
   const sub = darkMode ? 'bg-gray-900/40 border-gray-700' : 'bg-gray-50 border-gray-200'
   const heading = 'text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2'
@@ -95,6 +96,35 @@ export default function PerformanceAnalytics({ history, lookupQuestion, darkMode
                 <span className="text-sm font-bold w-11 text-right flex-shrink-0" style={{ color: accColor(s.accuracy) }}>{s.accuracy}%</span>
                 <div className="flex-1 min-w-0">
                   <div className="text-xs font-medium truncate">{s.category}</div>
+                  <div className="text-[10px] text-gray-400">{s.correct}/{s.attempts} correct</div>
+                </div>
+                <span className="text-[10px] font-medium flex items-center gap-0.5 flex-shrink-0" style={{ color: brand }}>
+                  Practice <ArrowRight size={12} />
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Weakest subtopics (finer than category) */}
+      {weakSub.length > 0 && (
+        <div className={`rounded-xl border p-4 ${sub}`}>
+          <div className="flex items-center gap-1.5 mb-3">
+            <Target size={14} style={{ color: brand }} />
+            <span className="text-sm font-semibold">Weakest subtopics</span>
+            <span className="ml-auto text-[10px] text-gray-400">3+ attempts</span>
+          </div>
+          <div className="space-y-2">
+            {weakSub.map((s) => (
+              <button
+                key={s.subtopic}
+                onClick={() => onPracticeSubtopic?.(s.subtopic)}
+                className="w-full flex items-center gap-3 text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 transition"
+              >
+                <span className="text-sm font-bold w-11 text-right flex-shrink-0" style={{ color: accColor(s.accuracy) }}>{s.accuracy}%</span>
+                <div className="flex-1 min-w-0">
+                  <div className="text-xs font-medium truncate">{s.subtopic}</div>
                   <div className="text-[10px] text-gray-400">{s.correct}/{s.attempts} correct</div>
                 </div>
                 <span className="text-[10px] font-medium flex items-center gap-0.5 flex-shrink-0" style={{ color: brand }}>

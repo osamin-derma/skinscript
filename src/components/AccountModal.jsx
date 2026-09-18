@@ -3,6 +3,8 @@ import { X, Mail, Phone, Lock, Trophy, User, CalendarDays, Check, AlertCircle, L
 import PhoneInput from './PhoneInput'
 import ExamReview from './ExamReview'
 import OfflineDownload from './OfflineDownload'
+import RefreshButton from './RefreshButton'
+import { Download } from 'lucide-react'
 import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, normalizePhone } from '../lib/auth'
 
 /**
@@ -14,7 +16,7 @@ import { updateEmail, updatePassword, startPhoneChange, confirmPhoneChange, norm
  * lists every past exam — click one to review the whole exam question by
  * question (rendered by ExamReview via `lookupQuestion`).
  */
-export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut, lookupQuestion, imageUrls = [] }) {
+export default function AccountModal({ currentUser, history = [], darkMode, onClose, onSignOut, lookupQuestion, imageUrls = [], onExport }) {
   const brand = '#2c3e3f'
   const closeRef = useRef(null)
   const [shown, setShown] = useState(false)
@@ -148,6 +150,11 @@ export default function AccountModal({ currentUser, history = [], darkMode, onCl
                 )}
               </div>
 
+              {/* Data + app controls */}
+              <div className="grid grid-cols-2 gap-2">
+                <button onClick={onExport} className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium border transition ${darkMode ? 'border-gray-600 text-gray-200 hover:bg-gray-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}><Download size={15} /> Export progress</button>
+                <RefreshButton darkMode={darkMode} />
+              </div>
               {/* Offline access — pre-download all clinical images */}
               <OfflineDownload imageUrls={imageUrls} darkMode={darkMode} />
 
