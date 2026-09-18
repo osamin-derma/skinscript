@@ -525,7 +525,28 @@ export default function App() {
   // is editing right now (still inside the 700ms debounce, not yet synced).
   // Such in-flight edits are merged on top of the cloud data; baselines are
   // seeded to the pure cloud data so the watch effects then sync those edits.
-  const applyAuthoritative = (data, userId) => {
+  const EMPTY_SYNC = { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {} }
+  const applyAuthoritative = (data, userId, localSnap) => {
+    // ── Safeguard: never let an EMPTY cloud erase a device that has progress ──
+    // If the cloud holds no progress at all but this device's snapshot does
+    // (the account was wiped server-side, or this device never managed to
+    // sync), the device copy is the valuable one: keep it and push it back up.
+    // Seeding the diff baselines to EMPTY makes every watch effect treat each
+    // local item as new and re-upload it (all writes are idempotent upserts).
+    // History is re-sent explicitly — its effect only ever sends the newest
+    // entry. (Only trade-off: a deliberate "Reset ALL" on another device is
+    // undone by this device's copy — rare, and re-resettable.)
+    const strs = (a) => (a || []).filter((x) => typeof x === 'string').length
+    const cloudEmpty = !((data.used || []).length || (data.wrong || []).length || (data.flags || []).length || (data.history || []).length)
+    const localHas = !!localSnap && (strs(localSnap.used) + strs(localSnap.wrong) + strs(localSnap.flags) + (localSnap.history || []).length) > 0
+    if (cloudEmpty && localHas) {
+      console.warn('[sync] cloud has no progress but this device does — restoring the cloud from this device')
+      seedPrevRefs(EMPTY_SYNC)
+      dispatch({ type: 'INIT_FROM_CLOUD', data: localSnap })
+      for (const h of localSnap.history || []) userdata.insertHistory(h)
+      userdata.saveSnapshot(userId, localSnap)
+      return
+    }
     const pendNotes = {}, pendHl = {}
     const ln = latestNotesRef.current || {}, pn = prevNotesRef.current || {}
     for (const pid of Object.keys(ln)) if ((ln[pid] || '') !== (pn[pid] || '')) pendNotes[pid] = ln[pid]
@@ -568,7 +589,7 @@ export default function App() {
           if (cancelled) return
           const data = await userdata.fetchAllUserData()
           if (cancelled) return
-          applyAuthoritative(data, userId)
+          applyAuthoritative(data, userId, snap)
         }
       } catch (e) {
         console.warn('[boot] sync failed', e)
@@ -590,8 +611,9 @@ export default function App() {
       try {
         await userdata.flushOutbox()
         const data = await userdata.fetchAllUserData()
+        const snap = await userdata.loadSnapshot()
         if (cancelled) return
-        applyAuthoritative(data, userId)
+        applyAuthoritative(data, userId, snap)
       } catch (e) { console.warn('[reconnect] sync failed', e) }
     }
     window.addEventListener('online', onOnline)
