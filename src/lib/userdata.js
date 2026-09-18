@@ -31,22 +31,40 @@ const isOffline = () => typeof navigator !== 'undefined' && navigator.onLine ===
 
 // ── Initial load ─────────────────────────────────────────────────────────
 
+// PostgREST caps a single response (Supabase default 1,000 rows). A dedicated
+// student can have far more used / scheduled questions than that — one had
+// 1,349 and the landing page showed exactly 1,000. Page through by primary
+// key until a short page comes back, so nothing is ever silently truncated.
+async function selectAll(table, columns, orderBy) {
+  const PAGE = 1000
+  const rows = []
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase.from(table).select(columns)
+      .order(orderBy, { ascending: true })
+      .range(from, from + PAGE - 1)
+    if (error) return { data: rows, error }
+    rows.push(...(data || []))
+    if (!data || data.length < PAGE) break
+  }
+  return { data: rows, error: null }
+}
+
 export async function fetchAllUserData() {
   const userId = await uid()
   if (!userId) return { flags: [], wrong: [], used: [], history: [], notes: {}, highlights: {}, schedule: {}, flashcards: {} }
 
   const [flagsRes, wrongRes, usedRes, historyRes, notesRes, hlRes, schedRes, fcRes] = await Promise.all([
-    supabase.from('user_flags').select('pdf_id'),
-    supabase.from('user_wrong').select('pdf_id'),
-    supabase.from('user_used').select('pdf_id'),
+    selectAll('user_flags', 'pdf_id', 'pdf_id'),
+    selectAll('user_wrong', 'pdf_id', 'pdf_id'),
+    selectAll('user_used', 'pdf_id', 'pdf_id'),
     supabase.from('quiz_history')
       .select('*')
       .order('taken_at', { ascending: false })
       .limit(100),
-    supabase.from('user_notes').select('pdf_id, note'),
-    supabase.from('user_highlights').select('pdf_id, ranges'),
-    supabase.from('user_review_schedule').select('pdf_id, box, interval_days, due_at, reps, last_grade'),
-    supabase.from('user_flashcards').select('id, pdf_id, front, back, box, interval_days, due_at, reps'),
+    selectAll('user_notes', 'pdf_id, note', 'pdf_id'),
+    selectAll('user_highlights', 'pdf_id, ranges', 'pdf_id'),
+    selectAll('user_review_schedule', 'pdf_id, box, interval_days, due_at, reps, last_grade', 'pdf_id'),
+    selectAll('user_flashcards', 'id, pdf_id, front, back, box, interval_days, due_at, reps', 'id'),
   ])
 
   warn('fetch flags',      flagsRes.error)
