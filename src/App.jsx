@@ -81,6 +81,27 @@ function uuidv4() {
   return `${h[0]}${h[1]}${h[2]}${h[3]}-${h[4]}${h[5]}-${h[6]}${h[7]}-${h[8]}${h[9]}-${h[10]}${h[11]}${h[12]}${h[13]}${h[14]}${h[15]}`
 }
 
+// Map a LEGACY numeric question id (how used/wrong/flagged were keyed before
+// 2026-09-18) to the stable pdf_id. Offset ids (from the 'All' bank) map
+// exactly; raw ids are inherently ambiguous (every bank starts at 1) — best
+// effort: <=1281 Arab Board, otherwise ETAS. Mirrors backfill_pdf_id.py, so a
+// device that last synced before the fix restores the same way the DB did.
+const _byId = { arabBoard: new Map(), boardVitals: new Map(), makki: new Map(), etas2026: new Map() }
+for (const k of Object.keys(_byId)) for (const q of allBanks[k].questions) _byId[k].set(q.id, q.pdf_id)
+function legacyIdToPdf(id) {
+  if (typeof id !== 'number' || !Number.isFinite(id)) return null
+  if (id >= 300000) return _byId.etas2026.get(id - 300000) || null
+  if (id >= 200000) return _byId.makki.get(id - 200000) || null
+  if (id >= 100000) return _byId.boardVitals.get(id - 100000) || null
+  if (id <= 1281)   return _byId.arabBoard.get(id) || null
+  return _byId.etas2026.get(id) || null
+}
+// Normalise a used/wrong/flags list: keep pdf_id strings, convert legacy numbers, dedupe.
+function toPdfIds(arr) {
+  return [...new Set((arr || []).map((x) => (typeof x === 'string' ? x : legacyIdToPdf(x))).filter(Boolean))]
+}
+const isUuid = (v) => typeof v === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v)
+
 // Master Edition 2026 — versioned keys so old user data is preserved
 // but new banks start fresh.
 const APP_VERSION = 'master2026'
@@ -178,10 +199,11 @@ function reducer(state, action) {
       return {
         ...state,
         history:       action.data?.history || [],
-        // Keyed on stable pdf_id; drop any legacy numeric ids (pre-migration snapshots).
-        globalFlagged: (action.data?.flags || []).filter(x => typeof x === 'string'),
-        globalWrong:   (action.data?.wrong || []).filter(x => typeof x === 'string'),
-        globalUsed:    (action.data?.used  || []).filter(x => typeof x === 'string'),
+        // Keyed on stable pdf_id; legacy numeric ids (a device that last synced
+        // before the 2026-09-18 fix) are CONVERTED, not dropped, so nothing is lost.
+        globalFlagged: toPdfIds(action.data?.flags),
+        globalWrong:   toPdfIds(action.data?.wrong),
+        globalUsed:    toPdfIds(action.data?.used),
         notes:         action.data?.notes   || {},
         highlights:    action.data?.highlights || {},
         schedule:      action.data?.schedule || {},
@@ -536,15 +558,17 @@ export default function App() {
     // History is re-sent explicitly — its effect only ever sends the newest
     // entry. (Only trade-off: a deliberate "Reset ALL" on another device is
     // undone by this device's copy — rare, and re-resettable.)
-    const strs = (a) => (a || []).filter((x) => typeof x === 'string').length
     const cloudEmpty = !((data.used || []).length || (data.wrong || []).length || (data.flags || []).length || (data.history || []).length)
-    const localHas = !!localSnap && (strs(localSnap.used) + strs(localSnap.wrong) + strs(localSnap.flags) + (localSnap.history || []).length) > 0
+    const localHas = !!localSnap && (toPdfIds(localSnap.used).length + toPdfIds(localSnap.wrong).length + toPdfIds(localSnap.flags).length + (localSnap.history || []).length) > 0
     if (cloudEmpty && localHas) {
       console.warn('[sync] cloud has no progress but this device does — restoring the cloud from this device')
+      // Pre-2026-06 history entries carried numeric Date.now() ids; the cloud key
+      // is a uuid, so coerce before they're re-sent (by the effect and below).
+      const fixed = { ...localSnap, history: (localSnap.history || []).map((h) => (isUuid(h.id) ? h : { ...h, id: uuidv4() })) }
       seedPrevRefs(EMPTY_SYNC)
-      dispatch({ type: 'INIT_FROM_CLOUD', data: localSnap })
-      for (const h of localSnap.history || []) userdata.insertHistory(h)
-      userdata.saveSnapshot(userId, localSnap)
+      dispatch({ type: 'INIT_FROM_CLOUD', data: fixed })
+      for (const h of fixed.history) userdata.insertHistory(h)
+      userdata.saveSnapshot(userId, fixed)
       return
     }
     const pendNotes = {}, pendHl = {}
