@@ -3,6 +3,7 @@ import { CheckCircle, XCircle, StickyNote, Layers, Check } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 import TutorPanel from './TutorPanel'
 import { PeerStats, MistakeTagger, ReportQuestion, RelatedQuestions } from './QuestionExtras'
+import EvidencePanel from './EvidencePanel'
 
 /**
  * ExplanationPanel — renders the answer/explanation block in the layout
@@ -155,6 +156,9 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
             </p>
           </>
         )}
+
+        {/* PubMed evidence + external searches for the correct answer */}
+        <EvidencePanel question={question} answerText={correctText} darkMode={darkMode} />
 
         {/* Discrepancy + Bolognia (kept for backward compat with older fields) */}
         {question.discrepancy && (

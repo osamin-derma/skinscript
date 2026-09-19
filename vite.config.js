@@ -79,7 +79,18 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
-          // 4. Supabase Auth + REST — NETWORK ONLY. Caching auth tokens
+          // 4. PubMed E-utilities (evidence panel) — stale-while-revalidate so
+          //    previously viewed references show offline.
+          {
+            urlPattern: /^https:\/\/eutils\.ncbi\.nlm\.nih\.gov\/entrez\/eutils\/.*/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'pubmed-evidence',
+              expiration: { maxEntries: 1500, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          // 5. Supabase Auth + REST — NETWORK ONLY. Caching auth tokens
           //    or row data would be a correctness disaster.
           {
             urlPattern: /^https:\/\/yssrtjfgkctojkzcoapt\.supabase\.co\/(auth|rest|rpc)\/.*/i,
