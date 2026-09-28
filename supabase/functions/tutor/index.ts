@@ -72,7 +72,14 @@ Deno.serve(async (req: Request) => {
   try { body = await req.json() } catch { body = {} }
 
   // Capability probe — no model call, no auth, no key required to answer.
-  if (body?.ping) return json({ ok: true, configured: !!ANTHROPIC_API_KEY && (await keyValid()), v: 5 })
+  if (body?.ping) {
+    const base = { ok: true, configured: !!ANTHROPIC_API_KEY && (await keyValid()), v: 6 }
+    if (!body?.diag) return json(base)
+    // Owner-only diagnostics: surfaces the last upstream error + a live probe.
+    if (!(await callerIsAdmin(req))) return json({ ...base, diag: 'forbidden' })
+    const probe = await anthropic({ model: MODEL, max_tokens: 5, messages: [{ role: 'user', content: 'Reply with OK.' }] })
+    return json({ ...base, diag: { last_upstream: lastUpstream, probe: probe.ok ? { ok: true, text: probe.text } : { ok: false, reason: probe.reason, detail: lastUpstream } } })
+  }
 
   if (!ANTHROPIC_API_KEY) return json({ error: 'not_configured' }, 503)
 
@@ -142,28 +149,48 @@ async function keyValid(): Promise<boolean> {
 
 // Raw Messages API call. Upstream detail is logged server-side only — never
 // reflected to the client (account/billing/rate-limit messages stay private).
-async function anthropic(body: Record<string, unknown>): Promise<{ ok: boolean; text: string; stop?: string }> {
+let lastUpstream: Record<string, unknown> | null = null
+async function anthropic(body: Record<string, unknown>): Promise<{ ok: boolean; text: string; stop?: string; reason?: string }> {
   try {
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY!, 'anthropic-version': '2023-06-01' },
       body: JSON.stringify(body),
     })
-    if (!resp.ok) { console.error('anthropic_error', resp.status, (await resp.text()).slice(0, 800)); return { ok: false, text: '' } }
+    if (!resp.ok) {
+      const raw = (await resp.text()).slice(0, 800)
+      let type = '', message = ''
+      try { const j = JSON.parse(raw); type = String(j?.error?.type || ''); message = String(j?.error?.message || '') } catch { message = raw }
+      const reason = resp.status === 401 ? 'upstream_auth' : resp.status === 403 ? 'upstream_forbidden' : resp.status === 404 ? 'upstream_model'
+        : resp.status === 429 ? 'upstream_rate' : /credit|billing|balance|purchase/i.test(message) ? 'upstream_billing' : resp.status === 529 ? 'upstream_overloaded' : 'upstream_error'
+      lastUpstream = { at: new Date().toISOString(), status: resp.status, type, message: message.slice(0, 300), reason }
+      console.error('anthropic_error', resp.status, type, message.slice(0, 300))
+      return { ok: false, text: '', reason }
+    }
     const data = await resp.json()
     const text = (data?.content || []).filter((c: any) => c.type === 'text').map((c: any) => c.text).join('\n').trim()
     if (data?.stop_reason === 'refusal') { console.error('anthropic_refusal', JSON.stringify(data?.stop_details || {})); return { ok: false, text: '' } }
     return { ok: true, text, stop: data?.stop_reason }
   } catch (e) {
     console.error('tutor_exception', String(e))
-    return { ok: false, text: '' }
+    return { ok: false, text: '', reason: 'exception' }
   }
+}
+
+async function callerIsAdmin(req: Request): Promise<boolean> {
+  try {
+    const authHeader = req.headers.get('Authorization') || ''
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY || !authHeader.startsWith('Bearer ')) return false
+    const c = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { global: { headers: { Authorization: authHeader } }, auth: { persistSession: false } })
+    const { data } = await c.rpc('is_admin')
+    return data === true
+  } catch { return false }
 }
 
 // Chat / brief → { reply }
 async function callClaude(system: string, messages: { role: string; content: string }[], max_tokens: number): Promise<Response> {
   const r = await anthropic({ model: MODEL, max_tokens, system, messages })
-  if (!r.ok) return json({ error: 'upstream_error' }, 502)
+  if (!r.ok) return json({ error: r.reason || 'upstream_error' }, 502)
   return json({ reply: r.text || '(no response)' })
 }
 
@@ -215,7 +242,7 @@ async function translate(t: any): Promise<Response> {
     messages: [{ role: 'user', content: JSON.stringify(input) }],
     output_config: { effort: 'medium', format: { type: 'json_schema', schema: SCHEMAS[part] } },
   })
-  if (!r.ok || r.stop === 'max_tokens') return json({ error: 'upstream_error' }, 502)
+  if (!r.ok || r.stop === 'max_tokens') return json({ error: r.reason || 'upstream_error' }, 502)
   let out: any
   try { out = JSON.parse(r.text) } catch { console.error('translate_bad_json', r.text.slice(0, 200)); return json({ error: 'bad_output' }, 502) }
   const toObj = (arr: any) => Object.fromEntries((Array.isArray(arr) ? arr : []).map((x: any) => [String(x?.letter || ''), String(x?.text || '')]).filter(([k]) => k))
