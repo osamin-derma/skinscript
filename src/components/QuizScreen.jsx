@@ -3,6 +3,7 @@ import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
 import * as userdata from '../lib/userdata'
+import { TranslateSelect, useTranslation, TranslatedText, TranslationStatus, getTranslateLang } from './Translation'
 
 // Accurate char offset of a selection boundary within `root`, robust to
 // repeated words and existing <mark> spans (unlike indexOf).
@@ -30,6 +31,10 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
   // Related questions (same subtopic) — only in single-question review, never mid-quiz
   const related = useMemo(() => (mode === 'review' && q) ? questions.filter((x) => x.subtopic === q.subtopic && x.pdf_id !== q.pdf_id).slice(0, 5) : [], [mode, q, questions])
+
+  // Translation (Arabic / Russian) — persisted choice; hidden until the tutor function is configured
+  const [lang, setLang] = useState(() => getTranslateLang())
+  const trq = useTranslation(q, lang, 'question')
 
   const [selected, setSelected] = useState(null)
   const [confidence, setConfidence] = useState(null) // 'guessed' | 'unsure' | 'sure'
@@ -254,6 +259,8 @@ export default function QuizScreen({ state, questions, dispatch }) {
               </button>
             )}
 
+            <TranslateSelect lang={lang} onChange={setLang} darkMode={darkMode} />
+
             {/* Highlighter toggle */}
             <button
               onClick={() => setHighlightMode(prev => !prev)}
@@ -361,6 +368,9 @@ export default function QuizScreen({ state, questions, dispatch }) {
             >
               {renderHighlightedStem(q.question)}
             </p>
+            {lang && (trq.status === 'done' && trq.tr?.question
+              ? <p className="text-base leading-relaxed mb-6 -mt-3 text-gray-700 dark:text-gray-300"><TranslatedText text={trq.tr.question} lang={lang} /></p>
+              : <div className="mb-4 -mt-3"><TranslationStatus status={trq.status} code={trq.code} lang={lang} onRetry={trq.retry} darkMode={darkMode} /></div>)}
             {highlightMode && (
               <p className="text-[10px] uppercase tracking-wider text-yellow-700 dark:text-yellow-300 mb-3">
                 Highlighter ON — select any text in the question above to highlight it
@@ -391,8 +401,9 @@ export default function QuizScreen({ state, questions, dispatch }) {
                         }`}>
                           {getChoiceIcon(letter) || letter}
                         </span>
-                        <span className={`text-sm leading-relaxed pt-0.5 ${isStruck && !isSubmitted ? 'line-through decoration-2' : ''}`}>
+                        <span className={`text-sm leading-relaxed pt-0.5 flex-1 min-w-0 ${isStruck && !isSubmitted ? 'line-through decoration-2' : ''}`}>
                           {q.choices[letter]}
+                          {lang && trq.tr?.choices?.[letter] && <TranslatedText text={trq.tr.choices[letter]} lang={lang} className="mt-0.5 text-gray-600 dark:text-gray-300" />}
                         </span>
                       </button>
 
@@ -498,6 +509,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             note={state.notes?.[q.pdf_id] || ''}
             onNote={(text) => dispatch({ type: 'SET_NOTE', pdfId: q.pdf_id, text })}
             alreadyCarded={cardedPdfIds.has(q.pdf_id)}
+            lang={lang}
             peerStats={state.peerStats?.[q.pdf_id]}
             mistake={state.mistakes?.[q.pdf_id]}
             onMistake={(pid, reason, note) => dispatch({ type: 'SET_MISTAKE', pdfId: pid, reason, note })}

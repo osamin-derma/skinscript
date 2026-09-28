@@ -3,7 +3,8 @@ import { CheckCircle, XCircle, StickyNote, Layers, Check } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 import TutorPanel from './TutorPanel'
 import { PeerStats, MistakeTagger, ReportQuestion, RelatedQuestions } from './QuestionExtras'
-import EvidencePanel from './EvidencePanel'
+import { useTranslation, TranslationStatus } from './Translation'
+import { LANGS } from '../lib/translate'
 
 /**
  * ExplanationPanel — renders the answer/explanation block in the layout
@@ -30,8 +31,9 @@ import EvidencePanel from './EvidencePanel'
  * On top we keep a small Correct/Incorrect chip so the student knows their
  * result without searching for it.
  */
-export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard, alreadyCarded, peerStats, mistake, onMistake, onReport, related, onOpenQuestion }) {
+export default function ExplanationPanel({ question, answer, darkMode, note, onNote, onAddCard, alreadyCarded, peerStats, mistake, onMistake, onReport, related, onOpenQuestion, lang = '' }) {
   const isCorrect = answer?.correct
+  const tre = useTranslation(question, lang, 'explanation')
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const teal = '#2c3e3f'
 
@@ -146,6 +148,27 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
           </>
         )}
 
+        {/* Translated explanation (Arabic / Russian), when a language is selected */}
+        {lang && LANGS[lang] && (
+          <div className="mb-4">
+            {tre.status === 'done' && tre.tr ? (
+              <div lang={lang} dir={LANGS[lang].dir} className={`rounded-lg border p-3 ${darkMode ? 'border-gray-700 bg-gray-900/40' : 'border-gray-200 bg-gray-50'} ${LANGS[lang].dir === 'rtl' ? 'text-right' : ''}`}>
+                <p className="text-sm font-bold mb-2" style={{ color: darkMode ? '#7fb5b5' : teal }}>{LANGS[lang].explanationTitle}</p>
+                {tre.tr.correct_answer_text && <p className="text-[15px] mb-2 text-gray-900 dark:text-gray-100"><span className="font-bold">{LANGS[lang].correctLabel}:</span> {tre.tr.correct_answer_text}</p>}
+                {tre.tr.explanation && <p className="text-[15px] leading-relaxed whitespace-pre-line mb-2 text-gray-800 dark:text-gray-200">{tre.tr.explanation}</p>}
+                {tre.tr.incorrect_rationales && Object.keys(tre.tr.incorrect_rationales).length > 0 && (
+                  <>
+                    <p className="text-[15px] font-bold mb-1 text-gray-900 dark:text-gray-100">{LANGS[lang].wrongLabel}:</p>
+                    {Object.keys(tre.tr.incorrect_rationales).sort().map((l) => (
+                      <p key={l} className="text-[15px] leading-relaxed text-gray-800 dark:text-gray-200"><span className="font-bold">{l}.</span> {tre.tr.incorrect_rationales[l]}</p>
+                    ))}
+                  </>
+                )}
+              </div>
+            ) : <TranslationStatus status={tre.status} code={tre.code} lang={lang} onRetry={tre.retry} darkMode={darkMode} />}
+          </div>
+        )}
+
         {/* References footer */}
         {question.source && (
           <>
@@ -156,9 +179,6 @@ export default function ExplanationPanel({ question, answer, darkMode, note, onN
             </p>
           </>
         )}
-
-        {/* PubMed evidence + external searches for the correct answer */}
-        <EvidencePanel question={question} answerText={correctText} darkMode={darkMode} />
 
         {/* Discrepancy + Bolognia (kept for backward compat with older fields) */}
         {question.discrepancy && (
