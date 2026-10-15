@@ -35,13 +35,13 @@ const isOffline = () => typeof navigator !== 'undefined' && navigator.onLine ===
 // student can have far more used / scheduled questions than that — one had
 // 1,349 and the landing page showed exactly 1,000. Page through by primary
 // key until a short page comes back, so nothing is ever silently truncated.
-async function selectAll(table, columns, orderBy) {
+async function selectAll(table, columns, orderBy, liveOnly = false) {
   const PAGE = 1000
   const rows = []
   for (let from = 0; ; from += PAGE) {
-    const { data, error } = await supabase.from(table).select(columns)
-      .order(orderBy, { ascending: true })
-      .range(from, from + PAGE - 1)
+    let q = supabase.from(table).select(columns).order(orderBy, { ascending: true }).range(from, from + PAGE - 1)
+    if (liveOnly) q = q.is('deleted_at', null) // soft-deleted rows stay in the DB, hidden here
+    const { data, error } = await q
     if (error) return { data: rows, error }
     rows.push(...(data || []))
     if (!data || data.length < PAGE) break
@@ -61,12 +61,12 @@ export async function fetchAllUserData() {
       .select('*')
       .order('taken_at', { ascending: false })
       .limit(100),
-    selectAll('user_notes', 'pdf_id, note', 'pdf_id'),
-    selectAll('user_highlights', 'pdf_id, ranges', 'pdf_id'),
+    selectAll('user_notes', 'pdf_id, note', 'pdf_id', true),
+    selectAll('user_highlights', 'pdf_id, ranges', 'pdf_id', true),
     selectAll('user_review_schedule', 'pdf_id, box, interval_days, due_at, reps, last_grade', 'pdf_id'),
-    selectAll('user_flashcards', 'id, pdf_id, front, back, box, interval_days, due_at, reps', 'id'),
+    selectAll('user_flashcards', 'id, pdf_id, front, back, box, interval_days, due_at, reps', 'id', true),
     supabase.from('user_settings').select('exam_date, daily_goal, leaderboard_opt_in, display_name').maybeSingle(),
-    selectAll('user_mistakes', 'pdf_id, reason, note, at', 'pdf_id'),
+    selectAll('user_mistakes', 'pdf_id, reason, note, at', 'pdf_id', true),
   ])
 
   warn('fetch flags',      flagsRes.error)
@@ -135,27 +135,29 @@ function rowToHistoryEntry(r) {
 // Each performs the Supabase write and RETURNS the error (or null). They are
 // the single source of truth for the write, used both for live writes and for
 // replaying the offline outbox — so they MUST be idempotent.
+//
+// Student-authored content (notes / highlights / flashcards / mistakes) is never
+// hard-deleted: the DB revokes DELETE on those tables (migration 17) after a sync
+// bug erased rows. Removal sets deleted_at; re-adding clears it.
+const softDelete = async (table, userId, match) => {
+  const { error } = await supabase.from(table).update({ deleted_at: new Date().toISOString() }).eq('user_id', userId).match(match)
+  return error
+}
 
 const EXECUTORS = {
   async saveNote(pdfId, note) {
     const userId = await uid(); if (!userId) return null
     const text = (note || '').trim()
-    if (!text) {
-      const { error } = await supabase.from('user_notes').delete().eq('user_id', userId).eq('pdf_id', pdfId)
-      return error
-    }
+    if (!text) return softDelete('user_notes', userId, { pdf_id: pdfId })
     const { error } = await supabase.from('user_notes')
-      .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId, note: text, updated_at: new Date().toISOString(), deleted_at: null }, { onConflict: 'user_id,pdf_id' })
     return error
   },
   async saveHighlights(pdfId, ranges) {
     const userId = await uid(); if (!userId) return null
-    if (!Array.isArray(ranges) || ranges.length === 0) {
-      const { error } = await supabase.from('user_highlights').delete().eq('user_id', userId).eq('pdf_id', pdfId)
-      return error
-    }
+    if (!Array.isArray(ranges) || ranges.length === 0) return softDelete('user_highlights', userId, { pdf_id: pdfId })
     const { error } = await supabase.from('user_highlights')
-      .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId, ranges, updated_at: new Date().toISOString(), deleted_at: null }, { onConflict: 'user_id,pdf_id' })
     return error
   },
   async saveScheduleEntry(pdfId, entry) {
@@ -175,14 +177,13 @@ const EXECUTORS = {
         id: card.id, user_id: userId, pdf_id: card.pdf_id || null,
         front: card.front, back: card.back,
         box: card.box, interval_days: card.interval, due_at: card.due, reps: card.reps,
-        updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(), deleted_at: null,
       }, { onConflict: 'user_id,id' })
     return error
   },
   async deleteFlashcard(id) {
     const userId = await uid(); if (!userId) return null
-    const { error } = await supabase.from('user_flashcards').delete().eq('user_id', userId).eq('id', id)
-    return error
+    return softDelete('user_flashcards', userId, { id })
   },
   // used / wrong / flags are keyed on the stable pdf_id (text). A non-string
   // id is a legacy numeric op from a pre-migration outbox — drop it (return
@@ -233,14 +234,13 @@ const EXECUTORS = {
     if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
     const { error } = await supabase.from('user_mistakes')
-      .upsert({ user_id: userId, pdf_id: pdfId, reason, note: note || null, at: new Date().toISOString() }, { onConflict: 'user_id,pdf_id' })
+      .upsert({ user_id: userId, pdf_id: pdfId, reason, note: note || null, at: new Date().toISOString(), deleted_at: null }, { onConflict: 'user_id,pdf_id' })
     return error
   },
   async deleteMistake(pdfId) {
     if (typeof pdfId !== 'string' || !pdfId) return null
     const userId = await uid(); if (!userId) return null
-    const { error } = await supabase.from('user_mistakes').delete().eq('user_id', userId).eq('pdf_id', pdfId)
-    return error
+    return softDelete('user_mistakes', userId, { pdf_id: pdfId })
   },
   async reportQuestion(id, pdfId, reason, comment) {
     const userId = await uid(); if (!userId) return null
@@ -438,14 +438,18 @@ export async function clearEverything() {
   await localdb.clearSnapshot(userId)
   const histRes = await supabase.from('quiz_history').delete().eq('user_id', userId)
   if (histRes.error) console.error('[userdata] history delete failed:', histRes.error)
-  const notesRes = await supabase.from('user_notes').delete().eq('user_id', userId)
-  if (notesRes.error) console.error('[userdata] notes delete failed:', notesRes.error)
-  const hlRes = await supabase.from('user_highlights').delete().eq('user_id', userId)
-  if (hlRes.error) console.error('[userdata] highlights delete failed:', hlRes.error)
+  // Content tables are soft-deleted (DELETE is revoked for the app role).
+  const now = new Date().toISOString()
+  const notesRes = await supabase.from('user_notes').update({ deleted_at: now }).eq('user_id', userId).is('deleted_at', null)
+  if (notesRes.error) console.error('[userdata] notes clear failed:', notesRes.error)
+  const hlRes = await supabase.from('user_highlights').update({ deleted_at: now }).eq('user_id', userId).is('deleted_at', null)
+  if (hlRes.error) console.error('[userdata] highlights clear failed:', hlRes.error)
+  const misRes = await supabase.from('user_mistakes').update({ deleted_at: now }).eq('user_id', userId).is('deleted_at', null)
+  if (misRes.error) console.error('[userdata] mistakes clear failed:', misRes.error)
   const schedRes = await supabase.from('user_review_schedule').delete().eq('user_id', userId)
   if (schedRes.error) console.error('[userdata] schedule delete failed:', schedRes.error)
-  const fcRes = await supabase.from('user_flashcards').delete().eq('user_id', userId)
-  if (fcRes.error) console.error('[userdata] flashcards delete failed:', fcRes.error)
+  const fcRes = await supabase.from('user_flashcards').update({ deleted_at: now }).eq('user_id', userId).is('deleted_at', null)
+  if (fcRes.error) console.error('[userdata] flashcards clear failed:', fcRes.error)
   const progressOk = await clearProgress()
   return !histRes.error && !notesRes.error && !hlRes.error && !schedRes.error && !fcRes.error && progressOk
 }

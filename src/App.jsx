@@ -122,6 +122,10 @@ const CATEGORY_FILTER_KEY = `skinscript-${APP_VERSION}-category-filter`
 // each bump, we show a welcome notice and reset *all* prior app data
 // — cleaner than trying to partially migrate references that may be
 // stale.  Bump this string in lockstep with content changes.
+// Tombstone helpers: record / forget an explicit removal awaiting cloud sync.
+const tomb = (t, kind, id) => ({ ...t, [kind]: (t?.[kind] || []).includes(id) ? t[kind] : [...(t?.[kind] || []), id] })
+const untomb = (t, kind, id) => (t?.[kind]?.includes(id) ? { ...t, [kind]: t[kind].filter((x) => x !== id) } : t)
+
 const DATA_VERSION = '2026-05-19-master2026'
 const DATA_VERSION_KEY = 'skinscript-data-version'
 
@@ -178,6 +182,10 @@ const initialState = {
   globalWrong: [],
   globalUsed: [],
   notes: {}, // { [pdf_id]: text } — personal note per question
+  // Explicit removals waiting to be synced. Cloud deletions ONLY come from here
+  // (a user action) — never from diffing state, which erased content when a
+  // device held a stale copy (Oct 2026 incident).
+  tombstones: { notes: [], highlights: [], flashcards: [], mistakes: [] },
   highlights: {}, // { [pdf_id]: [{start,end}] } — text highlights per question
   schedule: {}, // { [pdf_id]: { box, interval, due, reps } } — spaced-repetition
   flashcards: {}, // { [id]: { id, pdf_id, front, back, box, interval, due, reps } }
@@ -224,9 +232,10 @@ function reducer(state, action) {
     case 'SET_SETTINGS':
       return { ...state, settings: { ...state.settings, ...action.patch } }
     case 'SET_MISTAKE':
-      return { ...state, mistakes: { ...state.mistakes, [action.pdfId]: { reason: action.reason, note: action.note || '', at: new Date().toISOString() } } }
+      return { ...state, mistakes: { ...state.mistakes, [action.pdfId]: { reason: action.reason, note: action.note || '', at: new Date().toISOString() } }, tombstones: untomb(state.tombstones, 'mistakes', action.pdfId) }
     case 'CLEAR_MISTAKE': {
-      const mistakes = { ...state.mistakes }; delete mistakes[action.pdfId]; return { ...state, mistakes }
+      const mistakes = { ...state.mistakes }; const had = !!mistakes[action.pdfId]; delete mistakes[action.pdfId]
+      return { ...state, mistakes, tombstones: had ? tomb(state.tombstones, 'mistakes', action.pdfId) : state.tombstones }
     }
     case 'SET_PEER_STATS':
       return { ...state, peerStats: action.stats || {} }
@@ -243,7 +252,12 @@ function reducer(state, action) {
     case 'DELETE_FLASHCARD': {
       const flashcards = { ...state.flashcards }
       delete flashcards[action.id]
-      return { ...state, flashcards }
+      return { ...state, flashcards, tombstones: tomb(state.tombstones, 'flashcards', action.id) }
+    }
+    case 'CLEAR_TOMBSTONES': {
+      const t = { ...state.tombstones }
+      for (const [kind, ids] of Object.entries(action.done || {})) t[kind] = (t[kind] || []).filter((id) => !ids.includes(id))
+      return { ...state, tombstones: t }
     }
     case 'REVIEW_FLASHCARD': {
       const c = state.flashcards[action.id]
@@ -263,15 +277,17 @@ function reducer(state, action) {
     }
     case 'SET_NOTE': {
       const notes = { ...state.notes }
-      if ((action.text || '').trim()) notes[action.pdfId] = action.text
-      else delete notes[action.pdfId]
-      return { ...state, notes }
+      const had = !!notes[action.pdfId]
+      if ((action.text || '').trim()) { notes[action.pdfId] = action.text; return { ...state, notes, tombstones: untomb(state.tombstones, 'notes', action.pdfId) } }
+      delete notes[action.pdfId]
+      return { ...state, notes, tombstones: had ? tomb(state.tombstones, 'notes', action.pdfId) : state.tombstones }
     }
     case 'SET_HIGHLIGHTS': {
       const highlights = { ...state.highlights }
-      if (Array.isArray(action.ranges) && action.ranges.length) highlights[action.pdfId] = action.ranges
-      else delete highlights[action.pdfId]
-      return { ...state, highlights }
+      const had = !!highlights[action.pdfId]
+      if (Array.isArray(action.ranges) && action.ranges.length) { highlights[action.pdfId] = action.ranges; return { ...state, highlights, tombstones: untomb(state.tombstones, 'highlights', action.pdfId) } }
+      delete highlights[action.pdfId]
+      return { ...state, highlights, tombstones: had ? tomb(state.tombstones, 'highlights', action.pdfId) : state.tombstones }
     }
     case 'SET_BANK': {
       return { ...state, activeBank: action.bank }
@@ -559,6 +575,7 @@ export default function App() {
   // reconnect sync can preserve an in-flight edit).
   const latestNotesRef = useRef({})
   const latestHlRef    = useRef({})
+  const stateRef = useRef(state); stateRef.current = state
 
   // Seed the diff baselines so the watch effects don't re-send a freshly
   // hydrated snapshot back to the cloud.
@@ -701,10 +718,12 @@ export default function App() {
     const prev = prevNotesRef.current || {}
     const curr = latestNotesRef.current || {}
     const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
+    // Upsert-only: a note missing locally is NEVER deleted from the cloud here.
     for (const pid of ids) {
-      if ((prev[pid] || '') !== (curr[pid] || '')) userdata.saveNote(pid, curr[pid] || '')
+      if ((curr[pid] || '') && curr[pid] !== (prev[pid] || '')) userdata.saveNote(pid, curr[pid])
     }
     prevNotesRef.current = { ...curr }
+    flushTombstones()
   }
   useEffect(() => {
     if (!cloudReadyRef.current) return
@@ -719,9 +738,10 @@ export default function App() {
     const curr = latestHlRef.current || {}
     const ids = new Set([...Object.keys(prev), ...Object.keys(curr)])
     for (const pid of ids) {
-      if (JSON.stringify(prev[pid] || []) !== JSON.stringify(curr[pid] || [])) userdata.saveHighlights(pid, curr[pid] || [])
+      if ((curr[pid] || []).length && JSON.stringify(prev[pid] || []) !== JSON.stringify(curr[pid])) userdata.saveHighlights(pid, curr[pid])
     }
     prevHlRef.current = { ...curr }
+    flushTombstones()
   }
   useEffect(() => {
     if (!cloudReadyRef.current) return
@@ -748,9 +768,7 @@ export default function App() {
     for (const id of Object.keys(curr)) {
       if (JSON.stringify(prev[id] || null) !== JSON.stringify(curr[id])) userdata.saveFlashcard(curr[id])
     }
-    for (const id of Object.keys(prev)) {
-      if (!curr[id]) userdata.deleteFlashcard(id)
-    }
+    // Deletions go through tombstones (DELETE_FLASHCARD) — never by absence.
     prevFcRef.current = curr
   }, [state.flashcards])
 
@@ -774,15 +792,35 @@ export default function App() {
     for (const pid of Object.keys(curr)) {
       if (JSON.stringify(prev[pid] || null) !== JSON.stringify(curr[pid])) userdata.saveMistake(pid, curr[pid].reason, curr[pid].note)
     }
-    for (const pid of Object.keys(prev)) if (!curr[pid]) userdata.deleteMistake(pid)
+    // Deletions go through tombstones (CLEAR_MISTAKE) — never by absence.
     prevMistakesRef.current = curr
   }, [state.mistakes])
 
+  // ── Explicit removals → cloud soft-deletes (debounced; skipped if re-added) ──
+  const flushTombstones = () => {
+    if (!cloudReadyRef.current) return
+    const st = stateRef.current
+    const t = st.tombstones || {}
+    const done = {}
+    for (const pid of t.notes || []) { if (!(st.notes || {})[pid]) userdata.saveNote(pid, ''); (done.notes ||= []).push(pid) }
+    for (const pid of t.highlights || []) { if (!(st.highlights || {})[pid]?.length) userdata.saveHighlights(pid, []); (done.highlights ||= []).push(pid) }
+    for (const id of t.flashcards || []) { if (!(st.flashcards || {})[id]) userdata.deleteFlashcard(id); (done.flashcards ||= []).push(id) }
+    for (const pid of t.mistakes || []) { if (!(st.mistakes || {})[pid]) userdata.deleteMistake(pid); (done.mistakes ||= []).push(pid) }
+    if (Object.keys(done).length) dispatch({ type: 'CLEAR_TOMBSTONES', done })
+  }
+  useEffect(() => {
+    if (!cloudReadyRef.current) return
+    const t = state.tombstones || {}
+    if (!Object.values(t).some((a) => a?.length)) return
+    const h = setTimeout(flushTombstones, 700)
+    return () => clearTimeout(h)
+  }, [state.tombstones])
+
   // Don't lose a trailing edit if the page is hidden/closed within the debounce.
   useEffect(() => {
-    const onHide = () => { if (document.visibilityState === 'hidden') { flushNotes(); flushHighlights() } }
+    const onHide = () => { if (document.visibilityState === 'hidden') { flushNotes(); flushHighlights(); flushTombstones() } }
     document.addEventListener('visibilitychange', onHide)
-    const onPageHide = () => { flushNotes(); flushHighlights() }
+    const onPageHide = () => { flushNotes(); flushHighlights(); flushTombstones() }
     window.addEventListener('pagehide', onPageHide)
     return () => {
       document.removeEventListener('visibilitychange', onHide)
@@ -877,15 +915,10 @@ export default function App() {
       dispatch({ type: 'INIT' })
       return
     }
-    // Genuine OLD->NEW data-version migration with prior local data:
-    // 1) Clear cloud progress FIRST (localStorage-only wipes don't survive the
-    //    next load — the cloud layer would re-populate stale rows).
-    try {
-      await userdata.clearEverything()
-    } catch (e) {
-      console.warn('[reset] cloud clear failed', e)
-    }
-    // 2) Wipe local caches.
+    // Genuine OLD->NEW data-version migration with prior local data: only the
+    // DEVICE caches are cleared. Cloud progress is keyed on stable pdf_ids and
+    // survives bank updates, so it is never wiped from here (a "Reset ALL" is
+    // an explicit, separate action on the Start screen).
     wipeAllAppData()
     localStorage.setItem(DATA_VERSION_KEY, DATA_VERSION)
     setShowWelcome(false)
@@ -1003,11 +1036,9 @@ export default function App() {
                     🔄 Fresh start
                   </p>
                   <p className="text-xs leading-relaxed text-gray-700 dark:text-gray-300">
-                    The question bank was rebuilt, so question IDs and explanations have changed.
-                    Your previous <strong>quiz history</strong>, <strong>flags</strong>, and{' '}
-                    <strong>wrong/used tracking</strong> would point at stale entries — we'd rather
-                    reset cleanly than partially migrate. Tapping <em>Start Fresh</em> clears
-                    everything stored on this device and starts you with a clean slate.
+                    The question bank was updated. Your <strong>quiz history</strong>, <strong>flags</strong>,{' '}
+                    <strong>notes</strong>, <strong>flashcards</strong> and <strong>progress</strong> are safe in
+                    your account — tapping <em>Continue</em> only refreshes this device's cache.
                   </p>
                 </>
               ) : (
@@ -1016,9 +1047,8 @@ export default function App() {
                     👋 First-time setup
                   </p>
                   <p className="text-xs leading-relaxed text-gray-700 dark:text-gray-300">
-                    Your progress (history, flagged questions, wrong-answer tracking) is saved
-                    only on this device. Each time we update the question bank, we'll show this
-                    notice again and reset to a clean slate so nothing references stale data.
+                    Your progress, notes, highlights and flashcards are saved to your account and
+                    sync across your devices. Nothing is reset when the question bank is updated.
                   </p>
                 </>
               )}
@@ -1029,7 +1059,7 @@ export default function App() {
               className="w-full py-3 rounded-xl text-white font-bold text-base transition hover:opacity-90 shadow"
               style={{ backgroundColor: '#2c3e3f' }}
             >
-              {hadPriorData ? 'Start Fresh' : 'Get Started'}
+              {hadPriorData ? 'Continue' : 'Get Started'}
             </button>
 
             <p className="text-[10px] text-center text-gray-400 mt-3">
