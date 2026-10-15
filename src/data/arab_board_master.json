@@ -1,5 +1,2230 @@
 [
   {
+    "pdf_id": "AB-May2026-001-1282",
+    "pdf_num": 1282,
+    "question": "The Causative agent of Erythrasma is",
+    "choices": {
+      "A": "Corynebacterium acne",
+      "B": "Corynebacterium minitissimum",
+      "C": "Kytoccus Sidanterius",
+      "D": "Pseudomonas"
+    },
+    "correct_answer": "B",
+    "correct_text": "Corynebacterium minitissimum",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1282
+  },
+  {
+    "pdf_id": "AB-May2026-002-1283",
+    "pdf_num": 1283,
+    "question": "Which of the following porphyrias is characterized by cutaneous symptoms but never presents with acute attack?",
+    "choices": {
+      "A": "AIP",
+      "B": "PCT",
+      "C": "VP",
+      "D": "HCP"
+    },
+    "correct_answer": "B",
+    "correct_text": "PCT",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1283
+  },
+  {
+    "pdf_id": "AB-May2026-003-1284",
+    "pdf_num": 1284,
+    "question": "Which phase of the cell cycle are most epidermal cells occupied in?",
+    "choices": {
+      "A": "G1 phase",
+      "B": "S phase",
+      "C": "G2 phase",
+      "D": "M phase"
+    },
+    "correct_answer": "A",
+    "correct_text": "G1 phase",
+    "explanation": "(Longest Phase of cell cycle)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1284
+  },
+  {
+    "pdf_id": "AB-May2026-004-1285",
+    "pdf_num": 1285,
+    "question": "Typical Substrate For IIF in case of pemphigus vulgars is.",
+    "choices": {
+      "A": "Rat bladder",
+      "B": "Monkey Esophagus",
+      "C": "Guiana pig esophagus",
+      "D": "Salt-split skin"
+    },
+    "correct_answer": "B",
+    "correct_text": "Monkey esophagus",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1285
+  },
+  {
+    "pdf_id": "AB-May2026-005-1286",
+    "pdf_num": 1286,
+    "question": "Which of the following is most potent anaphylatoxin?",
+    "choices": {
+      "A": "C3a",
+      "B": "C3b",
+      "C": "C5a",
+      "D": "C5b"
+    },
+    "correct_answer": "C",
+    "correct_text": "C5a",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1286
+  },
+  {
+    "pdf_id": "AB-May2026-006-1287",
+    "pdf_num": 1287,
+    "question": "Which interleukin help in keratinocyte migration?",
+    "choices": {
+      "A": "IL-1 a",
+      "B": "IL-1 B",
+      "C": "IL-17A",
+      "D": "IL-1 a Receptor"
+    },
+    "correct_answer": "A",
+    "correct_text": "IL-1 a",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1287
+  },
+  {
+    "pdf_id": "AB-May2026-007-1288",
+    "pdf_num": 1288,
+    "question": "At which level of hair follicle does the internal root sheath disperse and end?",
+    "choices": {
+      "A": "Infundibulum",
+      "B": "Epidermal surface",
+      "C": "Bulge region",
+      "D": "Bulb"
+    },
+    "correct_answer": "C",
+    "correct_text": "Bulge Region",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1288
+  },
+  {
+    "pdf_id": "AB-May2026-008-1289",
+    "pdf_num": 1289,
+    "question": "Which of the following layer is additional layer in palms & soles",
+    "choices": {
+      "A": "Stratum Corneum",
+      "B": "Stratum lucidum",
+      "C": "Stratum Granelosum",
+      "D": "Stratum spinosum"
+    },
+    "correct_answer": "B",
+    "correct_text": "Stratum lucidum",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1289
+  },
+  {
+    "pdf_id": "AB-May2026-009-1290",
+    "pdf_num": 1290,
+    "question": "Least likely Interleukin to be produced by keratinocyte is",
+    "choices": {
+      "A": "IL-1",
+      "B": "IL-2",
+      "C": "IL-6",
+      "D": "IL-8"
+    },
+    "correct_answer": "B",
+    "correct_text": "IL-2",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1290
+  },
+  {
+    "pdf_id": "AB-May2026-010-1291",
+    "pdf_num": 1291,
+    "question": "The scar strength at 1 year is",
+    "choices": {
+      "A": "25%",
+      "B": "5%",
+      "C": "70-80%",
+      "D": "100%"
+    },
+    "correct_answer": "C",
+    "correct_text": "70-80%",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Surgery",
+    "format": "mcq",
+    "id": 1291
+  },
+  {
+    "pdf_id": "AB-May2026-011-1292",
+    "pdf_num": 1292,
+    "question": "Which UV ray has deepest penetration in skin?",
+    "choices": {
+      "A": "UVC",
+      "B": "UVB",
+      "C": "UVA",
+      "D": "Visible light"
+    },
+    "correct_answer": "C",
+    "correct_text": "UVA",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1292
+  },
+  {
+    "pdf_id": "AB-May2026-012-1293",
+    "pdf_num": 1293,
+    "question": "Which of the following medications is a well-recognized cause of drug-induced systemic lupus erythematosus with positive ANCA and negative anti-histone?",
+    "choices": {
+      "A": "MTX",
+      "B": "Minocycline",
+      "C": "Statin",
+      "D": "Hydroxyurea"
+    },
+    "correct_answer": "B",
+    "correct_text": "Minocycline",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1293
+  },
+  {
+    "pdf_id": "AB-May2026-013-1294",
+    "pdf_num": 1294,
+    "question": "Which stain is used to identify Leishmania amastigotes in a tissue section?",
+    "choices": {
+      "A": "PAS stain",
+      "B": "Giemsa Stain",
+      "C": "Alcian Blue",
+      "D": "Ziehl Nelson"
+    },
+    "correct_answer": "B",
+    "correct_text": "Giemsa stain",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1294
+  },
+  {
+    "pdf_id": "AB-May2026-014-1295",
+    "pdf_num": 1295,
+    "question": "Fluid accumulation by epithelial cell due to cell rupture & death is",
+    "choices": {
+      "A": "Apoptosis",
+      "B": "Cyclosis",
+      "C": "Acantholysis",
+      "D": "Spongiosis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Cytolysis",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1295
+  },
+  {
+    "pdf_id": "AB-May2026-015-1296",
+    "pdf_num": 1296,
+    "question": "Which of the following describes the secretion mechanism and innervation of the majority of eccrine sweat glands?",
+    "choices": {
+      "A": "Merocrine Cholinergic",
+      "B": "Holocrine adrenergic",
+      "C": "Holocrine Cholinergic",
+      "D": "Merocrine Adrenergic"
+    },
+    "correct_answer": "A",
+    "correct_text": "Merocrine Cholinergic",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1296
+  },
+  {
+    "pdf_id": "AB-May2026-016-1297",
+    "pdf_num": 1297,
+    "question": "Most common type of collagen in papillary dermis",
+    "choices": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "correct_answer": "C",
+    "correct_text": "III",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1297
+  },
+  {
+    "pdf_id": "AB-May2026-017-1298",
+    "pdf_num": 1298,
+    "question": "Which of the following antihistamine has least sedative",
+    "choices": {
+      "A": "Cetirizine",
+      "B": "Fexofenadine",
+      "C": "Hydroxyzine",
+      "D": "Diphenhydramine"
+    },
+    "correct_answer": "B",
+    "correct_text": "Fexofenadine",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1298
+  },
+  {
+    "pdf_id": "AB-May2026-018-1299",
+    "pdf_num": 1299,
+    "question": "Component of DEJ appear in",
+    "choices": {
+      "A": "6 weeks EGA",
+      "B": "8 weeks EGA",
+      "C": "12 weeks EGA",
+      "D": "16 weeks EGA"
+    },
+    "correct_answer": "B",
+    "correct_text": "8 weeks EGA",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1299
+  },
+  {
+    "pdf_id": "AB-May2026-019-1300",
+    "pdf_num": 1300,
+    "question": "Eccrine glands are absent in",
+    "choices": {
+      "A": "Lips",
+      "B": "Axilla",
+      "C": "Forehead",
+      "D": "Palms"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lips",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1300
+  },
+  {
+    "pdf_id": "AB-May2026-020-1301",
+    "pdf_num": 1301,
+    "question": "In which anatomical location are Krause end bulbs most highly concentrated?",
+    "choices": {
+      "A": "Palm",
+      "B": "Vermillion lip, Glans & Clitoris",
+      "C": "Fingertip",
+      "D": "Around HF"
+    },
+    "correct_answer": "B",
+    "correct_text": "Vermillion lip, Glans & Clitoris",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1301
+  },
+  {
+    "pdf_id": "AB-May2026-021-1302",
+    "pdf_num": 1302,
+    "question": "Patient on Warfarin & received terbinafine for Rx of tinea corporis, Which interaction is correct",
+    "choices": {
+      "A": "Terbinafine increase warfarin effect so bleeding tendency",
+      "B": "Terbinafine Decrease warfarin effect",
+      "C": "No interaction occurs"
+    },
+    "correct_answer": "A",
+    "correct_text": "Terbinafine increase warfarin effect so bleeding tendency",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1302
+  },
+  {
+    "pdf_id": "AB-May2026-022-1303",
+    "pdf_num": 1303,
+    "question": "The most appropriate Rx for MTX toxicity due to daily use with BM suppression",
+    "choices": {
+      "A": "Give emergency Folinic acid",
+      "B": "Give steroid",
+      "C": "Stop MTX & Give Folic Acid"
+    },
+    "correct_answer": "A",
+    "correct_text": "Give emergency Folinic acid",
+    "explanation": "(Leucovorin)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1303
+  },
+  {
+    "pdf_id": "AB-May2026-023-1304",
+    "pdf_num": 1304,
+    "question": "A patient with Dermatitis herpetiformis is started on Dapsone and subsequently develops dark urine and fatigue. Which of the following should be checked first to screen?",
+    "choices": {
+      "A": "G6PD",
+      "B": "Hemoglobin level",
+      "C": "Reticulocyte count",
+      "D": "Liver function"
+    },
+    "correct_answer": "A",
+    "correct_text": "G6PD",
+    "explanation": "Sign of hemolytic anemia G6PD (Pre – Rx Test) Both Hg level & Retic Count should be checks",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1304
+  },
+  {
+    "pdf_id": "AB-May2026-024-1305",
+    "pdf_num": 1305,
+    "question": "Buccal ulcer with white streaks are associated with",
+    "choices": {
+      "A": "HIV",
+      "B": "HCV",
+      "C": "Group A Streptococcus",
+      "D": "EBV"
+    },
+    "correct_answer": "B",
+    "correct_text": "HCV",
+    "explanation": "(Oral Erosive Lichen planus)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1305
+  },
+  {
+    "pdf_id": "AB-May2026-025-1306",
+    "pdf_num": 1306,
+    "question": "Cuff sign is hallmark clinical finding in which of the following conditions?",
+    "choices": {
+      "A": "Lipedema",
+      "B": "Lymphedema",
+      "C": "Vascular stasis",
+      "D": "Lipohypertrophy"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lipedema",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1306
+  },
+  {
+    "pdf_id": "AB-May2026-026-1307",
+    "pdf_num": 1307,
+    "question": "Poikiloderma changes without atrophy on lateral thigh occur in",
+    "choices": {
+      "A": "Sarcoidosis",
+      "B": "Lupus erythematosus",
+      "C": "Dermatomyositis",
+      "D": "MF"
+    },
+    "correct_answer": "C",
+    "correct_text": "Dermatomyositis",
+    "explanation": "(Holster sign)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1307
+  },
+  {
+    "pdf_id": "AB-May2026-027-1308",
+    "pdf_num": 1308,
+    "question": "Patient on cyclosporin, what should be monitored regularly?",
+    "choices": {
+      "A": "BP",
+      "B": "Liver transaminases",
+      "C": "G6PD",
+      "D": "Lipid profile"
+    },
+    "correct_answer": "A",
+    "correct_text": "BP",
+    "explanation": "(Regular Monitoring)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1308
+  },
+  {
+    "pdf_id": "AB-May2026-028-1309",
+    "pdf_num": 1309,
+    "question": "Ornithine decarboxylase has a role in",
+    "choices": {
+      "A": "Proliferative Activity",
+      "B": "Differentiation",
+      "C": "Apoptosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Proliferative activity",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1309
+  },
+  {
+    "pdf_id": "AB-May2026-029-1310",
+    "pdf_num": 1310,
+    "question": "Parakeratosis is a characteristic histological feature of many inflammatory skin diseases, but it is not typically seen in",
+    "choices": {
+      "A": "Seborrhic eczema",
+      "B": "Lichen plautus",
+      "C": "Subacute eczema",
+      "D": "Pityriasis roses"
+    },
+    "correct_answer": "B",
+    "correct_text": "Lichen planus",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1310
+  },
+  {
+    "pdf_id": "AB-May2026-030-1311",
+    "pdf_num": 1311,
+    "question": "Which of the following is Deficient in Hereditary angioedema",
+    "choices": {
+      "A": "C1 inhibitor",
+      "B": "C4",
+      "C": "C3",
+      "D": "C5"
+    },
+    "correct_answer": "A",
+    "correct_text": "C1 inhibitor",
+    "explanation": "(NB. None of the answers given is universally correct. Screening test for HAE is C4 (Low in type I & II) - C1 inhibitor may be normal in type II & Both are normal in HAE III)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1311
+  },
+  {
+    "pdf_id": "AB-May2026-031-1312",
+    "pdf_num": 1312,
+    "question": "Before initiating treatment with Adalimumab, which of the following screening tests is mandatory to rule out latent infection?",
+    "choices": {
+      "A": "ANA",
+      "B": "IGRA",
+      "C": "HCV antibodies",
+      "D": "Uric Acid"
+    },
+    "correct_answer": "B",
+    "correct_text": "IGRA",
+    "explanation": "(Interferon-Gamma Release Assay)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1312
+  },
+  {
+    "pdf_id": "AB-May2026-032-1313",
+    "pdf_num": 1313,
+    "question": "The renewal time (total turnover time) of the normal epidermis is estimated to be approximately",
+    "choices": {
+      "A": "21 days",
+      "B": "40 days",
+      "C": "5 days",
+      "D": "14 days"
+    },
+    "correct_answer": "B",
+    "correct_text": "40 days",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1313
+  },
+  {
+    "pdf_id": "AB-May2026-033-1314",
+    "pdf_num": 1314,
+    "question": "In a patient with Psoriasis, what is the approximate keratinocyte turnover time?",
+    "choices": {
+      "A": "7 days",
+      "B": "10 days",
+      "C": "21 days",
+      "D": "28 days"
+    },
+    "correct_answer": "A",
+    "correct_text": "7 days",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1314
+  },
+  {
+    "pdf_id": "AB-May2026-034-1315",
+    "pdf_num": 1315,
+    "question": "The most specific marker for Drug-induced lupus",
+    "choices": {
+      "A": "Anti-Ro",
+      "B": "Anti-La",
+      "C": "Anti-Histone",
+      "D": "ANA"
+    },
+    "correct_answer": "C",
+    "correct_text": "Anti-Histone",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1315
+  },
+  {
+    "pdf_id": "AB-May2026-035-1316",
+    "pdf_num": 1316,
+    "question": "Which of the following is the primary function of filaggrin in the epidermis?",
+    "choices": {
+      "A": "Elastin associated protein",
+      "B": "Keratin filament aggregating protein",
+      "C": "Tight junction protein",
+      "D": "Cornified enveloped protein with cross linked activity"
+    },
+    "correct_answer": "B",
+    "correct_text": "Keratin filament aggregating protein",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1316
+  },
+  {
+    "pdf_id": "AB-May2026-036-1317",
+    "pdf_num": 1317,
+    "question": "Mutation in IL-36RN lead to which type of psoriasis?",
+    "choices": {
+      "A": "Generalized pustular psoriasis",
+      "B": "Palmoplantar pustulosis",
+      "C": "Erythrodermic psoriasis",
+      "D": "Guttate psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Generalized pustular psoriasis",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1317
+  },
+  {
+    "pdf_id": "AB-May2026-037-1318",
+    "pdf_num": 1318,
+    "question": "In two-dimensional form, what is the ratio of melanocyte to keratinocyte",
+    "choices": {
+      "A": "1:10",
+      "B": "1:36",
+      "C": "1:40",
+      "D": "1:1"
+    },
+    "correct_answer": "A",
+    "correct_text": "1:10",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1318
+  },
+  {
+    "pdf_id": "AB-May2026-038-1319",
+    "pdf_num": 1319,
+    "question": "Which of the following keratin in Bulge area of HF",
+    "choices": {
+      "A": "Keratin 4",
+      "B": "Keratin 8",
+      "C": "Keratin 18",
+      "D": "Keratin 19"
+    },
+    "correct_answer": "D",
+    "correct_text": "Keratin 19",
+    "explanation": "(K15 & K19)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1319
+  },
+  {
+    "pdf_id": "AB-May2026-039-1320",
+    "pdf_num": 1320,
+    "question": "Autoantibodies targeting the NC16A domain of BP180 are the hallmark of which condition?",
+    "choices": {
+      "A": "BP",
+      "B": "MMP",
+      "C": "PV",
+      "D": "DH"
+    },
+    "correct_answer": "A",
+    "correct_text": "BP",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1320
+  },
+  {
+    "pdf_id": "AB-May2026-040-1321",
+    "pdf_num": 1321,
+    "question": "In Bullous Pemphigoid, what is the most characteristic finding on DIF?",
+    "choices": {
+      "A": "Linear IgA",
+      "B": "Linear C3 and IgG along BMZ",
+      "C": "Granular IgA",
+      "D": "Intercellular"
+    },
+    "correct_answer": "B",
+    "correct_text": "Linear C3 and IgG along BMZ",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1321
+  },
+  {
+    "pdf_id": "AB-May2026-041-1322",
+    "pdf_num": 1322,
+    "question": "The inherited disease related to Plectin is",
+    "choices": {
+      "A": "EBA",
+      "B": "Junctional EB",
+      "C": "EBS with muscular dystrophy",
+      "D": "Dystrophic EB"
+    },
+    "correct_answer": "C",
+    "correct_text": "EBS with muscular Dystrophy",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1322
+  },
+  {
+    "pdf_id": "AB-May2026-042-1323",
+    "pdf_num": 1323,
+    "question": "Which layer of epidermis is primarily responsible for mechanical barrier function of skin?",
+    "choices": {
+      "A": "Stratum Corneum",
+      "B": "Stratum Iucidum",
+      "C": "Stratum Granulosum",
+      "D": "Stratum spinosum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Stratum Corneum",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1323
+  },
+  {
+    "pdf_id": "AB-May2026-043-1324",
+    "pdf_num": 1324,
+    "question": "Child developed itching over the acral site & genital area that disturb the sleep. His sister has the same complaint, The most appropriate Rx among this medication is",
+    "choices": {
+      "A": "Topical Steroid",
+      "B": "Topical Clotrimazole",
+      "C": "Malathion",
+      "D": "Topical Fusidic acid"
+    },
+    "correct_answer": "C",
+    "correct_text": "Malathion",
+    "explanation": "(Scabies Case- if Permethrin is among the choices its more accurate)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1324
+  },
+  {
+    "pdf_id": "AB-May2026-044-1325",
+    "pdf_num": 1325,
+    "question": "A patient with Tinea capitis develops a painful, boggy swelling with pus discharge, crusting. What is likely diagnosis?",
+    "choices": {
+      "A": "Furunculosis",
+      "B": "Abscess",
+      "C": "Kerion"
+    },
+    "correct_answer": "C",
+    "correct_text": "Kerion",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1325
+  },
+  {
+    "pdf_id": "AB-May2026-045-1326",
+    "pdf_num": 1326,
+    "question": "Child presents with red spot rash over the thigh, buttocks & legs. Mother told physician that he had Respiratory illness zo days ago which improve with medication. Most likely Dx",
+    "choices": {
+      "A": "Drug Eruption",
+      "B": "Gianotti cross syndrome",
+      "C": "Pityriasis Rosea",
+      "D": "Guttate psoriasis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Gianotti cross Syndrome",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1326
+  },
+  {
+    "pdf_id": "AB-May2026-046-1327",
+    "pdf_num": 1327,
+    "question": "Most common cause of distal & lateral Subungual onychomycosis",
+    "choices": {
+      "A": "T. Rubrum",
+      "B": "M. canis",
+      "C": "T. Tosurans",
+      "D": "T. Verrucosum"
+    },
+    "correct_answer": "A",
+    "correct_text": "T. Rubrum",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1327
+  },
+  {
+    "pdf_id": "AB-May2026-047-1328",
+    "pdf_num": 1328,
+    "question": "Involucrine is",
+    "choices": {
+      "A": "Major protein component of CE",
+      "B": "Protein that aggregate keratin together with",
+      "C": "Protein that has a role in early Cross-linking in CE"
+    },
+    "correct_answer": "C",
+    "correct_text": "Protein that has a role in early Cross-linking in CE",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1328
+  },
+  {
+    "pdf_id": "AB-May2026-048-1329",
+    "pdf_num": 1329,
+    "question": "40 years old diabetic patient present with yellow-brown atrophic plaque on the shin. Most likely Dx is",
+    "choices": {
+      "A": "GA",
+      "B": "NLD",
+      "C": "Livedo vasculitis",
+      "D": "Erythema nodosum"
+    },
+    "correct_answer": "B",
+    "correct_text": "NLD",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1329
+  },
+  {
+    "pdf_id": "AB-May2026-049-1330",
+    "pdf_num": 1330,
+    "question": "Main collagen in BMZ is",
+    "choices": {
+      "A": "Collagen I",
+      "B": "Collagen IV",
+      "C": "Collagen VII",
+      "D": "Collagen XVII"
+    },
+    "correct_answer": "B",
+    "correct_text": "Collagen IV",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1330
+  },
+  {
+    "pdf_id": "AB-May2026-050-1331",
+    "pdf_num": 1331,
+    "question": "Which of the following is correct related to disease with wood light finding",
+    "choices": {
+      "A": "pityriasis alba & Bright white",
+      "B": "Progressive macular hypomelanosis & perifollicular red-orange fluorescence",
+      "C": "PVC & Coral red",
+      "D": "Vitiligo & Blue-green"
+    },
+    "correct_answer": "B",
+    "correct_text": "Progressive macular hypomelanosis & perifollicular red-orange fluorescence",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1331
+  },
+  {
+    "pdf_id": "AB-May2026-051-1332",
+    "pdf_num": 1332,
+    "question": "DM patient present with annular skin-colored to erythematous plaque on the dorsum of hand. Dx is.",
+    "choices": {
+      "A": "NLD",
+      "B": "Sarcoidosis",
+      "C": "GA",
+      "D": "EAC"
+    },
+    "correct_answer": "C",
+    "correct_text": "GA",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1332
+  },
+  {
+    "pdf_id": "AB-May2026-052-1333",
+    "pdf_num": 1333,
+    "question": "Which of the following is the best comedolytic?",
+    "choices": {
+      "A": "Benzoyl peroxide",
+      "B": "Erythromycin solution",
+      "C": "Adapalene",
+      "D": "Clarithromycin"
+    },
+    "correct_answer": "C",
+    "correct_text": "Adapalene",
+    "explanation": "(Benzoyl peroxide also has comedolytic property)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1333
+  },
+  {
+    "pdf_id": "AB-May2026-053-1334",
+    "pdf_num": 1334,
+    "question": "Lamellar granules are primarily formed in which organelle?",
+    "choices": {
+      "A": "Nucleus",
+      "B": "Rough ER",
+      "C": "Golgi apparatus",
+      "D": "Lysosome"
+    },
+    "correct_answer": "C",
+    "correct_text": "Golgi apparatus",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1334
+  },
+  {
+    "pdf_id": "AB-May2026-054-1335",
+    "pdf_num": 1335,
+    "question": "Which of the following constitute the Cytoskeleton of keratinocyte in the skin",
+    "choices": {
+      "A": "Desmosome",
+      "B": "Tonofilament",
+      "C": "Keratin"
+    },
+    "correct_answer": "C",
+    "correct_text": "Keratin",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1335
+  },
+  {
+    "pdf_id": "AB-May2026-055-1336",
+    "pdf_num": 1336,
+    "question": "Which mechanoreceptor is responsible for sensing continuous (steady) pressure and skin stretch?",
+    "choices": {
+      "A": "Ruffini",
+      "B": "Nerve end fiber",
+      "C": "Passini",
+      "D": "Miessecener corpuscle"
+    },
+    "correct_answer": "A",
+    "correct_text": "Ruffini",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1336
+  },
+  {
+    "pdf_id": "AB-May2026-056-1337",
+    "pdf_num": 1337,
+    "question": "Febrile Child present with flaccid bullae on the trunks with positive Nikolsky sign. What is the most Likely Dx",
+    "choices": {
+      "A": "Bullous Impetigo",
+      "B": "SSSS",
+      "C": "PV",
+      "D": "PF"
+    },
+    "correct_answer": "B",
+    "correct_text": "SSSS",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1337
+  },
+  {
+    "pdf_id": "AB-May2026-057-1338",
+    "pdf_num": 1338,
+    "question": "Causative organism For TVC IS",
+    "choices": {
+      "A": "Candida albican",
+      "B": "Malassezia Furfur",
+      "C": "Corynebacterium spp"
+    },
+    "correct_answer": "B",
+    "correct_text": "Malassezia Furfur",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1338
+  },
+  {
+    "pdf_id": "AB-May2026-058-1339",
+    "pdf_num": 1339,
+    "question": "Which of the following is true about nodule",
+    "choices": {
+      "A": "Heal with scar",
+      "B": "Differ from papule by size only",
+      "C": "Respond to IL- Steroid",
+      "D": "Palpable elevated solid lesion & well circumscribed"
+    },
+    "correct_answer": "D",
+    "correct_text": "Palpable elevated solid lesion & well circumscribed",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1339
+  },
+  {
+    "pdf_id": "AB-May2026-059-1340",
+    "pdf_num": 1340,
+    "question": "The intraepidermal portion of eccrine glands is",
+    "choices": {
+      "A": "Acrosyringium",
+      "B": "Secretory coil",
+      "C": "Straight Duct",
+      "D": "Myoepithelial portion"
+    },
+    "correct_answer": "A",
+    "correct_text": "Acrosyringium",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1340
+  },
+  {
+    "pdf_id": "AB-May2026-060-1341",
+    "pdf_num": 1341,
+    "question": "Th2 in acute atopic dermatitis is associated with",
+    "choices": {
+      "A": "TNF- a",
+      "B": "IL-17",
+      "C": "IL-4",
+      "D": "IFN- Y"
+    },
+    "correct_answer": "C",
+    "correct_text": "IL-4",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1341
+  },
+  {
+    "pdf_id": "AB-May2026-061-1342",
+    "pdf_num": 1342,
+    "question": "IL that maintain Th2 & responsible for IgE switching is",
+    "choices": {
+      "A": "IL-12",
+      "B": "IL-4",
+      "C": "IL-2",
+      "D": "IFN-y"
+    },
+    "correct_answer": "B",
+    "correct_text": "IL-4",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1342
+  },
+  {
+    "pdf_id": "AB-May2026-062-1343",
+    "pdf_num": 1343,
+    "question": "Patient on Azathioprine with symptoms of toxicity & his TPMT level was low. Mechanism of toxicity is",
+    "choices": {
+      "A": "Increase liver clearance of the drug",
+      "B": "Increase level of 6- Mercaptopurine",
+      "C": "Decrease Methylation of the drug"
+    },
+    "correct_answer": "C",
+    "correct_text": "Decrease Methylation of the drug",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1343
+  },
+  {
+    "pdf_id": "AB-May2026-063-1344",
+    "pdf_num": 1344,
+    "question": "The target antigen in pemphigus foliaceous",
+    "choices": {
+      "A": "Dsg 1",
+      "B": "Dsc 1",
+      "C": "Plakoglobin",
+      "D": "Plakophilin"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dsg 1",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1344
+  },
+  {
+    "pdf_id": "AB-May2026-064-1345",
+    "pdf_num": 1345,
+    "question": "7 years child presents with multiple patchy alopecia with broken hair & mild itching. The Rx of Choice is",
+    "choices": {
+      "A": "Ketoconazole shampoo",
+      "B": "Oral Griseofulvin",
+      "C": "Terbinafine Spray",
+      "D": "Topical steroid"
+    },
+    "correct_answer": "B",
+    "correct_text": "Oral Griseofulvin",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1345
+  },
+  {
+    "pdf_id": "AB-May2026-065-1346",
+    "pdf_num": 1346,
+    "question": "A young boy presenting with a low-grade fever followed by widespread skin lesions in different stages of development (vesicles, oozing, and crusting) Which diagnosis is most likely?",
+    "choices": {
+      "A": "CMV",
+      "B": "Mollouscum Contagiosum",
+      "C": "Varicella",
+      "D": "Measles"
+    },
+    "correct_answer": "C",
+    "correct_text": "Varicella",
+    "explanation": "(Chickenpox)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1346
+  },
+  {
+    "pdf_id": "AB-May2026-066-1347",
+    "pdf_num": 1347,
+    "question": "Which of the following bind to P19 subunit of IL-23",
+    "choices": {
+      "A": "Adalimumab",
+      "B": "Guselkumab",
+      "C": "Secukinumab",
+      "D": "Ustekinumab"
+    },
+    "correct_answer": "B",
+    "correct_text": "Guselkumab",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1347
+  },
+  {
+    "pdf_id": "AB-May2026-067-1348",
+    "pdf_num": 1348,
+    "question": "Patient wearing belt has developed Contact dermatitis. The most likely responsible for CD is",
+    "choices": {
+      "A": "Nickel",
+      "B": "Chromium",
+      "C": "Cobalt",
+      "D": "Mercury"
+    },
+    "correct_answer": "A",
+    "correct_text": "Nickel",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1348
+  },
+  {
+    "pdf_id": "AB-May2026-068-1349",
+    "pdf_num": 1349,
+    "question": "Which enzyme deficiency is responsible for the pathogenesis of X-linked ichthyosis?",
+    "choices": {
+      "A": "Steroid sulfatase",
+      "B": "Filaggrin",
+      "C": "Transglutaminase -1",
+      "D": "Keratin -1"
+    },
+    "correct_answer": "A",
+    "correct_text": "Steroid Sulfatase",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1349
+  },
+  {
+    "pdf_id": "AB-May2026-069-1350",
+    "pdf_num": 1350,
+    "question": "Which of the Following collagen is trans membranous",
+    "choices": {
+      "A": "Collagen I",
+      "B": "Collagen VII",
+      "C": "Collagen XVII",
+      "D": "Collagen IV"
+    },
+    "correct_answer": "C",
+    "correct_text": "Collagen XVII",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1350
+  },
+  {
+    "pdf_id": "AB-May2026-070-1351",
+    "pdf_num": 1351,
+    "question": "Additional layer in epidermis is present in",
+    "choices": {
+      "A": "Forehead",
+      "B": "Trunk",
+      "C": "Glans",
+      "D": "Palm"
+    },
+    "correct_answer": "D",
+    "correct_text": "Palm",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1351
+  },
+  {
+    "pdf_id": "AB-May2026-071-1352",
+    "pdf_num": 1352,
+    "question": "Cutis Laxa has defect in",
+    "choices": {
+      "A": "Fibulin",
+      "B": "Fibrillin",
+      "C": "Desmosin",
+      "D": "Lytil oxidase"
+    },
+    "correct_answer": "A",
+    "correct_text": "Fibulin",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1352
+  },
+  {
+    "pdf_id": "AB-May2026-072-1353",
+    "pdf_num": 1353,
+    "question": "How long does it typically take for a complete toenail replacement?",
+    "choices": {
+      "A": "3 months",
+      "B": "6 months",
+      "C": "12 months",
+      "D": "18 months"
+    },
+    "correct_answer": "D",
+    "correct_text": "18 months",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1353
+  },
+  {
+    "pdf_id": "AB-May2026-073-1354",
+    "pdf_num": 1354,
+    "question": "What is the average growth rate of scalp hair per day?",
+    "choices": {
+      "A": "0.1 mm",
+      "B": "1 mm",
+      "C": "0.3 mm",
+      "D": "3 mm"
+    },
+    "correct_answer": "C",
+    "correct_text": "0.3 mm",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1354
+  },
+  {
+    "pdf_id": "AB-May2026-074-1355",
+    "pdf_num": 1355,
+    "question": "What is the average growth rate of a fingernail per month?",
+    "choices": {
+      "A": "1 mm",
+      "B": "2-3 mm",
+      "C": "5-6 mm",
+      "D": "1 cm"
+    },
+    "correct_answer": "B",
+    "correct_text": "2-3 mm",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1355
+  },
+  {
+    "pdf_id": "AB-May2026-075-1356",
+    "pdf_num": 1356,
+    "question": "Von -Zumbusch psoriasis is",
+    "choices": {
+      "A": "Secondary bacterial infection",
+      "B": "Sterile Pustules with neutrophils",
+      "C": "Sterile pustules with eosinophils"
+    },
+    "correct_answer": "B",
+    "correct_text": "Sterile Pustules with neutrophils",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1356
+  },
+  {
+    "pdf_id": "AB-May2026-076-1357",
+    "pdf_num": 1357,
+    "question": "Which histologic marker most reliably distinguishes lichen planus from chronic eczema?",
+    "choices": {
+      "A": "Basal degeneration with Civatte bodies",
+      "B": "Spongiosis",
+      "C": "Hyperkeratosis",
+      "D": "Parakeratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Basal degeneration with Civatte bodies",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1357
+  },
+  {
+    "pdf_id": "AB-May2026-077-1358",
+    "pdf_num": 1358,
+    "question": "Which of the following is correct about Line of Auber?",
+    "choices": {
+      "A": "Highest mitotic activity occur below this line",
+      "B": "It is the site of attachment of dermal papillae",
+      "C": "It has Trichilemmal keratinization"
+    },
+    "correct_answer": "A",
+    "correct_text": "Highest mitotic activity occur below this line",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1358
+  },
+  {
+    "pdf_id": "AB-May2026-078-1359",
+    "pdf_num": 1359,
+    "question": "Merkel cell IHC stain is",
+    "choices": {
+      "A": "CK7",
+      "B": "CK20",
+      "C": "CD207",
+      "D": "CD20"
+    },
+    "correct_answer": "B",
+    "correct_text": "CK20",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 1359
+  },
+  {
+    "pdf_id": "AB-May2026-079-1360",
+    "pdf_num": 1360,
+    "question": "A patient presents with well-demarcated, depigmented skin lesions. This clinical presentation is most likely due to which of the following mechanisms?",
+    "choices": {
+      "A": "Loss of melanocyte",
+      "B": "Decrease Melanocyte",
+      "C": "Decrease melanin synthesis",
+      "D": "Decrease Melanin transfer"
+    },
+    "correct_answer": "A",
+    "correct_text": "Loss of melanocyte",
+    "explanation": "(Vitiligo)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1360
+  },
+  {
+    "pdf_id": "AB-May2026-080-1361",
+    "pdf_num": 1361,
+    "question": "What is the primary vector responsible for the transmission of Old World Leishmania?",
+    "choices": {
+      "A": "Phlebotomus Sandfly",
+      "B": "Simulium black fly",
+      "C": "Lutzomyia",
+      "D": "Tsetse fly"
+    },
+    "correct_answer": "A",
+    "correct_text": "Phlebotomus Sandfly",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1361
+  },
+  {
+    "pdf_id": "AB-May2026-081-1362",
+    "pdf_num": 1362,
+    "question": "How is the epidermal transit time affected in hyperproliferative states such as psoriasis?",
+    "choices": {
+      "A": "Constant",
+      "B": "Not affected via hyperproliferative state",
+      "C": "Decreased with hyperproliferative state",
+      "D": "Increased with hyper proliferative state"
+    },
+    "correct_answer": "C",
+    "correct_text": "Decreased with hyperproliferative state",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1362
+  },
+  {
+    "pdf_id": "AB-May2026-082-1363",
+    "pdf_num": 1363,
+    "question": "Which enzyme is responsible for the cross-linking of tropoelastin molecules to form mature, functional elastic fibers?",
+    "choices": {
+      "A": "Lysyl oxidase",
+      "B": "Lysyl hydroxylase",
+      "C": "Prolyl hydroxylase",
+      "D": "Collagenase"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lysyl oxidase",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1363
+  },
+  {
+    "pdf_id": "AB-May2026-083-1364",
+    "pdf_num": 1364,
+    "question": "Patient present with flaccid bullae that easily rupture with negative Nikolsky sign. Which organism is the most likely cause of this?",
+    "choices": {
+      "A": "Staphylococcus",
+      "B": "Streptococcus",
+      "C": "Pseudomonas",
+      "D": "Candida"
+    },
+    "correct_answer": "A",
+    "correct_text": "Staphylococcus",
+    "explanation": "(Bullous impetigo)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1364
+  },
+  {
+    "pdf_id": "AB-May2026-084-1365",
+    "pdf_num": 1365,
+    "question": "An infant presents with an erythematous diaper rash characterized by bright red patches and distinct satellite lesions in the skin folds. Which of the following is the most likely causative organism?",
+    "choices": {
+      "A": "Seborrheic dermatitis",
+      "B": "Candidiasis",
+      "C": "Contact Dermatitis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Candidiasis",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1365
+  },
+  {
+    "pdf_id": "AB-May2026-085-1366",
+    "pdf_num": 1366,
+    "question": "V-shaped notch in nail is characteristic of",
+    "choices": {
+      "A": "HHD",
+      "B": "Darier disease",
+      "C": "NF",
+      "D": "AD"
+    },
+    "correct_answer": "B",
+    "correct_text": "Darier disease",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1366
+  },
+  {
+    "pdf_id": "AB-May2026-086-1367",
+    "pdf_num": 1367,
+    "question": "Electron microscopy of a Langerhans cell reveals characteristic rod-shaped or \"tennis-racket\" shaped cytoplasmic organelles. What are these structures called?",
+    "choices": {
+      "A": "Immuno-secretory granules",
+      "B": "Birbeck granules",
+      "C": "Melanosome",
+      "D": "Microvilli with desmosome"
+    },
+    "correct_answer": "B",
+    "correct_text": "Birbeck granule",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1367
+  },
+  {
+    "pdf_id": "AB-May2026-087-1368",
+    "pdf_num": 1368,
+    "question": "The most common HLA associated with DH is",
+    "choices": {
+      "A": "HLA-DQ2",
+      "B": "HLA-B8",
+      "C": "HLA-DR4",
+      "D": "HLA-B27"
+    },
+    "correct_answer": "A",
+    "correct_text": "HLA-DQ2",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1368
+  },
+  {
+    "pdf_id": "AB-May2026-088-1369",
+    "pdf_num": 1369,
+    "question": "Which of the following represents the terminal cytolytic complement complex?",
+    "choices": {
+      "A": "C5b-c9",
+      "B": "C3b-c4b",
+      "C": "C1qrs",
+      "D": "C3a-C5a"
+    },
+    "correct_answer": "A",
+    "correct_text": "C5b-c9",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1369
+  },
+  {
+    "pdf_id": "AB-May2026-089-1370",
+    "pdf_num": 1370,
+    "question": "Rituximab bind to CD20 of what cell",
+    "choices": {
+      "A": "T-cell",
+      "B": "Plasma cell",
+      "C": "B- Cell",
+      "D": "NKC"
+    },
+    "correct_answer": "C",
+    "correct_text": "B-cell",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1370
+  },
+  {
+    "pdf_id": "AB-May2026-090-1371",
+    "pdf_num": 1371,
+    "question": "Autoantibodies against which of the following is present in Lichen planus pemphigoides",
+    "choices": {
+      "A": "Laminin 5",
+      "B": "Envoplakin",
+      "C": "Collagen XVII",
+      "D": "Dsg3"
+    },
+    "correct_answer": "C",
+    "correct_text": "Collagen XVII",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1371
+  },
+  {
+    "pdf_id": "AB-May2026-091-1372",
+    "pdf_num": 1372,
+    "question": "Psoriatic patient on acitretin for 5 years complain of joint pain & stiffness. X ray of spine show Ossification of spine. The most likely Dx is",
+    "choices": {
+      "A": "Psoriatic arthritis",
+      "B": "DISH",
+      "C": "Hypervitaminosis D",
+      "D": "Osteoporosis"
+    },
+    "correct_answer": "B",
+    "correct_text": "DISH",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 1372
+  },
+  {
+    "pdf_id": "AB-May2026-092-1373",
+    "pdf_num": 1373,
+    "question": "Keratin pair indicate Keratinocyte differentiation is",
+    "choices": {
+      "A": "K5 & K14",
+      "B": "K3 & K12",
+      "C": "K1 & K10",
+      "D": "K6 & K16"
+    },
+    "correct_answer": "C",
+    "correct_text": "K1 & K10",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1373
+  },
+  {
+    "pdf_id": "AB-May2026-093-1374",
+    "pdf_num": 1374,
+    "question": "Which antigen is deficient in Herlitz Junctional Epidermolysis Bullosa?",
+    "choices": {
+      "A": "Keratin 5/14",
+      "B": "Laminin 332",
+      "C": "BP180",
+      "D": "Type VII Collagen"
+    },
+    "correct_answer": "B",
+    "correct_text": "Laminin 332",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1374
+  },
+  {
+    "pdf_id": "AB-May2026-094-1375",
+    "pdf_num": 1375,
+    "question": "Type of keratin in coronoid lamella is",
+    "choices": {
+      "A": "K5 & K14",
+      "B": "K1 & K10",
+      "C": "K3 & K12",
+      "D": "K6 & K16"
+    },
+    "correct_answer": "D",
+    "correct_text": "K6 & K16",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1375
+  },
+  {
+    "pdf_id": "AB-May2026-095-1376",
+    "pdf_num": 1376,
+    "question": "Which of the following is the primary component of the dermis ground substance responsible for maintaining skin turgor and hydration?",
+    "choices": {
+      "A": "Collagen bundles",
+      "B": "Elastic fiber",
+      "C": "GAG & Proteoglycan"
+    },
+    "correct_answer": "C",
+    "correct_text": "GAG & Proteoglycans",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1376
+  },
+  {
+    "pdf_id": "AB-May2026-096-1377",
+    "pdf_num": 1377,
+    "question": "Sebaceous gland secretion via which pattern",
+    "choices": {
+      "A": "Merocrine",
+      "B": "Holocrine",
+      "C": "Apocrine"
+    },
+    "correct_answer": "B",
+    "correct_text": "Holocrine",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1377
+  },
+  {
+    "pdf_id": "AB-May2026-097-1378",
+    "pdf_num": 1378,
+    "question": "TLR2 is associated with",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Inflammatory acne",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "short_answer",
+    "id": 1378
+  },
+  {
+    "pdf_id": "AB-May2026-098-1379",
+    "pdf_num": 1379,
+    "question": "Patient present as a case of widespread Tinea corporis. Upon examination of his ear, he had a cauliflower -like growth of earlobes with floppy non- tender pinna. The most likely Dx is",
+    "choices": {
+      "A": "Relapsing polychondritis",
+      "B": "Leprosy",
+      "C": "Leishmaniasis",
+      "D": "Pseudomonas infection"
+    },
+    "correct_answer": "B",
+    "correct_text": "Leprosy",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1379
+  },
+  {
+    "pdf_id": "AB-May2026-099-1380",
+    "pdf_num": 1380,
+    "question": "Main difference between Papillary & reticule dermis is",
+    "choices": {
+      "A": "Blood vessels",
+      "B": "Collagen & Elastic fiber",
+      "C": "Reticular fiber"
+    },
+    "correct_answer": "B",
+    "correct_text": "Collagen & Elastic fiber",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1380
+  },
+  {
+    "pdf_id": "AB-May2026-100-1381",
+    "pdf_num": 1381,
+    "question": "ORS cover area that extend from epidermal surface to opening of sebaceous gland duct. What is this part of HF",
+    "choices": {
+      "A": "Infundibulum",
+      "B": "Isthmus",
+      "C": "Bulge",
+      "D": "Bulb"
+    },
+    "correct_answer": "A",
+    "correct_text": "Infundibulum",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 1381
+  },
+  {
+    "pdf_id": "AB-May2026-101-1382",
+    "pdf_num": 1382,
+    "question": "Case of eczema herpeticum in atopic dermatitis patient is",
+    "choices": {
+      "A": "Oral Acyclovir",
+      "B": "IV Ceftriaxone",
+      "C": "Oral prednisolone"
+    },
+    "correct_answer": "A",
+    "correct_text": "Oral Acyclovir",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1382
+  },
+  {
+    "pdf_id": "AB-May2026-102-1383",
+    "pdf_num": 1383,
+    "question": "Patient present with Hony comb crustation with oozing. Most likely Diagnosis is",
+    "choices": {
+      "A": "Herpes Simples",
+      "B": "Herpes zoster",
+      "C": "Impetigo",
+      "D": "Folliculitis"
+    },
+    "correct_answer": "C",
+    "correct_text": "impetigo",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1383
+  },
+  {
+    "pdf_id": "AB-May2026-103-1384",
+    "pdf_num": 1384,
+    "question": "Herald patch is the first lesion in",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Pityriasis rosea",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "short_answer",
+    "id": 1384
+  },
+  {
+    "pdf_id": "AB-May2026-104-1385",
+    "pdf_num": 1385,
+    "question": "Which amino acid is the most abundant in the structure of collagen?",
+    "choices": {
+      "A": "Proline",
+      "B": "Glycine",
+      "C": "Alanine",
+      "D": "Tryptophan"
+    },
+    "correct_answer": "B",
+    "correct_text": "Glycine",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1385
+  },
+  {
+    "pdf_id": "AB-May2026-105-1386",
+    "pdf_num": 1386,
+    "question": "Psoriatic patient develop severe flare after abrupt discontinuation of systemic steroids. The most likely mechanism is",
+    "choices": {
+      "A": "Rebound activation of T cells",
+      "B": "IL-4 surge",
+      "C": "IL-6 surge",
+      "D": "Sudden increase in TGF-beta"
+    },
+    "correct_answer": "A",
+    "correct_text": "Rebound activation of T cells",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1386
+  },
+  {
+    "pdf_id": "AB-May2026-106-1387",
+    "pdf_num": 1387,
+    "question": "The first cell reaches in inflammatory phase of wound healing is",
+    "choices": {
+      "A": "Fibroblast",
+      "B": "Neutrophils",
+      "C": "Macrophage",
+      "D": "Eosinophil"
+    },
+    "correct_answer": "B",
+    "correct_text": "Neutrophils",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Surgery",
+    "format": "mcq",
+    "id": 1387
+  },
+  {
+    "pdf_id": "AB-May2026-107-1388",
+    "pdf_num": 1388,
+    "question": "Sebaceous gland is under control of",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Androgen",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "short_answer",
+    "id": 1388
+  },
+  {
+    "pdf_id": "AB-May2026-108-1389",
+    "pdf_num": 1389,
+    "question": "Apocrine under control of",
+    "choices": {
+      "A": "Adrenergic",
+      "B": "Cholinergic",
+      "C": "Cholinergic Sympathetic",
+      "D": "Androgen"
+    },
+    "correct_answer": "A",
+    "correct_text": "Adrenergic",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "mcq",
+    "id": 1389
+  },
+  {
+    "pdf_id": "AB-May2026-109-1390",
+    "pdf_num": 1390,
+    "question": "Patient with chronic psoriasis developed new lesion exactly where he scratched. This description is",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Koebner phenomenon",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "short_answer",
+    "id": 1390
+  },
+  {
+    "pdf_id": "AB-May2026-110-1391",
+    "pdf_num": 1391,
+    "question": "Which of the following is the major protein component of the Cornified cell envelope, making up approximately 70-85% of its total protein mass?",
+    "choices": {
+      "A": "Involucrine",
+      "B": "Loricrin",
+      "C": "Filaggrin",
+      "D": "Envoplakin"
+    },
+    "correct_answer": "B",
+    "correct_text": "Loricrin",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1391
+  },
+  {
+    "pdf_id": "AB-May2026-111-1392",
+    "pdf_num": 1392,
+    "question": "MC1R gene mutation patients have",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Red hair & fair skin with high sensitivity to sun",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "short_answer",
+    "id": 1392
+  },
+  {
+    "pdf_id": "AB-May2026-112-1393",
+    "pdf_num": 1393,
+    "question": "The most abundant lipoid in Stratum corner with mortar organization",
+    "choices": {
+      "A": "Ceramide",
+      "B": "Cholesterol",
+      "C": "FFA",
+      "D": "Sequeline"
+    },
+    "correct_answer": "A",
+    "correct_text": "Ceramide",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1393
+  },
+  {
+    "pdf_id": "AB-May2026-113-1394",
+    "pdf_num": 1394,
+    "question": "Keratinocyte can produce which IL",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "IL-23",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "short_answer",
+    "id": 1394
+  },
+  {
+    "pdf_id": "AB-May2026-114-1395",
+    "pdf_num": 1395,
+    "question": "Young athletes with pruritic scaly plaques on legs & thigh with raised margin & central clearing with hyperpigmentation. Most likely Dx is",
+    "choices": {
+      "A": "Tinea corporis",
+      "B": "Fixed drug eruption",
+      "C": "Atopic Dermatitis",
+      "D": "Discoid Eczema"
+    },
+    "correct_answer": "A",
+    "correct_text": "Tinea Corporis",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1395
+  },
+  {
+    "pdf_id": "AB-May2026-115-1396",
+    "pdf_num": 1396,
+    "question": "Which of the following structures is primarily responsible for anchoring the epidermis to the dermis at the dermo-epidermal junction?",
+    "choices": {
+      "A": "Desmosomes",
+      "B": "Gap junctions",
+      "C": "Tight junctions",
+      "D": "Hemidesmosomes"
+    },
+    "correct_answer": "D",
+    "correct_text": "Hemidesmosomes",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1396
+  },
+  {
+    "pdf_id": "AB-May2026-116-1397",
+    "pdf_num": 1397,
+    "question": "Which is recognized by TLR",
+    "choices": {
+      "A": "PAMPs",
+      "B": "MHC",
+      "C": "Fc portion of AB",
+      "D": "Antigen"
+    },
+    "correct_answer": "A",
+    "correct_text": "PAMPs",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Immunology",
+    "format": "mcq",
+    "id": 1397
+  },
+  {
+    "pdf_id": "AB-May2026-117-1398",
+    "pdf_num": 1398,
+    "question": "Main collagen in Lamina denser is",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Collagen IV",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "short_answer",
+    "id": 1398
+  },
+  {
+    "pdf_id": "AB-May2026-118-1399",
+    "pdf_num": 1399,
+    "question": "A child developed a rose-pink maculopapular rash on the abdomen and extremities after a high fever subsided. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Measles",
+      "B": "Rubella",
+      "C": "Roseola",
+      "D": "Erythema Infectiosum"
+    },
+    "correct_answer": "C",
+    "correct_text": "Roseola",
+    "explanation": "(Exanthem subitem)",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1399
+  },
+  {
+    "pdf_id": "AB-May2026-119-1400",
+    "pdf_num": 1400,
+    "question": "The main lipid in Sebum is",
+    "choices": {
+      "A": "Cholesterol",
+      "B": "Triglyceride",
+      "C": "Sequel re",
+      "D": "Wax ester"
+    },
+    "correct_answer": "B",
+    "correct_text": "Triglyceride",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 1400
+  },
+  {
+    "pdf_id": "AB-May2026-120-1401",
+    "pdf_num": 1401,
+    "question": "Spaghetti & meatball in KOH is characteristic for which of the following organism",
+    "choices": {},
+    "correct_answer": "",
+    "correct_text": "Malassezia furfur",
+    "explanation": "",
+    "incorrect_rationales": {},
+    "source": "Arab Board",
+    "category": "Others",
+    "format": "short_answer",
+    "id": 1401
+  },
+  {
     "pdf_id": "AB-October2025-007-0006",
     "pdf_num": 1,
     "question": "Which of the following component is more in eccrine in compared to apocrine sweat:",
