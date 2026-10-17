@@ -137,6 +137,11 @@ const untomb = (t, kind, id) => (t?.[kind]?.includes(id) ? { ...t, [kind]: t[kin
 
 const DATA_VERSION = '2026-05-19-master2026'
 const DATA_VERSION_KEY = 'skinscript-data-version'
+// Lightweight one-time announcement shown when students open the app (separate
+// from the data-version welcome/migration flow — it never wipes caches). Bump
+// ANNOUNCEMENT_ID to show a new announcement to everyone again.
+const ANNOUNCEMENT_ID = '2026-10-new-banks'
+const ANNOUNCEMENT_KEY = 'skinscript-announcement'
 
 // All localStorage key prefixes the app has ever owned. Used to wipe
 // everything cleanly on a data-version bump.
@@ -535,6 +540,7 @@ function reducer(state, action) {
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [showWelcome, setShowWelcome] = useState(false)
+  const [showAnnounce, setShowAnnounce] = useState(false)
 
   // ── Auth gate ──────────────────────────────────────────────────────────
   // null = still resolving the initial session; false = no session;
@@ -911,6 +917,17 @@ export default function App() {
     }
   }, [])
 
+  // One-time "app updated / new banks" announcement (no cache wipe).
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(ANNOUNCEMENT_KEY) !== ANNOUNCEMENT_ID) setShowAnnounce(true)
+    } catch { /* ignore */ }
+  }, [])
+  const dismissAnnounce = () => {
+    try { localStorage.setItem(ANNOUNCEMENT_KEY, ANNOUNCEMENT_ID) } catch { /* ignore */ }
+    setShowAnnounce(false)
+  }
+
   const dismissWelcome = async () => {
     // A brand-new device (or cleared site data) has no DATA_VERSION key and
     // no local data. That is NOT a reason to touch the user's cloud progress:
@@ -1074,6 +1091,41 @@ export default function App() {
             <p className="text-[10px] text-center text-gray-400 mt-3">
               Data version {DATA_VERSION}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* One-time "app updated / new question banks" announcement */}
+      {showAnnounce && !showWelcome && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+          <div className={`max-w-md w-full rounded-2xl shadow-2xl p-6 ${state.darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+            <div className="text-center mb-5">
+              <div className="inline-block px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#fdf6e3', color: '#c9a84c' }}>
+                <span className="text-[10px] font-bold tracking-wider uppercase">What's New</span>
+              </div>
+              <div className="text-4xl mb-2">🎉</div>
+              <h2 className="text-2xl font-extrabold tracking-tight mb-2" style={{ color: state.darkMode ? '#9ec9c9' : '#2c3e3f' }}>
+                The app has been updated
+              </h2>
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                New question banks have been added. Explore the latest content and keep up your board prep.
+              </p>
+            </div>
+
+            <div className="rounded-xl p-4 mb-5 text-center" style={{ backgroundColor: state.darkMode ? '#374151' : '#f3f4f6' }}>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">With best regards,</p>
+              <p className="text-base font-bold" style={{ color: state.darkMode ? '#9ec9c9' : '#2c3e3f' }}>
+                Dr. Osama Al Rawi
+              </p>
+            </div>
+
+            <button
+              onClick={dismissAnnounce}
+              className="w-full py-3 rounded-xl text-white font-bold text-base transition hover:opacity-90 shadow"
+              style={{ backgroundColor: '#2c3e3f' }}
+            >
+              Let's study
+            </button>
           </div>
         </div>
       )}
