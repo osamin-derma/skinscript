@@ -115,7 +115,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   // Determine which bank a question belongs to (for search results)
   const findQuestionBank = (qid) => {
     if (!banks) return 'all'
-    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026']) {
+    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026', 'dse']) {
       if (banks[key]?.questions?.some(q => q.id === qid)) return key
     }
     return 'all'
@@ -128,7 +128,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
     // try to find by matching on the question text in each individual bank
     let bankKey = 'all'
     let originalId = result.id
-    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026']) {
+    for (const key of ['arabBoard', 'boardVitals', 'makki', 'etas2026', 'dse']) {
       const found = banks[key]?.questions?.find(q =>
         q.question === result.question && q.correct_answer === result.correct_answer
       )
@@ -372,6 +372,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                     { key: 'boardVitals', label: `Board Vitals (${banks.boardVitals?.count ?? 0})` },
                     { key: 'makki',       label: `Makki (${banks.makki?.count ?? 0})` },
                     { key: 'etas2026',    label: `ETAS 2026 (${banks.etas2026?.count ?? 0})` },
+                    { key: 'dse',         label: `DSE – Al-Niaimi (${banks.dse?.count ?? 0})` },
                   ].filter(s => banks[s.key]).map(s => (
                     <button
                       key={s.key}
@@ -633,6 +634,36 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                   ETAS 2026
                 </div>
                 <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Largest collection</div>
+              </button>
+
+              {/* DSE – Al-Niaimi */}
+              <button
+                onClick={() => setActiveBank('dse')}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  activeBank === 'dse'
+                    ? 'shadow-md'
+                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
+                }`}
+                style={activeBank === 'dse'
+                  ? { backgroundColor: darkMode ? '#0b2b2b' : '#ecfdf5', borderColor: '#0d9488' }
+                  : {}}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                       style={{ backgroundColor: activeBank === 'dse' ? '#0d9488' : (darkMode ? '#374151' : '#e5e7eb'),
+                                color: activeBank === 'dse' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
+                    📖
+                  </div>
+                  <div className="text-2xl font-extrabold tabular-nums"
+                       style={{ color: activeBank === 'dse' ? '#0d9488' : (darkMode ? '#6b7280' : '#9ca3af') }}>
+                    {banks.dse.count.toLocaleString()}
+                  </div>
+                </div>
+                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                     style={activeBank === 'dse' ? { color: '#0d9488' } : {}}>
+                  DSE – Al-Niaimi
+                </div>
+                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Specialty exam practice</div>
               </button>
             </div>
 
