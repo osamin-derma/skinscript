@@ -4,6 +4,7 @@ import boardVitalsRaw from './data/board_vitals_master.json'
 import makkiRaw from './data/makki_master.json'
 import etas2026Raw from './data/etas_2026_master.json'
 import dseRaw from './data/dse_master.json'
+import abdRaw from './data/abd_master.json'
 import subtopicsRaw from './data/subtopics.json'
 import AuthScreen from './components/AuthScreen'
 import InstallPrompt from './components/InstallPrompt'
@@ -22,6 +23,7 @@ const boardVitalsTagged = boardVitalsRaw.map(q => withMeta(q, 'Board Vitals'))
 const makkiTagged = makkiRaw.map(q => withMeta(q, 'Makki'))
 const etas2026Tagged = etas2026Raw.map(q => withMeta(q, 'ETAS 2026'))
 const dseTagged = dseRaw.map(q => withMeta(q, 'DSE – Al-Niaimi'))
+const abdTagged = abdRaw.map(q => withMeta(q, 'ABD – Dermatology'))
 
 // Combined "All" bank: offset IDs from each bank to avoid collisions
 const combinedAll = [
@@ -30,6 +32,7 @@ const combinedAll = [
   ...makkiTagged.map(q => ({ ...q, id: q.id + 200000 })),
   ...etas2026Tagged.map(q => ({ ...q, id: q.id + 300000 })),
   ...dseTagged.map(q => ({ ...q, id: q.id + 400000 })),
+  ...abdTagged.map(q => ({ ...q, id: q.id + 500000 })),
 ]
 
 const allBanks = {
@@ -57,6 +60,11 @@ const allBanks = {
     label: 'DSE – Al-Niaimi',
     questions: dseTagged,
     count: dseTagged.length,
+  },
+  abd: {
+    label: 'ABD – Dermatology',
+    questions: abdTagged,
+    count: abdTagged.length,
   },
   all: {
     label: 'All Questions',
@@ -99,10 +107,11 @@ function uuidv4() {
 // exactly; raw ids are inherently ambiguous (every bank starts at 1) — best
 // effort: <=1281 Arab Board, otherwise ETAS. Mirrors backfill_pdf_id.py, so a
 // device that last synced before the fix restores the same way the DB did.
-const _byId = { arabBoard: new Map(), boardVitals: new Map(), makki: new Map(), etas2026: new Map(), dse: new Map() }
+const _byId = { arabBoard: new Map(), boardVitals: new Map(), makki: new Map(), etas2026: new Map(), dse: new Map(), abd: new Map() }
 for (const k of Object.keys(_byId)) for (const q of allBanks[k].questions) _byId[k].set(q.id, q.pdf_id)
 function legacyIdToPdf(id) {
   if (typeof id !== 'number' || !Number.isFinite(id)) return null
+  if (id >= 500000) return _byId.abd.get(id - 500000) || null
   if (id >= 400000) return _byId.dse.get(id - 400000) || null
   if (id >= 300000) return _byId.etas2026.get(id - 300000) || null
   if (id >= 200000) return _byId.makki.get(id - 200000) || null
@@ -1150,6 +1159,7 @@ export default function App() {
             makki: { label: 'Makki', count: allBanks.makki.count, questions: allBanks.makki.questions },
             etas2026: { label: 'ETAS 2026', count: allBanks.etas2026.count, questions: allBanks.etas2026.questions },
             dse: { label: 'DSE – Al-Niaimi', count: allBanks.dse.count, questions: allBanks.dse.questions },
+            abd: { label: 'ABD – Dermatology', count: allBanks.abd.count, questions: allBanks.abd.questions },
           }}
           activeBank={state.activeBank}
           setActiveBank={(bank) => dispatch({ type: 'SET_BANK', bank })}

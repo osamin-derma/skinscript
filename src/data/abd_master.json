@@ -1,0 +1,3802 @@
+[
+  {
+    "pdf_id": "ABD-Practice-001",
+    "pdf_num": 1,
+    "question": "A 24-year-old man presents with recurrent grouped vesicles on the vermillion border of the lip, often triggered by stress. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Aphthous ulcer",
+      "B": "Herpes labialis",
+      "C": "Angular cheilitis",
+      "D": "Impetigo"
+    },
+    "correct_answer": "B",
+    "correct_text": "Herpes labialis",
+    "explanation": "Herpes simplex virus (HSV-1) causes recurrent painful grouped vesicles on the lips; aphthous ulcers are non-vesicular and occur on non-keratinized mucosa.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 1
+  },
+  {
+    "pdf_id": "ABD-Practice-002",
+    "pdf_num": 2,
+    "question": "A patient presents with a well-demarcated, silvery-scaled plaque on the extensor surface of the elbow. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Atopic dermatitis",
+      "B": "Seborrheic dermatitis",
+      "C": "Psoriasis vulgaris",
+      "D": "Lichen planus"
+    },
+    "correct_answer": "C",
+    "correct_text": "Psoriasis vulgaris",
+    "explanation": "Psoriasis typically affects extensor surfaces (elbows, knees) with silvery micaceous scale; atopic dermatitis favors flexural surfaces.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 2
+  },
+  {
+    "pdf_id": "ABD-Practice-003",
+    "pdf_num": 3,
+    "question": "Which of the following is a pathognomonic finding in lichen planus?",
+    "choices": {
+      "A": "Koebner phenomenon",
+      "B": "Target lesions",
+      "C": "Wickham striae",
+      "D": "Nikolsky sign"
+    },
+    "correct_answer": "C",
+    "correct_text": "Wickham striae",
+    "explanation": "Wickham striae (fine white reticulations) are characteristic of lichen planus, correlating histopathologically with focal hypergranulosis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 3
+  },
+  {
+    "pdf_id": "ABD-Practice-004",
+    "pdf_num": 4,
+    "question": "A patient with a history of asthma develops pruritic, erythematous patches on the flexural surfaces. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Contact dermatitis",
+      "B": "Atopic dermatitis",
+      "C": "Seborrheic dermatitis",
+      "D": "Nummular eczema"
+    },
+    "correct_answer": "B",
+    "correct_text": "Atopic dermatitis",
+    "explanation": "Atopic dermatitis is classic for the atopic triad (asthma, allergic rhinitis, atopic dermatitis) and exhibits a flexural distribution in older children and adults.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 4
+  },
+  {
+    "pdf_id": "ABD-Practice-005",
+    "pdf_num": 5,
+    "question": "A 6-year-old child presents with honey-colored crusted lesions around the nose and mouth. What is the most likely causative organism?",
+    "choices": {
+      "A": "Candida albicans",
+      "B": "Pseudomonas aeruginosa",
+      "C": "Staphylococcus aureus",
+      "D": "Mycoplasma pneumoniae"
+    },
+    "correct_answer": "C",
+    "correct_text": "Staphylococcus aureus",
+    "explanation": "Non-bullous impetigo is most commonly caused by Staphylococcus aureus (and Streptococcus pyogenes) and presents with golden/honey-colored crusted erosions.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 5
+  },
+  {
+    "pdf_id": "ABD-Practice-006",
+    "pdf_num": 6,
+    "question": "Which skin cancer is most commonly associated with chronic arsenic exposure?",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Melanoma",
+      "C": "Squamous cell carcinoma",
+      "D": "Merkel cell carcinoma"
+    },
+    "correct_answer": "C",
+    "correct_text": "Squamous cell carcinoma",
+    "explanation": "Chronic arsenic exposure classically increases the risk of Squamous Cell Carcinoma (including Bowen's disease), often occurring on non-sun-exposed areas such as the palms and soles.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 6
+  },
+  {
+    "pdf_id": "ABD-Practice-007",
+    "pdf_num": 7,
+    "question": "The most common precursor lesion to cutaneous melanoma is:",
+    "choices": {
+      "A": "Congenital nevus",
+      "B": "Dysplastic nevus",
+      "C": "Blue nevus",
+      "D": "Seborrheic keratosis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Dysplastic nevus",
+    "explanation": "Dysplastic (atypical) nevi are both potential precursors and strong clinical markers for an elevated risk of malignant melanoma.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 7
+  },
+  {
+    "pdf_id": "ABD-Practice-008",
+    "pdf_num": 8,
+    "question": "A 'herald patch' followed by a Christmas tree distribution of oval, scaly lesions on the trunk is characteristic of:",
+    "choices": {
+      "A": "Tinea corporis",
+      "B": "Psoriasis",
+      "C": "Pityriasis rosea",
+      "D": "Erythema multiforme"
+    },
+    "correct_answer": "C",
+    "correct_text": "Pityriasis rosea",
+    "explanation": "Pityriasis rosea characteristically begins with a single solitary 'herald patch' followed days to weeks later by secondary oval plaques oriented along Langer's cleavage lines in a Christmas tree pattern.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 8
+  },
+  {
+    "pdf_id": "ABD-Practice-009",
+    "pdf_num": 9,
+    "question": "Which autoimmune blistering disorder is associated with IgG autoantibodies against desmoglein?",
+    "choices": {
+      "A": "Bullous pemphigoid",
+      "B": "Dermatitis herpetiformis",
+      "C": "Pemphigus vulgaris",
+      "D": "Epidermolysis bullosa"
+    },
+    "correct_answer": "C",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "Pemphigus vulgaris features pathogenic IgG antibodies against desmoglein 3 and 1, leading to intraepidermal acantholytic blisters and a positive Nikolsky sign.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 9
+  },
+  {
+    "pdf_id": "ABD-Practice-010",
+    "pdf_num": 10,
+    "question": "The most common anatomic site for the development of basal cell carcinoma is:",
+    "choices": {
+      "A": "Trunk",
+      "B": "Extremities",
+      "C": "Head and neck",
+      "D": "Palms and soles"
+    },
+    "correct_answer": "C",
+    "correct_text": "Head and neck",
+    "explanation": "Basal cell carcinoma is directly associated with cumulative ultraviolet radiation and occurs most frequently (approx. 70-80%) on sun-exposed head and neck areas.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 10
+  },
+  {
+    "pdf_id": "ABD-Practice-011",
+    "pdf_num": 11,
+    "question": "A middle-aged man presents with tense blisters on the lower abdomen. Nikolsky sign is negative. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Pemphigus vulgaris",
+      "B": "Bullous pemphigoid",
+      "C": "Dermatitis herpetiformis",
+      "D": "Toxic epidermal necrolysis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Bullous pemphigoid",
+    "explanation": "Bullous pemphigoid is characterized by tense subepidermal bullae due to autoantibodies against hemidesmosomal proteins (BP180 and BP230); Nikolsky sign is negative.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 11
+  },
+  {
+    "pdf_id": "ABD-Practice-012",
+    "pdf_num": 12,
+    "question": "A patient with celiac disease presents with intensely pruritic, grouped vesicles on the elbows and knees. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Psoriasis",
+      "B": "Dermatitis herpetiformis",
+      "C": "Bullous pemphigoid",
+      "D": "Impetigo"
+    },
+    "correct_answer": "B",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Dermatitis herpetiformis is an intensely pruritic blistering disorder linked to gluten sensitivity (celiac disease), characterized by granular IgA deposits in dermal papillae.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 12
+  },
+  {
+    "pdf_id": "ABD-Practice-013",
+    "pdf_num": 13,
+    "question": "A pearly papule with prominent telangiectasias and rolled borders on the face is most consistent with:",
+    "choices": {
+      "A": "Melanoma",
+      "B": "Basal cell carcinoma",
+      "C": "Squamous cell carcinoma",
+      "D": "Actinic keratosis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Basal cell carcinoma",
+    "explanation": "Nodular basal cell carcinoma classically appears as a translucent or pearly papule with arborizing telangiectasias and rolled, elevated borders.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 13
+  },
+  {
+    "pdf_id": "ABD-Practice-014",
+    "pdf_num": 14,
+    "question": "A rapidly growing crateriform nodule with a central keratinaceous plug is most consistent with:",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Merkel cell carcinoma",
+      "C": "Keratoacanthoma",
+      "D": "Actinic keratosis"
+    },
+    "correct_answer": "C",
+    "correct_text": "Keratoacanthoma",
+    "explanation": "Keratoacanthoma is a well-differentiated squamous proliferation characterized by rapid initial growth, a volcano-like crater with a central keratin plug, and potential for spontaneous involution.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 14
+  },
+  {
+    "pdf_id": "ABD-Practice-015",
+    "pdf_num": 15,
+    "question": "Which factor is the single most important histological prognostic predictor for primary cutaneous melanoma?",
+    "choices": {
+      "A": "Ulceration",
+      "B": "Mitotic rate",
+      "C": "Breslow thickness",
+      "D": "Anatomic location"
+    },
+    "correct_answer": "C",
+    "correct_text": "Breslow thickness",
+    "explanation": "Breslow thickness (microscopic tumor depth in millimeters from the granular layer to the deepest invasion margin) remains the strongest predictor of survival and metastasis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 15
+  },
+  {
+    "pdf_id": "ABD-Practice-016",
+    "pdf_num": 16,
+    "question": "Which of the following is most commonly associated with the Auspitz sign?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Psoriasis",
+      "C": "Atopic dermatitis",
+      "D": "Seborrheic dermatitis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Psoriasis",
+    "explanation": "Auspitz sign (pinpoint bleeding after scale removal) is classic for plaque psoriasis due to dilated capillaries close to the thinned suprapapillary epidermis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 16
+  },
+  {
+    "pdf_id": "ABD-Practice-017",
+    "pdf_num": 17,
+    "question": "A 45-year-old woman presents with an erythematous malar rash that distinctly spares the nasolabial folds. Which condition is most likely?",
+    "choices": {
+      "A": "Dermatomyositis",
+      "B": "Rosacea",
+      "C": "Systemic lupus erythematosus",
+      "D": "Seborrheic dermatitis"
+    },
+    "correct_answer": "C",
+    "correct_text": "Systemic lupus erythematosus",
+    "explanation": "The butterfly (malar) rash of SLE classically spares the nasolabial folds; involvement of nasolabial folds is seen in rosacea and seborrheic dermatitis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 17
+  },
+  {
+    "pdf_id": "ABD-Practice-018",
+    "pdf_num": 18,
+    "question": "Which viral infection is characteristically described as presenting with 'dew drops on a rose petal' cutaneous vesicles?",
+    "choices": {
+      "A": "Herpes zoster",
+      "B": "Varicella (chickenpox)",
+      "C": "Molluscum contagiosum",
+      "D": "Hand-foot-mouth disease"
+    },
+    "correct_answer": "B",
+    "correct_text": "Varicella (chickenpox)",
+    "explanation": "Primary varicella (chickenpox) presents as crops of clear vesicles on an erythematous base ('dew drops on a rose petal') in various stages of evolution.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 18
+  },
+  {
+    "pdf_id": "ABD-Practice-019",
+    "pdf_num": 19,
+    "question": "What is the most common precipitating cause of Erythema Multiforme (EM)?",
+    "choices": {
+      "A": "Drugs",
+      "B": "Herpes simplex virus",
+      "C": "Mycoplasma pneumoniae",
+      "D": "Streptococcus infection"
+    },
+    "correct_answer": "B",
+    "correct_text": "Herpes simplex virus",
+    "explanation": "Herpes simplex virus (HSV-1 and HSV-2) infection is the most frequent trigger (>70% of cases); medications and Mycoplasma are less common.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 19
+  },
+  {
+    "pdf_id": "ABD-Practice-020",
+    "pdf_num": 20,
+    "question": "Which of the following is the definitive treatment of choice for severe nodulocystic acne?",
+    "choices": {
+      "A": "Topical benzoyl peroxide",
+      "B": "Oral doxycycline",
+      "C": "Oral isotretinoin",
+      "D": "Intralesional steroids"
+    },
+    "correct_answer": "C",
+    "correct_text": "Oral isotretinoin",
+    "explanation": "Oral isotretinoin is the most effective therapy for severe recalcitrant nodulocystic or scarring acne, addressing all major pathogenic factors.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 20
+  },
+  {
+    "pdf_id": "ABD-Practice-021",
+    "pdf_num": 21,
+    "question": "Which antimicrobial drug commonly causes phototoxic photosensitivity reactions?",
+    "choices": {
+      "A": "Metformin",
+      "B": "Doxycycline",
+      "C": "Amoxicillin",
+      "D": "Lisinopril"
+    },
+    "correct_answer": "B",
+    "correct_text": "Doxycycline",
+    "explanation": "Tetracyclines, particularly doxycycline, are prominent causes of drug-induced phototoxicity after exposure to ultraviolet radiation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 21
+  },
+  {
+    "pdf_id": "ABD-Practice-022",
+    "pdf_num": 22,
+    "question": "A patient presents with velvety, hyperpigmented plaques in the axillae and posterior neck. Which condition is most strongly associated?",
+    "choices": {
+      "A": "Addison disease",
+      "B": "Insulin resistance",
+      "C": "Vitiligo",
+      "D": "Hypothyroidism"
+    },
+    "correct_answer": "B",
+    "correct_text": "Insulin resistance",
+    "explanation": "Acanthosis nigricans is strongly linked to hyperinsulinemia, obesity, and diabetes mellitus (and occasionally internal adenocarcinoma).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 22
+  },
+  {
+    "pdf_id": "ABD-Practice-023",
+    "pdf_num": 23,
+    "question": "A lesion on the scalp shows 'black dots' and broken hairs with a positive KOH preparation. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Seborrheic dermatitis",
+      "B": "Psoriasis",
+      "C": "Tinea capitis",
+      "D": "Alopecia areata"
+    },
+    "correct_answer": "C",
+    "correct_text": "Tinea capitis",
+    "explanation": "Endothrix fungal infection (such as Trichophyton tonsurans) leads to weakened hair shafts that fracture at the scalp surface, leaving characteristic black dots.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 23
+  },
+  {
+    "pdf_id": "ABD-Practice-024",
+    "pdf_num": 24,
+    "question": "Which childhood exanthem presents with a 'slapped cheek' appearance and a lacy, reticular erythema on the extremities?",
+    "choices": {
+      "A": "Roseola",
+      "B": "Scarlet fever",
+      "C": "Erythema infectiosum (Fifth disease)",
+      "D": "Kawasaki disease"
+    },
+    "correct_answer": "C",
+    "correct_text": "Erythema infectiosum (Fifth disease)",
+    "explanation": "Parvovirus B19 causes erythema infectiosum, presenting with intense facial erythema ('slapped cheeks') followed by a lacy, reticular macular rash on extremities.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 24
+  },
+  {
+    "pdf_id": "ABD-Practice-025",
+    "pdf_num": 25,
+    "question": "Which type of hypersensitivity immune reaction mediates acute urticaria?",
+    "choices": {
+      "A": "Type I (Immediate / IgE)",
+      "B": "Type II (Cytotoxic)",
+      "C": "Type III (Immune complex)",
+      "D": "Type IV (Delayed-type)"
+    },
+    "correct_answer": "A",
+    "correct_text": "Type I (Immediate / IgE)",
+    "explanation": "Acute urticaria is primarily an IgE-mediated type I hypersensitivity reaction resulting in mast cell degranulation and histamine release.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 25
+  },
+  {
+    "pdf_id": "ABD-Practice-026",
+    "pdf_num": 26,
+    "question": "Which systemic medication is strictly contraindicated in plaque psoriasis due to the high risk of a rebound pustular flare?",
+    "choices": {
+      "A": "Methotrexate",
+      "B": "Systemic corticosteroids",
+      "C": "Cyclosporine",
+      "D": "Acitretin"
+    },
+    "correct_answer": "B",
+    "correct_text": "Systemic corticosteroids",
+    "explanation": "Systemic steroids can precipitate life-threatening generalized pustular psoriasis (von Zumbusch) upon dosage tapering or withdrawal.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 26
+  },
+  {
+    "pdf_id": "ABD-Practice-027",
+    "pdf_num": 27,
+    "question": "Which pathognomonic cutaneous finding is characteristically associated with dermatomyositis?",
+    "choices": {
+      "A": "Wickham striae",
+      "B": "Gottron's papules",
+      "C": "Ash-leaf spots",
+      "D": "Café-au-lait macules"
+    },
+    "correct_answer": "B",
+    "correct_text": "Gottron's papules",
+    "explanation": "Gottron's papules (violaceous, flat-topped papules over the MCP, PIP, and DIP interphalangeal joints) are pathognomonic for dermatomyositis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 27
+  },
+  {
+    "pdf_id": "ABD-Practice-028",
+    "pdf_num": 28,
+    "question": "Which of the following is the most common and earliest cutaneous manifestation of systemic sclerosis (scleroderma)?",
+    "choices": {
+      "A": "Telangiectasias",
+      "B": "Sclerodactyly",
+      "C": "Acanthosis nigricans",
+      "D": "Calcinosis cutis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Sclerodactyly",
+    "explanation": "Sclerodactyly (tightening, thickening, and induration of the skin of the fingers) is a hallmark cutaneous feature of systemic sclerosis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 28
+  },
+  {
+    "pdf_id": "ABD-Practice-029",
+    "pdf_num": 29,
+    "question": "A 5-year-old child presents with localized 'school sores' (crusted lesions) on the face. What is the best initial first-line therapy?",
+    "choices": {
+      "A": "Oral fluconazole",
+      "B": "Topical mupirocin",
+      "C": "Oral acyclovir",
+      "D": "Topical hydrocortisone"
+    },
+    "correct_answer": "B",
+    "correct_text": "Topical mupirocin",
+    "explanation": "Topical mupirocin 2% ointment or retapamulin is the first-line treatment for localized, non- bullous impetigo.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Therapeutics",
+    "format": "mcq",
+    "id": 29
+  },
+  {
+    "pdf_id": "ABD-Practice-030",
+    "pdf_num": 30,
+    "question": "What is the first-line topical treatment of choice for scabies infestation?",
+    "choices": {
+      "A": "Crotamiton 10%",
+      "B": "Topical permethrin 5%",
+      "C": "Topical hydrocortisone",
+      "D": "Selenium sulfide lotion"
+    },
+    "correct_answer": "B",
+    "correct_text": "Topical permethrin 5%",
+    "explanation": "Topical permethrin 5% cream applied from the neck down overnight is the standard first-line pediculicide/scabicide.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 30
+  },
+  {
+    "pdf_id": "ABD-Practice-031",
+    "pdf_num": 31,
+    "question": "Which viral exanthem typically begins on the trunk and spreads outward immediately after a high fever abruptly resolves?",
+    "choices": {
+      "A": "Roseola infantum (Exanthem subitum)",
+      "B": "Measles (Rubeola)",
+      "C": "Scarlet fever",
+      "D": "Rubella"
+    },
+    "correct_answer": "A",
+    "correct_text": "Roseola infantum (Exanthem subitum)",
+    "explanation": "Roseola (caused by HHV-6) classically features 3 to 5 days of high fever that ends abruptly (defervescence), followed by the emergence of a rose-pink maculopapular rash on the trunk.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 31
+  },
+  {
+    "pdf_id": "ABD-Practice-032",
+    "pdf_num": 32,
+    "question": "A young adult presents with hypopigmented macules on the chest that fluoresce yellow-green under Wood's lamp. What is the causative organism?",
+    "choices": {
+      "A": "Trichophyton rubrum",
+      "B": "Candida albicans",
+      "C": "Malassezia furfur",
+      "D": "Microsporum canis"
+    },
+    "correct_answer": "C",
+    "correct_text": "Malassezia furfur",
+    "explanation": "Tinea versicolor is caused by the dimorphic lipophilic yeast Malassezia furfur (and M. globosa), which fluoresces yellow-green under Wood's lamp.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 32
+  },
+  {
+    "pdf_id": "ABD-Practice-033",
+    "pdf_num": 33,
+    "question": "Which dermatological condition classically presents with targetoid (iris) lesions on the palms and soles?",
+    "choices": {
+      "A": "Psoriasis",
+      "B": "Erythema multiforme",
+      "C": "Pityriasis rosea",
+      "D": "Urticaria"
+    },
+    "correct_answer": "B",
+    "correct_text": "Erythema multiforme",
+    "explanation": "Erythema multiforme is characterized by three-concentric-ring targetoid lesions located acrally on the palms, soles, and forearms.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 33
+  },
+  {
+    "pdf_id": "ABD-Practice-034",
+    "pdf_num": 34,
+    "question": "Which medication is most likely to trigger Stevens-Johnson syndrome (SJS) and Toxic Epidermal Necrolysis (TEN)?",
+    "choices": {
+      "A": "Amoxicillin",
+      "B": "Sulfonamides",
+      "C": "Metformin",
+      "D": "Atorvastatin"
+    },
+    "correct_answer": "B",
+    "correct_text": "Sulfonamides",
+    "explanation": "Sulfonamide antibiotics (such as TMP-SMX), anticonvulsants, and allopurinol are the leading high-risk drug culprits for SJS/TEN.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 34
+  },
+  {
+    "pdf_id": "ABD-Practice-035",
+    "pdf_num": 35,
+    "question": "The Nikolsky sign (shearing of normal skin upon mechanical pressure) is most strongly associated with:",
+    "choices": {
+      "A": "Pemphigus vulgaris",
+      "B": "Bullous pemphigoid",
+      "C": "Impetigo",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "Intraepidermal blister cleavage due to anti-desmoglein antibodies in pemphigus vulgaris yields a positive Nikolsky sign, unlike subepidermal bullous pemphigoid.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 35
+  },
+  {
+    "pdf_id": "ABD-Practice-036",
+    "pdf_num": 36,
+    "question": "Which condition is caused by a heterozygous mutation in the gene encoding fibrillin-1 (FBN1)?",
+    "choices": {
+      "A": "Ehlers-Danlos syndrome",
+      "B": "Marfan syndrome",
+      "C": "Neurofibromatosis type 1",
+      "D": "Tuberous sclerosis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Marfan syndrome",
+    "explanation": "Marfan syndrome results from FBN1 mutations; common dermatologic manifestations include prominent striae distensae in non-distended skin.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 36
+  },
+  {
+    "pdf_id": "ABD-Practice-037",
+    "pdf_num": 37,
+    "question": "A 70-year-old with chronic sun exposure develops rough, sandpaper-like scaly patches on the scalp. What is the best initial first-line therapy?",
+    "choices": {
+      "A": "Oral acitretin",
+      "B": "Cryotherapy",
+      "C": "Wide local excision",
+      "D": "Radiation therapy"
+    },
+    "correct_answer": "B",
+    "correct_text": "Cryotherapy",
+    "explanation": "Liquid nitrogen cryotherapy is the most commonly employed first-line procedural therapy for isolated actinic keratoses.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 37
+  },
+  {
+    "pdf_id": "ABD-Practice-038",
+    "pdf_num": 38,
+    "question": "A patient presents with café-au-lait macules and axillary freckling (Crowe sign). Which condition is most likely?",
+    "choices": {
+      "A": "Tuberous sclerosis",
+      "B": "Neurofibromatosis type 1",
+      "C": "McCune-Albright syndrome",
+      "D": "Peutz-Jeghers syndrome"
+    },
+    "correct_answer": "B",
+    "correct_text": "Neurofibromatosis type 1",
+    "explanation": "Six or more café-au-lait macules and intertriginous/axillary freckling (Crowe sign) are major diagnostic criteria for NF1.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 38
+  },
+  {
+    "pdf_id": "ABD-Practice-039",
+    "pdf_num": 39,
+    "question": "Which benign epithelial lesion classically exhibits a 'stuck-on', waxy appearance with keratin pseudo- cysts?",
+    "choices": {
+      "A": "Actinic keratosis",
+      "B": "Seborrheic keratosis",
+      "C": "Blue nevus",
+      "D": "Cherry angioma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Seborrheic keratosis",
+    "explanation": "Seborrheic keratoses are common benign epidermal tumors that appear waxy, verrucous, and 'stuck on' the skin surface.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 39
+  },
+  {
+    "pdf_id": "ABD-Practice-040",
+    "pdf_num": 40,
+    "question": "A young woman presents with painful, erythematous, tender subcutaneous nodules on the bilateral anterior shins. What is the diagnosis?",
+    "choices": {
+      "A": "Erythema nodosum",
+      "B": "Cellulitis",
+      "C": "Gout",
+      "D": "Kaposi sarcoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Erythema nodosum",
+    "explanation": "Erythema nodosum is a septal panniculitis characterized by tender erythematous subcutaneous nodules classically located over the pretibial shins.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 40
+  },
+  {
+    "pdf_id": "ABD-Practice-041",
+    "pdf_num": 41,
+    "question": "A circumscribed depigmented macule or patch with complete autoimmune absence of epidermal melanocytes is termed:",
+    "choices": {
+      "A": "Tinea versicolor",
+      "B": "Vitiligo",
+      "C": "Albinism",
+      "D": "Pityriasis alba"
+    },
+    "correct_answer": "B",
+    "correct_text": "Vitiligo",
+    "explanation": "Vitiligo is an acquired autoimmune disease where cytotoxic T lymphocytes selectively destroy functional epidermal melanocytes.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 41
+  },
+  {
+    "pdf_id": "ABD-Practice-042",
+    "pdf_num": 42,
+    "question": "A healthy term neonate develops blotchy erythematous macules with central yellow-white papules/pustules within 48 hours of birth. What is the condition?",
+    "choices": {
+      "A": "Neonatal acne",
+      "B": "Erythema toxicum neonatorum",
+      "C": "Atopic dermatitis",
+      "D": "Congenital cutaneous candidiasis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Erythema toxicum neonatorum",
+    "explanation": "Erythema toxicum neonatorum is a benign, self-limiting newborn rash; Wright stain of pustule contents reveals abundant eosinophils.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 42
+  },
+  {
+    "pdf_id": "ABD-Practice-043",
+    "pdf_num": 43,
+    "question": "Which cutaneous sign is characteristic and specific for dermatomyositis?",
+    "choices": {
+      "A": "Nikolsky sign",
+      "B": "Heliotrope rash",
+      "C": "Auspitz sign",
+      "D": "Wickham striae"
+    },
+    "correct_answer": "B",
+    "correct_text": "Heliotrope rash",
+    "explanation": "The heliotrope rash is a violaceous erythema of the upper eyelids, often accompanied by periorbital edema, pathognomonic for dermatomyositis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 43
+  },
+  {
+    "pdf_id": "ABD-Practice-044",
+    "pdf_num": 44,
+    "question": "Which of the following is the most common cutaneous marker associated with hyperinsulinemia and diabetes mellitus?",
+    "choices": {
+      "A": "Necrobiosis lipoidica",
+      "B": "Acanthosis nigricans",
+      "C": "Xanthelasma",
+      "D": "Diabetic dermopathy"
+    },
+    "correct_answer": "B",
+    "correct_text": "Acanthosis nigricans",
+    "explanation": "Acanthosis nigricans is the most prevalent cutaneous manifestation of insulin resistance, though diabetic dermopathy (shin spots) is also frequent.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 44
+  },
+  {
+    "pdf_id": "ABD-Practice-045",
+    "pdf_num": 45,
+    "question": "Which genetic neurocutaneous syndrome is characterized by hypomelanotic 'ash-leaf' macules?",
+    "choices": {
+      "A": "Neurofibromatosis type 1",
+      "B": "Tuberous sclerosis complex",
+      "C": "McCune-Albright syndrome",
+      "D": "Incontinentia pigmenti"
+    },
+    "correct_answer": "B",
+    "correct_text": "Tuberous sclerosis complex",
+    "explanation": "Hypomelanotic macules (ash-leaf spots) are the earliest detectable dermatologic sign of tuberous sclerosis (TSC1/TSC2 mutation).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 45
+  },
+  {
+    "pdf_id": "ABD-Practice-046",
+    "pdf_num": 46,
+    "question": "What is the recommended first-line management approach for molluscum contagiosum in immunocompetent children?",
+    "choices": {
+      "A": "Oral acyclovir",
+      "B": "Reassurance and watchful waiting",
+      "C": "Aggressive cryotherapy",
+      "D": "Surgical curettage"
+    },
+    "correct_answer": "B",
+    "correct_text": "Reassurance and watchful waiting",
+    "explanation": "Molluscum contagiosum in children is self-limiting and typically resolves spontaneously without scarring over 6-18 months; watchful waiting minimizes trauma and pain.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 46
+  },
+  {
+    "pdf_id": "ABD-Practice-047",
+    "pdf_num": 47,
+    "question": "What is the most common form of chronic cutaneous lupus erythematosus (CCLE)?",
+    "choices": {
+      "A": "Subacute cutaneous lupus",
+      "B": "Discoid lupus erythematosus (DLE)",
+      "C": "Neonatal lupus",
+      "D": "Chilblain lupus"
+    },
+    "correct_answer": "B",
+    "correct_text": "Discoid lupus erythematosus (DLE)",
+    "explanation": "Discoid lupus erythematosus (DLE) is the most frequent form of CCLE, causing scarring plaques with follicular plugging, central atrophy, and peripheral hyperpigmentation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 47
+  },
+  {
+    "pdf_id": "ABD-Practice-048",
+    "pdf_num": 48,
+    "question": "Which cutaneous condition presents with rapidly progressive, painful necrotizing ulcers with undermined violaceous borders, often associated with IBD?",
+    "choices": {
+      "A": "Erythema nodosum",
+      "B": "Aphthous ulcers",
+      "C": "Pyoderma gangrenosum",
+      "D": "Behçet disease"
+    },
+    "correct_answer": "C",
+    "correct_text": "Pyoderma gangrenosum",
+    "explanation": "Pyoderma gangrenosum is a non-infectious neutrophilic dermatosis strongly associated with ulcerative colitis, Crohn's disease, and rheumatoid arthritis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 48
+  },
+  {
+    "pdf_id": "ABD-Practice-049",
+    "pdf_num": 49,
+    "question": "A woman presents with symmetric, irregular brown macules and patches on sun-exposed facial areas that worsen with oral contraceptives. What is the diagnosis?",
+    "choices": {
+      "A": "Vitiligo",
+      "B": "Melasma",
+      "C": "Lentigo maligna",
+      "D": "Post-inflammatory hyperpigmentation"
+    },
+    "correct_answer": "B",
+    "correct_text": "Melasma",
+    "explanation": "Melasma ('chloasma') is an acquired hypermelanosis induced by sunlight and exacerbated by female sex hormones (estrogen and progesterone).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 49
+  },
+  {
+    "pdf_id": "ABD-Practice-050",
+    "pdf_num": 50,
+    "question": "A patient presents with multiple small, smooth, bright-red, dome-shaped papules on the trunk that partially blanch with pressure. Likely diagnosis?",
+    "choices": {
+      "A": "Kaposi sarcoma",
+      "B": "Cherry angiomas",
+      "C": "Pyogenic granuloma",
+      "D": "Strawberry hemangioma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Cherry angiomas",
+    "explanation": "Cherry angiomas (Campbell de Morgan spots) are benign capillary proliferations that multiply with advancing age.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 50
+  },
+  {
+    "pdf_id": "ABD-Practice-051",
+    "pdf_num": 51,
+    "question": "Which condition is characterized by congenital circumscribed leukoderma accompanied by poliosis and a central triangular white forelock?",
+    "choices": {
+      "A": "Albinism",
+      "B": "Piebaldism",
+      "C": "Vitiligo",
+      "D": "Waardenburg syndrome"
+    },
+    "correct_answer": "B",
+    "correct_text": "Piebaldism",
+    "explanation": "Piebaldism is an autosomal dominant condition due to mutations in the KIT proto-oncogene, resulting in defective melanocyte migration.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 51
+  },
+  {
+    "pdf_id": "ABD-Practice-052",
+    "pdf_num": 52,
+    "question": "What is the most common subtype of primary cutaneous T-cell lymphoma (CTCL)?",
+    "choices": {
+      "A": "Langerhans cell histiocytosis",
+      "B": "Mycosis fungoides",
+      "C": "Sézary syndrome",
+      "D": "Kaposi sarcoma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Mycosis fungoides",
+    "explanation": "Mycosis fungoides accounts for nearly 60% of all cutaneous T-cell lymphomas, indolently progressing through patch, plaque, and tumor phases.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 52
+  },
+  {
+    "pdf_id": "ABD-Practice-053",
+    "pdf_num": 53,
+    "question": "Which viral agent is etiologically required for the development of Kaposi sarcoma?",
+    "choices": {
+      "A": "Epstein-Barr virus (EBV)",
+      "B": "Cytomegalovirus (CMV)",
+      "C": "Human herpesvirus 8 (HHV-8)",
+      "D": "Human papillomavirus (HPV)"
+    },
+    "correct_answer": "C",
+    "correct_text": "Human herpesvirus 8 (HHV-8)",
+    "explanation": "HHV-8 (Kaposi sarcoma-associated herpesvirus / KSHV) infects vascular endothelial and spindle cells to induce vascular neoplastic proliferation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 53
+  },
+  {
+    "pdf_id": "ABD-Practice-054",
+    "pdf_num": 54,
+    "question": "What constitutes the classic clinical triad of Tuberous Sclerosis Complex (Vogt's triad)?",
+    "choices": {
+      "A": "Ash-leaf spots, seizures, cardiac rhabdomyomas",
+      "B": "Seizures, intellectual disability, facial angiofibromas",
+      "C": "Neurofibromas, café-au-lait spots, axillary freckling",
+      "D": "Colonic polyps, mucocutaneous pigmentation, seizures"
+    },
+    "correct_answer": "B",
+    "correct_text": "Seizures, intellectual disability, facial angiofibromas",
+    "explanation": "Vogt's triad consists of epilepsy (seizures), mental retardation / cognitive delay, and facial angiofibromas (adenoma sebaceum).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 54
+  },
+  {
+    "pdf_id": "ABD-Practice-055",
+    "pdf_num": 55,
+    "question": "A child presents with multiple firm, dome-shaped, smooth pearly papules featuring characteristic central umbilication. What is the diagnosis?",
+    "choices": {
+      "A": "Verruca vulgaris",
+      "B": "Molluscum contagiosum",
+      "C": "Milia",
+      "D": "Epidermal inclusion cyst"
+    },
+    "correct_answer": "B",
+    "correct_text": "Molluscum contagiosum",
+    "explanation": "Molluscum contagiosum is caused by a double-stranded DNA poxvirus and produces umbilicated papules containing Henderson-Paterson bodies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 55
+  },
+  {
+    "pdf_id": "ABD-Practice-056",
+    "pdf_num": 56,
+    "question": "Which condition presents with superficial 'cigarette-paper' skin wrinkling and sheet-like desquamation in young children following a staphylococcal infection?",
+    "choices": {
+      "A": "Erythema multiforme",
+      "B": "Staphylococcal scalded skin syndrome (SSSS)",
+      "C": "Stevens-Johnson syndrome",
+      "D": "Toxic shock syndrome"
+    },
+    "correct_answer": "B",
+    "correct_text": "Staphylococcal scalded skin syndrome (SSSS)",
+    "explanation": "SSSS is driven by exfoliative toxins A and B produced by Staphylococcus aureus, targeting desmoglein 1 in the superficial granular layer.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 56
+  },
+  {
+    "pdf_id": "ABD-Practice-057",
+    "pdf_num": 57,
+    "question": "A histopathologic biopsy of a skin lesion reveals basaloid tumor nests with 'palisading nuclei' and peripheral retraction clefting. Which cancer?",
+    "choices": {
+      "A": "Squamous cell carcinoma",
+      "B": "Basal cell carcinoma",
+      "C": "Melanoma",
+      "D": "Merkel cell carcinoma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Basal cell carcinoma",
+    "explanation": "Basal cell carcinoma on histology demonstrates lobules of basaloid cells with peripheral palisading and stromal retraction artifacts.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 57
+  },
+  {
+    "pdf_id": "ABD-Practice-058",
+    "pdf_num": 58,
+    "question": "Which underlying internal malignancy is most strongly associated with the sudden eruptive appearance of multiple seborrheic keratoses (Leser-Trélat sign)?",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Gastrointestinal adenocarcinoma",
+      "C": "Breast cancer",
+      "D": "Prostate cancer"
+    },
+    "correct_answer": "B",
+    "correct_text": "Gastrointestinal adenocarcinoma",
+    "explanation": "The sign of Leser-Trélat is a paraneoplastic cutaneous syndrome characteristically heralding an occult gastrointestinal adenocarcinoma (e.g. gastric cancer).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 58
+  },
+  {
+    "pdf_id": "ABD-Practice-059",
+    "pdf_num": 59,
+    "question": "A patient presents with severe, nocturnal generalized pruritus and linear burrows in the webbed interdigital spaces of the hands. What is the diagnosis?",
+    "choices": {
+      "A": "Pediculosis corporis",
+      "B": "Scabies",
+      "C": "Tinea corporis",
+      "D": "Atopic dermatitis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Scabies",
+    "explanation": "Sarcoptes scabiei mites burrow into the stratum corneum, creating pathognomonic serpiginous burrows with severe nocturnal itching.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 59
+  },
+  {
+    "pdf_id": "ABD-Practice-060",
+    "pdf_num": 60,
+    "question": "Which condition classically presents with intensely pruritic, violaceous, polygonal flat-topped papules on the flexor wrists and reticular oral mucosal lesions?",
+    "choices": {
+      "A": "Psoriasis",
+      "B": "Eczema",
+      "C": "Lichen planus",
+      "D": "Pityriasis rosea"
+    },
+    "correct_answer": "C",
+    "correct_text": "Lichen planus",
+    "explanation": "Lichen planus presents with the '6 Ps': Purple, Polygonal, Planar, Pruritic, Papules, and Plaques, accompanied by Wickham striae.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 60
+  },
+  {
+    "pdf_id": "ABD-Practice-061",
+    "pdf_num": 61,
+    "question": "Which autosomal dominant disorder is defined by multiple café-au-lait macules, axillary freckling (Crowe sign), and pigmented iris hamartomas (Lisch nodules)?",
+    "choices": {
+      "A": "Neurofibromatosis type 1",
+      "B": "Tuberous sclerosis",
+      "C": "McCune-Albright syndrome",
+      "D": "Peutz-Jeghers syndrome"
+    },
+    "correct_answer": "A",
+    "correct_text": "Neurofibromatosis type 1",
+    "explanation": "Lisch nodules (melanocytic hamartomas of the iris) and Crowe sign are specific clinical criteria for Neurofibromatosis Type 1.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 61
+  },
+  {
+    "pdf_id": "ABD-Practice-062",
+    "pdf_num": 62,
+    "question": "A patient presents with soft, asymptomatic, yellowish plaques localized symmetrically on the medial upper and lower eyelids. What is the diagnosis?",
+    "choices": {
+      "A": "Milia",
+      "B": "Xanthelasma palpebrarum",
+      "C": "Syringomas",
+      "D": "Sebaceous hyperplasia"
+    },
+    "correct_answer": "B",
+    "correct_text": "Xanthelasma palpebrarum",
+    "explanation": "Xanthelasma represents lipid-laden foam cells (histiocytes) deposited in the periorbital dermis, frequently indicating hypercholesterolemia.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 62
+  },
+  {
+    "pdf_id": "ABD-Practice-063",
+    "pdf_num": 63,
+    "question": "Which dermatophytic fungal genus characteristically exhibits bright blue-green fluorescence when illuminated with a Wood's lamp?",
+    "choices": {
+      "A": "Candida",
+      "B": "Microsporum",
+      "C": "Malassezia",
+      "D": "Trichophyton"
+    },
+    "correct_answer": "B",
+    "correct_text": "Microsporum",
+    "explanation": "Microsporum species (such as M. canis and M. audouinii) produce pteridine metabolites that emit bright green/blue-green fluorescence under Wood's lamp.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 63
+  },
+  {
+    "pdf_id": "ABD-Practice-064",
+    "pdf_num": 64,
+    "question": "Which pathognomonic cutaneous rash with expanding central clearing ('bull's-eye') is associated with early localized Lyme disease?",
+    "choices": {
+      "A": "Butterfly rash",
+      "B": "Target lesions",
+      "C": "Erythema migrans",
+      "D": "Rose spots"
+    },
+    "correct_answer": "C",
+    "correct_text": "Erythema migrans",
+    "explanation": "Erythema migrans develops 7-14 days following the bite of an Ixodes tick transmitting Borrelia burgdorferi.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 64
+  },
+  {
+    "pdf_id": "ABD-Practice-065",
+    "pdf_num": 65,
+    "question": "Circumscribed areas of depigmentation or hypopigmentation that appear following the resolution of an eczematous or traumatic eruption are termed:",
+    "choices": {
+      "A": "Vitiligo",
+      "B": "Post-inflammatory hypopigmentation",
+      "C": "Albinism",
+      "D": "Tinea versicolor"
+    },
+    "correct_answer": "B",
+    "correct_text": "Post-inflammatory hypopigmentation",
+    "explanation": "Transient impairment of melanin transfer to keratinocytes following cutaneous inflammation produces post-inflammatory hypopigmentation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 65
+  },
+  {
+    "pdf_id": "ABD-Practice-066",
+    "pdf_num": 66,
+    "question": "Which childhood exanthem begins at the hairline and face before spreading cephalocaudally to the trunk and extremities, preceded by Koplik spots?",
+    "choices": {
+      "A": "Rubella",
+      "B": "Measles (Rubeola)",
+      "C": "Roseola",
+      "D": "Scarlet fever"
+    },
+    "correct_answer": "B",
+    "correct_text": "Measles (Rubeola)",
+    "explanation": "Rubeola features the 3 Cs (coughs, coryza, conjunctivitis), pathognomonic enanthem (Koplik spots), and a downward-spreading morbilliform exanthem.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 66
+  },
+  {
+    "pdf_id": "ABD-Practice-067",
+    "pdf_num": 67,
+    "question": "Which condition presents as painful, hyperkeratotic endophytic papules disrupting skin surface dermatoglyphics on the weight-bearing plantar foot?",
+    "choices": {
+      "A": "Condyloma acuminata",
+      "B": "Verruca plantaris",
+      "C": "Molluscum contagiosum",
+      "D": "Lichen planus"
+    },
+    "correct_answer": "B",
+    "correct_text": "Verruca plantaris",
+    "explanation": "Plantar warts are caused by HPV (frequently HPV-1) and disrupt normal skin tension lines, often revealing thrombosed black capillaries.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 67
+  },
+  {
+    "pdf_id": "ABD-Practice-068",
+    "pdf_num": 68,
+    "question": "A patient presents with a firm, hyperpigmented dermal nodule on the lower extremity that retracts downward ('dimple sign') when laterally pinched. What is the diagnosis?",
+    "choices": {
+      "A": "Lipoma",
+      "B": "Dermatofibroma",
+      "C": "Seborrheic keratosis",
+      "D": "Keloid"
+    },
+    "correct_answer": "B",
+    "correct_text": "Dermatofibroma",
+    "explanation": "Dermatofibromas (benign fibrous histiocytomas) exhibit a positive Fitzpatrick's 'dimple sign' when lateral compression is applied.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 68
+  },
+  {
+    "pdf_id": "ABD-Practice-069",
+    "pdf_num": 69,
+    "question": "Which chronic antiepileptic drug is classic for causing both gingival hyperplasia and coarsening of facial hair (hirsutism)?",
+    "choices": {
+      "A": "Valproic acid",
+      "B": "Carbamazepine",
+      "C": "Phenytoin",
+      "D": "Lithium"
+    },
+    "correct_answer": "C",
+    "correct_text": "Phenytoin",
+    "explanation": "Phenytoin stimulates collagen proliferation and fibroblast growth, leading to prominent gingival overgrowth and hirsutism.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Hair & Nail",
+    "format": "mcq",
+    "id": 69
+  },
+  {
+    "pdf_id": "ABD-Practice-070",
+    "pdf_num": 70,
+    "question": "A neonate presents with generalized tender erythroderma and superficial flaccid bullae that easily peel, leaving red denuded skin with a positive Nikolsky sign. What is the diagnosis?",
+    "choices": {
+      "A": "Bullous pemphigoid",
+      "B": "Staphylococcal scalded skin syndrome",
+      "C": "Epidermolysis bullosa",
+      "D": "Bullous impetigo"
+    },
+    "correct_answer": "B",
+    "correct_text": "Staphylococcal scalded skin syndrome",
+    "explanation": "SSSS causes intraepidermal cleavage at the stratum granulosum due to circulating staphylococcal epidermolytic toxins.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 70
+  },
+  {
+    "pdf_id": "ABD-Practice-071",
+    "pdf_num": 71,
+    "question": "A patient presents with crops of small, yellow-pink papules with an erythematous halo over the extensor elbows, knees, and buttocks. What is the underlying disorder?",
+    "choices": {
+      "A": "Diabetes mellitus",
+      "B": "Hyperlipidemia (Hypertriglyceridemia)",
+      "C": "Hypothyroidism",
+      "D": "Chronic kidney disease"
+    },
+    "correct_answer": "B",
+    "correct_text": "Hyperlipidemia (Hypertriglyceridemia)",
+    "explanation": "Eruptive xanthomas result from plasma triglyceride levels typically exceeding 1000 mg/dL and alert to the risk of acute pancreatitis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 71
+  },
+  {
+    "pdf_id": "ABD-Practice-072",
+    "pdf_num": 72,
+    "question": "Which dermatologic condition presents with an annular plaque featuring an active, advancing scaly border and central clearing on the trunk?",
+    "choices": {
+      "A": "Pityriasis rosea",
+      "B": "Psoriasis",
+      "C": "Tinea corporis",
+      "D": "Nummular eczema"
+    },
+    "correct_answer": "C",
+    "correct_text": "Tinea corporis",
+    "explanation": "Tinea corporis ('ringworm') is a superficial dermatophytosis producing expanding annular lesions with prominent peripheral scale.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 72
+  },
+  {
+    "pdf_id": "ABD-Practice-073",
+    "pdf_num": 73,
+    "question": "Which medication class is most commonly implicated in recurrent, well-demarcated dusky erythematous fixed drug eruptions (FDE)?",
+    "choices": {
+      "A": "Sulfonamides",
+      "B": "Metformin",
+      "C": "Atorvastatin",
+      "D": "Omeprazole"
+    },
+    "correct_answer": "A",
+    "correct_text": "Sulfonamides",
+    "explanation": "Fixed drug eruptions classically recur at the exact same anatomical site (often genitalia or lips); sulfa drugs, NSAIDs, and tetracyclines are major culprits.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 73
+  },
+  {
+    "pdf_id": "ABD-Practice-074",
+    "pdf_num": 74,
+    "question": "A middle-aged patient with hepatitis C presents with cutaneous fragility, tense bullae, and hyperpigmentation on sun-exposed dorsal hands following minor trauma. Diagnosis?",
+    "choices": {
+      "A": "Alkaptonuria",
+      "B": "Porphyria cutanea tarda",
+      "C": "Vitiligo",
+      "D": "Xeroderma pigmentosum"
+    },
+    "correct_answer": "B",
+    "correct_text": "Porphyria cutanea tarda",
+    "explanation": "PCT is caused by uroporphyrinogen decarboxylase deficiency; porphyrin accumulation under UV light induces mechanical fragility and subepidermal blisters.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 74
+  },
+  {
+    "pdf_id": "ABD-Practice-075",
+    "pdf_num": 75,
+    "question": "Which intracytoplasmic inclusion body is pathognomonic on microscopic analysis for molluscum contagiosum?",
+    "choices": {
+      "A": "Aschoff bodies",
+      "B": "Tzanck cells",
+      "C": "Henderson-Paterson bodies",
+      "D": "Civatte bodies"
+    },
+    "correct_answer": "C",
+    "correct_text": "Henderson-Paterson bodies",
+    "explanation": "Henderson-Paterson bodies (large, eosinophilic intracytoplasmic inclusion bodies packed with poxvirus virions) are pathognomonic for molluscum contagiosum.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 75
+  },
+  {
+    "pdf_id": "ABD-Practice-076",
+    "pdf_num": 76,
+    "question": "A patient with advanced HIV infection presents with multiple painless, violaceous cutaneous plaques and nodules. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Bacillary angiomatosis",
+      "B": "Kaposi sarcoma",
+      "C": "Melanoma",
+      "D": "Pyogenic granuloma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Kaposi sarcoma",
+    "explanation": "Epidemic (AIDS-associated) Kaposi sarcoma is a spindle cell vascular tumor etiologically linked to human herpesvirus 8 (HHV-8).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 76
+  },
+  {
+    "pdf_id": "ABD-Practice-077",
+    "pdf_num": 77,
+    "question": "Which condition presents with porcelain-white, atrophic, cigarette-paper wrinkled plaques localized to the anogenital region in postmenopausal women?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Lichen sclerosus",
+      "C": "Vitiligo",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Lichen sclerosus",
+    "explanation": "Lichen sclerosus (et atrophicus) affects the vulva in a figure-of-eight distribution with prominent atrophy, bruising, and severe pruritus.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 77
+  },
+  {
+    "pdf_id": "ABD-Practice-078",
+    "pdf_num": 78,
+    "question": "A skin biopsy reveals intraepidermal suprabasal acantholysis with an intact basal cell layer resembling a 'row of tombstones'. What is the diagnosis?",
+    "choices": {
+      "A": "Bullous pemphigoid",
+      "B": "Pemphigus vulgaris",
+      "C": "Psoriasis",
+      "D": "Epidermolysis bullosa"
+    },
+    "correct_answer": "B",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "Acantholysis just above the basal layer leaves anchored basal keratinocytes along the basement membrane ('row of tombstones') in pemphigus vulgaris.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 78
+  },
+  {
+    "pdf_id": "ABD-Practice-079",
+    "pdf_num": 79,
+    "question": "A 3-year-old child presents with 5 days of high fever, strawberry tongue, non-exudative conjunctivitis, polymorphous rash, and cervical lymphadenopathy. Likely diagnosis?",
+    "choices": {
+      "A": "Scarlet fever",
+      "B": "Kawasaki disease",
+      "C": "Measles",
+      "D": "Toxic shock syndrome"
+    },
+    "correct_answer": "B",
+    "correct_text": "Kawasaki disease",
+    "explanation": "Kawasaki disease is an acute systemic medium-vessel vasculitis of childhood requiring prompt IVIG therapy to prevent coronary artery aneurysms.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 79
+  },
+  {
+    "pdf_id": "ABD-Practice-080",
+    "pdf_num": 80,
+    "question": "Which cutaneous granulomatous disease characteristically exhibits 'apple-jelly' yellowish-brown nodules upon glass slide compression (diascopy)?",
+    "choices": {
+      "A": "Pityriasis alba",
+      "B": "Cutaneous sarcoidosis (Lupus pernio)",
+      "C": "Alopecia areata",
+      "D": "Tinea capitis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Cutaneous sarcoidosis (Lupus pernio)",
+    "explanation": "Non-caseating sarcoidal granulomas blanch of blood upon diascopy, revealing characteristic translucent 'apple-jelly' nodules.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 80
+  },
+  {
+    "pdf_id": "ABD-Practice-081",
+    "pdf_num": 81,
+    "question": "What is the most characteristic and chronic cutaneous manifestation of sarcoidosis presenting as violaceous indurated plaques on the nose, cheeks, and ears?",
+    "choices": {
+      "A": "Erythema multiforme",
+      "B": "Lupus pernio",
+      "C": "Calcinosis cutis",
+      "D": "Morphea"
+    },
+    "correct_answer": "B",
+    "correct_text": "Lupus pernio",
+    "explanation": "Lupus pernio is the most specific chronic cutaneous sign of sarcoidosis, often correlating with upper respiratory tract and lung involvement.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 81
+  },
+  {
+    "pdf_id": "ABD-Practice-082",
+    "pdf_num": 82,
+    "question": "Which autoimmune blistering condition characterized by intensely itchy extensor vesicles is virtually always associated with underlying gluten-sensitive enteropathy?",
+    "choices": {
+      "A": "Vitiligo",
+      "B": "Dermatitis herpetiformis",
+      "C": "Psoriasis",
+      "D": "Atopic dermatitis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Dermatitis herpetiformis is the cutaneous expression of celiac disease, driven by epidermal transglutaminase (eTG/TG3) IgA autoantibodies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 82
+  },
+  {
+    "pdf_id": "ABD-Practice-083",
+    "pdf_num": 83,
+    "question": "Which Human Leukocyte Antigen (HLA) allele has the strongest genetic association with early-onset plaque psoriasis vulgaris?",
+    "choices": {
+      "A": "HLA-B27",
+      "B": "HLA-Cw6 (HLA-C*06:02)",
+      "C": "HLA-DR4",
+      "D": "HLA-B8"
+    },
+    "correct_answer": "B",
+    "correct_text": "HLA-Cw6 (HLA-C*06:02)",
+    "explanation": "HLA-Cw6 located in the PSORS1 locus is the single strongest genetic determinant for type 1 (early-onset) plaque psoriasis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 83
+  },
+  {
+    "pdf_id": "ABD-Practice-084",
+    "pdf_num": 84,
+    "question": "A 'strawberry hemangioma' (infantile hemangioma) is best defined pathologically as:",
+    "choices": {
+      "A": "A high-grade malignant vascular sarcoma",
+      "B": "A benign vascular neoplasm of infancy",
+      "C": "A pyogenic granuloma",
+      "D": "A static capillary arteriovenous malformation"
+    },
+    "correct_answer": "B",
+    "correct_text": "A benign vascular neoplasm of infancy",
+    "explanation": "Infantile hemangiomas are GLUT1-positive benign vascular neoplasms that grow rapidly during the first months of life before undergoing gradual involution.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 84
+  },
+  {
+    "pdf_id": "ABD-Practice-085",
+    "pdf_num": 85,
+    "question": "Which autosomal recessive disorder is characterized by extreme UV photosensitivity, early lentigines, and a >1000-fold increased risk of skin cancers due to defective nucleotide excision repair?",
+    "choices": {
+      "A": "Xeroderma pigmentosum",
+      "B": "Cockayne syndrome",
+      "C": "Bloom syndrome",
+      "D": "Ataxia telangiectasia"
+    },
+    "correct_answer": "A",
+    "correct_text": "Xeroderma pigmentosum",
+    "explanation": "Xeroderma pigmentosum involves mutations in XP genes (XPA through XPG) essential for repairing UV-induced cyclobutane pyrimidine dimers.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 85
+  },
+  {
+    "pdf_id": "ABD-Practice-086",
+    "pdf_num": 86,
+    "question": "A middle-aged woman presents with bilateral yellowish eyelid papules (xanthelasmas). What abnormality is most likely revealed on a fasting lipid panel?",
+    "choices": {
+      "A": "Normal profile in all patients",
+      "B": "Hypercholesterolemia",
+      "C": "Hypertriglyceridemia alone",
+      "D": "Hypobetalipoproteinemia"
+    },
+    "correct_answer": "B",
+    "correct_text": "Hypercholesterolemia",
+    "explanation": "Approximately 50% of patients with xanthelasma palpebrarum demonstrate significant hypercholesterolemia or atherogenic dyslipidemia.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 86
+  },
+  {
+    "pdf_id": "ABD-Practice-087",
+    "pdf_num": 87,
+    "question": "Which systemic antibiotic is strictly contraindicated for the treatment of inflammatory acne vulgaris in children under the age of 8 years due to permanent dental staining?",
+    "choices": {
+      "A": "Doxycycline",
+      "B": "Azithromycin",
+      "C": "Erythromycin",
+      "D": "Clindamycin"
+    },
+    "correct_answer": "A",
+    "correct_text": "Doxycycline",
+    "explanation": "Tetracycline class antibiotics bind calcium and deposit in developing teeth and bones, leading to permanent enamel discoloration and hypoplasia.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 87
+  },
+  {
+    "pdf_id": "ABD-Practice-088",
+    "pdf_num": 88,
+    "question": "A woman presents with asymptomatic, reticular lacy white lines and plaques on the bilateral buccal mucosa. What is the diagnosis?",
+    "choices": {
+      "A": "Aphthous ulcers",
+      "B": "Oral lichen planus",
+      "C": "Oral candidiasis",
+      "D": "Oral leukoplakia"
+    },
+    "correct_answer": "B",
+    "correct_text": "Oral lichen planus",
+    "explanation": "Reticular oral lichen planus characteristically manifests as bilateral lacy white keratotic lines (Wickham striae) on the buccal mucosa.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 88
+  },
+  {
+    "pdf_id": "ABD-Practice-089",
+    "pdf_num": 89,
+    "question": "A 10-year-old child presents with multiple circumscribed, rough, hyperkeratotic papules on the dorsal fingers and periungual areas. What is the diagnosis?",
+    "choices": {
+      "A": "Verruca vulgaris",
+      "B": "Molluscum contagiosum",
+      "C": "Milia",
+      "D": "Seborrheic keratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Verruca vulgaris",
+    "explanation": "Verruca vulgaris (common warts) are benign cutaneous HPV proliferations (most commonly types 2 and 4) featuring hyperkeratosis and koilocytosis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 89
+  },
+  {
+    "pdf_id": "ABD-Practice-090",
+    "pdf_num": 90,
+    "question": "Which hereditary syndrome presents with periungual fibromas (Koenen tumors), facial angiofibromas, shagreen patches, and ash-leaf macules?",
+    "choices": {
+      "A": "Tuberous sclerosis complex",
+      "B": "Neurofibromatosis type 1",
+      "C": "McCune-Albright syndrome",
+      "D": "Peutz-Jeghers syndrome"
+    },
+    "correct_answer": "A",
+    "correct_text": "Tuberous sclerosis complex",
+    "explanation": "Periungual fibromas (Koenen tumors) emerging during adolescence are a major diagnostic feature of tuberous sclerosis complex.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 90
+  },
+  {
+    "pdf_id": "ABD-Practice-091",
+    "pdf_num": 91,
+    "question": "Which systemic vasculitis is characterized by recurrent painful oral aphthae, genital ulcerations, uveitis, and cutaneous pathergy?",
+    "choices": {
+      "A": "Systemic lupus erythematosus",
+      "B": "Behçet disease",
+      "C": "Pemphigus vulgaris",
+      "D": "Erythema multiforme"
+    },
+    "correct_answer": "B",
+    "correct_text": "Behçet disease",
+    "explanation": "Behçet disease is a variable-vessel vasculitis strongly associated with HLA-B51, presenting with recurrent bipolar mucosal ulcerations.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 91
+  },
+  {
+    "pdf_id": "ABD-Practice-092",
+    "pdf_num": 92,
+    "question": "Which cutaneous malignancy is historically termed a 'rodent ulcer' due to its potential to produce locally destructive, rolled, ulcerating lesions?",
+    "choices": {
+      "A": "Squamous cell carcinoma",
+      "B": "Basal cell carcinoma",
+      "C": "Melanoma",
+      "D": "Keratoacanthoma"
+    },
+    "correct_answer": "B",
+    "correct_text": "Basal cell carcinoma",
+    "explanation": "Noduloulcerative basal cell carcinoma was traditionally called 'rodent ulcer' because chronic untreated central ulceration can deeply invade local tissues.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 92
+  },
+  {
+    "pdf_id": "ABD-Practice-093",
+    "pdf_num": 93,
+    "question": "A patient presents with nail changes consisting of numerous tiny pits, distal onycholysis, and subungual 'oil drop' (salmon patch) discoloration. Diagnosis?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Psoriasis",
+      "C": "Onychomycosis",
+      "D": "Alopecia areata"
+    },
+    "correct_answer": "B",
+    "correct_text": "Psoriasis",
+    "explanation": "Psoriatic nail disease is characterized by proximal nail matrix pitting, oil-drop discoloration, and distal subungual hyperkeratosis with onycholysis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 93
+  },
+  {
+    "pdf_id": "ABD-Practice-094",
+    "pdf_num": 94,
+    "question": "Which opportunistic bacterial organism is the etiologic cause of 'hot tub folliculitis'?",
+    "choices": {
+      "A": "Staphylococcus aureus",
+      "B": "Candida albicans",
+      "C": "Pseudomonas aeruginosa",
+      "D": "Malassezia furfur"
+    },
+    "correct_answer": "C",
+    "correct_text": "Pseudomonas aeruginosa",
+    "explanation": "Pseudomonas aeruginosa proliferates in warm, inadequately chlorinated recreational water, resulting in pruritic follicular pustules under swimwear.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 94
+  },
+  {
+    "pdf_id": "ABD-Practice-095",
+    "pdf_num": 95,
+    "question": "Which condition presents with painful, grouped vesicular eruptions distributed unilaterally along a single dermatome?",
+    "choices": {
+      "A": "Coxsackie viral exanthem",
+      "B": "Herpes zoster (Shingles)",
+      "C": "Varicella",
+      "D": "Dermatitis herpetiformis"
+    },
+    "correct_answer": "B",
+    "correct_text": "Herpes zoster (Shingles)",
+    "explanation": "Herpes zoster represents reactivation of latent varicella-zoster virus from dorsal root or cranial ganglia, producing a dermatomal vesicular eruption.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 95
+  },
+  {
+    "pdf_id": "ABD-Practice-096",
+    "pdf_num": 96,
+    "question": "What is the single most common anatomic site for the development of primary malignant melanoma in adult men?",
+    "choices": {
+      "A": "Lower legs",
+      "B": "Trunk and upper back",
+      "C": "Face",
+      "D": "Upper arms"
+    },
+    "correct_answer": "B",
+    "correct_text": "Trunk and upper back",
+    "explanation": "In men, malignant melanoma occurs most frequently on the trunk and upper back; in women, the lower legs are the most frequent primary site.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 96
+  },
+  {
+    "pdf_id": "ABD-Practice-097",
+    "pdf_num": 97,
+    "question": "Which immunological classification of hypersensitivity reaction accounts for allergic contact dermatitis (e.g., poison ivy or nickel)?",
+    "choices": {
+      "A": "Type I (IgE mediated)",
+      "B": "Type II (Antibody dependent)",
+      "C": "Type III (Immune complex)",
+      "D": "Type IV (Cell-mediated / Delayed)"
+    },
+    "correct_answer": "D",
+    "correct_text": "Type IV (Cell-mediated / Delayed)",
+    "explanation": "Allergic contact dermatitis is a classic type IV delayed-type hypersensitivity reaction mediated by antigen-primed CD4+ and CD8+ memory T lymphocytes.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 97
+  },
+  {
+    "pdf_id": "ABD-Practice-098",
+    "pdf_num": 98,
+    "question": "Which infectious pediatric disease presents with a rough 'sandpaper' erythematous exanthem, Pastia's lines in skin folds, and a prominent 'strawberry tongue'?",
+    "choices": {
+      "A": "Measles",
+      "B": "Scarlet fever",
+      "C": "Kawasaki disease",
+      "D": "Rubella"
+    },
+    "correct_answer": "B",
+    "correct_text": "Scarlet fever",
+    "explanation": "Group A Streptococcus producing pyrogenic exotoxins causes scarlet fever, featuring strawberry tongue, circumoral pallor, and Pastia's lines in flexural creases.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 98
+  },
+  {
+    "pdf_id": "ABD-Practice-099",
+    "pdf_num": 99,
+    "question": "What is the first-line pharmacotherapeutic class of choice for the management of chronic spontaneous urticaria?",
+    "choices": {
+      "A": "Systemic corticosteroids",
+      "B": "Second-generation non-sedating H1 antihistamines",
+      "C": "Intramuscular epinephrine",
+      "D": "Oral cyclosporine"
+    },
+    "correct_answer": "B",
+    "correct_text": "Second-generation non-sedating H1 antihistamines",
+    "explanation": "Modern guidelines recommend second-generation non-sedating H1 antihistamines (cetirizine, fexofenadine, loratadine) as the cornerstone first-line therapy for chronic urticaria.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 99
+  },
+  {
+    "pdf_id": "ABD-Practice-100",
+    "pdf_num": 100,
+    "question": "Which histologic parameter of tumor invasion remains the single most important and reliable prognostic factor in localized primary cutaneous melanoma?",
+    "choices": {
+      "A": "Anatomic location",
+      "B": "Degree of ulceration alone",
+      "C": "Breslow depth (thickness)",
+      "D": "Clark level alone"
+    },
+    "correct_answer": "C",
+    "correct_text": "Breslow depth (thickness)",
+    "explanation": "Breslow depth measured in millimeters from the granular layer to the deepest melanoma cell invasion continues to be the dominant prognostic factor determining staging and survival. American Board of Dermatology (ABD) Practice Exam • Full 100 Questions, Verified Answers & High-Yield Rationales",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 100
+  },
+  {
+    "pdf_id": "ABD-Cert-001",
+    "pdf_num": 101,
+    "question": "Which epidermal layer is primarily responsible for keratinocyte proliferation and mitotic renewal?",
+    "choices": {
+      "A": "Stratum basale",
+      "B": "Stratum spinosum",
+      "C": "Stratum granulosum",
+      "D": "Stratum corneum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Stratum basale",
+    "explanation": "The stratum basale (basal cell layer) contains mitotically active stem cells and proliferating keratinocytes responsible for continuous epidermal renewal.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Basic",
+    "format": "mcq",
+    "id": 101
+  },
+  {
+    "pdf_id": "ABD-Cert-002",
+    "pdf_num": 102,
+    "question": "The Auspitz sign, characterized by pinpoint capillary bleeding upon gentle removal of scale, is most characteristic of:",
+    "choices": {
+      "A": "Psoriasis vulgaris",
+      "B": "Lichen planus",
+      "C": "Seborrheic dermatitis",
+      "D": "Pityriasis rosea"
+    },
+    "correct_answer": "A",
+    "correct_text": "Psoriasis vulgaris",
+    "explanation": "Psoriasis displays Auspitz sign due to thinned suprapapillary epidermal plates overlying markedly dilated, tortuous dermal papillary capillaries.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 102
+  },
+  {
+    "pdf_id": "ABD-Cert-003",
+    "pdf_num": 103,
+    "question": "Which primary cutaneous malignancy carries the highest metastatic potential and causes the majority of skin cancer deaths?",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Squamous cell carcinoma",
+      "C": "Melanoma",
+      "D": "Merkel cell carcinoma"
+    },
+    "correct_answer": "C",
+    "correct_text": "Melanoma",
+    "explanation": "Cutaneous melanoma represents only approx. 1% of all skin malignancies but accounts for the vast majority of skin cancer-related mortalities due to aggressive metastasis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 103
+  },
+  {
+    "pdf_id": "ABD-Cert-004",
+    "pdf_num": 104,
+    "question": "A patient presents with an expanding annular erythematous 'target / bull's-eye' plaque following an Ixodes tick bite. What is the diagnosis?",
+    "choices": {
+      "A": "Erythema migrans (Lyme disease)",
+      "B": "Erythema multiforme",
+      "C": "Tinea corporis",
+      "D": "Pityriasis rosea"
+    },
+    "correct_answer": "A",
+    "correct_text": "Erythema migrans (Lyme disease)",
+    "explanation": "Erythema migrans is the pathognomonic early cutaneous hallmark of Lyme borreliosis caused by Borrelia burgdorferi transmitted by Ixodes ticks.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 104
+  },
+  {
+    "pdf_id": "ABD-Cert-005",
+    "pdf_num": 105,
+    "question": "A positive Nikolsky sign (epidermal detachment induced by gentle lateral shearing pressure) is most strongly associated with:",
+    "choices": {
+      "A": "Pemphigus vulgaris",
+      "B": "Bullous pemphigoid",
+      "C": "Stevens-Johnson syndrome",
+      "D": "Dermatitis herpetiformis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "Pemphigus vulgaris exhibits intraepidermal suprabasal acantholysis due to IgG autoantibodies against desmoglein 3/1, producing flaccid bullae and a positive Nikolsky sign.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 105
+  },
+  {
+    "pdf_id": "ABD-Cert-006",
+    "pdf_num": 106,
+    "question": "A patient with celiac disease presents with intensely pruritic grouped excoriated vesicles symmetrically distributed on the elbows and knees. Most likely diagnosis?",
+    "choices": {
+      "A": "Dermatitis herpetiformis",
+      "B": "Psoriasis",
+      "C": "Bullous pemphigoid",
+      "D": "Allergic contact dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Dermatitis herpetiformis is pathognomonic for gluten-sensitive enteropathy (celiac disease), mediated by granular IgA autoantibodies targeting epidermal transglutaminase (eTG).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 106
+  },
+  {
+    "pdf_id": "ABD-Cert-007",
+    "pdf_num": 107,
+    "question": "Which surgical diagnostic procedure is considered the absolute gold standard for a clinically suspicious pigmented lesion concerning for melanoma?",
+    "choices": {
+      "A": "Excisional biopsy with narrow 1-3 mm margins",
+      "B": "Punch biopsy",
+      "C": "Superficial shave biopsy",
+      "D": "Dermoscopy alone"
+    },
+    "correct_answer": "A",
+    "correct_text": "Excisional biopsy with narrow 1-3 mm margins",
+    "explanation": "Complete elliptical excisional biopsy with 1 to 3 mm clinical margins allows comprehensive cross-sectional histopathologic evaluation for accurate Breslow depth and ulceration status.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 107
+  },
+  {
+    "pdf_id": "ABD-Cert-008",
+    "pdf_num": 108,
+    "question": "Which dimorphic fungal organism is most commonly implicated in the pathogenesis of tinea (pityriasis) versicolor?",
+    "choices": {
+      "A": "Malassezia furfur",
+      "B": "Trichophyton rubrum",
+      "C": "Candida albicans",
+      "D": "Microsporum canis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Malassezia furfur",
+    "explanation": "Malassezia species (M. globosa and M. furfur) produce azelaic acid that competitively inhibits tyrosinase, resulting in characteristic hypo- or hyperpigmented scaly macules.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 108
+  },
+  {
+    "pdf_id": "ABD-Cert-009",
+    "pdf_num": 109,
+    "question": "Acantholysis, defined as the loss of intercellular desmosomal adhesion between keratinocytes, is a hallmark histopathologic finding in:",
+    "choices": {
+      "A": "Pemphigus vulgaris",
+      "B": "Bullous pemphigoid",
+      "C": "Lichen planus",
+      "D": "Psoriasis vulgaris"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "Direct autoantibody binding to desmoglein 3 breaks cadherin junctions, leading to round, unattached acantholytic keratinocytes (Tzanck cells).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 109
+  },
+  {
+    "pdf_id": "ABD-Cert-010",
+    "pdf_num": 110,
+    "question": "What is the recommended first-line systemic regimen for moderate-to-severe inflammatory acne vulgaris?",
+    "choices": {
+      "A": "Oral doxycycline combined with topical retinoid and benzoyl peroxide",
+      "B": "Oral isotretinoin monotherapy",
+      "C": "Topical hydrocortisone",
+      "D": "Oral clindamycin alone"
+    },
+    "correct_answer": "A",
+    "correct_text": "Oral doxycycline combined with topical retinoid and benzoyl peroxide",
+    "explanation": "First-line management for moderate-to-severe inflammatory acne combines an oral tetracycline (doxycycline) with topical retinoids and benzoyl peroxide to prevent resistance.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 110
+  },
+  {
+    "pdf_id": "ABD-Cert-011",
+    "pdf_num": 111,
+    "question": "The Koebner phenomenon (isomorphic development of characteristic skin lesions along lines of mechanical trauma) is classically seen in:",
+    "choices": {
+      "A": "Psoriasis vulgaris",
+      "B": "Vitiligo",
+      "C": "Seborrheic keratosis",
+      "D": "Actinic keratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Psoriasis vulgaris",
+    "explanation": "Koebner phenomenon is classically identified in psoriasis, lichen planus, and vitiligo following cutaneous abrasion, scratching, or surgical incisions.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 111
+  },
+  {
+    "pdf_id": "ABD-Cert-012",
+    "pdf_num": 112,
+    "question": "Which immunological hypersensitivity mechanism is responsible for allergic contact dermatitis (e.g., rhus dermatitis from poison ivy)?",
+    "choices": {
+      "A": "Type IV (Delayed-type / Cell-mediated)",
+      "B": "Type I (Immediate / IgE)",
+      "C": "Type II (Cytotoxic)",
+      "D": "Type III (Immune complex)"
+    },
+    "correct_answer": "A",
+    "correct_text": "Type IV (Delayed-type / Cell-mediated)",
+    "explanation": "Hapten-specific sensitized CD4+ and CD8+ memory T-cells mediate delayed-type (type IV) hypersensitivity upon re-exposure, peaking at 48-72 hours.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 112
+  },
+  {
+    "pdf_id": "ABD-Cert-013",
+    "pdf_num": 113,
+    "question": "Which dermatological condition is defined by the clinical hallmark of Wickham striae (fine, reticulated, lacy white lines)?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Psoriasis",
+      "C": "Vitiligo",
+      "D": "Erythema multiforme"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lichen planus",
+    "explanation": "Wickham striae are pathognomonic for lichen planus, corresponding histopathologically to focal wedge-shaped hypergranulosis of the epidermis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 113
+  },
+  {
+    "pdf_id": "ABD-Cert-014",
+    "pdf_num": 114,
+    "question": "An isolated 2-5 cm oval erythematous 'herald patch' followed days later by eruptive secondary oval plaques along Langer's lines ('Christmas tree' pattern) indicates:",
+    "choices": {
+      "A": "Pityriasis rosea",
+      "B": "Psoriasis",
+      "C": "Tinea corporis",
+      "D": "Atopic dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pityriasis rosea",
+    "explanation": "Pityriasis rosea (associated with reactivation of HHV-6 and HHV-7) classically displays a primary herald patch followed by a Christmas tree trunk eruption.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 114
+  },
+  {
+    "pdf_id": "ABD-Cert-015",
+    "pdf_num": 115,
+    "question": "Which peripheral nerve is most commonly and prominently enlarged and damaged in leprosy (Hansen's disease)?",
+    "choices": {
+      "A": "Ulnar nerve",
+      "B": "Radial nerve",
+      "C": "Median nerve",
+      "D": "Sciatic nerve"
+    },
+    "correct_answer": "A",
+    "correct_text": "Ulnar nerve",
+    "explanation": "Mycobacterium leprae exhibits marked tropism for cooler Schwann cells, with the ulnar nerve at the elbow being the most frequently involved, causing intrinsic hand clawing.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 115
+  },
+  {
+    "pdf_id": "ABD-Cert-016",
+    "pdf_num": 116,
+    "question": "What is the etiologic causative bacterium of erythrasma, presenting as well-demarcated reddish-brown intertriginous macerated patches?",
+    "choices": {
+      "A": "Corynebacterium minutissimum",
+      "B": "Candida albicans",
+      "C": "Trichophyton rubrum",
+      "D": "Malassezia furfur"
+    },
+    "correct_answer": "A",
+    "correct_text": "Corynebacterium minutissimum",
+    "explanation": "Corynebacterium minutissimum synthesizes water-soluble coproporphyrin III, producing pathognomonic coral-red fluorescence under Wood's lamp examination.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 116
+  },
+  {
+    "pdf_id": "ABD-Cert-017",
+    "pdf_num": 117,
+    "question": "The classic 'slapped cheek' exanthem followed by a lacy reticular extremity rash in pediatric patients is caused by:",
+    "choices": {
+      "A": "Parvovirus B19",
+      "B": "Measles virus",
+      "C": "Rubella virus",
+      "D": "Human herpesvirus 6"
+    },
+    "correct_answer": "A",
+    "correct_text": "Parvovirus B19",
+    "explanation": "Erythema infectiosum (Fifth disease) is caused by single-stranded DNA Parvovirus B19, targeting erythroid progenitor cells.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 117
+  },
+  {
+    "pdf_id": "ABD-Cert-018",
+    "pdf_num": 118,
+    "question": "Which autoimmune subepidermal blistering disorder shows continuous linear IgG and C3 deposition along the basement membrane zone on direct immunofluorescence?",
+    "choices": {
+      "A": "Bullous pemphigoid",
+      "B": "Pemphigus vulgaris",
+      "C": "Dermatitis herpetiformis",
+      "D": "Epidermolysis bullosa simplex"
+    },
+    "correct_answer": "A",
+    "correct_text": "Bullous pemphigoid",
+    "explanation": "Bullous pemphigoid features IgG targeting BP180/BP230 at hemidesmosomes, resulting in a continuous linear band along the dermoepidermal junction.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 118
+  },
+  {
+    "pdf_id": "ABD-Cert-019",
+    "pdf_num": 119,
+    "question": "What is the most common clinical variant of chronic cutaneous lupus erythematosus (CCLE)?",
+    "choices": {
+      "A": "Discoid lupus erythematosus (DLE)",
+      "B": "Subacute cutaneous lupus",
+      "C": "Tumid lupus",
+      "D": "Neonatal lupus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Discoid lupus erythematosus (DLE)",
+    "explanation": "Discoid lupus erythematosus (DLE) is the most frequent form of CCLE, presenting with indurated scarring plaques featuring follicular plugging and pigmentary incontinence.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 119
+  },
+  {
+    "pdf_id": "ABD-Cert-020",
+    "pdf_num": 120,
+    "question": "What is the most common precancerous precursor lesion leading to cutaneous invasive squamous cell carcinoma?",
+    "choices": {
+      "A": "Actinic keratosis",
+      "B": "Seborrheic keratosis",
+      "C": "Bowen's disease",
+      "D": "Dysplastic nevus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Actinic keratosis",
+    "explanation": "Actinic keratosis represents atypical intraepidermal keratinocyte dysplasia induced by UV radiation; approximately 60-80% of SCCs arise within preexisting AK lesions.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 120
+  },
+  {
+    "pdf_id": "ABD-Cert-021",
+    "pdf_num": 121,
+    "question": "Which autosomal dominant genodermatosis caused by PTCH1 gene mutations is characterized by multiple basal cell carcinomas and odontogenic keratocysts?",
+    "choices": {
+      "A": "Gorlin syndrome (Nevoid basal cell carcinoma syndrome)",
+      "B": "Peutz-Jeghers syndrome",
+      "C": "Neurofibromatosis type 1",
+      "D": "Tuberous sclerosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Gorlin syndrome (Nevoid basal cell carcinoma syndrome)",
+    "explanation": "Gorlin syndrome results from PTCH1 mutations dysregulating the Hedgehog signaling pathway, causing early multiple BCCs, jaw cysts, and palmar/plantar pits.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 121
+  },
+  {
+    "pdf_id": "ABD-Cert-022",
+    "pdf_num": 122,
+    "question": "Which topical antibacterial agent is established as first-line therapy for localized, non-bullous impetigo?",
+    "choices": {
+      "A": "Topical mupirocin 2%",
+      "B": "Clotrimazole",
+      "C": "Hydrocortisone",
+      "D": "Acyclovir"
+    },
+    "correct_answer": "A",
+    "correct_text": "Topical mupirocin 2%",
+    "explanation": "Mupirocin inhibits bacterial isoleucyl-tRNA synthetase and provides bactericidal activity against Staphylococcus aureus and Streptococcus pyogenes.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 122
+  },
+  {
+    "pdf_id": "ABD-Cert-023",
+    "pdf_num": 123,
+    "question": "What is the most prevalent clinicopathologic subtype of primary cutaneous melanoma in light-skinned populations?",
+    "choices": {
+      "A": "Superficial spreading melanoma",
+      "B": "Nodular melanoma",
+      "C": "Lentigo maligna melanoma",
+      "D": "Acral lentiginous melanoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Superficial spreading melanoma",
+    "explanation": "Superficial spreading melanoma accounts for approximately 70% of all melanomas, characterized by a prolonged radial growth phase.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 123
+  },
+  {
+    "pdf_id": "ABD-Cert-024",
+    "pdf_num": 124,
+    "question": "Which nutritional vitamin deficiency produces the classic triad of pellagra: Dermatitis (Casal necklace), Diarrhea, and Dementia?",
+    "choices": {
+      "A": "Niacin (Vitamin B3)",
+      "B": "Thiamine (Vitamin B1)",
+      "C": "Riboflavin (Vitamin B2)",
+      "D": "Pyridoxine (Vitamin B6)"
+    },
+    "correct_answer": "A",
+    "correct_text": "Niacin (Vitamin B3)",
+    "explanation": "Niacin (vitamin B3) or tryptophan deficiency impairs NAD/NADP synthesis, leading to the triad of pellagra.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 124
+  },
+  {
+    "pdf_id": "ABD-Cert-025",
+    "pdf_num": 125,
+    "question": "Which pathognomonic violaceous periorbital cutaneous eruption with periorbital edema is specific for dermatomyositis?",
+    "choices": {
+      "A": "Heliotrope rash",
+      "B": "Erythema nodosum",
+      "C": "Café-au-lait macules",
+      "D": "Seborrheic keratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Heliotrope rash",
+    "explanation": "The heliotrope rash is a violaceous discoloration over the upper eyelids with periorbital edema, pathognomonic for dermatomyositis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 125
+  },
+  {
+    "pdf_id": "ABD-Cert-026",
+    "pdf_num": 126,
+    "question": "A patient with type 2 diabetes presents with dark, velvety, hyperkeratotic plaques on the neck and axillae. This is:",
+    "choices": {
+      "A": "Acanthosis nigricans",
+      "B": "Addison's disease",
+      "C": "Melasma",
+      "D": "Vitiligo"
+    },
+    "correct_answer": "A",
+    "correct_text": "Acanthosis nigricans",
+    "explanation": "Hyperinsulinemia stimulates epidermal IGF-1 receptors and fibroblast growth, leading to velvety hyperkeratotic papillomatosis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 126
+  },
+  {
+    "pdf_id": "ABD-Cert-027",
+    "pdf_num": 127,
+    "question": "Which bedside non-invasive diagnostic optical test accentuates completely depigmented patches in vitiligo with bright chalky-white fluorescence?",
+    "choices": {
+      "A": "Wood's lamp examination",
+      "B": "KOH mount",
+      "C": "Patch testing",
+      "D": "Tzanck smear"
+    },
+    "correct_answer": "A",
+    "correct_text": "Wood's lamp examination",
+    "explanation": "Wood's lamp (365 nm UVA) accentuates complete epidermal melanin loss by reflecting dermal collagen fluorescence in chalky white.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 127
+  },
+  {
+    "pdf_id": "ABD-Cert-028",
+    "pdf_num": 128,
+    "question": "Which cutaneous dermatosis is most strongly and definitively associated with gluten-sensitive enteropathy (celiac disease)?",
+    "choices": {
+      "A": "Dermatitis herpetiformis",
+      "B": "Psoriasis",
+      "C": "Lichen planus",
+      "D": "Rosacea"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Nearly 100% of dermatitis herpetiformis patients demonstrate small bowel mucosal changes on biopsy, responding to a strict gluten-free diet.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 128
+  },
+  {
+    "pdf_id": "ABD-Cert-029",
+    "pdf_num": 129,
+    "question": "A patient presents with multiple well-demarcated, hyperkeratotic, waxy, brown plaques with a 'stuck-on' appearance. What is the diagnosis?",
+    "choices": {
+      "A": "Seborrheic keratosis",
+      "B": "Melanoma",
+      "C": "Basal cell carcinoma",
+      "D": "Lentigo maligna"
+    },
+    "correct_answer": "A",
+    "correct_text": "Seborrheic keratosis",
+    "explanation": "Seborrheic keratoses are very common benign epithelial neoplasms harboring horn pseudo- cysts that give a classic 'stuck-on' clinical appearance.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 129
+  },
+  {
+    "pdf_id": "ABD-Cert-030",
+    "pdf_num": 130,
+    "question": "Which autoimmune blistering disease presents with granular IgA deposition in the dermal papillae and is associated with celiac disease?",
+    "choices": {
+      "A": "Dermatitis herpetiformis",
+      "B": "Pemphigus vulgaris",
+      "C": "Bullous pemphigoid",
+      "D": "Linear IgA disease"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Direct immunofluorescence demonstrates pathognomonic granular IgA deposits concentrated at the tips of dermal papillae.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 130
+  },
+  {
+    "pdf_id": "ABD-Cert-031",
+    "pdf_num": 131,
+    "question": "Which low-risk Human Papillomavirus (HPV) genotypes are most commonly responsible for condylomata acuminata (anogenital warts)?",
+    "choices": {
+      "A": "HPV 6 and 11",
+      "B": "HPV 16 and 18",
+      "C": "HPV 31 and 33",
+      "D": "HPV 45 and 52"
+    },
+    "correct_answer": "A",
+    "correct_text": "HPV 6 and 11",
+    "explanation": "HPV types 6 and 11 account for >90% of benign genital verrucae (condylomata acuminata); HPV 16 and 18 are oncogenic strains.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 131
+  },
+  {
+    "pdf_id": "ABD-Cert-032",
+    "pdf_num": 132,
+    "question": "The clinical 'ABCDE' mnemonic is an evidence-based clinical screening tool developed for early detection of which cutaneous malignancy?",
+    "choices": {
+      "A": "Melanoma",
+      "B": "Basal cell carcinoma",
+      "C": "Squamous cell carcinoma",
+      "D": "Kaposi sarcoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Melanoma",
+    "explanation": "ABCDE stands for Asymmetry, Border irregularity, Color variegation, Diameter >6 mm, and Evolution/change, established for melanoma screening.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 132
+  },
+  {
+    "pdf_id": "ABD-Cert-033",
+    "pdf_num": 133,
+    "question": "Which ectoparasitic infestation characteristically produces linear serpiginous burrows with severe nocturnal pruritus in the interdigital webs?",
+    "choices": {
+      "A": "Scabies (Sarcoptes scabiei)",
+      "B": "Cutaneous leishmaniasis",
+      "C": "Trichomoniasis",
+      "D": "Tinea corporis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Scabies (Sarcoptes scabiei)",
+    "explanation": "Female Sarcoptes scabiei mites burrow into the stratum corneum, depositing ova and feces that induce intense type IV hypersensitivity pruritus.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 133
+  },
+  {
+    "pdf_id": "ABD-Cert-034",
+    "pdf_num": 134,
+    "question": "What is the single most common and often severe cutaneous manifestation observed in patients with HIV infection?",
+    "choices": {
+      "A": "Severe / explosive seborrheic dermatitis",
+      "B": "Psoriasis",
+      "C": "Kaposi sarcoma",
+      "D": "Oral hairy leukoplakia"
+    },
+    "correct_answer": "A",
+    "correct_text": "Severe / explosive seborrheic dermatitis",
+    "explanation": "Seborrheic dermatitis occurs in up to 80% of patients with advanced HIV/AIDS, often extensive, refractory, and serving as a marker of CD4 decline.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 134
+  },
+  {
+    "pdf_id": "ABD-Cert-035",
+    "pdf_num": 135,
+    "question": "Which bacterial pathogen is responsible for the vast majority of cases of erysipelas, presenting with fiery-red raised demarcated plaques?",
+    "choices": {
+      "A": "Group A Streptococcus (Streptococcus pyogenes)",
+      "B": "Staphylococcus aureus",
+      "C": "Pseudomonas aeruginosa",
+      "D": "Corynebacterium diphtheriae"
+    },
+    "correct_answer": "A",
+    "correct_text": "Group A Streptococcus (Streptococcus pyogenes)",
+    "explanation": "Erysipelas is a superficial dermal cellulitis with sharp margins and lymphatic involvement predominantly caused by Group A beta-hemolytic streptococci.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 135
+  },
+  {
+    "pdf_id": "ABD-Cert-036",
+    "pdf_num": 136,
+    "question": "Which autosomal dominant genodermatosis features multiple café-au-lait macules, intertriginous/axillary freckling (Crowe sign), and cutaneous neurofibromas?",
+    "choices": {
+      "A": "Neurofibromatosis type 1",
+      "B": "Tuberous sclerosis",
+      "C": "Peutz-Jeghers syndrome",
+      "D": "Gorlin syndrome"
+    },
+    "correct_answer": "A",
+    "correct_text": "Neurofibromatosis type 1",
+    "explanation": "NF1 is caused by NF1 tumor suppressor gene mutations encoding neurofibromin, presenting with café-au-lait spots, Crowe sign, and neurofibromas.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 136
+  },
+  {
+    "pdf_id": "ABD-Cert-037",
+    "pdf_num": 137,
+    "question": "Which sexually transmitted infection is classically heralded by a solitary, painless indurated ulcer with a clean base (chancre)?",
+    "choices": {
+      "A": "Primary syphilis (Treponema pallidum)",
+      "B": "Chancroid (Haemophilus ducreyi)",
+      "C": "Herpes simplex virus (HSV-2)",
+      "D": "Lymphogranuloma venereum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Primary syphilis (Treponema pallidum)",
+    "explanation": "The syphilitic chancre is a painless, button-like ulcer appearing 2-3 weeks following inoculation with Treponema pallidum.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 137
+  },
+  {
+    "pdf_id": "ABD-Cert-038",
+    "pdf_num": 138,
+    "question": "Which cutaneous paraneoplastic vascular sign (migratory thrombophlebitis / Trousseau syndrome) is most strongly associated with occult pancreatic adenocarcinoma?",
+    "choices": {
+      "A": "Migratory thrombophlebitis (Trousseau syndrome)",
+      "B": "Necrobiosis lipoidica diabeticorum",
+      "C": "Acanthosis nigricans",
+      "D": "Dermatomyositis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Migratory thrombophlebitis (Trousseau syndrome)",
+    "explanation": "Trousseau syndrome of migrating superficial thrombophlebitis reflects cancer-associated prothrombotic state, classically linked to pancreatic cancer.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 138
+  },
+  {
+    "pdf_id": "ABD-Cert-039",
+    "pdf_num": 139,
+    "question": "Which cutaneous disorder presents with circumscribed depigmented macules caused by selective autoimmune destruction of melanocytes?",
+    "choices": {
+      "A": "Vitiligo",
+      "B": "Albinism",
+      "C": "Pityriasis versicolor",
+      "D": "Melasma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Vitiligo",
+    "explanation": "Vitiligo is an acquired organ-specific autoimmune destruction of melanocytes mediated by autoreactive CD8+ cytotoxic T lymphocytes.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 139
+  },
+  {
+    "pdf_id": "ABD-Cert-040",
+    "pdf_num": 140,
+    "question": "A patient presents with recurrent crops of painful grouped vesicles on an erythematous base on the lip. What is the viral cause?",
+    "choices": {
+      "A": "Herpes simplex virus (HSV-1)",
+      "B": "Varicella-zoster virus",
+      "C": "Coxsackievirus",
+      "D": "Human papillomavirus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Herpes simplex virus (HSV-1)",
+    "explanation": "HSV-1 resides latently within sensory trigeminal ganglia, reactivating to produce painful recurrent grouped vesicles on vermilion lips.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 140
+  },
+  {
+    "pdf_id": "ABD-Cert-041",
+    "pdf_num": 141,
+    "question": "Which condition is characterized by Gottron papules (violaceous, lichenoid papules over the MCP and interphalangeal joints)?",
+    "choices": {
+      "A": "Dermatomyositis",
+      "B": "Psoriasis",
+      "C": "Rheumatoid arthritis",
+      "D": "Scleroderma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatomyositis",
+    "explanation": "Gottron papules over dorsal interphalangeal and MCP joints are a cutaneous hallmark pathognomonic for dermatomyositis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 141
+  },
+  {
+    "pdf_id": "ABD-Cert-042",
+    "pdf_num": 142,
+    "question": "What is the most common benign vascular neoplasm of infancy, characteristically growing rapidly before undergoing spontaneous involution?",
+    "choices": {
+      "A": "Infantile strawberry hemangioma",
+      "B": "Port-wine stain",
+      "C": "Pyogenic granuloma",
+      "D": "Kaposi sarcoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Infantile strawberry hemangioma",
+    "explanation": "Infantile hemangiomas are GLUT1-positive benign vascular neoplasms that appear shortly after birth and spontaneously involute by childhood.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 142
+  },
+  {
+    "pdf_id": "ABD-Cert-043",
+    "pdf_num": 143,
+    "question": "Which systemic granulomatous multisystem disease is most strongly associated with the septal panniculitis Erythema Nodosum?",
+    "choices": {
+      "A": "Sarcoidosis (Löfgren syndrome)",
+      "B": "Diabetes mellitus",
+      "C": "Hypertension",
+      "D": "Hyperthyroidism"
+    },
+    "correct_answer": "A",
+    "correct_text": "Sarcoidosis (Löfgren syndrome)",
+    "explanation": "Löfgren syndrome is the acute triad of erythema nodosum, bilateral hilar lymphadenopathy, and polyarthralgias in sarcoidosis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 143
+  },
+  {
+    "pdf_id": "ABD-Cert-044",
+    "pdf_num": 144,
+    "question": "The pathognomonic 'apple-jelly' yellowish-brown granulomatous nodules seen upon diascopy are classic for which disease?",
+    "choices": {
+      "A": "Cutaneous tuberculosis (Lupus vulgaris)",
+      "B": "Leprosy",
+      "C": "Sarcoidosis",
+      "D": "Tertiary syphilis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Cutaneous tuberculosis (Lupus vulgaris)",
+    "explanation": "Lupus vulgaris (chronic cutaneous tuberculosis) reveals classic yellowish-brown 'apple-jelly' coloration upon glass slide compression (diascopy).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 144
+  },
+  {
+    "pdf_id": "ABD-Cert-045",
+    "pdf_num": 145,
+    "question": "What is the most common anatomic site for the development of primary basal cell carcinoma (BCC)?",
+    "choices": {
+      "A": "Head and neck (sun-exposed areas)",
+      "B": "Lower back",
+      "C": "Palms and soles",
+      "D": "Axillary folds"
+    },
+    "correct_answer": "A",
+    "correct_text": "Head and neck (sun-exposed areas)",
+    "explanation": "Approximately 70-80% of all basal cell carcinomas arise on the sun-exposed regions of the head and neck (face, nose, ears, scalp).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 145
+  },
+  {
+    "pdf_id": "ABD-Cert-046",
+    "pdf_num": 146,
+    "question": "Which dermatological condition presents with sharply demarcated patches that fluoresce bright chalky- white under Wood's lamp examination?",
+    "choices": {
+      "A": "Vitiligo",
+      "B": "Pityriasis versicolor",
+      "C": "Tinea corporis",
+      "D": "Melasma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Vitiligo",
+    "explanation": "Total absence of epidermal melanin in vitiligo allows deep UVA penetration and reflection from dermal collagen as bright chalky-white patches.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 146
+  },
+  {
+    "pdf_id": "ABD-Cert-047",
+    "pdf_num": 147,
+    "question": "Acanthosis (thickening of the spinous layer) with hyperkeratosis, parakeratosis, and hypogranulosis is most characteristic of:",
+    "choices": {
+      "A": "Psoriasis vulgaris",
+      "B": "Lichen planus",
+      "C": "Eczema",
+      "D": "Seborrheic dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Psoriasis vulgaris",
+    "explanation": "Regular psoriasiform epidermal hyperplasia, confluent parakeratosis, diminished granular layer, and suprapapillary thinning are classic for psoriasis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 147
+  },
+  {
+    "pdf_id": "ABD-Cert-048",
+    "pdf_num": 148,
+    "question": "Which viral infection is defined by the histologic appearance of Henderson-Paterson (molluscum) bodies (large intracytoplasmic inclusions)?",
+    "choices": {
+      "A": "Molluscum contagiosum (Poxvirus)",
+      "B": "Human papillomavirus",
+      "C": "Herpes simplex virus",
+      "D": "Coxsackievirus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Molluscum contagiosum (Poxvirus)",
+    "explanation": "Molluscum contagiosum virus (a double-stranded DNA poxvirus) produces pathognomonic large intracytoplasmic basophilic/eosinophilic inclusion bodies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 148
+  },
+  {
+    "pdf_id": "ABD-Cert-049",
+    "pdf_num": 149,
+    "question": "Which internal malignancy is most classically associated with malignant, rapidly progressive acanthosis nigricans in adult patients?",
+    "choices": {
+      "A": "Gastric adenocarcinoma",
+      "B": "Colon carcinoma",
+      "C": "Squamous cell lung cancer",
+      "D": "Invasive breast cancer"
+    },
+    "correct_answer": "A",
+    "correct_text": "Gastric adenocarcinoma",
+    "explanation": "Malignant acanthosis nigricans is an ominous paraneoplastic marker associated with abdominal adenocarcinomas, predominantly gastric cancer (>60%).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 149
+  },
+  {
+    "pdf_id": "ABD-Cert-050",
+    "pdf_num": 150,
+    "question": "Which vascular neoplasm presents with violaceous plaques and nodules caused by Human Herpesvirus 8 (HHV-8) infection?",
+    "choices": {
+      "A": "Kaposi sarcoma",
+      "B": "Pyogenic granuloma",
+      "C": "Hemangioma",
+      "D": "Dermatofibroma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Kaposi sarcoma",
+    "explanation": "HHV-8 / KSHV infects endothelial cells, driving abnormal vascular proliferation and spindle cell fascicles characteristic of Kaposi sarcoma.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 150
+  },
+  {
+    "pdf_id": "ABD-Cert-051",
+    "pdf_num": 151,
+    "question": "Which inflammatory skin condition is defined histologically by a 'sawtooth' pattern of epidermal hyperplasia and a band-like dermal-epidermal junction infiltrate?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Psoriasis",
+      "C": "Bullous pemphigoid",
+      "D": "Scabies"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lichen planus",
+    "explanation": "Lichen planus features a dense, band-like lymphocytic interface infiltrate hugging the dermoepidermal junction and causing 'sawtooth' rete ridges.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Pathology",
+    "format": "mcq",
+    "id": 151
+  },
+  {
+    "pdf_id": "ABD-Cert-052",
+    "pdf_num": 152,
+    "question": "Which systemic antihypertensive drug is most classically associated with drug-induced lupus erythematosus (DILE) and positive anti-histone antibodies?",
+    "choices": {
+      "A": "Hydralazine",
+      "B": "Metformin",
+      "C": "Lisinopril",
+      "D": "Atorvastatin"
+    },
+    "correct_answer": "A",
+    "correct_text": "Hydralazine",
+    "explanation": "Hydralazine (and procainamide) are leading causes of drug-induced lupus; >95% of patients with DILE test positive for anti-histone autoantibodies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 152
+  },
+  {
+    "pdf_id": "ABD-Cert-053",
+    "pdf_num": 153,
+    "question": "Which condition displays a positive Darier's sign (erythema and urtication appearing after mechanical stroking or rubbing of a pigmented macule)?",
+    "choices": {
+      "A": "Urticaria pigmentosa (Cutaneous mastocytosis)",
+      "B": "Psoriasis",
+      "C": "Lichen planus",
+      "D": "Dermatitis herpetiformis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Urticaria pigmentosa (Cutaneous mastocytosis)",
+    "explanation": "Physical rubbing of mast cell aggregates triggers immediate histamine and leukotriene degranulation, inducing localized whealing (positive Darier's sign).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 153
+  },
+  {
+    "pdf_id": "ABD-Cert-054",
+    "pdf_num": 154,
+    "question": "Which skin condition is strongly characterized by the phenomenon of pathergy (development of a pustule or exaggerated ulceration at minor trauma sites)?",
+    "choices": {
+      "A": "Behçet's disease",
+      "B": "Psoriasis",
+      "C": "Vitiligo",
+      "D": "Atopic dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Behçet's disease",
+    "explanation": "Pathergy (hyperreactivity following sterile needle prick) is a key diagnostic criterion for Behçet's disease, also observed in pyoderma gangrenosum.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 154
+  },
+  {
+    "pdf_id": "ABD-Cert-055",
+    "pdf_num": 155,
+    "question": "A patient with HIV presents with multiple discrete pearly umbilicated papules on the face. What is the most likely diagnosis?",
+    "choices": {
+      "A": "Molluscum contagiosum",
+      "B": "Kaposi sarcoma",
+      "C": "Seborrheic keratosis",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Molluscum contagiosum",
+    "explanation": "In immunocompromised / HIV-positive individuals, molluscum contagiosum frequently manifests as extensive, persistent facial umbilicated papules.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 155
+  },
+  {
+    "pdf_id": "ABD-Cert-056",
+    "pdf_num": 156,
+    "question": "Which autoimmune blistering disorder is pathognomonically associated with underlying gluten-sensitive enteropathy (celiac disease)?",
+    "choices": {
+      "A": "Dermatitis herpetiformis",
+      "B": "Pemphigus vulgaris",
+      "C": "Bullous pemphigoid",
+      "D": "Linear IgA dermatosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Dermatitis herpetiformis represents the cutaneous manifestation of gluten sensitivity, improving dramatically upon elimination of dietary gluten.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 156
+  },
+  {
+    "pdf_id": "ABD-Cert-057",
+    "pdf_num": 157,
+    "question": "Which paraneoplastic sign describes the sudden eruptive onset of numerous pruritic seborrheic keratoses associated with internal adenocarcinoma?",
+    "choices": {
+      "A": "Leser-Trélat sign",
+      "B": "Koebner phenomenon",
+      "C": "Nikolsky sign",
+      "D": "Auspitz sign"
+    },
+    "correct_answer": "A",
+    "correct_text": "Leser-Trélat sign",
+    "explanation": "The sign of Leser-Trélat is thought to be mediated by transforming growth factor alpha (TGF-alpha) secreted by occult visceral malignancies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 157
+  },
+  {
+    "pdf_id": "ABD-Cert-058",
+    "pdf_num": 158,
+    "question": "Which autoimmune subepidermal blistering condition characteristically displays a 'string of pearls' or 'crown of jewels' annular vesicular arrangement?",
+    "choices": {
+      "A": "Linear IgA bullous dermatosis",
+      "B": "Pemphigus vulgaris",
+      "C": "Bullous pemphigoid",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Linear IgA bullous dermatosis",
+    "explanation": "Linear IgA bullous dermatosis classically manifests with new blisters arising in a collarette around resolving older lesions ('string of pearls').",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 158
+  },
+  {
+    "pdf_id": "ABD-Cert-059",
+    "pdf_num": 159,
+    "question": "Which systemic acne agent is absolutely contraindicated in women of childbearing potential without strict contraception due to severe embryofetopathy?",
+    "choices": {
+      "A": "Oral isotretinoin",
+      "B": "Doxycycline",
+      "C": "Benzoyl peroxide",
+      "D": "Azelaic acid"
+    },
+    "correct_answer": "A",
+    "correct_text": "Oral isotretinoin",
+    "explanation": "Isotretinoin causes severe craniofacial, cardiac, thymic, and central nervous system birth defects; managed via mandatory risk-management programs.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 159
+  },
+  {
+    "pdf_id": "ABD-Cert-060",
+    "pdf_num": 160,
+    "question": "The pathognomonic ivory-white, atrophic 'cigarette-paper' wrinkled plaques localized to the vulvar region are typical of:",
+    "choices": {
+      "A": "Lichen sclerosus",
+      "B": "Lichen planus",
+      "C": "Psoriasis",
+      "D": "Atopic dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lichen sclerosus",
+    "explanation": "Lichen sclerosus produces dermal collagen homogenization and epidermal atrophy, resulting in an ivory-white, parchment-like 'cigarette-paper' skin texture.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 160
+  },
+  {
+    "pdf_id": "ABD-Cert-061",
+    "pdf_num": 161,
+    "question": "What is the most common bacterial etiologic organism responsible for non-purulent cellulitis in immunocompetent adult patients?",
+    "choices": {
+      "A": "Streptococcus pyogenes (Group A Strep)",
+      "B": "Staphylococcus aureus",
+      "C": "Pseudomonas aeruginosa",
+      "D": "Klebsiella pneumoniae"
+    },
+    "correct_answer": "A",
+    "correct_text": "Streptococcus pyogenes (Group A Strep)",
+    "explanation": "Beta-hemolytic streptococci, particularly Streptococcus pyogenes, cause the vast majority of non-purulent cellulitis cases.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 161
+  },
+  {
+    "pdf_id": "ABD-Cert-062",
+    "pdf_num": 162,
+    "question": "Which viral infection is characterized by painful grouped vesicles that erupt in a strict unilateral dermatomal pattern?",
+    "choices": {
+      "A": "Herpes zoster (Shingles)",
+      "B": "Molluscum contagiosum",
+      "C": "Human papillomavirus",
+      "D": "Coxsackievirus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Herpes zoster (Shingles)",
+    "explanation": "Reactivation of latent varicella-zoster virus (VZV) in a sensory dorsal root ganglion causes dermatomal pain followed by grouped vesicular eruption.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 162
+  },
+  {
+    "pdf_id": "ABD-Cert-063",
+    "pdf_num": 163,
+    "question": "Which agent is established as the traditional first-line systemic disease-modifying therapy for moderate- to-severe chronic plaque psoriasis?",
+    "choices": {
+      "A": "Methotrexate",
+      "B": "Cyclosporine",
+      "C": "Hydroxychloroquine",
+      "D": "Oral prednisone"
+    },
+    "correct_answer": "A",
+    "correct_text": "Methotrexate",
+    "explanation": "Methotrexate inhibits dihydrofolate reductase and suppresses activated T-cell proliferation, serving as the standard oral systemic agent for psoriasis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 163
+  },
+  {
+    "pdf_id": "ABD-Cert-064",
+    "pdf_num": 164,
+    "question": "Which self-limiting dermatosis presents with annular salmon-colored plaques featuring an inward-facing 'collarette of scale'?",
+    "choices": {
+      "A": "Pityriasis rosea",
+      "B": "Psoriasis",
+      "C": "Tinea corporis",
+      "D": "Lichen planus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pityriasis rosea",
+    "explanation": "Pityriasis rosea secondary lesions feature a fine peripheral collarette of scale with its free edge directed inward, along skin cleavage lines.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 164
+  },
+  {
+    "pdf_id": "ABD-Cert-065",
+    "pdf_num": 165,
+    "question": "A patient presents with linear, edematous streaks and vesicular plaques following outdoor trail clearing. What is the diagnosis?",
+    "choices": {
+      "A": "Allergic contact dermatitis (Toxicodendron / Poison ivy)",
+      "B": "Atopic dermatitis",
+      "C": "Psoriasis",
+      "D": "Seborrheic dermatitis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Allergic contact dermatitis (Toxicodendron / Poison ivy)",
+    "explanation": "Linear streak lesions are pathognomonic for allergic contact dermatitis caused by urushiol resin from poison ivy, oak, or sumac.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 165
+  },
+  {
+    "pdf_id": "ABD-Cert-066",
+    "pdf_num": 166,
+    "question": "A pediatric patient presents with high fever, sore throat, circumoral pallor, Pastia's lines, and a 'strawberry tongue'. What is the diagnosis?",
+    "choices": {
+      "A": "Scarlet fever",
+      "B": "Kawasaki disease",
+      "C": "Measles",
+      "D": "Rubella"
+    },
+    "correct_answer": "A",
+    "correct_text": "Scarlet fever",
+    "explanation": "Streptococcus pyogenes producing erythrogenic exotoxin causes scarlet fever, featuring sandpaper rash, Pastia's lines, and white/red strawberry tongue.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 166
+  },
+  {
+    "pdf_id": "ABD-Cert-067",
+    "pdf_num": 167,
+    "question": "What is the most characteristic and ubiquitous cutaneous manifestation of systemic sclerosis (scleroderma)?",
+    "choices": {
+      "A": "Sclerodactyly",
+      "B": "Gottron papules",
+      "C": "Heliotrope rash",
+      "D": "Erythema nodosum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Sclerodactyly",
+    "explanation": "Sclerodactyly (skin thickening, tightness, and flexion contractures of the fingers) is a universal defining cutaneous criterion of scleroderma.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 167
+  },
+  {
+    "pdf_id": "ABD-Cert-068",
+    "pdf_num": 168,
+    "question": "Which cutaneous bacterial infection emits a bright apple-green fluorescence under Wood's lamp examination due to pyoverdine pigment?",
+    "choices": {
+      "A": "Pseudomonas aeruginosa",
+      "B": "Malassezia furfur",
+      "C": "Corynebacterium minutissimum",
+      "D": "Trichophyton tonsurans"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pseudomonas aeruginosa",
+    "explanation": "Pseudomonas aeruginosa produces water-soluble siderophore pyoverdine, which fluoresces vivid lime-green under Wood's lamp.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 168
+  },
+  {
+    "pdf_id": "ABD-Cert-069",
+    "pdf_num": 169,
+    "question": "Which condition begins with a single solitary 'herald patch' before erupting into a symmetrical Christmas tree distribution on the trunk?",
+    "choices": {
+      "A": "Pityriasis rosea",
+      "B": "Psoriasis",
+      "C": "Tinea corporis",
+      "D": "Lichen planus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pityriasis rosea",
+    "explanation": "The initial herald patch precedes the generalized secondary eruption of pityriasis rosea by 1 to 2 weeks.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 169
+  },
+  {
+    "pdf_id": "ABD-Cert-070",
+    "pdf_num": 170,
+    "question": "Which chronic centrofacial dermatosis presents with flushing, telangiectasias, and inflammatory papulopustules triggered by spicy foods, heat, and alcohol?",
+    "choices": {
+      "A": "Rosacea",
+      "B": "Acne vulgaris",
+      "C": "Seborrheic dermatitis",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Rosacea",
+    "explanation": "Rosacea involves neurovascular hyperreactivity of the central face; spicy foods, UV light, temperature extremes, and alcohol cause vasodilation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 170
+  },
+  {
+    "pdf_id": "ABD-Cert-071",
+    "pdf_num": 171,
+    "question": "Which acute hypersensitivity reaction classically presents with concentric, 3-zone 'target' or 'iris' lesions on the extremities?",
+    "choices": {
+      "A": "Erythema multiforme",
+      "B": "Psoriasis",
+      "C": "Lichen planus",
+      "D": "Urticaria"
+    },
+    "correct_answer": "A",
+    "correct_text": "Erythema multiforme",
+    "explanation": "Classic erythema multiforme exhibits targetoid lesions with three distinct zones (dusky central crust/bulla, pale edematous ring, erythematous border).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 171
+  },
+  {
+    "pdf_id": "ABD-Cert-072",
+    "pdf_num": 172,
+    "question": "What is the most common subtype of primary cutaneous T-cell lymphoma (CTCL)?",
+    "choices": {
+      "A": "Mycosis fungoides",
+      "B": "Sézary syndrome",
+      "C": "Kaposi sarcoma",
+      "D": "Merkel cell carcinoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Mycosis fungoides",
+    "explanation": "Mycosis fungoides accounts for nearly 60% of all cutaneous T-cell lymphomas, indolently progressing through patch, plaque, and tumor stages.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 172
+  },
+  {
+    "pdf_id": "ABD-Cert-073",
+    "pdf_num": 173,
+    "question": "Which cutaneous tuberculosis variant characteristically displays translucent 'apple-jelly' nodules on diascopy?",
+    "choices": {
+      "A": "Cutaneous tuberculosis (Lupus vulgaris)",
+      "B": "Leprosy",
+      "C": "Sarcoidosis",
+      "D": "Syphilis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Cutaneous tuberculosis (Lupus vulgaris)",
+    "explanation": "Lupus vulgaris is a chronic form of cutaneous tuberculosis that characteristically shows 'apple-jelly' nodules on diascopy.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 173
+  },
+  {
+    "pdf_id": "ABD-Cert-074",
+    "pdf_num": 174,
+    "question": "Which viral condition presents with painful, grouped vesicles on an erythematous base that ulcerate, crust over, and heal?",
+    "choices": {
+      "A": "Herpes simplex virus (HSV)",
+      "B": "Varicella",
+      "C": "Molluscum contagiosum",
+      "D": "HPV infection"
+    },
+    "correct_answer": "A",
+    "correct_text": "Herpes simplex virus (HSV)",
+    "explanation": "Recurrent HSV infections characteristically present with clustered painful vesicles on an erythematous base that ulcerate and crust.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 174
+  },
+  {
+    "pdf_id": "ABD-Cert-075",
+    "pdf_num": 175,
+    "question": "Which dermatologic finding is most classically associated with primary adrenal insufficiency (Addison's disease)?",
+    "choices": {
+      "A": "Diffuse cutaneous and mucosal hyperpigmentation",
+      "B": "Vitiligo alone",
+      "C": "Café-au-lait spots",
+      "D": "Erythema nodosum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Diffuse cutaneous and mucosal hyperpigmentation",
+    "explanation": "Elevated circulating ACTH and pro-opiomelanocortin (POMC) peptides cross-react with melanocortin-1 receptors, causing diffuse hyperpigmentation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 175
+  },
+  {
+    "pdf_id": "ABD-Cert-076",
+    "pdf_num": 176,
+    "question": "Which malignant skin neoplasm is classically described as a 'pearly papule with prominent arborizing telangiectasias'?",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Squamous cell carcinoma",
+      "C": "Melanoma",
+      "D": "Seborrheic keratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Basal cell carcinoma",
+    "explanation": "Nodular basal cell carcinoma characteristically presents as a translucent, pearly papule with fine arborizing telangiectasias and rolled margins.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 176
+  },
+  {
+    "pdf_id": "ABD-Cert-077",
+    "pdf_num": 177,
+    "question": "Which infectious condition presents with hypopigmented or erythematous cutaneous patches with loss of sensation and peripheral nerve thickening?",
+    "choices": {
+      "A": "Leprosy (Hansen's disease)",
+      "B": "Vitiligo",
+      "C": "Tinea versicolor",
+      "D": "Pityriasis alba"
+    },
+    "correct_answer": "A",
+    "correct_text": "Leprosy (Hansen's disease)",
+    "explanation": "Mycobacterium leprae invades dermal nerves, producing pathognomonic hypopigmented or erythematous anesthetic skin patches.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 177
+  },
+  {
+    "pdf_id": "ABD-Cert-078",
+    "pdf_num": 178,
+    "question": "Which autosomal recessive disorder is defined by extreme photosensitivity, early lentigines, and a >1000-fold skin cancer risk due to defective nucleotide excision repair?",
+    "choices": {
+      "A": "Xeroderma pigmentosum",
+      "B": "Albinism",
+      "C": "Tuberous sclerosis",
+      "D": "Neurofibromatosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Xeroderma pigmentosum",
+    "explanation": "Inability to repair UV-induced thymine dimers via nucleotide excision repair results in early cutaneous malignancies in xeroderma pigmentosum.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 178
+  },
+  {
+    "pdf_id": "ABD-Cert-079",
+    "pdf_num": 179,
+    "question": "Which pathognomonic facial cutaneous manifestation is characteristic of Systemic Lupus Erythematosus (SLE)?",
+    "choices": {
+      "A": "Malar rash (butterfly rash)",
+      "B": "Gottron papules",
+      "C": "Erythema nodosum",
+      "D": "Café-au-lait spots"
+    },
+    "correct_answer": "A",
+    "correct_text": "Malar rash (butterfly rash)",
+    "explanation": "The fixed malar erythema of SLE characteristically bridges the nasal bridge and cheeks while distinctly sparing the nasolabial folds.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 179
+  },
+  {
+    "pdf_id": "ABD-Cert-080",
+    "pdf_num": 180,
+    "question": "Which bacterial organism is the etiologic cause of 'hot tub folliculitis', causing pruritic follicular pustules under swimwear?",
+    "choices": {
+      "A": "Pseudomonas aeruginosa",
+      "B": "Staphylococcus aureus",
+      "C": "Streptococcus pyogenes",
+      "D": "Corynebacterium diphtheriae"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pseudomonas aeruginosa",
+    "explanation": "Pseudomonas aeruginosa flourishes in warm, poorly chlorinated water, penetrating hair follicles to cause diffuse folliculitis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 180
+  },
+  {
+    "pdf_id": "ABD-Cert-081",
+    "pdf_num": 181,
+    "question": "Which viral agent is etiologically required for the development of Kaposi sarcoma in all clinical subtypes?",
+    "choices": {
+      "A": "Human herpesvirus 8 (HHV-8)",
+      "B": "Epstein-Barr virus (EBV)",
+      "C": "Cytomegalovirus (CMV)",
+      "D": "Human papillomavirus (HPV)"
+    },
+    "correct_answer": "A",
+    "correct_text": "Human herpesvirus 8 (HHV-8)",
+    "explanation": "Human herpesvirus 8 (HHV-8 / KSHV) encodes oncogenic proteins that induce endothelial transformation and Kaposi sarcoma spindle cell growth.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 181
+  },
+  {
+    "pdf_id": "ABD-Cert-082",
+    "pdf_num": 182,
+    "question": "Which genetic condition is characterized by multiple café-au-lait macules, axillary freckling, and pigmented iris hamartomas (Lisch nodules)?",
+    "choices": {
+      "A": "Neurofibromatosis type 1",
+      "B": "Tuberous sclerosis",
+      "C": "Peutz-Jeghers syndrome",
+      "D": "Gorlin syndrome"
+    },
+    "correct_answer": "A",
+    "correct_text": "Neurofibromatosis type 1",
+    "explanation": "Lisch nodules and Crowe sign are specific clinical criteria for Neurofibromatosis Type 1.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 182
+  },
+  {
+    "pdf_id": "ABD-Cert-083",
+    "pdf_num": 183,
+    "question": "Which viral condition characteristically presents with clear vesicles situated on an erythematous base ('dew drops on a rose petal')?",
+    "choices": {
+      "A": "Varicella (Chickenpox)",
+      "B": "Herpes simplex virus",
+      "C": "Hand-foot-mouth disease",
+      "D": "Molluscum contagiosum"
+    },
+    "correct_answer": "A",
+    "correct_text": "Varicella (Chickenpox)",
+    "explanation": "Primary varicella-zoster virus infection causes crops of pruritic vesicles on an erythematous base ('dew drops on a rose petal').",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 183
+  },
+  {
+    "pdf_id": "ABD-Cert-084",
+    "pdf_num": 184,
+    "question": "Which condition is characterized by Gottron papules and a violaceous heliotrope periorbital rash?",
+    "choices": {
+      "A": "Dermatomyositis",
+      "B": "Scleroderma",
+      "C": "Psoriasis",
+      "D": "Sarcoidosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatomyositis",
+    "explanation": "The heliotrope rash and Gottron papules are cardinal diagnostic cutaneous criteria for dermatomyositis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 184
+  },
+  {
+    "pdf_id": "ABD-Cert-085",
+    "pdf_num": 185,
+    "question": "Which dermatophytic fungal organism is the single most common cause of distal subungual onychomycosis worldwide?",
+    "choices": {
+      "A": "Trichophyton rubrum",
+      "B": "Malassezia furfur",
+      "C": "Candida albicans",
+      "D": "Microsporum canis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Trichophyton rubrum",
+    "explanation": "Trichophyton rubrum causes over 80-90% of all dermatophyte onychomycosis, presenting with subungual hyperkeratosis and nail plate dystrophies.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 185
+  },
+  {
+    "pdf_id": "ABD-Cert-086",
+    "pdf_num": 186,
+    "question": "Which autoimmune blistering disease shows suprabasal acantholytic intraepidermal cleavage with a 'row of tombstones' basal layer?",
+    "choices": {
+      "A": "Pemphigus vulgaris",
+      "B": "Bullous pemphigoid",
+      "C": "Dermatitis herpetiformis",
+      "D": "Linear IgA disease"
+    },
+    "correct_answer": "A",
+    "correct_text": "Pemphigus vulgaris",
+    "explanation": "In pemphigus vulgaris, acantholysis leaves a single layer of basal cells anchored to the basement membrane ('row of tombstones').",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 186
+  },
+  {
+    "pdf_id": "ABD-Cert-087",
+    "pdf_num": 187,
+    "question": "Which multisystem vasculitic disease is defined by recurrent painful oral aphthae, genital ulcerations, and uveitis?",
+    "choices": {
+      "A": "Behçet's disease",
+      "B": "Pemphigus vulgaris",
+      "C": "HSV infection",
+      "D": "Syphilis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Behçet's disease",
+    "explanation": "Behçet's disease is a variable-vessel systemic vasculitis characterized by recurrent oral and genital ulcerations and ocular inflammation (uveitis).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 187
+  },
+  {
+    "pdf_id": "ABD-Cert-088",
+    "pdf_num": 188,
+    "question": "Which condition presents with sudden onset of painful, tender subcutaneous erythematous nodules on the pretibial shins?",
+    "choices": {
+      "A": "Erythema nodosum",
+      "B": "Erythema multiforme",
+      "C": "Pityriasis rosea",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Erythema nodosum",
+    "explanation": "Erythema nodosum is a delayed-type hypersensitivity reaction producing septal panniculitis localized to the anterior shins.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 188
+  },
+  {
+    "pdf_id": "ABD-Cert-089",
+    "pdf_num": 189,
+    "question": "Which of the following is considered a direct premalignant precursor lesion for cutaneous squamous cell carcinoma?",
+    "choices": {
+      "A": "Actinic keratosis",
+      "B": "Seborrheic keratosis",
+      "C": "Vitiligo",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Actinic keratosis",
+    "explanation": "Actinic keratoses are precancerous epidermal dysplasias with a propensity to progress into invasive squamous cell carcinoma.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 189
+  },
+  {
+    "pdf_id": "ABD-Cert-090",
+    "pdf_num": 190,
+    "question": "Which autoimmune subepidermal blistering condition demonstrates pathognomonic granular IgA deposits within the dermal papillae on direct immunofluorescence?",
+    "choices": {
+      "A": "Dermatitis herpetiformis",
+      "B": "Pemphigus vulgaris",
+      "C": "Bullous pemphigoid",
+      "D": "Linear IgA disease"
+    },
+    "correct_answer": "A",
+    "correct_text": "Dermatitis herpetiformis",
+    "explanation": "Granular IgA deposition at the dermoepidermal junction in dermal papillae is the definitive diagnostic gold standard for dermatitis herpetiformis.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 190
+  },
+  {
+    "pdf_id": "ABD-Cert-091",
+    "pdf_num": 191,
+    "question": "Which dermatologic paraneoplastic finding (erythematous, scaly annular plaques with migrating central necrosis) is classic for glucagonoma?",
+    "choices": {
+      "A": "Necrolytic migratory erythema (NME)",
+      "B": "Acanthosis nigricans",
+      "C": "Malar rash",
+      "D": "Livedo reticularis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Necrolytic migratory erythema (NME)",
+    "explanation": "Necrolytic migratory erythema is a paraneoplastic dermatosis pathognomonic for alpha-cell pancreatic endocrine tumors (glucagonomas).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 191
+  },
+  {
+    "pdf_id": "ABD-Cert-092",
+    "pdf_num": 192,
+    "question": "Which type of hypersensitivity immune reaction mediates acute urticaria and angioedema?",
+    "choices": {
+      "A": "Type I (Immediate / IgE mediated)",
+      "B": "Type II (Cytotoxic)",
+      "C": "Type III (Immune complex)",
+      "D": "Type IV (Delayed)"
+    },
+    "correct_answer": "A",
+    "correct_text": "Type I (Immediate / IgE mediated)",
+    "explanation": "Type I hypersensitivity involves allergen cross-linking of IgE on mast cells, triggering histamine and inflammatory mediator degranulation.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 192
+  },
+  {
+    "pdf_id": "ABD-Cert-093",
+    "pdf_num": 193,
+    "question": "Which condition presents with recurrent, painful, circumscribed oral ulcers without any underlying systemic signs or genital involvement?",
+    "choices": {
+      "A": "Recurrent aphthous stomatitis (Canker sores)",
+      "B": "Behçet's disease",
+      "C": "Primary HSV infection",
+      "D": "Pemphigus vulgaris"
+    },
+    "correct_answer": "A",
+    "correct_text": "Recurrent aphthous stomatitis (Canker sores)",
+    "explanation": "Recurrent aphthous stomatitis is a benign condition characterized by painful, self-limiting oral mucosal ulcers without systemic manifestations.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 193
+  },
+  {
+    "pdf_id": "ABD-Cert-094",
+    "pdf_num": 194,
+    "question": "Which condition is characterized by pruritic, purple, polygonal, planar papules and plaques with Wickham striae ('6 Ps')?",
+    "choices": {
+      "A": "Lichen planus",
+      "B": "Psoriasis",
+      "C": "Scabies",
+      "D": "Tinea corporis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Lichen planus",
+    "explanation": "Lichen planus classically presents with the '6 Ps': Purple, Polygonal, Planar, Pruritic, Papules, and Plaques.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 194
+  },
+  {
+    "pdf_id": "ABD-Cert-095",
+    "pdf_num": 195,
+    "question": "Which superficial fungal infection causes finely scaly hypo- or hyperpigmented macules on the upper trunk that fluoresce under Wood's lamp?",
+    "choices": {
+      "A": "Tinea versicolor (Malassezia furfur)",
+      "B": "Vitiligo",
+      "C": "Pityriasis alba",
+      "D": "Psoriasis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Tinea versicolor (Malassezia furfur)",
+    "explanation": "Tinea versicolor is caused by Malassezia species, producing scaly dyschromic patches on the sebum-rich upper trunk and shoulders.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 195
+  },
+  {
+    "pdf_id": "ABD-Cert-096",
+    "pdf_num": 196,
+    "question": "Which neurocutaneous disorder is characterized by facial angiofibromas, hypomelanotic ash-leaf macules, and periungual fibromas (Koenen tumors)?",
+    "choices": {
+      "A": "Tuberous sclerosis complex",
+      "B": "Neurofibromatosis type 1",
+      "C": "Peutz-Jeghers syndrome",
+      "D": "Gorlin syndrome"
+    },
+    "correct_answer": "A",
+    "correct_text": "Tuberous sclerosis complex",
+    "explanation": "Tuberous sclerosis features hamartomatous proliferations including ash-leaf spots, facial angiofibromas, and periungual fibromas (Koenen tumors).",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 196
+  },
+  {
+    "pdf_id": "ABD-Cert-097",
+    "pdf_num": 197,
+    "question": "Which cutaneous dermatosis presenting as velvety hyperpigmented plaques on intertriginous skin is strongly associated with insulin resistance and diabetes?",
+    "choices": {
+      "A": "Acanthosis nigricans",
+      "B": "Erythema nodosum",
+      "C": "Vitiligo",
+      "D": "Seborrheic keratosis"
+    },
+    "correct_answer": "A",
+    "correct_text": "Acanthosis nigricans",
+    "explanation": "Acanthosis nigricans serves as an important cutaneous marker for severe insulin resistance, hyperinsulinemia, and diabetes mellitus.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 197
+  },
+  {
+    "pdf_id": "ABD-Cert-098",
+    "pdf_num": 198,
+    "question": "What is the most common form of chronic cutaneous lupus erythematosus (CCLE)?",
+    "choices": {
+      "A": "Discoid lupus erythematosus (DLE)",
+      "B": "Subacute cutaneous lupus",
+      "C": "Acute cutaneous lupus",
+      "D": "Neonatal lupus"
+    },
+    "correct_answer": "A",
+    "correct_text": "Discoid lupus erythematosus (DLE)",
+    "explanation": "Discoid lupus erythematosus is the most common form of CCLE, presenting with scarring, follicular plugging, and atrophy.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 198
+  },
+  {
+    "pdf_id": "ABD-Cert-099",
+    "pdf_num": 199,
+    "question": "Which vascular cutaneous lesion presenting with red-purple vascular papules is caused by Bartonella henselae infection in immunocompromised hosts?",
+    "choices": {
+      "A": "Bacillary angiomatosis",
+      "B": "Kaposi sarcoma",
+      "C": "Molluscum contagiosum",
+      "D": "Verruca vulgaris"
+    },
+    "correct_answer": "A",
+    "correct_text": "Bacillary angiomatosis",
+    "explanation": "Bacillary angiomatosis is caused by Bartonella henselae or B. quintana in HIV/AIDS patients, producing vascular proliferations that mimic Kaposi sarcoma.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 199
+  },
+  {
+    "pdf_id": "ABD-Cert-100",
+    "pdf_num": 200,
+    "question": "Which is the single most common primary cutaneous malignancy overall, strongly associated with chronic cumulative ultraviolet radiation exposure?",
+    "choices": {
+      "A": "Basal cell carcinoma",
+      "B": "Squamous cell carcinoma",
+      "C": "Cutaneous melanoma",
+      "D": "Merkel cell carcinoma"
+    },
+    "correct_answer": "A",
+    "correct_text": "Basal cell carcinoma",
+    "explanation": "Basal cell carcinoma is the most common human malignancy worldwide, accounting for approximately 80% of non-melanoma skin cancers.",
+    "incorrect_rationales": {},
+    "source": "ABD – Dermatology",
+    "category": "Diseases",
+    "format": "mcq",
+    "id": 200
+  }
+]
