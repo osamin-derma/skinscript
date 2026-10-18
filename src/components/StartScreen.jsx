@@ -216,7 +216,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
     setSelectedTopics(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t])
   }
 
-  const presets = [10, 20, 40, 80, 120]
+  const presets = [10, 20, 40, 80]
   const avgScore = history.length > 0 ? Math.round(history.reduce((a, h) => a + h.score, 0) / history.length) : 0
 
   return (
@@ -232,6 +232,13 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             lookupQuestion={lookupQuestion}
             imageUrls={allImageUrls}
             onExport={() => downloadProgressCsv(state, lookupQuestion)}
+            settings={settings}
+            onSettings={onSettings}
+            solvedCount={globalUsed.length}
+            onRetake={(exam) => {
+              setShowAccount(false)
+              dispatch({ type: 'RETAKE_EXAM', detail: exam.detail, mode: exam.mode, timer: exam.timePerQ, assessment: exam.isAssessment })
+            }}
           />
         )}
         {/* Header */}
@@ -843,9 +850,9 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 <div className="flex items-center gap-1.5 text-sm font-bold" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}><Camera size={15} /> Spot diagnosis</div>
                 <div className="text-[11px] text-gray-500 dark:text-gray-300">30 image questions · 45 s each</div>
               </button>
-              <button onClick={() => onStart({ source: 'all', bank: 'all', categoryFilter: 'all', count: 100, mode: 'timed', timer: 72, shuffle: true, assessment: true })} className={`rounded-xl border p-3 text-left hover:shadow-sm ${cardBg}`}>
+              <button onClick={() => onStart({ source: 'all', bank: 'all', categoryFilter: 'all', count: 120, mode: 'timed', timer: 60, shuffle: true, assessment: true })} className={`rounded-xl border p-3 text-left hover:shadow-sm ${cardBg}`}>
                 <div className="flex items-center gap-1.5 text-sm font-bold" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}><ClipboardList size={15} /> Full mock exam</div>
-                <div className="text-[11px] text-gray-500 dark:text-gray-300">100 questions · 2 hours · scored</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-300">120 questions · 2 hours · scored</div>
               </button>
             </div>
             {/* Practice by subtopic */}
@@ -976,41 +983,11 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                     </button>
                   )
                 })}
-                {(() => {
-                  const disabled = poolSize === 0
-                  const active = !disabled && questionCount === poolSize && !presets.includes(questionCount)
-                  return (
-                    <button
-                      onClick={() => setQuestionCount(poolSize)}
-                      disabled={disabled}
-                      className={`flex-1 py-2 rounded-lg text-sm border-2 transition ${
-                        disabled
-                          ? 'border-gray-200 text-gray-300 cursor-not-allowed dark:border-gray-700 dark:text-gray-600'
-                          : active
-                            ? 'font-bold shadow-sm'
-                            : 'font-medium border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-400'
-                      }`}
-                      style={active ? { backgroundColor: selectedBg, borderColor: selectedBorder, color: selectedText } : {}}
-                    >
-                      All
-                    </button>
-                  )
-                })()}
               </div>
-              <input
-                type="range"
-                min={poolSize > 0 ? 1 : 0}
-                max={Math.max(poolSize, 1)}
-                value={questionCount}
-                disabled={poolSize === 0}
-                onChange={e => setQuestionCount(Number(e.target.value))}
-                className="w-full h-1.5 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700 disabled:cursor-not-allowed"
-                style={{ accentColor: accent }}
-              />
               <div className="text-center text-xs text-gray-500 mt-1">
                 {poolSize === 0
                   ? <span className="text-red-500">No questions available in this pool</span>
-                  : `${questionCount} of ${poolSize} questions selected`}
+                  : `${Math.min(questionCount, poolSize)} questions selected`}
               </div>
             </div>
 

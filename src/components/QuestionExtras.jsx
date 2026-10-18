@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Users, Flag, ExternalLink, Check } from 'lucide-react'
+import { Users, MessageSquare, ExternalLink, Check } from 'lucide-react'
 import { MISTAKE_REASONS } from './Mistakes'
 
 /** "58% of students got this right" — anonymous cohort distribution for this question. */
@@ -33,18 +33,19 @@ export function MistakeTagger({ pdfId, mistake, onMistake, darkMode }) {
 /** Flag a wrong key / typo / unclear explanation to the owner. */
 export function ReportQuestion({ onReport, darkMode }) {
   const [open, setOpen] = useState(false); const [reason, setReason] = useState('wrong_answer'); const [comment, setComment] = useState(''); const [sent, setSent] = useState(false)
-  if (sent) return <p className="mt-3 text-xs text-green-600 dark:text-green-400 flex items-center gap-1"><Check size={12} /> Reported — thank you.</p>
+  if (sent) return <p className="mt-3 text-xs text-green-600 dark:text-green-400 flex items-center gap-1"><Check size={12} /> Feedback sent — thank you!</p>
   return (
     <div className="mt-3">
       {!open ? (
-        <button onClick={() => setOpen(true)} className="text-[11px] text-gray-400 hover:text-gray-600 flex items-center gap-1"><Flag size={11} /> Report a problem with this question</button>
+        <button onClick={() => setOpen(true)} className={`text-xs font-medium flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition ${darkMode ? 'border-gray-600 text-gray-300 hover:bg-gray-700' : 'border-gray-300 text-gray-600 hover:bg-gray-50'}`}><MessageSquare size={13} /> Send feedback on this question</button>
       ) : (
         <div className={`rounded-lg border p-2 ${darkMode ? 'border-gray-600' : 'border-gray-200'}`}>
+          <p className="text-[11px] font-semibold mb-1.5 text-gray-600 dark:text-gray-300">Your feedback goes to Dr. Osama Al Rawi</p>
           <select value={reason} onChange={(e) => setReason(e.target.value)} className={`w-full text-xs px-2 py-1 rounded border mb-1.5 ${darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`}>
-            <option value="wrong_answer">Answer key seems wrong</option><option value="typo">Typo / formatting</option><option value="unclear">Explanation unclear</option><option value="image">Image missing / wrong</option><option value="other">Other</option>
+            <option value="wrong_answer">Answer key seems wrong</option><option value="typo">Typo / formatting</option><option value="unclear">Explanation unclear</option><option value="image">Image missing / wrong</option><option value="suggestion">Suggestion</option><option value="other">Other</option>
           </select>
-          <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder="Optional details" className={`w-full text-xs px-2 py-1 rounded border mb-1.5 ${darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`} />
-          <div className="flex gap-2"><button onClick={() => { onReport(reason, comment); setSent(true) }} className="text-xs px-3 py-1 rounded text-white" style={{ backgroundColor: '#2c3e3f' }}>Send</button><button onClick={() => setOpen(false)} className="text-xs text-gray-400">Cancel</button></div>
+          <textarea value={comment} onChange={(e) => setComment(e.target.value)} rows={2} placeholder="Your comment (optional)" className={`w-full text-xs px-2 py-1 rounded border mb-1.5 ${darkMode ? 'bg-gray-900 border-gray-600 text-gray-100' : 'bg-white border-gray-300'}`} />
+          <div className="flex gap-2"><button onClick={() => { onReport(reason, comment); setSent(true) }} className="text-xs px-3 py-1 rounded text-white" style={{ backgroundColor: '#2c3e3f' }}>Send feedback</button><button onClick={() => setOpen(false)} className="text-xs text-gray-400">Cancel</button></div>
         </div>
       )}
     </div>

@@ -385,6 +385,35 @@ function reducer(state, action) {
         categoryFilter: catFilter,
       }
     }
+    case 'RETAKE_EXAM': {
+      // Redo a past exam with the exact same questions, in the same order.
+      // History detail stores stable, globally-unique pdf_ids, so resolve them
+      // against the combined "all" bank (every pdf_id resolves there) — a retake
+      // then works no matter which single bank the original exam was drawn from.
+      const bankQs = getBankQuestions('all')
+      const byPdf = new Map(bankQs.map((q, i) => [q.pdf_id, i]))
+      const order = (action.detail || [])
+        .map((d) => byPdf.get(d.pdf_id))
+        .filter((i) => i !== undefined)
+      if (order.length === 0) return state
+      return {
+        ...state,
+        screen: 'quiz',
+        mode: action.mode === 'timed' ? 'timed' : 'tutor',
+        timerSetting: action.timer ?? 0,
+        shuffle: false,
+        questionCount: order.length,
+        questionOrder: order,
+        currentIndex: 0,
+        answers: {},
+        flagged: [],
+        strikethroughs: {},
+        quizSource: 'retake',
+        activeBank: 'all',
+        isAssessment: !!action.assessment,
+        categoryFilter: 'all',
+      }
+    }
     case 'ANSWER': {
       // Cloud sync for globalUsed / globalWrong is handled by the
       // watch-and-diff effects in App() — no localStorage write here.

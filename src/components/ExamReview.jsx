@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronLeft, CheckCircle, XCircle, MinusCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronLeft, CheckCircle, XCircle, MinusCircle, ChevronDown, ChevronUp, RotateCcw } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 
 /**
@@ -9,7 +9,7 @@ import QuestionImages from './QuestionImages'
  * pick, the correct answer, the explanation, and any images — without having
  * to store the full question text in history.
  */
-export default function ExamReview({ exam, lookupQuestion, darkMode, onBack }) {
+export default function ExamReview({ exam, lookupQuestion, darkMode, onBack, onRetake }) {
   const [expanded, setExpanded] = useState(null)
   const brand = '#2c3e3f'
   const card = darkMode ? 'bg-gray-900/40 border-gray-700' : 'bg-gray-50 border-gray-200'
@@ -42,6 +42,16 @@ export default function ExamReview({ exam, lookupQuestion, darkMode, onBack }) {
       <p className="text-[11px] text-gray-500 dark:text-gray-400 mb-3">
         {correctCount}/{items.length} correct · <span className="capitalize">{exam.source}</span> · <span className="capitalize">{exam.mode}</span> mode
       </p>
+
+      {onRetake && items.length > 0 && (
+        <button
+          onClick={() => onRetake(exam)}
+          className="w-full flex items-center justify-center gap-2 py-2.5 mb-4 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
+          style={{ backgroundColor: brand }}
+        >
+          <RotateCcw size={15} /> Retake this exam ({items.length} questions)
+        </button>
+      )}
 
       {items.length === 0 ? (
         <p className="text-xs text-gray-400 text-center py-6">This exam has no saved question detail to review.</p>
