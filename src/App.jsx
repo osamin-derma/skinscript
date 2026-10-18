@@ -1088,8 +1088,8 @@ export default function App() {
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                 Your dermatology board prep is powered by{' '}
-                <strong>11,896 verified questions</strong> across 4 source banks:
-                Arab Board, Board Vitals, Makki, and ETAS 2026.
+                <strong>12,723 verified questions</strong> across 6 question banks:
+                Arab Board, Board Vitals, Makki, ETAS 2026, DSE (Al-Niaimi), and ABD.
               </p>
             </div>
 

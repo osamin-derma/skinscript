@@ -14,10 +14,15 @@ const brand = '#2c3e3f'
 const gold = '#c9a84c'
 
 // WhatsApp request link for invite codes (+974 50180033), with a pre-filled
-// message so the student just hits send.
+// template so the student just fills in their details and hits send.
 const WHATSAPP_REQUEST_URL =
   'https://wa.me/97450180033?text=' +
-  encodeURIComponent("Hi Dr. Osama, I'd like an access code for SkinScript.")
+  encodeURIComponent(
+    "Hi Dr. Osama, I'd like an access code for SkinScript.\n\n" +
+    "Name:\n" +
+    "Country of study:\n" +
+    "Year of residency:"
+  )
 
 // Reusable hint with a tappable WhatsApp link. WhatsApp green (#25D366)
 // reads well on both light and dark backgrounds.
@@ -142,7 +147,10 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
           SkinScript
         </h1>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-          Dermatology board prep · 11,896 verified questions
+          Dermatology board prep · 12,723 verified questions
+        </p>
+        <p className="text-[11px] text-gray-400 dark:text-gray-500 mt-1.5 max-w-sm mx-auto leading-relaxed">
+          6 question banks · Arab Board · Board Vitals · Makki · ETAS 2026 · DSE (Al-Niaimi) · ABD
         </p>
       </div>
 
