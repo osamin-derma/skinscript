@@ -211,6 +211,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   }
 
   const currentBankCount = banks?.[activeBank]?.count || totalQuestions
+  // Number of source banks (everything except the combined "All" bank).
+  const bankCount = Object.keys(banks || {}).filter(k => k !== 'all').length || 6
 
   const toggleTopic = (t) => {
     setSelectedTopics(prev => prev.includes(t) ? prev.filter(x => x !== t) : [...prev, t])
@@ -289,7 +291,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           >
             <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: accent }}>Dermatology Quiz</span>
             <span className="text-[10px] text-gray-500 dark:text-gray-400">•</span>
-            <span className="text-[10px] text-gray-500 dark:text-gray-400">4 Question Banks</span>
+            <span className="text-[10px] text-gray-500 dark:text-gray-400">{bankCount} Question Banks</span>
           </div>
         </div>
 
@@ -514,7 +516,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
               </div>
               <div className="flex-1">
                 <div className="font-bold text-base text-gray-900 dark:text-gray-100" style={activeBank === 'all' ? { color: accent } : {}}>All Questions</div>
-                <div className="text-xs text-gray-500 dark:text-gray-300">Combined: all 4 sources</div>
+                <div className="text-xs text-gray-500 dark:text-gray-300">Combined: all {bankCount} sources</div>
               </div>
               <div className="text-2xl font-extrabold tabular-nums"
                    style={{ color: activeBank === 'all' ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>

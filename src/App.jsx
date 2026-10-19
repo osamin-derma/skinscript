@@ -230,9 +230,18 @@ function reducer(state, action) {
       // Only restore device-local UI preferences here. Per-user progress
       // (history / flags / wrong / used) is loaded from Supabase by the
       // App component and arrives via INIT_FROM_CLOUD.
+      //
+      // Validate the persisted category filter: a value left over from an
+      // older build (a since-renamed/removed category) would silently filter
+      // EVERY bank down to zero questions, hiding the Start button with no
+      // visible cause. If it isn't a currently-known category, drop it back
+      // to 'all' (and clear the stale key) so the quiz can always start.
+      const savedCat = localStorage.getItem(CATEGORY_FILTER_KEY)
+      const validCat = savedCat === 'all' || ALL_CATEGORIES.includes(savedCat)
+      if (savedCat && !validCat) localStorage.removeItem(CATEGORY_FILTER_KEY)
       return {
         ...state,
-        categoryFilter: localStorage.getItem(CATEGORY_FILTER_KEY) || 'all',
+        categoryFilter: validCat ? savedCat : 'all',
       }
     }
     case 'INIT_FROM_CLOUD': {
@@ -313,7 +322,16 @@ function reducer(state, action) {
       return { ...state, highlights, tombstones: had ? tomb(state.tombstones, 'highlights', action.pdfId) : state.tombstones }
     }
     case 'SET_BANK': {
-      return { ...state, activeBank: action.bank }
+      // Guard against a soft-lock: if the active category filter leaves the
+      // newly-selected bank with zero questions, drop the filter to 'all' so
+      // the bank is always startable.
+      const stillHasQuestions = state.categoryFilter === 'all'
+        || getBankQuestions(action.bank, state.categoryFilter).length > 0
+      return {
+        ...state,
+        activeBank: action.bank,
+        categoryFilter: stillHasQuestions ? state.categoryFilter : 'all',
+      }
     }
     case 'SET_CATEGORY_FILTER': {
       localStorage.setItem(CATEGORY_FILTER_KEY, action.category)
