@@ -148,10 +148,18 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const usedSet    = useMemo(() => new Set(globalUsed),    [globalUsed])
   const wrongSet   = useMemo(() => new Set(globalWrong),   [globalWrong])
   const flaggedSet = useMemo(() => new Set(globalFlagged), [globalFlagged])
-  const usedInBank    = useMemo(() => activeQuestions.filter(q => usedSet.has(q.pdf_id)).length,    [activeQuestions, usedSet])
-  const wrongInBank   = useMemo(() => activeQuestions.filter(q => wrongSet.has(q.pdf_id)).length,   [activeQuestions, wrongSet])
-  const flaggedInBank = useMemo(() => activeQuestions.filter(q => flaggedSet.has(q.pdf_id)).length, [activeQuestions, flaggedSet])
-  const unusedCount = Math.max(0, totalQuestions - usedInBank)
+  // Every quiz draws ONLY from quizzable MCQs (choices + a correct answer);
+  // START_QUIZ excludes short-answer / "answer not in source" rows. Scope all
+  // the pool/progress counts to that same quizzable set — otherwise those
+  // non-MCQ rows inflate "Unused"/"Total" and a student who has finished every
+  // MCQ still sees Unused > 0 yet gets an empty pool (a silent no-op) on Start.
+  const isQuizzable = (q) => q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
+  const quizzableQs = useMemo(() => activeQuestions.filter(isQuizzable), [activeQuestions])
+  const quizzableCount = quizzableQs.length
+  const usedInBank    = useMemo(() => quizzableQs.filter(q => usedSet.has(q.pdf_id)).length,    [quizzableQs, usedSet])
+  const wrongInBank   = useMemo(() => quizzableQs.filter(q => wrongSet.has(q.pdf_id)).length,   [quizzableQs, wrongSet])
+  const flaggedInBank = useMemo(() => quizzableQs.filter(q => flaggedSet.has(q.pdf_id)).length, [quizzableQs, flaggedSet])
+  const unusedCount = Math.max(0, quizzableCount - usedInBank)
 
   const bg = darkMode ? 'bg-gray-800' : 'bg-white'
   const cardBg = darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
@@ -180,8 +188,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
     if (source === 'flagged') return flaggedInBank
     if (source === 'wrong') return wrongInBank
     if (source === 'unused') return unusedCount
-    if (source === 'topics') return selectedTopics.length > 0 ? totalQuestions : 0
-    return totalQuestions
+    if (source === 'topics') return selectedTopics.length > 0 ? quizzableQs.filter(q => selectedTopics.includes(q.category)).length : 0
+    return quizzableCount
   }
 
   const poolSize = getPoolSize()
@@ -298,7 +306,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
         {/* Stats bar */}
         <div className="grid grid-cols-4 gap-2 mb-2">
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
-            <div className="text-xl font-bold tabular-nums" style={{ color: accent }}>{totalQuestions.toLocaleString()}</div>
+            <div className="text-xl font-bold tabular-nums" style={{ color: accent }}>{quizzableCount.toLocaleString()}</div>
             <div className="text-[10px] text-gray-500 dark:text-gray-300 uppercase tracking-wide font-semibold">Total</div>
           </div>
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
@@ -887,7 +895,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
               <label className="block text-xs font-bold mb-2 uppercase tracking-wider text-gray-600 dark:text-gray-200">Question Source</label>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { key: 'all', label: 'All Questions', count: totalQuestions },
+                  { key: 'all', label: 'All Questions', count: quizzableCount },
                   { key: 'unused', label: 'Unused Only', count: unusedCount },
                   { key: 'wrong', label: 'Incorrect Only', count: wrongInBank },
                   { key: 'flagged', label: 'Flagged Only', count: flaggedInBank },
@@ -1175,7 +1183,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 <div className="text-xs text-gray-500">Questions Seen</div>
               </div>
               <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-700 text-center">
-                <div className="text-3xl font-bold text-gray-600">{totalQuestions > 0 ? Math.round((usedInBank / totalQuestions) * 100) : 0}%</div>
+                <div className="text-3xl font-bold text-gray-600">{quizzableCount > 0 ? Math.round((usedInBank / quizzableCount) * 100) : 0}%</div>
                 <div className="text-xs text-gray-500">Completion</div>
               </div>
             </div>
@@ -1184,10 +1192,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             <div className="mb-6">
               <div className="flex justify-between text-xs text-gray-500 mb-1">
                 <span>Question Bank Completion</span>
-                <span>{usedInBank}/{totalQuestions}</span>
+                <span>{usedInBank}/{quizzableCount}</span>
               </div>
               <div className="w-full h-3 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
-                <div className="h-full rounded-full transition-all" style={{ width: `${totalQuestions > 0 ? (usedInBank / totalQuestions) * 100 : 0}%`, backgroundColor: brand }} />
+                <div className="h-full rounded-full transition-all" style={{ width: `${quizzableCount > 0 ? (usedInBank / quizzableCount) * 100 : 0}%`, backgroundColor: brand }} />
               </div>
             </div>
 
