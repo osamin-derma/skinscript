@@ -161,6 +161,8 @@ export default function QuizScreen({ state, questions, dispatch }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return
+      // While paused, swallow shortcuts so nothing changes behind the overlay.
+      if (paused) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPaused(false) } return }
       const el = e.target
       const tag = el?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA' || el?.isContentEditable) return
@@ -204,7 +206,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [q, isSubmitted, selected, mode, currentIndex, totalQ, handleSubmit, dispatch])
+  }, [q, isSubmitted, selected, mode, currentIndex, totalQ, handleSubmit, dispatch, paused])
 
   if (!q) return null
 
@@ -253,11 +255,14 @@ export default function QuizScreen({ state, questions, dispatch }) {
               </div>
             )}
 
-            {mode === 'timed' && !isSubmitted && (
-              <button onClick={() => setPaused(!paused)} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                {paused ? <Play size={16} /> : <Pause size={16} />}
-              </button>
-            )}
+            <button
+              onClick={() => setPaused(true)}
+              title="Pause quiz"
+              aria-label="Pause quiz"
+              className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+            >
+              <Pause size={16} />
+            </button>
 
             <TranslateSelect lang={lang} onChange={setLang} darkMode={darkMode} />
 
@@ -306,6 +311,37 @@ export default function QuizScreen({ state, questions, dispatch }) {
           </div>
         </div>
       </header>
+
+      {/* Pause overlay — covers the question so the user can step away.
+          Available in every mode; in timed mode the countdown is frozen. */}
+      {paused && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-4">
+          <div className={`${cardBg} rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center border dark:border-gray-700`}>
+            <div className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center" style={{ backgroundColor: darkMode ? '#243738' : '#e8f0f0' }}>
+              <Pause size={26} style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }} />
+            </div>
+            <h3 className="text-xl font-bold mb-1" style={{ color: darkMode ? '#7fb5b5' : '#2c3e3f' }}>Quiz paused</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+              {mode === 'timed'
+                ? 'The timer is stopped. Resume when you’re ready.'
+                : 'Take a break — your place is saved. Resume when you’re ready.'}
+            </p>
+            <button
+              onClick={() => setPaused(false)}
+              className="w-full py-3 rounded-xl text-white font-bold text-base flex items-center justify-center gap-2 transition hover:opacity-90 shadow"
+              style={{ backgroundColor: '#2c3e3f' }}
+            >
+              <Play size={18} /> Resume quiz
+            </button>
+            <button
+              onClick={() => { setPaused(false); dispatch({ type: 'END_QUIZ', questions }) }}
+              className="mt-3 text-xs font-medium text-red-600 hover:underline"
+            >
+              End quiz now
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Navigator overlay */}
       {showNav && (
