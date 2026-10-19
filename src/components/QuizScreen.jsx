@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser } from 'lucide-react'
+import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser, Home } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
 import * as userdata from '../lib/userdata'
@@ -333,6 +333,13 @@ export default function QuizScreen({ state, questions, dispatch }) {
             >
               <Play size={18} /> Resume quiz
             </button>
+            <button
+              onClick={() => dispatch({ type: 'EXIT_TO_HOME' })}
+              className={`mt-3 w-full py-2.5 rounded-xl text-sm font-semibold border flex items-center justify-center gap-2 transition ${darkMode ? 'border-gray-600 text-gray-200 hover:bg-gray-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'}`}
+            >
+              <Home size={16} /> Go to home page
+            </button>
+            <p className="mt-2 text-[11px] text-gray-400">Your progress is saved — you can resume from the home page.</p>
             <button
               onClick={() => { setPaused(false); dispatch({ type: 'END_QUIZ', questions }) }}
               className="mt-3 text-xs font-medium text-red-600 hover:underline"

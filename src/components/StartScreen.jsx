@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images, AlertOctagon, Users, Camera, ClipboardList } from 'lucide-react'
+import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images, AlertOctagon, Users, Camera, ClipboardList, Play } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
@@ -302,6 +302,24 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             <span className="text-[10px] text-gray-500 dark:text-gray-400">{bankCount} Question Banks</span>
           </div>
         </div>
+
+        {/* Resume banner — a quiz left via "Go to home page" is still in progress */}
+        {state?.pausedQuiz && state?.questionOrder?.length > 0 && (
+          <button
+            onClick={() => dispatch({ type: 'RESUME_PAUSED_QUIZ' })}
+            className="w-full mb-4 flex items-center gap-3 p-3.5 rounded-xl text-left text-white transition hover:opacity-95 shadow"
+            style={{ backgroundColor: brand }}
+          >
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/15">
+              <Play size={18} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-bold">Resume your quiz</div>
+              <div className="text-[11px] opacity-80">Paused · Question {Math.min(state.currentIndex + 1, state.questionOrder.length)} of {state.questionOrder.length}</div>
+            </div>
+            <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/15">Resume</span>
+          </button>
+        )}
 
         {/* Stats bar */}
         <div className="grid grid-cols-4 gap-2 mb-2">

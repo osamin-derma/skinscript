@@ -192,6 +192,10 @@ const initialState = {
   shuffle: false,
   questionCount: 40,
   questionOrder: [],
+  // True when a quiz was left via "Go to home page" and can still be resumed
+  // (progress is kept in state); cleared when the quiz is resumed, restarted,
+  // or ended.
+  pausedQuiz: false,
   currentIndex: 0,
   answers: {},
   flagged: [],
@@ -396,12 +400,23 @@ function reducer(state, action) {
         quizSource: action.source || 'all',
         activeBank: bankKey,
         isAssessment: !!action.assessment,
+        pausedQuiz: false,
         // Persist the category filter the pool was actually built with, so the
         // render array (getBankQuestions(activeBank, categoryFilter)) matches
         // the questionOrder indices — otherwise a programmatic categoryFilter
         // (e.g. Due/Practice using 'all') renders the wrong questions.
         categoryFilter: catFilter,
       }
+    }
+    case 'EXIT_TO_HOME': {
+      // Leave the quiz but KEEP its progress so it can be resumed. Distinct
+      // from END_QUIZ (which scores it) and RESTART (which discards it).
+      return { ...state, screen: 'start', pausedQuiz: true }
+    }
+    case 'RESUME_PAUSED_QUIZ': {
+      // Return to the in-progress quiz left via "Go to home page".
+      if (!state.questionOrder?.length) return { ...state, pausedQuiz: false }
+      return { ...state, screen: 'quiz', pausedQuiz: false }
     }
     case 'RETAKE_EXAM': {
       // Redo a past exam with the exact same questions, in the same order.
@@ -429,6 +444,7 @@ function reducer(state, action) {
         quizSource: 'retake',
         activeBank: 'all',
         isAssessment: !!action.assessment,
+        pausedQuiz: false,
         categoryFilter: 'all',
       }
     }
@@ -522,7 +538,7 @@ function reducer(state, action) {
       }
 
       const newHistory = [historyEntry, ...state.history].slice(0, 50)
-      return { ...state, screen: 'results', history: newHistory, strikethroughs: {} }
+      return { ...state, screen: 'results', history: newHistory, strikethroughs: {}, pausedQuiz: false }
     }
     case 'RESTART':
       localStorage.removeItem(STORAGE_KEY)
