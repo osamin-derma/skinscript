@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SkinScript</string>
+    <string name="title_activity_main">SkinScript</string>
+    <string name="package_name">co.osamah.skinscript</string>
+    <string name="custom_url_scheme">co.osamah.skinscript</string>
+</resources>
