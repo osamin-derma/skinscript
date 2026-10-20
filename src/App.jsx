@@ -11,6 +11,7 @@ import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
 import { onAuthStateChange, signOut } from './lib/auth'
 import { initAuthDeepLinks } from './lib/deeplink'
+import { initNativeShell } from './lib/native'
 import * as userdata from './lib/userdata'
 import { nextSchedule, isDue } from './lib/srs'
 
@@ -631,6 +632,7 @@ export default function App() {
     // email change) that open the app via its custom URL scheme. On success
     // setSession fires onAuthStateChange above, logging the user in.
     const stopDeepLinks = initAuthDeepLinks()
+    initNativeShell()
     return () => { unsubscribe(); stopDeepLinks() }
   }, [])
 

@@ -15,9 +15,10 @@ export function authRedirectUrl() {
 }
 
 // Pull the session out of a deep-link URL and hand it to Supabase.
-// Supports the implicit flow (tokens in the URL fragment, matching the web
-// client config) and PKCE (?code=...). Returns the Supabase link `type`
-// (e.g. 'signup' | 'recovery' | 'email_change' | 'magiclink') on success.
+// Supports the implicit flow (tokens in the URL fragment, which is what Supabase
+// sends — verified on device: ...#access_token=<jwt>&refresh_token=<jwt>&type=…)
+// and PKCE (?code=…). Returns the Supabase link `type`
+// ('signup' | 'recovery' | 'email_change' | 'magiclink') on success.
 async function completeFromUrl(url) {
   if (!url) return null
   const hash = url.includes('#') ? url.slice(url.indexOf('#') + 1) : ''
@@ -54,10 +55,12 @@ async function completeFromUrl(url) {
 export function initAuthDeepLinks(onType) {
   if (!Capacitor.isNativePlatform()) return () => {}
   let removeListener = null
+  let handledUrl = null // dedupe: appUrlOpen and getLaunchUrl can both deliver
   ;(async () => {
     const { App } = await import('@capacitor/app')
     const handle = async (url) => {
-      if (!url || !url.includes('auth-callback')) return
+      if (!url || !url.includes('auth-callback') || url === handledUrl) return
+      handledUrl = url
       const type = await completeFromUrl(url)
       if (type && typeof onType === 'function') onType(type)
     }
