@@ -1,4 +1,5 @@
 import { Capacitor } from '@capacitor/core'
+import { syncLocalReminder } from './localReminders'
 
 // One-time native-shell setup. No-op on the web.
 // Keeps the WebView content below the iOS/Android status bar so the app's own
@@ -12,4 +13,6 @@ export async function initNativeShell() {
     // App background is light → dark status-bar text.
     await StatusBar.setStyle({ style: Style.Light })
   } catch { /* status-bar plugin unavailable — ignore */ }
+  // Re-arm the daily study reminder if the user had it on.
+  syncLocalReminder()
 }

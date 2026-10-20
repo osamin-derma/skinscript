@@ -92,17 +92,29 @@ co.osamah.skinscript://auth-callback
 Without it, Supabase rejects the native redirect and the email link won't return
 into the app. (Email+password and SMS OTP sign-in work regardless.)
 
+## Native notifications (implemented — local)
+
+Daily study reminders on the native apps use **on-device local notifications**
+(`@capacitor/local-notifications`) — no server, no Firebase/APNs. `localReminders.js`
+schedules a repeating daily notification at a time the user picks; `RemindersToggle.jsx`
+shows the native switch + time selector on native and keeps Web Push on the web.
+`initNativeShell()` re-arms the schedule on app start. The OS asks for notification
+permission the first time it's enabled.
+
+*Not done:* **remote push** (server-sent broadcasts / pushes while the app is
+closed) would need a Firebase project + `google-services.json` (Android), an
+Apple Developer account + APNs key + push entitlement (iOS), device-token storage,
+and an edge function to send via APNs/FCM. Add it later if you want server-driven
+pushes; the local reminders cover the daily-nudge use case now.
+
 ## Still to do (next steps, not blocking the build)
 
-1. **Native push notifications** — replace web-push (`src/lib/push.js`) with
-   `@capacitor/push-notifications` for study reminders on iOS/Android, wired to
-   the existing reminders backend.
-3. **Service worker** — the PWA service worker auto-registers on the web and on
+1. **Service worker** — the PWA service worker auto-registers on the web and on
    Android (`http://localhost`); on iOS WKWebView it simply doesn't register.
    Verify on-device behavior; if the native shell ever serves stale content,
    skip SW registration when `Capacitor.isNativePlatform()` is true. The web
    build at osamah.co is unaffected either way.
-4. **Store assets** — screenshots, descriptions, privacy policy, and an
+2. **Store assets** — screenshots, descriptions, privacy policy, and an
    App Store privacy nutrition label / Play data-safety form.
 
 ## Note
