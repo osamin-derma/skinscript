@@ -91,10 +91,14 @@ dermatology,derm,board,exam,MCQ,question bank,residency,skin,boards,arab board,A
 | iPhone screenshots | App Store | 6.9" (1320×2868 or 1290×2796) **and** 6.5" (1242×2688) — min 1, up to 10. Capture on an iPhone 16/17 Pro Max simulator. |
 | iPad screenshots | App Store | only if you list iPad: 13" (2064×2752) |
 | Phone screenshots | Play | min 2, 1080×1920 or higher, 9:16 |
-| Feature graphic | Play | **1024×500 PNG/JPG, required** (a simple branded banner — logo + "Dermatology Board Prep") |
+| Feature graphic | Play | **1024×500 PNG, required** ✅ generated → `store/feature-graphic-1024x500.png` (regenerate: `python3 store/_gen_feature_graphic.py`) |
 
 Reference screenshots captured from the simulator are in `store/screenshots/`.
 Re-capture the final ones on the exact required device sizes before uploading.
+
+**Clean screenshots (no watermark):** build with the watermark hidden —
+`npm run build:marketing` (or `VITE_HIDE_WATERMARK=true npm run cap:ios`) — then
+run and screenshot. Real/production builds always keep the watermark.
 
 ---
 
@@ -139,7 +143,7 @@ advertising data is collected.
 - [ ] Add the **Push Notifications**/background capability only if you add remote push later (local reminders need none)
 - [ ] Archive → upload to App Store Connect (Xcode → Product → Archive)
 - [ ] App Store Connect: create the app record (bundle id `co.osamah.skinscript`), paste listing copy, upload screenshots, complete App Privacy
-- [ ] Because it's **invite-only**, add a working **demo access code + test account** in "App Review Information" so the reviewer can get in (Apple rejects apps they can't sign into)
+- [ ] Because it's **invite-only**, add a working **demo login** in "App Review Information" so the reviewer can get in (Apple rejects apps they can't sign into). Run `store/demo_access_codes.sql`, create a test account, and give the reviewer its email+password.
 - [ ] Submit for review
 
 ### Google Play
@@ -147,7 +151,7 @@ advertising data is collected.
 - [ ] Build a **signed App Bundle (.aab)** (Android Studio → Build → Generate Signed Bundle) — not the debug APK
 - [ ] Set up Play App Signing
 - [ ] Play Console: create the app, paste listing copy, upload screenshots + **feature graphic**, complete Data Safety + content rating questionnaire
-- [ ] Provide reviewer a demo access code + test login
+- [ ] Provide reviewer a demo login (see `store/demo_access_codes.sql`)
 - [ ] Start with **Internal testing**, then Closed/Open, then Production
 
 ### Both

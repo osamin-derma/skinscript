@@ -11,6 +11,9 @@
  * a high z-index keeps it above enlarged images.
  */
 export default function Watermark({ email }) {
+  // Marketing/screenshot builds opt out: `VITE_HIDE_WATERMARK=true npm run build`
+  // (or `npm run build:marketing`). The watermark stays on for every real build.
+  if (import.meta.env.VITE_HIDE_WATERMARK === 'true') return null
   if (!email) return null
 
   // XML-escape so an email is always valid SVG text content (entities survive
