@@ -30,3 +30,4 @@ yarn-error.log*
 
 # Store reference screenshots carry the per-user watermark — keep local
 store/screenshots/*.png
+store/appstore/raw-*.png
