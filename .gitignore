@@ -27,3 +27,6 @@ yarn-error.log*
 
 # Vite cache
 .vite
+
+# Store reference screenshots carry the per-user watermark — keep local
+store/screenshots/*.png
