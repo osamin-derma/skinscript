@@ -68,12 +68,33 @@ Source logo: `assets/logo.png` (1024×1024). Regenerate all icon/splash sizes:
 npm run cap:assets
 ```
 
+## Auth deep-linking (implemented)
+
+Supabase email links (confirm sign-up, reset password, change email) now return
+into the native app via the custom URL scheme **`co.osamah.skinscript://auth-callback`**.
+
+- Scheme registered in `ios/App/App/Info.plist` (`CFBundleURLTypes`) and
+  `android/app/src/main/AndroidManifest.xml` (a `VIEW` intent-filter).
+- `src/lib/deeplink.js` listens for `appUrlOpen` (and the cold-start launch URL)
+  and completes the Supabase session from the link (implicit tokens or PKCE
+  `code`). `src/lib/auth.js` sends the deep link as the redirect target on native
+  (`Capacitor.isNativePlatform()`); the web app still uses its origin, unchanged.
+- Verified on the iOS simulator: the scheme routes into the app.
+
+**You must add the redirect URL in Supabase (one time):**
+Dashboard → project `yssrtjfgkctojkzcoapt` → **Authentication → URL Configuration
+→ Redirect URLs** → add:
+
+```
+co.osamah.skinscript://auth-callback
+```
+
+Without it, Supabase rejects the native redirect and the email link won't return
+into the app. (Email+password and SMS OTP sign-in work regardless.)
+
 ## Still to do (next steps, not blocking the build)
 
-1. **Auth deep-linking** — Supabase email-confirmation and any OAuth redirects
-   need a custom URL scheme so the link returns into the app. Email+password
-   and SMS OTP sign-in already work without this.
-2. **Native push notifications** — replace web-push (`src/lib/push.js`) with
+1. **Native push notifications** — replace web-push (`src/lib/push.js`) with
    `@capacitor/push-notifications` for study reminders on iOS/Android, wired to
    the existing reminders backend.
 3. **Service worker** — the PWA service worker auto-registers on the web and on

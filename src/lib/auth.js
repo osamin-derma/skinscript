@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { authRedirectUrl } from './deeplink'
 
 // ─────────────────────────────────────────────────────────────────────────
 // Auth helpers
@@ -100,7 +101,7 @@ export async function signUp({ email, username, password, displayName, accessCod
         username,
         display_name: displayName || username,
       },
-      emailRedirectTo: window.location.origin,
+      emailRedirectTo: authRedirectUrl(),
     },
   })
   if (error) throw error
@@ -142,7 +143,7 @@ export async function requestPasswordReset(email) {
   const ee = validateEmail(email)
   if (ee) throw new Error(ee)
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: window.location.origin,
+    redirectTo: authRedirectUrl(),
   })
   if (error) throw error
 }
@@ -157,7 +158,7 @@ export async function updateEmail(newEmail) {
   if (ee) throw new Error(ee)
   const { error } = await supabase.auth.updateUser(
     { email: newEmail.trim() },
-    { emailRedirectTo: window.location.origin },
+    { emailRedirectTo: authRedirectUrl() },
   )
   if (error) throw error
   return { pending: true }

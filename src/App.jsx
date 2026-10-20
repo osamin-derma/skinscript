@@ -10,6 +10,7 @@ import AuthScreen from './components/AuthScreen'
 import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
 import { onAuthStateChange, signOut } from './lib/auth'
+import { initAuthDeepLinks } from './lib/deeplink'
 import * as userdata from './lib/userdata'
 import { nextSchedule, isDue } from './lib/srs'
 
@@ -626,7 +627,11 @@ export default function App() {
       setSessionResolved(true)
     })
     const unsubscribe = onAuthStateChange((s) => setSession(s))
-    return unsubscribe
+    // Native only: finish Supabase email links (confirm sign-up / reset /
+    // email change) that open the app via its custom URL scheme. On success
+    // setSession fires onAuthStateChange above, logging the user in.
+    const stopDeepLinks = initAuthDeepLinks()
+    return () => { unsubscribe(); stopDeepLinks() }
   }, [])
 
   const handleSignOut = async () => {
