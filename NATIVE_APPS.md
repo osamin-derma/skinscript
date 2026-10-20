@@ -22,6 +22,25 @@ inside a native shell — no separate codebase.
 Capacitor 8 uses **Swift Package Manager** for iOS, so CocoaPods is **not**
 required.
 
+### Android JDK (important)
+
+The Android Gradle build (Gradle 8.14) needs **JDK 17–21**. Android Studio's
+*bundled* JDK on this Mac is **Java 25**, which Gradle rejects
+(`Unsupported class file major version 69`). A **JDK 21** is installed via
+Homebrew at:
+
+```
+/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+```
+
+- **Android Studio:** Settings → Build, Execution, Deployment → Build Tools →
+  Gradle → **Gradle JDK** → point it at that JDK 21 (or "Download JDK… 21").
+- **Command line:** `export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`
+  before `./gradlew` (the `cap:android` npm script assumes the IDE/JDK is set).
+
+Both platforms have been built and run successfully: the iOS app launches in the
+iPhone simulator, and Android produces `app/build/outputs/apk/debug/app-debug.apk`.
+
 ## Everyday workflow
 
 After any change to the web app, rebuild and copy it into the native shells:
