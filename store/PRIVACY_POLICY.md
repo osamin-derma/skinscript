@@ -1,5 +1,9 @@
 # SkinScript — Privacy Policy
 
+> **Published:** the live, authoritative version is `public/privacy.html`, served
+> at **https://osamah.co/privacy.html** (contact: usamaayman@gmail.com). Edit that
+> HTML file to change the public policy; this markdown is the working draft.
+
 **Draft for your review.** It reflects how the app actually handles data today
 (Supabase backend, invite-only accounts, no ads/analytics). Please read it,
 adjust the **[bracketed]** items, and ideally have it reviewed before you publish
