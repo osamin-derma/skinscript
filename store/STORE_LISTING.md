@@ -18,7 +18,7 @@ the first submission. Review the **[ ] decisions** marked below before you submi
 | Price | **Free** (invite-only; access code required to register) |
 | Support URL | `https://osamah.co` |
 | Marketing URL | `https://osamah.co` |
-| Privacy Policy URL | `https://osamah.co/privacy.html` *(publish the policy first — see PRIVACY_POLICY.md)* |
+| Privacy Policy URL | `https://osamah.co/privacy.html` ✅ **published** (source: `public/privacy.html`) |
 | Developer / Seller name | **[ ] Dr. Osama Al Rawi** (confirm the exact legal/seller name) |
 | Support email | **[ ] add a monitored email** (stores require one; WhatsApp alone isn't accepted) |
 | **[ ] Age rating** | Suggest **17+ / "Mature"** — the app contains frequent/intense medical and treatment information. (12+ is arguable; 17+ is the safe choice for clinical imagery.) |
