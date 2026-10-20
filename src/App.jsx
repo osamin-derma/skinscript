@@ -17,15 +17,17 @@ import { nextSchedule, isDue } from './lib/srs'
 
 // Subtopic per question (scripts/tag_subtopics.py -> data/subtopics.json).
 const SUBTOPIC_OF = new Map(Object.entries(subtopicsRaw.map).map(([pid, i]) => [pid, subtopicsRaw.names[i]]))
-const withMeta = (q, src) => ({ ...q, source: q.source || src, subtopic: SUBTOPIC_OF.get(q.pdf_id) || q.category || 'General dermatology' })
+// `_bank` is the stable bank KEY (used to build a multi-bank pool from the
+// combined set); `source` is the human label.
+const withMeta = (q, src, bank) => ({ ...q, source: q.source || src, subtopic: SUBTOPIC_OF.get(q.pdf_id) || q.category || 'General dermatology', _bank: bank })
 
 // Tag each question with its source (+ subtopic) so they can be combined
-const arabBoardTagged = arabBoardRaw.map(q => withMeta(q, 'Arab Board'))
-const boardVitalsTagged = boardVitalsRaw.map(q => withMeta(q, 'Board Vitals'))
-const makkiTagged = makkiRaw.map(q => withMeta(q, 'Makki'))
-const etas2026Tagged = etas2026Raw.map(q => withMeta(q, 'ETAS 2026'))
-const dseTagged = dseRaw.map(q => withMeta(q, 'DSE – Al-Niaimi'))
-const abdTagged = abdRaw.map(q => withMeta(q, 'ABD – Dermatology'))
+const arabBoardTagged = arabBoardRaw.map(q => withMeta(q, 'Arab Board', 'arabBoard'))
+const boardVitalsTagged = boardVitalsRaw.map(q => withMeta(q, 'Board Vitals', 'boardVitals'))
+const makkiTagged = makkiRaw.map(q => withMeta(q, 'Makki', 'makki'))
+const etas2026Tagged = etas2026Raw.map(q => withMeta(q, 'ETAS 2026', 'etas2026'))
+const dseTagged = dseRaw.map(q => withMeta(q, 'DSE – Al-Niaimi', 'dse'))
+const abdTagged = abdRaw.map(q => withMeta(q, 'ABD – Dermatology', 'abd'))
 
 // Combined "All" bank: offset IDs from each bank to avoid collisions
 const combinedAll = [
@@ -37,51 +39,82 @@ const combinedAll = [
   ...abdTagged.map(q => ({ ...q, id: q.id + 500000 })),
 ]
 
+// A row is quizzable only if it has ≥2 choices and a correct answer. Bank
+// counts show this (not raw row count) so every badge equals the number a
+// student can actually practice — card and the pool/TOTAL always agree.
+const isQuizzableQ = (q) => q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
+const qzCount = (arr) => arr.reduce((n, q) => n + (isQuizzableQ(q) ? 1 : 0), 0)
+
 const allBanks = {
   arabBoard: {
     label: 'Arab Board',
     questions: arabBoardTagged,
-    count: arabBoardTagged.length,
+    count: qzCount(arabBoardTagged),
   },
   boardVitals: {
     label: 'Board Vitals',
     questions: boardVitalsTagged,
-    count: boardVitalsTagged.length,
+    count: qzCount(boardVitalsTagged),
   },
   makki: {
     label: 'Makki',
     questions: makkiTagged,
-    count: makkiTagged.length,
+    count: qzCount(makkiTagged),
   },
   etas2026: {
     label: 'ETAS 2026',
     questions: etas2026Tagged,
-    count: etas2026Tagged.length,
+    count: qzCount(etas2026Tagged),
   },
   dse: {
     label: 'DSE – Al-Niaimi',
     questions: dseTagged,
-    count: dseTagged.length,
+    count: qzCount(dseTagged),
   },
   abd: {
     label: 'ABD – Dermatology',
     questions: abdTagged,
-    count: abdTagged.length,
+    count: qzCount(abdTagged),
   },
   all: {
     label: 'All Questions',
     questions: combinedAll,
-    count: combinedAll.length,
+    count: qzCount(combinedAll),
   },
 }
 
 // Compute available categories across all banks
 const ALL_CATEGORIES = Array.from(new Set(combinedAll.map(q => q.category).filter(Boolean))).sort()
+const SOURCE_BANKS = ['arabBoard', 'boardVitals', 'makki', 'etas2026', 'dse', 'abd']
 
+// Normalize a bank/category selection to an array of chosen values.
+// Accepts a single string ('all' or a key) or an array; 'all'/empty → [] (= no filter).
+function asList(v) {
+  if (Array.isArray(v)) return v.filter(x => x && x !== 'all')
+  return v && v !== 'all' ? [v] : []
+}
+
+// Build the question pool. `bankKey` and `categoryFilter` may each be a single
+// value (unchanged behavior) or an array (multi-select). A SINGLE bank still
+// comes from that bank's own array (same ids as before — zero behavior change);
+// two or more banks are unioned from the combined pool (offset ids).
 function getBankQuestions(bankKey, categoryFilter = null) {
-  const base = allBanks[bankKey]?.questions || allBanks.all.questions
-  if (categoryFilter && categoryFilter !== 'all') {
-    return base.filter(q => q.category === categoryFilter)
+  const bankArr = asList(bankKey)
+  let base
+  if (bankArr.length > 1) {
+    const set = new Set(bankArr)
+    base = combinedAll.filter(q => set.has(q._bank))
+  } else if (bankArr.length === 1) {
+    base = allBanks[bankArr[0]]?.questions || allBanks.all.questions
+  } else {
+    base = allBanks.all.questions
+  }
+  const catArr = asList(categoryFilter)
+  if (catArr.length === 1) {
+    base = base.filter(q => q.category === catArr[0])
+  } else if (catArr.length > 1) {
+    const set = new Set(catArr)
+    base = base.filter(q => set.has(q.category))
   }
   return base
 }
@@ -136,6 +169,15 @@ const GLOBAL_FLAGS_KEY = `skinscript-${APP_VERSION}-flags`
 const GLOBAL_WRONG_KEY = `skinscript-${APP_VERSION}-wrong`
 const GLOBAL_USED_KEY = `skinscript-${APP_VERSION}-used`
 const CATEGORY_FILTER_KEY = `skinscript-${APP_VERSION}-category-filter`
+
+// Persist the category-filter selection (array of categories) as JSON; 'all'
+// clears it. Read back + validated in the INIT case.
+function persistCategoryFilter(val) {
+  try {
+    if (!val || val === 'all') localStorage.removeItem(CATEGORY_FILTER_KEY)
+    else localStorage.setItem(CATEGORY_FILTER_KEY, JSON.stringify(Array.isArray(val) ? val : [val]))
+  } catch { /* ignore */ }
+}
 
 // DATA_VERSION bumps every time the question bank changes in a way that
 // invalidates user history (new IDs, rewritten explanations, etc.). On
@@ -240,14 +282,23 @@ function reducer(state, action) {
       // Validate the persisted category filter: a value left over from an
       // older build (a since-renamed/removed category) would silently filter
       // EVERY bank down to zero questions, hiding the Start button with no
-      // visible cause. If it isn't a currently-known category, drop it back
-      // to 'all' (and clear the stale key) so the quiz can always start.
-      const savedCat = localStorage.getItem(CATEGORY_FILTER_KEY)
-      const validCat = savedCat === 'all' || ALL_CATEGORIES.includes(savedCat)
-      if (savedCat && !validCat) localStorage.removeItem(CATEGORY_FILTER_KEY)
+      // visible cause. Keep only currently-known categories; anything else
+      // drops back to 'all'. Stored as a JSON array (multi-select) or, from
+      // older builds, a plain category string.
+      const rawCat = localStorage.getItem(CATEGORY_FILTER_KEY)
+      let savedList = []
+      if (rawCat && rawCat !== 'all') {
+        try { const p = JSON.parse(rawCat); savedList = Array.isArray(p) ? p : [p] }
+        catch { savedList = [rawCat] }
+      }
+      const validList = savedList.filter(c => ALL_CATEGORIES.includes(c))
+      if (rawCat && validList.length !== savedList.length) {
+        if (validList.length) localStorage.setItem(CATEGORY_FILTER_KEY, JSON.stringify(validList))
+        else localStorage.removeItem(CATEGORY_FILTER_KEY)
+      }
       return {
         ...state,
-        categoryFilter: validCat ? savedCat : 'all',
+        categoryFilter: validList.length === 0 ? 'all' : (validList.length === 1 ? validList[0] : validList),
       }
     }
     case 'INIT_FROM_CLOUD': {
@@ -328,10 +379,10 @@ function reducer(state, action) {
       return { ...state, highlights, tombstones: had ? tomb(state.tombstones, 'highlights', action.pdfId) : state.tombstones }
     }
     case 'SET_BANK': {
-      // Guard against a soft-lock: if the active category filter leaves the
-      // newly-selected bank with zero questions, drop the filter to 'all' so
-      // the bank is always startable.
-      const stillHasQuestions = state.categoryFilter === 'all'
+      // Set the active bank(s) directly (single key, 'all', or an array).
+      // Guard against a soft-lock: if the category filter leaves the selected
+      // bank(s) with zero questions, drop the filter to 'all'.
+      const stillHasQuestions = asList(state.categoryFilter).length === 0
         || getBankQuestions(action.bank, state.categoryFilter).length > 0
       return {
         ...state,
@@ -339,9 +390,40 @@ function reducer(state, action) {
         categoryFilter: stillHasQuestions ? state.categoryFilter : 'all',
       }
     }
+    case 'TOGGLE_BANK': {
+      // Multi-select: tap a bank card to add/remove it. 'all' resets to the
+      // whole combined set; selecting none (or every source bank) is also 'all'.
+      const key = action.bank
+      let activeBank
+      if (key === 'all') {
+        activeBank = 'all'
+      } else {
+        const cur = asList(state.activeBank)
+        const next = cur.includes(key) ? cur.filter(b => b !== key) : [...cur, key]
+        activeBank = (next.length === 0 || next.length >= SOURCE_BANKS.length)
+          ? 'all' : (next.length === 1 ? next[0] : next)
+      }
+      const stillHas = asList(state.categoryFilter).length === 0
+        || getBankQuestions(activeBank, state.categoryFilter).length > 0
+      return { ...state, activeBank, categoryFilter: stillHas ? state.categoryFilter : 'all' }
+    }
     case 'SET_CATEGORY_FILTER': {
-      localStorage.setItem(CATEGORY_FILTER_KEY, action.category)
+      persistCategoryFilter(action.category)
       return { ...state, categoryFilter: action.category }
+    }
+    case 'TOGGLE_CATEGORY': {
+      // Multi-select "Filter by topic" chips. 'all' clears the filter.
+      const cat = action.category
+      let val
+      if (cat === 'all') {
+        val = 'all'
+      } else {
+        const cur = asList(state.categoryFilter)
+        const next = cur.includes(cat) ? cur.filter(c => c !== cat) : [...cur, cat]
+        val = next.length === 0 ? 'all' : (next.length === 1 ? next[0] : next)
+      }
+      persistCategoryFilter(val)
+      return { ...state, categoryFilter: val }
     }
     case 'START_QUIZ': {
       // Use selected bank — store in state for rendering

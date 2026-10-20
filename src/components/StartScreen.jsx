@@ -60,11 +60,12 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
     const q = questionByPdfId.get(pid)
     return q && q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
   }).length, [schedule, questionByPdfId])
-  const [activeBank, setActiveBankLocal] = useState(state.activeBank || 'all')
-  const setActiveBank = (bank) => {
-    setActiveBankLocal(bank)
-    dispatch({ type: 'SET_BANK', bank })
-  }
+  // Bank selection: 'all' | '<key>' | ['<key>', ...] (multi-select), from state.
+  const activeBank = state.activeBank || 'all'
+  const bankList = Array.isArray(activeBank) ? activeBank : (activeBank !== 'all' ? [activeBank] : [])
+  const bankSelected = (key) => bankList.includes(key)
+  const allBanksSelected = bankList.length === 0
+  const toggleBank = (bank) => dispatch({ type: 'TOGGLE_BANK', bank })
 
   // ───────── Global Search ─────────
   const [searchQuery, setSearchQuery] = useState('')
@@ -183,6 +184,21 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const selectedBorder = darkMode ? '#7fb5b5' : brand         // bright accent border in dark, same as bg in light
   const selectedText   = darkMode ? '#7fb5b5' : '#ffffff'     // bright teal text in dark, white in light
   const goldDark    = darkMode ? '#d4b966' : gold             // brighter gold in dark
+
+  // Bank cards (data-driven so multi-select toggling stays DRY).
+  const BANK_CONFIG = [
+    { key: 'arabBoard',   emoji: '🌍',  label: 'Arab Board',      sub: 'Regional board exams',    color: accent,    selBg: accentBgSel },
+    { key: 'boardVitals', emoji: '💉',  label: 'Board Vitals',    sub: 'With explanations',       color: '#ef4444', selBg: darkMode ? '#2a1414' : '#fef2f2' },
+    { key: 'makki',       emoji: '🩺',  label: 'Makki',           sub: 'Dermatology MCQs',        color: goldDark,  selBg: darkMode ? '#2a230a' : '#fdf6e3' },
+    { key: 'etas2026',    emoji: '📋',  label: 'ETAS 2026',       sub: 'Largest collection',      color: '#3b82f6', selBg: darkMode ? '#0e1d3a' : '#eef4ff' },
+    { key: 'dse',         emoji: '📖',  label: 'DSE – Al-Niaimi', sub: 'Specialty exam practice', color: '#0d9488', selBg: darkMode ? '#0b2b2b' : '#ecfdf5' },
+    { key: 'abd',         emoji: '🏛️', label: 'ABD – Dermatology', sub: 'American Board review',  color: '#6366f1', selBg: darkMode ? '#1e1b3a' : '#eef2ff' },
+  ]
+
+  // "Filter by topic" categories: 'all' | '<cat>' | ['<cat>', ...] (multi-select).
+  const catList = Array.isArray(categoryFilter) ? categoryFilter : (categoryFilter && categoryFilter !== 'all' ? [categoryFilter] : [])
+  const catSelected = (c) => catList.includes(c)
+  const allCatsSelected = catList.length === 0
 
   const getPoolSize = () => {
     if (source === 'flagged') return flaggedInBank
@@ -525,213 +541,69 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
 
             {/* All Questions — full-width card */}
             <button
-              onClick={() => setActiveBank('all')}
+              onClick={() => toggleBank('all')}
               className={`w-full mb-2 p-4 rounded-xl border-2 text-left transition-all flex items-center gap-4 ${
-                activeBank === 'all'
+                allBanksSelected
                   ? 'shadow-md'
                   : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
               }`}
-              style={activeBank === 'all'
+              style={allBanksSelected
                 ? { backgroundColor: accentBgSel, borderColor: accent }
                 : {}}
             >
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl"
-                   style={{ backgroundColor: activeBank === 'all' ? accent : (darkMode ? '#374151' : '#e5e7eb'),
-                            color: activeBank === 'all' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
+                   style={{ backgroundColor: allBanksSelected ? accent : (darkMode ? '#374151' : '#e5e7eb'),
+                            color: allBanksSelected ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
                 📚
               </div>
               <div className="flex-1">
-                <div className="font-bold text-base text-gray-900 dark:text-gray-100" style={activeBank === 'all' ? { color: accent } : {}}>All Questions</div>
+                <div className="font-bold text-base text-gray-900 dark:text-gray-100" style={allBanksSelected ? { color: accent } : {}}>All Questions</div>
                 <div className="text-xs text-gray-500 dark:text-gray-300">Combined: all {bankCount} sources</div>
               </div>
               <div className="text-2xl font-extrabold tabular-nums"
-                   style={{ color: activeBank === 'all' ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>
+                   style={{ color: allBanksSelected ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>
                 {banks.all.count.toLocaleString()}
               </div>
             </button>
 
-            {/* Individual banks — 2x2 grid */}
+            {/* Individual banks — 2×2 grid · tap to select/combine multiple */}
             <div className="grid grid-cols-2 gap-2">
-              {/* Arab Board */}
-              <button
-                onClick={() => setActiveBank('arabBoard')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'arabBoard'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'arabBoard'
-                  ? { backgroundColor: accentBgSel, borderColor: accent }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'arabBoard' ? accent : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'arabBoard' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    🌍
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'arabBoard' ? accent : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.arabBoard.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'arabBoard' ? { color: accent } : {}}>
-                  Arab Board
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Regional board exams</div>
-              </button>
-
-              {/* Board Vitals */}
-              <button
-                onClick={() => setActiveBank('boardVitals')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'boardVitals'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'boardVitals'
-                  ? { backgroundColor: darkMode ? '#2a1414' : '#fef2f2', borderColor: '#ef4444' }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'boardVitals' ? '#ef4444' : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'boardVitals' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    💉
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'boardVitals' ? '#ef4444' : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.boardVitals.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'boardVitals' ? { color: '#ef4444' } : {}}>
-                  Board Vitals
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">With explanations</div>
-              </button>
-
-              {/* Makki */}
-              <button
-                onClick={() => setActiveBank('makki')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'makki'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'makki'
-                  ? { backgroundColor: darkMode ? '#2a230a' : '#fdf6e3', borderColor: goldDark }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'makki' ? goldDark : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'makki' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    🩺
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'makki' ? goldDark : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.makki.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'makki' ? { color: goldDark } : {}}>
-                  Makki
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Dermatology MCQs</div>
-              </button>
-
-              {/* ETAS 2026 */}
-              <button
-                onClick={() => setActiveBank('etas2026')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'etas2026'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'etas2026'
-                  ? { backgroundColor: darkMode ? '#0e1d3a' : '#eef4ff', borderColor: '#3b82f6' }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'etas2026' ? '#3b82f6' : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'etas2026' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    📋
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'etas2026' ? '#3b82f6' : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.etas2026.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'etas2026' ? { color: '#3b82f6' } : {}}>
-                  ETAS 2026
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Largest collection</div>
-              </button>
-
-              {/* DSE – Al-Niaimi */}
-              <button
-                onClick={() => setActiveBank('dse')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'dse'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'dse'
-                  ? { backgroundColor: darkMode ? '#0b2b2b' : '#ecfdf5', borderColor: '#0d9488' }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'dse' ? '#0d9488' : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'dse' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    📖
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'dse' ? '#0d9488' : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.dse.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'dse' ? { color: '#0d9488' } : {}}>
-                  DSE – Al-Niaimi
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">Specialty exam practice</div>
-              </button>
-
-              {/* ABD – Dermatology */}
-              <button
-                onClick={() => setActiveBank('abd')}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  activeBank === 'abd'
-                    ? 'shadow-md'
-                    : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
-                }`}
-                style={activeBank === 'abd'
-                  ? { backgroundColor: darkMode ? '#1e1b3a' : '#eef2ff', borderColor: '#6366f1' }
-                  : {}}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                       style={{ backgroundColor: activeBank === 'abd' ? '#6366f1' : (darkMode ? '#374151' : '#e5e7eb'),
-                                color: activeBank === 'abd' ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
-                    🏛️
-                  </div>
-                  <div className="text-2xl font-extrabold tabular-nums"
-                       style={{ color: activeBank === 'abd' ? '#6366f1' : (darkMode ? '#6b7280' : '#9ca3af') }}>
-                    {banks.abd.count.toLocaleString()}
-                  </div>
-                </div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
-                     style={activeBank === 'abd' ? { color: '#6366f1' } : {}}>
-                  ABD – Dermatology
-                </div>
-                <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">American Board review</div>
-              </button>
+              {BANK_CONFIG.map(b => {
+                const sel = bankSelected(b.key)
+                return (
+                  <button
+                    key={b.key}
+                    onClick={() => toggleBank(b.key)}
+                    className={`p-4 rounded-xl border-2 text-left transition-all ${
+                      sel ? 'shadow-md' : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 hover:shadow-sm'
+                    }`}
+                    style={sel ? { backgroundColor: b.selBg, borderColor: b.color } : {}}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                           style={{ backgroundColor: sel ? b.color : (darkMode ? '#374151' : '#e5e7eb'),
+                                    color: sel ? 'white' : (darkMode ? '#d1d5db' : '#6b7280') }}>
+                        {b.emoji}
+                      </div>
+                      <div className="text-2xl font-extrabold tabular-nums"
+                           style={{ color: sel ? b.color : (darkMode ? '#6b7280' : '#9ca3af') }}>
+                        {banks[b.key].count.toLocaleString()}
+                      </div>
+                    </div>
+                    <div className="font-semibold text-sm text-gray-900 dark:text-gray-100"
+                         style={sel ? { color: b.color } : {}}>
+                      {b.label}
+                    </div>
+                    <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-0.5">{b.sub}</div>
+                  </button>
+                )
+              })}
             </div>
+            {bankList.length > 1 && (
+              <div className="mt-2 text-[11px] text-center text-gray-500 dark:text-gray-400">
+                Combining {bankList.length} banks · {quizzableCount.toLocaleString()} questions
+              </div>
+            )}
 
             {/* CATEGORY FILTER — Filter by main category */}
             {allCategories && allCategories.length > 0 && (
@@ -739,9 +611,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-1 h-4 rounded-full" style={{ backgroundColor: gold }} />
                   <label className="text-xs font-bold uppercase tracking-wide text-gray-600 dark:text-gray-300">Filter by Topic</label>
-                  {categoryFilter && categoryFilter !== 'all' && (
+                  <span className="text-[10px] text-gray-400 normal-case font-normal">(pick one or more)</span>
+                  {!allCatsSelected && (
                     <button
-                      onClick={() => setCategoryFilter('all')}
+                      onClick={() => dispatch({ type: 'TOGGLE_CATEGORY', category: 'all' })}
                       className="ml-auto text-[10px] text-gray-500 hover:text-red-500 underline"
                     >
                       clear
@@ -750,35 +623,41 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   <button
-                    onClick={() => setCategoryFilter('all')}
+                    onClick={() => dispatch({ type: 'TOGGLE_CATEGORY', category: 'all' })}
                     className={`text-xs px-3 py-1.5 rounded-full border transition ${
-                      !categoryFilter || categoryFilter === 'all'
+                      allCatsSelected
                         ? 'font-semibold'
                         : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
                     }`}
-                    style={(!categoryFilter || categoryFilter === 'all')
+                    style={allCatsSelected
                       ? { backgroundColor: brand, borderColor: brand, color: 'white' }
                       : {}}
                   >
                     All topics
                   </button>
-                  {allCategories.map(cat => (
-                    <button
-                      key={cat}
-                      onClick={() => setCategoryFilter(cat)}
-                      className={`text-xs px-3 py-1.5 rounded-full border transition ${
-                        categoryFilter === cat
-                          ? 'font-semibold'
-                          : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
-                      }`}
-                      style={categoryFilter === cat
-                        ? { backgroundColor: brand, borderColor: brand, color: 'white' }
-                        : {}}
-                    >
-                      {cat}
-                    </button>
-                  ))}
+                  {allCategories.map(cat => {
+                    const sel = catSelected(cat)
+                    return (
+                      <button
+                        key={cat}
+                        onClick={() => dispatch({ type: 'TOGGLE_CATEGORY', category: cat })}
+                        className={`text-xs px-3 py-1.5 rounded-full border transition ${
+                          sel
+                            ? 'font-semibold'
+                            : 'border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-gray-400'
+                        }`}
+                        style={sel
+                          ? { backgroundColor: brand, borderColor: brand, color: 'white' }
+                          : {}}
+                      >
+                        {cat}
+                      </button>
+                    )
+                  })}
                 </div>
+                {catList.length > 1 && (
+                  <div className="mt-1.5 text-[11px] text-gray-500 dark:text-gray-400">{catList.length} topics selected</div>
+                )}
               </div>
             )}
           </div>
