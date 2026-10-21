@@ -1,11 +1,5 @@
 import { useEffect, useReducer, useRef, useState } from 'react'
-import arabBoardRaw from './data/arab_board_master.json'
-import boardVitalsRaw from './data/board_vitals_master.json'
-import makkiRaw from './data/makki_master.json'
-import etas2026Raw from './data/etas_2026_master.json'
-import dseRaw from './data/dse_master.json'
-import abdRaw from './data/abd_master.json'
-import subtopicsRaw from './data/subtopics.json'
+import { loadBanks } from './lib/questions'
 import AuthScreen from './components/AuthScreen'
 import InstallPrompt from './components/InstallPrompt'
 import { supabase } from './lib/supabase'
@@ -15,76 +9,26 @@ import { initNativeShell } from './lib/native'
 import * as userdata from './lib/userdata'
 import { nextSchedule, isDue } from './lib/srs'
 
-// Subtopic per question (scripts/tag_subtopics.py -> data/subtopics.json).
-const SUBTOPIC_OF = new Map(Object.entries(subtopicsRaw.map).map(([pid, i]) => [pid, subtopicsRaw.names[i]]))
-// `_bank` is the stable bank KEY (used to build a multi-bank pool from the
-// combined set); `source` is the human label.
-const withMeta = (q, src, bank) => ({ ...q, source: q.source || src, subtopic: SUBTOPIC_OF.get(q.pdf_id) || q.category || 'General dermatology', _bank: bank })
+// The question bank is no longer bundled into the JS. It is fetched from
+// Supabase (RLS: authenticated-only) after sign-in and installed here. These
+// start empty and are populated by installBanks() once loadBanks() resolves;
+// the reducer and getBankQuestions only run after the loading gate below, so
+// they always see a populated bank. questions.js already attaches `_bank`,
+// `subtopic`, `source`, the id offsets and the combined "all" bank.
+let allBanks = null
+let combinedAll = []
+let ALL_CATEGORIES = []
 
-// Tag each question with its source (+ subtopic) so they can be combined
-const arabBoardTagged = arabBoardRaw.map(q => withMeta(q, 'Arab Board', 'arabBoard'))
-const boardVitalsTagged = boardVitalsRaw.map(q => withMeta(q, 'Board Vitals', 'boardVitals'))
-const makkiTagged = makkiRaw.map(q => withMeta(q, 'Makki', 'makki'))
-const etas2026Tagged = etas2026Raw.map(q => withMeta(q, 'ETAS 2026', 'etas2026'))
-const dseTagged = dseRaw.map(q => withMeta(q, 'DSE – Al-Niaimi', 'dse'))
-const abdTagged = abdRaw.map(q => withMeta(q, 'ABD – Dermatology', 'abd'))
-
-// Combined "All" bank: offset IDs from each bank to avoid collisions
-const combinedAll = [
-  ...arabBoardTagged,
-  ...boardVitalsTagged.map(q => ({ ...q, id: q.id + 100000 })),
-  ...makkiTagged.map(q => ({ ...q, id: q.id + 200000 })),
-  ...etas2026Tagged.map(q => ({ ...q, id: q.id + 300000 })),
-  ...dseTagged.map(q => ({ ...q, id: q.id + 400000 })),
-  ...abdTagged.map(q => ({ ...q, id: q.id + 500000 })),
-]
-
-// A row is quizzable only if it has ≥2 choices and a correct answer. Bank
-// counts show this (not raw row count) so every badge equals the number a
-// student can actually practice — card and the pool/TOTAL always agree.
-const isQuizzableQ = (q) => q.choices && Object.keys(q.choices).length >= 2 && q.correct_answer
-const qzCount = (arr) => arr.reduce((n, q) => n + (isQuizzableQ(q) ? 1 : 0), 0)
-
-const allBanks = {
-  arabBoard: {
-    label: 'Arab Board',
-    questions: arabBoardTagged,
-    count: qzCount(arabBoardTagged),
-  },
-  boardVitals: {
-    label: 'Board Vitals',
-    questions: boardVitalsTagged,
-    count: qzCount(boardVitalsTagged),
-  },
-  makki: {
-    label: 'Makki',
-    questions: makkiTagged,
-    count: qzCount(makkiTagged),
-  },
-  etas2026: {
-    label: 'ETAS 2026',
-    questions: etas2026Tagged,
-    count: qzCount(etas2026Tagged),
-  },
-  dse: {
-    label: 'DSE – Al-Niaimi',
-    questions: dseTagged,
-    count: qzCount(dseTagged),
-  },
-  abd: {
-    label: 'ABD – Dermatology',
-    questions: abdTagged,
-    count: qzCount(abdTagged),
-  },
-  all: {
-    label: 'All Questions',
-    questions: combinedAll,
-    count: qzCount(combinedAll),
-  },
+function installBanks(banks) {
+  allBanks = banks
+  combinedAll = banks.all.questions
+  ALL_CATEGORIES = Array.from(new Set(combinedAll.map(q => q.category).filter(Boolean))).sort()
+  // Rebuild the legacy numeric-id → pdf_id index (local ids, offset removed).
+  for (const k of Object.keys(_byId)) {
+    _byId[k].clear()
+    for (const q of banks[k].questions) _byId[k].set(q.id - _BANK_OFFSET[k], q.pdf_id)
+  }
 }
-
-// Compute available categories across all banks
-const ALL_CATEGORIES = Array.from(new Set(combinedAll.map(q => q.category).filter(Boolean))).sort()
 const SOURCE_BANKS = ['arabBoard', 'boardVitals', 'makki', 'etas2026', 'dse', 'abd']
 
 // Normalize a bank/category selection to an array of chosen values.
@@ -99,6 +43,7 @@ function asList(v) {
 // comes from that bank's own array (same ids as before — zero behavior change);
 // two or more banks are unioned from the combined pool (offset ids).
 function getBankQuestions(bankKey, categoryFilter = null) {
+  if (!allBanks) return []   // bank not loaded yet (pre-sign-in / loading)
   const bankArr = asList(bankKey)
   let base
   if (bankArr.length > 1) {
@@ -143,7 +88,9 @@ function uuidv4() {
 // effort: <=1281 Arab Board, otherwise ETAS. Mirrors backfill_pdf_id.py, so a
 // device that last synced before the fix restores the same way the DB did.
 const _byId = { arabBoard: new Map(), boardVitals: new Map(), makki: new Map(), etas2026: new Map(), dse: new Map(), abd: new Map() }
-for (const k of Object.keys(_byId)) for (const q of allBanks[k].questions) _byId[k].set(q.id, q.pdf_id)
+const _BANK_OFFSET = { arabBoard: 0, boardVitals: 100000, makki: 200000, etas2026: 300000, dse: 400000, abd: 500000 }
+// Populated by installBanks() once the bank loads (maps LOCAL ids → pdf_id,
+// so legacyIdToPdf below keeps working exactly as before).
 function legacyIdToPdf(id) {
   if (typeof id !== 'number' || !Number.isFinite(id)) return null
   if (id >= 500000) return _byId.abd.get(id - 500000) || null
@@ -188,7 +135,7 @@ function persistCategoryFilter(val) {
 const tomb = (t, kind, id) => ({ ...t, [kind]: (t?.[kind] || []).includes(id) ? t[kind] : [...(t?.[kind] || []), id] })
 const untomb = (t, kind, id) => (t?.[kind]?.includes(id) ? { ...t, [kind]: t[kind].filter((x) => x !== id) } : t)
 
-const DATA_VERSION = '2026-05-19-master2026'
+const DATA_VERSION = '2026-10-21-server-bank'
 const DATA_VERSION_KEY = 'skinscript-data-version'
 // Lightweight one-time announcement shown when students open the app (separate
 // from the data-version welcome/migration flow — it never wipes caches). Bump
@@ -291,8 +238,13 @@ function reducer(state, action) {
         try { const p = JSON.parse(rawCat); savedList = Array.isArray(p) ? p : [p] }
         catch { savedList = [rawCat] }
       }
-      const validList = savedList.filter(c => ALL_CATEGORIES.includes(c))
-      if (rawCat && validList.length !== savedList.length) {
+      // The bank (and ALL_CATEGORIES) loads after INIT, so only validate the
+      // saved filter once we actually know the category list — otherwise keep
+      // it as-is rather than wiping a valid selection.
+      const validList = ALL_CATEGORIES.length
+        ? savedList.filter(c => ALL_CATEGORIES.includes(c))
+        : savedList
+      if (rawCat && ALL_CATEGORIES.length && validList.length !== savedList.length) {
         if (validList.length) localStorage.setItem(CATEGORY_FILTER_KEY, JSON.stringify(validList))
         else localStorage.removeItem(CATEGORY_FILTER_KEY)
       }
@@ -704,6 +656,10 @@ export default function App() {
   // never flash the AuthScreen at a returning logged-in user.
   const [session, setSession] = useState(null)
   const [sessionResolved, setSessionResolved] = useState(false)
+  // The question bank loads from Supabase after sign-in (auth-gated), not from
+  // the JS bundle. `banks` stays null until it's in memory.
+  const [banks, setBanks] = useState(null)
+  const [bankError, setBankError] = useState(null)
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session)
@@ -717,6 +673,18 @@ export default function App() {
     initNativeShell()
     return () => { unsubscribe(); stopDeepLinks() }
   }, [])
+
+  // Load the question bank once the user is signed in (cached offline after
+  // the first load). installBanks() fills the module-level allBanks/combinedAll
+  // the reducer reads; setBanks() unblocks the render gate below.
+  useEffect(() => {
+    if (!session?.user?.id || banks) return
+    let cancelled = false
+    loadBanks(DATA_VERSION)
+      .then((b) => { if (!cancelled) { installBanks(b); setBanks(b); setBankError(null) } })
+      .catch((e) => { if (!cancelled) setBankError(e) })
+    return () => { cancelled = true }
+  }, [session, banks])
 
   const handleSignOut = async () => {
     try {
@@ -1190,6 +1158,38 @@ export default function App() {
         darkMode={state.darkMode}
         onToggleDark={() => dispatch({ type: 'TOGGLE_DARK' })}
       />
+    )
+  }
+
+  // Signed in, but the question bank hasn't loaded yet (or failed to).
+  if (!banks) {
+    return (
+      <div className={`min-h-screen flex items-center justify-center p-6 ${state.darkMode ? 'bg-gray-900 text-gray-200' : 'bg-gray-50 text-gray-700'}`}>
+        <div className="text-center max-w-sm">
+          <div className="relative inline-flex items-center justify-center mb-4">
+            {!bankError && <span className="absolute inline-block w-16 h-16 rounded-full border-2 border-current opacity-20 animate-ping" style={{ color: '#2c3e3f' }} />}
+            <img
+              src={`${import.meta.env.BASE_URL}icon.png`}
+              alt="SkinScript"
+              className="w-14 h-14 rounded-full shadow-md object-cover"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          </div>
+          <p className="text-sm font-semibold tracking-wide" style={{ color: state.darkMode ? '#7fb5b5' : '#2c3e3f' }}>SkinScript</p>
+          {bankError ? (
+            <>
+              <p className="text-xs text-gray-400 mt-1">Couldn’t load the question bank. Connect to the internet once and try again.</p>
+              <button
+                onClick={() => { setBankError(null); setBanks(null) }}
+                className="mt-4 text-xs font-semibold text-white px-4 py-2 rounded-lg"
+                style={{ backgroundColor: '#2c3e3f' }}
+              >Retry</button>
+            </>
+          ) : (
+            <p className="text-xs text-gray-400 mt-0.5">Loading the question bank…</p>
+          )}
+        </div>
+      </div>
     )
   }
 
