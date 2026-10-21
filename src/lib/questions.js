@@ -12,8 +12,12 @@
 import { supabase } from './supabase'
 import subtopicsRaw from '../data/subtopics.json'
 
+const PROJECT_URL = 'https://yssrtjfgkctojkzcoapt.supabase.co'
 const STORAGE_BUCKET = 'question-images'
-const SIGNED_URL_TTL = 60 * 60 * 24 * 7   // 7 days
+const PUBLIC_IMG_BASE = `${PROJECT_URL}/storage/v1/object/public/${STORAGE_BUCKET}/`
+// NOTE: images are served via the bucket's public URL while the bucket is
+// public. Phase 2 (private bucket) will switch this to signed URLs.
+const toImageUrl = (p) => (p && !p.startsWith('http') ? PUBLIC_IMG_BASE + p : p)
 
 // pdf_id → subtopic name (same mapping App.jsx used; this is harmless
 // metadata and may stay bundled).
@@ -50,8 +54,7 @@ function rowToQuestion(row) {
     format: row.format || 'mcq',
     subtopic: SUBTOPIC_OF.get(row.pdf_id) || row.category || 'General dermatology',
     _bank: row.bank,
-    // relative storage paths until signed (see resolveImageUrls)
-    images: Array.isArray(row.images) ? row.images.slice() : [],
+    images: (Array.isArray(row.images) ? row.images : []).map(toImageUrl),
   }
 }
 
@@ -95,27 +98,20 @@ function groupIntoBanks(rows) {
   return banks
 }
 
-// Best-effort: turn relative image paths into short-lived signed URLs for the
-// private bucket. If it fails (e.g. offline) the relative paths are left as-is
-// — text still works; images just won't load until the next online load.
-async function resolveImageUrls(banks) {
-  const withImg = banks.all.questions.filter((q) => q.images?.some((p) => p && !p.startsWith('http')))
-  const paths = [...new Set(withImg.flatMap((q) => q.images.filter((p) => p && !p.startsWith('http'))))]
-  if (!paths.length) return banks
-  const signed = new Map()
-  for (let i = 0; i < paths.length; i += 1000) {
-    const slice = paths.slice(i, i + 1000)
-    const { data, error } = await supabase.storage.from(STORAGE_BUCKET).createSignedUrls(slice, SIGNED_URL_TTL)
-    if (error) return banks            // offline / not permitted → keep relative
-    for (const r of data || []) if (r.signedUrl) signed.set(r.path, r.signedUrl)
+// Idempotent: ensure every image is a full URL. Fresh fetches already have
+// public URLs (rowToQuestion); this also repairs any cache written with bare
+// relative paths, so no DATA_VERSION bump is needed to fix a stale cache.
+function resolveImageUrls(banks) {
+  for (const k of Object.keys(banks)) {
+    for (const q of banks[k].questions) {
+      if (q.images?.length) q.images = q.images.map(toImageUrl)
+    }
   }
-  for (const q of withImg) q.images = q.images.map((p) => signed.get(p) || p)
   return banks
 }
 
 export async function fetchAllBanks() {
-  const banks = groupIntoBanks(await fetchAllRows())
-  return resolveImageUrls(banks)
+  return resolveImageUrls(groupIntoBanks(await fetchAllRows()))
 }
 
 // ── IndexedDB cache (text only; images re-signed each load) ───────────────
