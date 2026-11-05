@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser, Home } from 'lucide-react'
+import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser, Home, LayoutGrid, LogOut } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
 import * as userdata from '../lib/userdata'
@@ -237,7 +237,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className={`${bg} border-b dark:border-gray-700 px-4 py-2 sticky top-0 z-10`}>
+      <header className={`${bg} border-b dark:border-gray-700 px-4 py-2 sticky top-0 z-10`} style={{ paddingTop: 'calc(0.5rem + env(safe-area-inset-top))' }}>
        <div className="max-w-5xl mx-auto">
         {/* Progress bar */}
         <div className="w-full h-1 bg-gray-200 dark:bg-gray-700 rounded-full mb-2">
@@ -249,7 +249,7 @@ export default function QuizScreen({ state, questions, dispatch }) {
             Question {currentIndex + 1} of {totalQ}
           </span>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             {mode === 'timed' && !isSubmitted && (
               <div className={`flex items-center gap-1 px-3 py-1 rounded-lg text-sm font-mono font-bold ${timeLeft <= 10 ? 'text-red-600 bg-red-50' : 'text-gray-600 bg-gray-100 dark:bg-gray-700 dark:text-gray-300'}`}>
                 {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, '0')}
@@ -298,16 +298,22 @@ export default function QuizScreen({ state, questions, dispatch }) {
 
             <button
               onClick={() => setShowNav(!showNav)}
-              className="px-3 py-1 text-xs font-medium rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+              title="Question navigator"
+              aria-label="Question navigator"
+              className="flex items-center gap-1 px-2 sm:px-3 py-1 text-xs font-medium rounded-lg border border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-              Navigator
+              <LayoutGrid size={14} />
+              <span className="hidden sm:inline">Navigator</span>
             </button>
 
             <button
               onClick={() => dispatch({ type: 'END_QUIZ', questions })}
-              className="px-3 py-1 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-900/30"
+              title="End quiz"
+              aria-label="End quiz"
+              className="flex items-center gap-1 px-2 sm:px-3 py-1 text-xs font-medium rounded-lg bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-900/30"
             >
-              End Quiz
+              <LogOut size={14} />
+              <span className="hidden sm:inline">End Quiz</span>
             </button>
           </div>
         </div>

@@ -137,7 +137,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
   return (
     <div className={`min-h-screen flex flex-col items-center justify-center p-4 transition-colors ${
       darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-900'
-    }`}>
+    }`} style={{ paddingTop: 'calc(1rem + env(safe-area-inset-top))', paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
       {/* Branding */}
       <div className="mb-8 text-center">
         <div className="inline-block px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#fdf6e3', color: gold }}>

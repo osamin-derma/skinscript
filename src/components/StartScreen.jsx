@@ -246,7 +246,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const avgScore = history.length > 0 ? Math.round(history.reduce((a, h) => a + h.score, 0) / history.length) : 0
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8" style={{ paddingTop: 'calc(1rem + env(safe-area-inset-top))' }}>
       <div className="max-w-2xl lg:max-w-6xl mx-auto">
         {showAccount && (
           <AccountModal

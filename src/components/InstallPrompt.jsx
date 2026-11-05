@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Download, X, Share, PlusSquare } from 'lucide-react'
+import { Capacitor } from '@capacitor/core'
 
 /**
  * Soft "install this app" banner shown on first-time mobile visits.
@@ -45,7 +46,9 @@ export default function InstallPrompt({ darkMode }) {
   const [showIosHelp, setShowIosHelp] = useState(false)
 
   useEffect(() => {
-    if (isStandalone() || dismissedRecently()) return
+    // Inside the native iOS/Android app there is nothing to "install" —
+    // the home-screen/offline prompt only makes sense in a mobile browser.
+    if (Capacitor.isNativePlatform() || isStandalone() || dismissedRecently()) return
 
     // Chromium / Edge / Samsung Internet
     const onBefore = (e) => {
