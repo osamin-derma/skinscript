@@ -18,10 +18,24 @@ html.dark, html.dark body {
   background: #0f172a; /* slate-900 — dark app background */
 }
 
+/* Off-white (warm cream) theme — a gentle light variant chosen from the theme
+   toggle (light → off-white → dark). It re-tints only the light Tailwind
+   surfaces to warm cream; dark mode is untouched (html.offwhite is never set
+   together with html.dark). Text keeps the light-mode near-black overrides. */
+html.offwhite, html.offwhite body { background: #f4eede; }
+html.offwhite .bg-white    { background-color: #fcf8ee !important; }
+html.offwhite .bg-gray-50  { background-color: #f0e9d8 !important; }
+html.offwhite .bg-gray-100 { background-color: #e9e1ce !important; }
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Lock text to its designed size — never let iOS auto-inflate copy. Paired
+     with the viewport's user-scalable=no / maximum-scale=1, the app renders at
+     a fixed 1:1 scale (no pinch-zoom, no double-tap zoom), like a native screen. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   /* Force pure black text in light mode for maximum readability */
   color: #000000;
   /* Keep content clear of the home indicator / rounded corners / landscape notch

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { Sun, Moon, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images, AlertOctagon, Users, Camera, ClipboardList, Play } from 'lucide-react'
+import { Sun, Moon, Coffee, BookOpen, Clock, Eye, Flag, XCircle, Sparkles, History, Trash2, ChevronDown, ChevronUp, Trophy, BarChart3, Search, X as XIcon, LogOut, User, Check, Layers, Images, AlertOctagon, Users, ChevronRight, ChevronLeft, Camera, ClipboardList, Play } from 'lucide-react'
 import AccountModal from './AccountModal'
 import PerformanceAnalytics from './PerformanceAnalytics'
 import Notebook from './Notebook'
@@ -14,6 +14,7 @@ import Leaderboard from './Leaderboard'
 import StudyBrief from './StudyBrief'
 import Mistakes from './Mistakes'
 import AdminDashboard from './AdminDashboard'
+import ExamReview from './ExamReview'
 import { downloadProgressCsv } from '../lib/exportCsv'
 import { computeStreak, todayAnswered } from '../lib/analytics'
 
@@ -26,7 +27,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const [selectedTopics, setSelectedTopics] = useState([])
   const [showTopics, setShowTopics] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
-  const [tab, setTab] = useState('create')
+  const [tab, setTab] = useState('home')   // 'home' | 'create' | 'search' | 'performance' | 'history' | 'notebook' | 'atlas' | 'cohort'
+  const [historyExam, setHistoryExam] = useState(null)   // a past exam opened for review from the History view
   const [notebookView, setNotebookView] = useState('notes') // 'notes' | 'cards' | 'mistakes'
   const [showAccount, setShowAccount] = useState(false)
   // Pull per-user state up-front: `schedule` (and friends) are read by the
@@ -71,6 +73,26 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const [searchQuery, setSearchQuery] = useState('')
   const [searchScope, setSearchScope] = useState('all')   // 'all' | 'last11' | 'makki' | 'etasHairNails' | 'bvHairNail'
   const [searchScopeFilter, setSearchScopeFilter] = useState('any') // 'any' | 'question' | 'choices' | 'explanation'
+
+  // Recent searches — a small per-device convenience kept in localStorage, so
+  // past searches are remembered across sessions and can be re-run or cleared.
+  const SEARCH_HISTORY_KEY = 'skinscript_search_history'
+  const [searchHistory, setSearchHistory] = useState(() => {
+    try { const v = JSON.parse(localStorage.getItem(SEARCH_HISTORY_KEY)); return Array.isArray(v) ? v.slice(0, 12) : [] } catch { return [] }
+  })
+  const commitSearch = (raw) => {
+    const q = (raw || '').trim()
+    if (q.length < 2) return
+    setSearchHistory(prev => {
+      const next = [q, ...prev.filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 12)
+      try { localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(next)) } catch { /* ignore */ }
+      return next
+    })
+  }
+  const clearSearchHistory = () => {
+    setSearchHistory([])
+    try { localStorage.removeItem(SEARCH_HISTORY_KEY) } catch { /* ignore */ }
+  }
 
   // Compute search results (debounced via useMemo on inputs)
   const searchResults = useMemo(() => {
@@ -123,6 +145,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   }
 
   const openSearchResult = (result) => {
+    commitSearch(searchQuery)
     const realQuestionId = result.id > 100000 ? null : result.id
     // Search results from "all" bank have offset IDs (+100k, +200k, +300k)
     // We need the ORIGINAL bank's id. Use a more reliable method:
@@ -245,6 +268,16 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
   const presets = [10, 20, 40, 80]
   const avgScore = history.length > 0 ? Math.round(history.reduce((a, h) => a + h.score, 0) / history.length) : 0
 
+  // Title shown in the sub-view back bar (home hub has no title).
+  const sectionTitle = tab === 'create' ? 'Create exam'
+    : tab === 'search' ? 'Search'
+    : tab === 'performance' ? 'My performance'
+    : tab === 'history' ? 'History'
+    : tab === 'notebook' ? 'Notebook'
+    : tab === 'atlas' ? 'Atlas'
+    : tab === 'cohort' ? 'Cohort'
+    : ''
+
   return (
     <div className="min-h-screen p-4 md:p-8" style={{ paddingTop: 'calc(1rem + env(safe-area-inset-top))' }}>
       <div className="max-w-2xl lg:max-w-6xl mx-auto">
@@ -256,6 +289,7 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             onClose={() => setShowAccount(false)}
             onSignOut={onSignOut}
             lookupQuestion={lookupQuestion}
+            globalFlagged={globalFlagged}
             imageUrls={allImageUrls}
             onExport={() => downloadProgressCsv(state, lookupQuestion)}
             settings={settings}
@@ -267,7 +301,19 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             }}
           />
         )}
-        {/* Header */}
+        {/* Back bar — shown on every sub-view (not the home hub) */}
+        {tab !== 'home' && (
+          <div className="flex items-center gap-2 mb-5">
+            <button onClick={() => setTab('home')} className="flex items-center gap-1 -ml-1 pr-2.5 py-1.5 rounded-lg text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <ChevronLeft size={18} /> Home
+            </button>
+            <span className="flex-1 text-center text-sm font-bold truncate px-1" style={{ color: accent }}>{sectionTitle}</span>
+            <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Change theme (light / off-white / dark)" title="Change theme">{darkMode ? <Moon size={18} /> : state?.offWhite ? <Coffee size={18} /> : <Sun size={18} />}</button>
+          </div>
+        )}
+
+        {/* Header — home hub top bar */}
+        {tab === 'home' && (
         <div className="flex items-center justify-between mb-6">
           {currentUser ? (
             <button
@@ -286,8 +332,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           ) : <div />}
           <div className="flex items-center gap-1">
             <RefreshButton compact darkMode={darkMode} />
-            <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Toggle dark mode">
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            <button onClick={onToggleDark} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" aria-label="Change theme (light / off-white / dark)" title="Change theme">
+              {darkMode ? <Moon size={20} /> : state?.offWhite ? <Coffee size={20} /> : <Sun size={20} />}
             </button>
             {onSignOut && (
               <button
@@ -301,8 +347,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
             )}
           </div>
         </div>
+        )}
 
-        {/* Logo & Title */}
+        {/* Logo & Title — home hub */}
+        {tab === 'home' && (
         <div className="text-center mb-6">
           <img src={`${import.meta.env.BASE_URL}icon.png`} alt="SkinScript" className="w-24 h-24 mx-auto mb-3 rounded-full shadow-lg" style={{ objectFit: 'cover' }} />
           <h1 className="text-3xl font-extrabold tracking-tight mb-0.5">
@@ -319,8 +367,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           </div>
         </div>
 
-        {/* Resume banner — a quiz left via "Go to home page" is still in progress */}
-        {state?.pausedQuiz && state?.questionOrder?.length > 0 && (
+        )}
+
+        {/* Resume banner — home hub; a quiz left via "Go to home page" is still in progress */}
+        {tab === 'home' && state?.pausedQuiz && state?.questionOrder?.length > 0 && (
           <button
             onClick={() => dispatch({ type: 'RESUME_PAUSED_QUIZ' })}
             className="w-full mb-4 flex items-center gap-3 p-3.5 rounded-xl text-left text-white transition hover:opacity-95 shadow"
@@ -337,7 +387,26 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           </button>
         )}
 
-        {/* Stats bar */}
+        {/* Resume a quiz paused on ANOTHER device (fetched from the cloud) */}
+        {tab === 'home' && !state?.pausedQuiz && (!state?.questionOrder || state.questionOrder.length === 0) && state?.cloudQuiz?.pdfOrder?.length > 0 && (
+          <button
+            onClick={() => dispatch({ type: 'RESUME_CLOUD_QUIZ', payload: state.cloudQuiz })}
+            className="w-full mb-4 flex items-center gap-3 p-3.5 rounded-xl text-left transition hover:shadow-sm border"
+            style={{ borderColor: darkMode ? '#4a3f1a' : '#ecdfbe', backgroundColor: darkMode ? '#2a2410' : '#fbf8ef' }}
+          >
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(201,168,76,0.2)', color: darkMode ? '#d4b966' : '#8a6d1f' }}>
+              <Play size={18} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-bold">Resume from your other device</div>
+              <div className="text-[11px] text-gray-500 dark:text-gray-400">Paused quiz · {state.cloudQuiz.total} questions</div>
+            </div>
+            <span className="text-xs font-semibold px-3 py-1.5 rounded-lg" style={{ backgroundColor: 'rgba(201,168,76,0.2)', color: darkMode ? '#d4b966' : '#8a6d1f' }}>Resume</span>
+          </button>
+        )}
+
+        {/* Stats bar — on Create and My performance, not the home hub */}
+        {(tab === 'create' || tab === 'performance') && (
         <div className="grid grid-cols-4 gap-2 mb-2">
           <div className={`${bg} rounded-xl p-3 text-center shadow-sm border dark:border-gray-700`}>
             <div className="text-xl font-bold tabular-nums" style={{ color: accent }}>{quizzableCount.toLocaleString()}</div>
@@ -357,8 +426,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           </div>
         </div>
 
-        {/* Start Fresh link — only shown when there's progress to reset */}
-        {(globalUsed.length > 0 || globalWrong.length > 0 || globalFlagged.length > 0 || history.length > 0) && (
+        )}
+
+        {/* Start Fresh link — Create view; only when there's progress to reset */}
+        {tab === 'create' && (globalUsed.length > 0 || globalWrong.length > 0 || globalFlagged.length > 0 || history.length > 0) && (
           <div className="flex justify-end mb-6">
             <button
               onClick={() => {
@@ -375,9 +446,9 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
         )}
 
         {/* ═══════════════════════════════════════════════ */}
-        {/* GLOBAL SEARCH BOX                               */}
+        {/* SEARCH VIEW                                     */}
         {/* ═══════════════════════════════════════════════ */}
-        {banks && (
+        {tab === 'search' && banks && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-1 h-5 rounded-full" style={{ backgroundColor: goldDark }} />
@@ -397,6 +468,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') commitSearch(searchQuery) }}
+                onBlur={() => commitSearch(searchQuery)}
                 placeholder="Search any word in questions, choices, or explanations…"
                 className={`w-full py-3 pl-10 pr-9 rounded-xl bg-transparent text-sm focus:outline-none ${darkMode ? 'placeholder-gray-500' : 'placeholder-gray-400'}`}
               />
@@ -410,6 +483,33 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
                 </button>
               )}
             </div>
+
+            {/* Recent searches — shown when the box is empty; tap to re-run, Clear to wipe */}
+            {searchQuery.trim().length < 2 && searchHistory.length > 0 && (
+              <div className="mt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-gray-500">Recent searches</span>
+                  <button
+                    onClick={clearSearchHistory}
+                    className="flex items-center gap-1 text-[11px] text-gray-500 hover:text-red-600 transition"
+                  >
+                    <Trash2 size={11} /> Clear
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {searchHistory.map(h => (
+                    <button
+                      key={h}
+                      onClick={() => setSearchQuery(h)}
+                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12px] font-medium border transition ${darkMode ? 'border-gray-600 text-gray-200 hover:bg-gray-700' : 'border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300'}`}
+                    >
+                      <History size={12} className="text-gray-400" />
+                      {h}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Scope filters: in-bank + field */}
             {searchQuery.trim().length >= 2 && (
@@ -520,10 +620,10 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
         )}
 
         {/* ═══════════════════════════════════════════════ */}
-        {/* QUESTION BANK SELECTOR — Master Edition 2026     */}
+        {/* QUESTION BANK SELECTOR — Create view             */}
         {/* All / Arab Board / Board Vitals / Makki / ETAS   */}
         {/* ═══════════════════════════════════════════════ */}
-        {banks && (
+        {tab === 'create' && banks && (
           <div className="mb-5">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-1 h-5 rounded-full" style={{ backgroundColor: goldDark }} />
@@ -663,30 +763,84 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           </div>
         )}
 
-        {/* Tab bar */}
-        <div className="flex gap-1 mb-4 p-1 rounded-xl bg-gray-100 dark:bg-gray-800/70 dark:border dark:border-gray-700">
-          {[
-            { key: 'create', icon: <Sparkles size={14} />, label: 'Create' },
-            { key: 'history', icon: <History size={14} />, label: 'History' },
-            { key: 'performance', icon: <BarChart3 size={14} />, label: 'Stats' },
-            { key: 'notebook', icon: <BookOpen size={14} />, label: `Notebook${Object.keys(notes).length ? ` (${Object.keys(notes).length})` : ''}` },
-            { key: 'atlas', icon: <Images size={14} />, label: 'Atlas' },
-            ...(isAdmin ? [{ key: 'admin', icon: <Users size={14} />, label: 'Cohort' }] : []),
-          ].map(t => (
+        {/* ═══════════════════════════════════════════════ */}
+        {/* HOME HUB — buttons that open each section         */}
+        {/* ═══════════════════════════════════════════════ */}
+        {tab === 'home' && (
+          <div className="space-y-3">
+            {/* Primary: Create exam */}
             <button
-              key={t.key}
-              onClick={() => setTab(t.key)}
-              className={`flex-1 min-w-0 flex items-center justify-center gap-1 sm:gap-1.5 py-2 px-0.5 rounded-lg text-[11px] sm:text-xs transition ${
-                tab === t.key
-                  ? 'bg-white dark:bg-gray-700 shadow-sm font-bold text-gray-900 dark:text-gray-50'
-                  : 'font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/70'
-              }`}
+              onClick={() => setTab('create')}
+              className="w-full flex items-center gap-4 rounded-2xl p-4 text-left text-white shadow-lg transition hover:opacity-95"
+              style={{ backgroundColor: brand }}
             >
-              <span className="shrink-0">{t.icon}</span>
-              <span className="truncate">{t.label}</span>
+              <span className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-white/15"><ClipboardList size={24} /></span>
+              <span className="flex-1 min-w-0">
+                <span className="block text-base font-bold">Create exam</span>
+                <span className="block text-xs text-white/80 mt-0.5">Build a custom quiz · {quizzableCount.toLocaleString()} questions</span>
+              </span>
+              <ChevronRight size={20} className="text-white/70 flex-shrink-0" />
             </button>
-          ))}
-        </div>
+
+            {/* 2×2 grid of main tools */}
+            <div className="grid grid-cols-2 gap-3">
+              <button onClick={() => setTab('performance')} className={`flex flex-col gap-2.5 rounded-2xl p-4 text-left border transition hover:shadow-sm min-h-[122px] justify-center ${bg} ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <span className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: accentBg, color: accent }}><BarChart3 size={21} /></span>
+                <span>
+                  <span className="block text-sm font-bold">My performance</span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Scores &amp; trends</span>
+                </span>
+              </button>
+              <button onClick={() => setTab('search')} className={`flex flex-col gap-2.5 rounded-2xl p-4 text-left border transition hover:shadow-sm min-h-[122px] justify-center ${bg} ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <span className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: accentBg, color: accent }}><Search size={21} /></span>
+                <span>
+                  <span className="block text-sm font-bold">Search</span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Find any question</span>
+                </span>
+              </button>
+              <button onClick={() => setTab('notebook')} className={`flex flex-col gap-2.5 rounded-2xl p-4 text-left border transition hover:shadow-sm min-h-[122px] justify-center ${bg} ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <span className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: accentBg, color: accent }}><BookOpen size={21} /></span>
+                <span>
+                  <span className="block text-sm font-bold">Notebook{Object.keys(notes).length ? ` (${Object.keys(notes).length})` : ''}</span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Notes, cards, mistakes</span>
+                </span>
+              </button>
+              <button onClick={() => setTab('atlas')} className={`flex flex-col gap-2.5 rounded-2xl p-4 text-left border transition hover:shadow-sm min-h-[122px] justify-center ${bg} ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <span className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: accentBg, color: accent }}><Images size={21} /></span>
+                <span>
+                  <span className="block text-sm font-bold">Atlas</span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Clinical image library</span>
+                </span>
+              </button>
+            </div>
+
+            {/* History row */}
+            <button onClick={() => setTab('history')} className={`w-full flex items-center gap-3 rounded-2xl p-3.5 text-left border transition hover:shadow-sm ${bg} ${darkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+              <span className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accentBg, color: accent }}><History size={21} /></span>
+              <span className="flex-1 min-w-0">
+                <span className="block text-sm font-bold">History</span>
+                <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Your past exams &amp; results</span>
+              </span>
+              <ChevronRight size={18} className="text-gray-300 dark:text-gray-600 flex-shrink-0" />
+            </button>
+
+            {/* Cohort row — owner only */}
+            {isAdmin && (
+              <button
+                onClick={() => setTab('cohort')}
+                className="w-full flex items-center gap-3 rounded-2xl p-3.5 text-left border transition hover:shadow-sm"
+                style={{ backgroundColor: darkMode ? '#2a2410' : '#fbf8ef', borderColor: darkMode ? '#4a3f1a' : '#ecdfbe' }}
+              >
+                <span className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'rgba(201,168,76,0.2)', color: darkMode ? '#d4b966' : '#8a6d1f' }}><Users size={21} /></span>
+                <span className="flex-1 min-w-0">
+                  <span className="flex items-center gap-2 text-sm font-bold">Cohort <span className="text-[9px] font-extrabold tracking-wider px-1.5 py-0.5 rounded-full" style={{ color: darkMode ? '#d4b966' : '#8a6d1f', backgroundColor: 'rgba(201,168,76,0.22)' }}>OWNER</span></span>
+                  <span className="block text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">Students' activity, scores &amp; reports</span>
+                </span>
+                <ChevronRight size={18} className="flex-shrink-0" style={{ color: darkMode ? '#6b5d2e' : '#d6c187' }} />
+              </button>
+            )}
+          </div>
+        )}
 
         {/* CREATE TAB */}
         {tab === 'create' && (
@@ -998,47 +1152,73 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
         {/* HISTORY TAB */}
         {tab === 'history' && (
           <div className={`${bg} rounded-2xl shadow-xl p-6`}>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-bold text-lg">Quiz History</h2>
-              {history.length > 0 && (
-                <button onClick={() => dispatch({ type: 'CLEAR_HISTORY' })} className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700">
-                  <Trash2 size={12} /> Clear
-                </button>
-              )}
-            </div>
-
-            {history.length === 0 ? (
-              <div className="text-center py-12 text-gray-400">
-                <History size={40} className="mx-auto mb-3 opacity-30" />
-                <p className="text-sm">No quiz history yet</p>
-                <p className="text-xs">Complete a quiz to see results here</p>
-              </div>
+            {historyExam ? (
+              <ExamReview
+                exam={historyExam}
+                lookupQuestion={lookupQuestion}
+                darkMode={darkMode}
+                globalFlagged={globalFlagged}
+                onBack={() => setHistoryExam(null)}
+                onRetake={(ex) => { setHistoryExam(null); dispatch({ type: 'RETAKE_EXAM', detail: ex.detail, mode: ex.mode, timer: ex.timePerQ, assessment: ex.isAssessment }) }}
+              />
             ) : (
-              <div className="space-y-2">
-                {history.map(h => (
-                  <div key={h.id} className={`${cardBg} rounded-xl p-4 border`}>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-2">
-                        <Trophy size={14} className={h.score >= 70 ? 'text-green-500' : h.score >= 50 ? 'text-yellow-500' : 'text-red-500'} />
-                        <span className={`text-lg font-bold ${h.score >= 70 ? 'text-green-600' : h.score >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>{h.score}%</span>
-                      </div>
-                      <span className="text-[10px] text-gray-400">
-                        {new Date(h.date).toLocaleDateString()} {new Date(h.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </span>
-                    </div>
-                    <div className="flex gap-3 text-[10px] text-gray-500">
-                      <span>{h.correct}/{h.totalQuestions} correct</span>
-                      <span>•</span>
-                      <span className="capitalize">{h.mode} mode</span>
-                      <span>•</span>
-                      <span className="capitalize">{h.source}</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-600 rounded-full mt-2 overflow-hidden">
-                      <div className="h-full rounded-full" style={{ width: `${h.score}%`, backgroundColor: h.score >= 70 ? '#22c55e' : h.score >= 50 ? '#f59e0b' : '#ef4444' }} />
-                    </div>
+              <>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="font-bold text-lg">Quiz History</h2>
+                  {history.length > 0 && (
+                    <button onClick={() => dispatch({ type: 'CLEAR_HISTORY' })} className="flex items-center gap-1 text-xs text-red-500 hover:text-red-700">
+                      <Trash2 size={12} /> Clear
+                    </button>
+                  )}
+                </div>
+
+                {history.length === 0 ? (
+                  <div className="text-center py-12 text-gray-400">
+                    <History size={40} className="mx-auto mb-3 opacity-30" />
+                    <p className="text-sm">No quiz history yet</p>
+                    <p className="text-xs">Complete a quiz to see results here</p>
                   </div>
-                ))}
-              </div>
+                ) : (
+                  <div className="space-y-2">
+                    {history.map(h => {
+                      const reviewable = Array.isArray(h.detail) && h.detail.length > 0
+                      const inner = (
+                        <>
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <Trophy size={14} className={h.score >= 70 ? 'text-green-500' : h.score >= 50 ? 'text-yellow-500' : 'text-red-500'} />
+                              <span className={`text-lg font-bold ${h.score >= 70 ? 'text-green-600' : h.score >= 50 ? 'text-yellow-600' : 'text-red-600'}`}>{h.score}%</span>
+                            </div>
+                            <span className="text-[10px] text-gray-400 flex items-center gap-1">
+                              {new Date(h.date).toLocaleDateString()} {new Date(h.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                              {reviewable && <ChevronRight size={13} className="text-gray-300 dark:text-gray-600" />}
+                            </span>
+                          </div>
+                          <div className="flex gap-3 text-[10px] text-gray-500">
+                            <span>{h.correct}/{h.totalQuestions} correct</span>
+                            <span>•</span>
+                            <span className="capitalize">{h.mode} mode</span>
+                            <span>•</span>
+                            <span className="capitalize">{h.source}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-600 rounded-full mt-2 overflow-hidden">
+                            <div className="h-full rounded-full" style={{ width: `${h.score}%`, backgroundColor: h.score >= 70 ? '#22c55e' : h.score >= 50 ? '#f59e0b' : '#ef4444' }} />
+                          </div>
+                        </>
+                      )
+                      return reviewable ? (
+                        <button key={h.id} onClick={() => setHistoryExam(h)} className={`${cardBg} w-full text-left rounded-xl p-4 border transition hover:shadow-sm`} title="Review this exam · redo all / wrong / flagged">
+                          {inner}
+                        </button>
+                      ) : (
+                        <div key={h.id} className={`${cardBg} rounded-xl p-4 border`} title="Summary only — taken before exam review was added">
+                          {inner}
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
@@ -1165,8 +1345,8 @@ export default function StartScreen({ totalQuestions, activeQuestions = [], topi
           />
         )}
 
-        {/* ADMIN TAB (owner only) */}
-        {tab === 'admin' && isAdmin && (
+        {/* COHORT (owner only) */}
+        {tab === 'cohort' && isAdmin && (
           <AdminDashboard darkMode={darkMode} lookupQuestion={lookupQuestion} onOpenQuestion={(q) => dispatch({ type: 'OPEN_SINGLE_QUESTION', bank: 'all', questionId: q.id })} />
         )}
 

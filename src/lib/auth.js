@@ -70,6 +70,17 @@ export async function reserveAccessCode(code, identifier) {
 }
 
 
+// Permanently delete the signed-in user's account and ALL their data.
+// delete_my_account() (SECURITY DEFINER) deletes the auth user; every per-user
+// table references auth.users(id) ON DELETE CASCADE, so this wipes everything.
+export async function deleteAccount() {
+  const { error } = await supabase.rpc('delete_my_account')
+  if (error) throw error
+  // The auth row is gone — drop the now-invalid local session.
+  try { await supabase.auth.signOut() } catch { /* session already invalid */ }
+}
+
+
 export async function signUp({ email, username, password, displayName, accessCode }) {
   const ue = validateUsername(username)
   if (ue) throw new Error(ue)

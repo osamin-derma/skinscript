@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronLeft, CheckCircle, XCircle, MinusCircle, ChevronDown, ChevronUp, RotateCcw } from 'lucide-react'
+import { ChevronLeft, CheckCircle, XCircle, MinusCircle, ChevronDown, ChevronUp, RotateCcw, Flag } from 'lucide-react'
 import QuestionImages from './QuestionImages'
 
 /**
@@ -9,7 +9,7 @@ import QuestionImages from './QuestionImages'
  * pick, the correct answer, the explanation, and any images — without having
  * to store the full question text in history.
  */
-export default function ExamReview({ exam, lookupQuestion, darkMode, onBack, onRetake }) {
+export default function ExamReview({ exam, lookupQuestion, darkMode, onBack, onRetake, showBack = true, globalFlagged = [] }) {
   const [expanded, setExpanded] = useState(null)
   const brand = '#2c3e3f'
   const card = darkMode ? 'bg-gray-900/40 border-gray-700' : 'bg-gray-50 border-gray-200'
@@ -21,12 +21,20 @@ export default function ExamReview({ exam, lookupQuestion, darkMode, onBack, onR
   const correctCount = items.filter((it) => it.selected === it.q.correct_answer).length
   const when = exam?.date ? new Date(exam.date).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : ''
 
+  // Redo subsets for this exam: everything you got wrong, and the ones you have
+  // flagged. Each rebuilds a quiz from stable pdf_ids via onRetake → RETAKE_EXAM.
+  const wrongItems = items.filter((it) => it.selected !== it.q.correct_answer)
+  const flaggedItems = items.filter((it) => (globalFlagged || []).includes(it.pdf_id))
+  const retakeWith = (list) => onRetake?.({ ...exam, detail: list.map((it) => ({ pdf_id: it.pdf_id })) })
+
   return (
     <div>
       <div className="flex items-center gap-2 mb-4">
-        <button onClick={onBack} className="p-1.5 -ml-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Back to account">
-          <ChevronLeft size={18} />
-        </button>
+        {showBack && (
+          <button onClick={onBack} className="p-1.5 -ml-1 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Back to account">
+            <ChevronLeft size={18} />
+          </button>
+        )}
         <div>
           <h3 className="text-sm font-bold" style={{ color: darkMode ? '#7fb5b5' : brand }}>Exam review</h3>
           <p className="text-[11px] text-gray-400">{when}</p>
@@ -44,13 +52,31 @@ export default function ExamReview({ exam, lookupQuestion, darkMode, onBack, onR
       </p>
 
       {onRetake && items.length > 0 && (
-        <button
-          onClick={() => onRetake(exam)}
-          className="w-full flex items-center justify-center gap-2 py-2.5 mb-4 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
-          style={{ backgroundColor: brand }}
-        >
-          <RotateCcw size={15} /> Retake this exam ({items.length} questions)
-        </button>
+        <div className="mb-4 space-y-2">
+          <button
+            onClick={() => retakeWith(items)}
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold text-white transition hover:opacity-90"
+            style={{ backgroundColor: brand }}
+          >
+            <RotateCcw size={15} /> Retake all ({items.length} questions)
+          </button>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => retakeWith(wrongItems)}
+              disabled={wrongItems.length === 0}
+              className={`flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold border transition ${wrongItems.length === 0 ? 'opacity-40 cursor-not-allowed border-gray-200 dark:border-gray-700 text-gray-400' : 'border-red-200 text-red-600 hover:bg-red-50 dark:border-red-900/40 dark:hover:bg-red-900/20'}`}
+            >
+              <XCircle size={14} /> Redo wrong ({wrongItems.length})
+            </button>
+            <button
+              onClick={() => retakeWith(flaggedItems)}
+              disabled={flaggedItems.length === 0}
+              className={`flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold border transition ${flaggedItems.length === 0 ? 'opacity-40 cursor-not-allowed border-gray-200 dark:border-gray-700 text-gray-400' : 'border-amber-200 text-amber-700 hover:bg-amber-50 dark:border-amber-900/40 dark:hover:bg-amber-900/20'}`}
+            >
+              <Flag size={14} /> Redo flagged ({flaggedItems.length})
+            </button>
+          </div>
+        </div>
       )}
 
       {items.length === 0 ? (

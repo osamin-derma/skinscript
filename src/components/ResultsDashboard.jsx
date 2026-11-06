@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trophy, RotateCcw, Flag, Eye, CheckCircle, XCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import { Trophy, RotateCcw, Flag, Eye, CheckCircle, XCircle, ChevronDown, ChevronUp, Home } from 'lucide-react'
 
 export default function ResultsDashboard({ state, questions, dispatch }) {
   const { questionOrder, answers, flagged, darkMode, isAssessment } = state
@@ -96,7 +96,7 @@ export default function ResultsDashboard({ state, questions, dispatch }) {
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-white font-semibold hover:opacity-90"
               style={{ backgroundColor: '#2c3e3f' }}
             >
-              <RotateCcw size={16} /> Restart Quiz
+              <Home size={16} /> End Quiz
             </button>
             {flagged.length > 0 && (
               <button

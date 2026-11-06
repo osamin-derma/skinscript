@@ -390,6 +390,31 @@ export async function fetchLeaderboard() {
 export async function checkIsAdmin() {
   const { data, error } = await supabase.rpc('is_admin'); warn('is_admin', error); return !!data
 }
+
+// ── Cross-device "resume where you paused" (one row per user) ─────────────
+// A paused quiz is serialized to a portable, device-independent payload (see
+// serializeActiveQuiz in App.jsx) and stored here so another device can resume
+// it. The latest pause overwrites; finishing / resetting clears. If the table
+// doesn't exist yet (migration 19 not run), these just warn and no-op — the
+// app keeps working, only without cross-device resume.
+export async function saveActiveQuiz(stateObj) {
+  const userId = await uid()
+  if (!userId || !stateObj) return
+  const { error } = await supabase.from('user_active_quiz')
+    .upsert({ user_id: userId, state: stateObj, updated_at: new Date().toISOString() }, { onConflict: 'user_id' })
+  warn('save active quiz', error)
+}
+export async function fetchActiveQuiz() {
+  const { data, error } = await supabase.from('user_active_quiz').select('state, updated_at').maybeSingle()
+  warn('fetch active quiz', error)
+  return data?.state || null
+}
+export async function clearActiveQuiz() {
+  const userId = await uid()
+  if (!userId) return
+  const { error } = await supabase.from('user_active_quiz').delete().eq('user_id', userId)
+  warn('clear active quiz', error)
+}
 export async function fetchReports() {
   const { data, error } = await supabase.from('question_reports').select('id, pdf_id, reason, comment, status, created_at').order('created_at', { ascending: false }).limit(200)
   warn('reports', error); return data || []

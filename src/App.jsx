@@ -63,6 +63,46 @@ function getBankQuestions(bankKey, categoryFilter = null) {
   }
   return base
 }
+
+// Serialize the in-progress quiz into a portable, device-independent payload:
+// stable pdf_ids instead of bank-array indices, with answers and flags re-keyed
+// by pdf_id. Mirrors how history `detail` / RETAKE_EXAM already travel by pdf_id,
+// so another device can rebuild and resume the exact quiz.
+function serializeActiveQuiz(state) {
+  const bankQs = getBankQuestions(state.activeBank, state.categoryFilter)
+  if (!bankQs.length || !state.questionOrder?.length) return null
+  const idToPdf = new Map()
+  const pdfOrder = []
+  for (const i of state.questionOrder) {
+    const q = bankQs[i]
+    if (!q?.pdf_id) continue
+    pdfOrder.push(q.pdf_id)
+    idToPdf.set(q.id, q.pdf_id)
+  }
+  if (!pdfOrder.length) return null
+  const answersByPdf = {}
+  for (const [qid, a] of Object.entries(state.answers || {})) {
+    const pdf = idToPdf.get(Number(qid)) ?? idToPdf.get(qid)
+    if (pdf) answersByPdf[pdf] = a
+  }
+  const flaggedPdfs = (state.flagged || [])
+    .map((qid) => idToPdf.get(qid) ?? idToPdf.get(Number(qid)))
+    .filter(Boolean)
+  return {
+    v: 1,
+    pdfOrder,
+    answersByPdf,
+    flaggedPdfs,
+    currentIndex: Math.min(state.currentIndex || 0, pdfOrder.length - 1),
+    mode: state.mode,
+    timerSetting: state.timerSetting,
+    quizSource: state.quizSource,
+    isAssessment: !!state.isAssessment,
+    total: pdfOrder.length,
+    savedAt: new Date().toISOString(),
+  }
+}
+
 import StartScreen from './components/StartScreen'
 import QuizScreen from './components/QuizScreen'
 import ResultsDashboard from './components/ResultsDashboard'
@@ -191,6 +231,7 @@ const initialState = {
   answers: {},
   flagged: [],
   darkMode: false,
+  offWhite: false,   // warm off-white (cream) light theme; ignored when darkMode is on
   selectedTopics: [],
   quizSource: 'all', // 'all' | 'flagged' | 'wrong' | 'unused' | 'topics'
   activeBank: 'all', // 'all' | 'arabBoard' | 'boardVitals' | 'makki' | 'etas2026'
@@ -212,6 +253,9 @@ const initialState = {
   peerStats: {}, // { [pdf_id]: { n, counts } } — anonymous cohort answer distribution (read-only)
   isAdmin: false,
   isAssessment: false, // current quiz is a timed self-assessment exam
+  // A quiz paused on another device, loaded from the cloud on sign-in and
+  // offered via the "Resume from your other device" banner. Null when none.
+  cloudQuiz: null,
   // Per-quiz-session strikethroughs: { [questionId]: { A: true, C: true } }
   // Lives only for the duration of the current quiz; cleared on START_QUIZ
   // and END_QUIZ.  Independent from `answers` — striking a choice and
@@ -248,9 +292,14 @@ function reducer(state, action) {
         if (validList.length) localStorage.setItem(CATEGORY_FILTER_KEY, JSON.stringify(validList))
         else localStorage.removeItem(CATEGORY_FILTER_KEY)
       }
+      // Restore the saved theme (light / off-white / dark).
+      let savedTheme = 'light'
+      try { const t = localStorage.getItem('skinscript-theme'); if (t === 'dark' || t === 'offwhite' || t === 'light') savedTheme = t } catch { /* ignore */ }
       return {
         ...state,
         categoryFilter: validList.length === 0 ? 'all' : (validList.length === 1 ? validList[0] : validList),
+        darkMode: savedTheme === 'dark',
+        offWhite: savedTheme === 'offwhite',
       }
     }
     case 'INIT_FROM_CLOUD': {
@@ -452,7 +501,53 @@ function reducer(state, action) {
     case 'RESUME_PAUSED_QUIZ': {
       // Return to the in-progress quiz left via "Go to home page".
       if (!state.questionOrder?.length) return { ...state, pausedQuiz: false }
-      return { ...state, screen: 'quiz', pausedQuiz: false }
+      return { ...state, screen: 'quiz', pausedQuiz: false, cloudQuiz: null }
+    }
+    case 'SET_CLOUD_QUIZ':
+      // A paused quiz fetched from the cloud (saved on another device).
+      return { ...state, cloudQuiz: action.payload || null }
+    case 'RESUME_CLOUD_QUIZ': {
+      // Rebuild a quiz paused on another device from its portable payload,
+      // resolving pdf_ids against the combined "all" bank (every pdf resolves
+      // there) exactly like RETAKE_EXAM — but keeping answers, flags and the
+      // saved position so you continue where you left off.
+      const p = action.payload || state.cloudQuiz
+      if (!p?.pdfOrder?.length) return { ...state, cloudQuiz: null }
+      const bankQs = getBankQuestions('all')
+      const byPdf = new Map(bankQs.map((q, i) => [q.pdf_id, i]))
+      const order = []
+      for (const pid of p.pdfOrder) {
+        const i = byPdf.get(pid)
+        if (i !== undefined) order.push(i)
+      }
+      if (!order.length) return { ...state, cloudQuiz: null }
+      const answers = {}
+      for (const [pid, a] of Object.entries(p.answersByPdf || {})) {
+        const i = byPdf.get(pid)
+        if (i !== undefined) answers[bankQs[i].id] = a
+      }
+      const flagged = (p.flaggedPdfs || [])
+        .map((pid) => { const i = byPdf.get(pid); return i !== undefined ? bankQs[i].id : null })
+        .filter((x) => x != null)
+      return {
+        ...state,
+        screen: 'quiz',
+        mode: p.mode || 'tutor',
+        timerSetting: p.timerSetting ?? 0,
+        shuffle: false,
+        questionCount: order.length,
+        questionOrder: order,
+        currentIndex: Math.min(p.currentIndex || 0, order.length - 1),
+        answers,
+        flagged,
+        strikethroughs: {},
+        quizSource: p.quizSource || 'all',
+        activeBank: 'all',
+        categoryFilter: 'all',
+        isAssessment: !!p.isAssessment,
+        pausedQuiz: false,
+        cloudQuiz: null,
+      }
     }
     case 'RETAKE_EXAM': {
       // Redo a past exam with the exact same questions, in the same order.
@@ -581,13 +676,17 @@ function reducer(state, action) {
       return {
         ...initialState,
         darkMode: state.darkMode,
+        offWhite: state.offWhite,
         history: state.history,
         globalFlagged: state.globalFlagged,
         globalWrong: state.globalWrong,
         globalUsed: state.globalUsed,
       }
     case 'TOGGLE_DARK':
-      return { ...state, darkMode: !state.darkMode }
+      // Cycle the theme: light → off-white → dark → light.
+      if (state.darkMode) return { ...state, darkMode: false, offWhite: false }
+      if (state.offWhite) return { ...state, darkMode: true, offWhite: false }
+      return { ...state, darkMode: false, offWhite: true }
     case 'RESUME':
       return { ...action.saved, history: state.history, globalFlagged: state.globalFlagged, globalWrong: state.globalWrong, globalUsed: state.globalUsed }
     case 'REVIEW_FLAGGED': {
@@ -637,6 +736,7 @@ function reducer(state, action) {
       return {
         ...initialState,
         darkMode: state.darkMode, // keep dark mode preference
+        offWhite: state.offWhite,
         activeBank: 'all',
       }
     }
@@ -685,6 +785,17 @@ export default function App() {
       .catch((e) => { if (!cancelled) setBankError(e) })
     return () => { cancelled = true }
   }, [session, banks])
+
+  // Dismiss the instant boot splash (Heartbeat Halo, painted from index.html)
+  // once the first real screen is ready to show: the sign-in form (no session)
+  // or the app itself (signed in + bank loaded), or the bank-load error. The
+  // splash enforces its own minimum display time so the animation is seen, and
+  // has a hard fallback timeout so it can never stick.
+  useEffect(() => {
+    if (sessionResolved && (!session || banks || bankError)) {
+      window.__hideBootSplash?.()
+    }
+  }, [sessionResolved, session, banks, bankError])
 
   const handleSignOut = async () => {
     try {
@@ -810,6 +921,7 @@ export default function App() {
           // Read-only extras (not part of the sync/snapshot model)
           userdata.fetchPeerStats().then((stats) => { if (!cancelled) dispatch({ type: 'SET_PEER_STATS', stats }) })
           userdata.checkIsAdmin().then((isAdmin) => { if (!cancelled) dispatch({ type: 'SET_ADMIN', isAdmin }) })
+          userdata.fetchActiveQuiz().then((payload) => { if (!cancelled && payload) dispatch({ type: 'SET_CLOUD_QUIZ', payload }) })
         }
       } catch (e) {
         console.warn('[boot] sync failed', e)
@@ -821,6 +933,29 @@ export default function App() {
     })()
     return () => { cancelled = true }
   }, [session?.user?.id])
+
+  // ── Cross-device paused quiz: push on pause, clear when the quiz ends ──
+  const prevPausedRef = useRef(false)
+  useEffect(() => {
+    const was = prevPausedRef.current
+    prevPausedRef.current = state.pausedQuiz
+    if (!session?.user?.id) return
+    // Just paused ("Go to home page") → save a portable snapshot so another
+    // device can resume it.
+    if (state.pausedQuiz && !was && state.questionOrder?.length) {
+      const payload = serializeActiveQuiz(state)
+      if (payload) userdata.saveActiveQuiz(payload)
+    }
+  }, [state.pausedQuiz, session?.user?.id])
+
+  const prevScreenRef = useRef(state.screen)
+  useEffect(() => {
+    const was = prevScreenRef.current
+    prevScreenRef.current = state.screen
+    if (!session?.user?.id) return
+    // Finished the quiz (reached results) → the cloud paused copy is done.
+    if (state.screen === 'results' && was !== 'results') userdata.clearActiveQuiz()
+  }, [state.screen, session?.user?.id])
 
   // ── Reconnect: flush queued writes, then re-pull authoritative state ──
   useEffect(() => {
@@ -1099,7 +1234,9 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', state.darkMode)
-  }, [state.darkMode])
+    document.documentElement.classList.toggle('offwhite', !state.darkMode && state.offWhite)
+    try { localStorage.setItem('skinscript-theme', state.darkMode ? 'dark' : state.offWhite ? 'offwhite' : 'light') } catch { /* ignore */ }
+  }, [state.darkMode, state.offWhite])
 
   useEffect(() => {
     if (state.screen === 'quiz') {
@@ -1156,6 +1293,7 @@ export default function App() {
     return (
       <AuthScreen
         darkMode={state.darkMode}
+        offWhite={state.offWhite}
         onToggleDark={() => dispatch({ type: 'TOGGLE_DARK' })}
       />
     )

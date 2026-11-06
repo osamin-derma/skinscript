@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
-import { Sun, Moon, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser, Home, LayoutGrid, LogOut } from 'lucide-react'
+import { Sun, Moon, Coffee, Flag, Pause, Play, ChevronLeft, ChevronRight, X, Highlighter, Eraser, Home, LayoutGrid, LogOut } from 'lucide-react'
 import ExplanationPanel from './ExplanationPanel'
 import QuestionImages from './QuestionImages'
 import * as userdata from '../lib/userdata'
@@ -17,7 +17,7 @@ function offsetInRoot(root, container, nodeOffset) {
 }
 
 export default function QuizScreen({ state, questions, dispatch }) {
-  const { questionOrder, currentIndex, answers, flagged, mode, timerSetting, darkMode } = state
+  const { questionOrder, currentIndex, answers, flagged, mode, timerSetting, darkMode, offWhite } = state
   const qIdx = questionOrder[currentIndex]
   const q = questions[qIdx]
   const totalQ = questionOrder.length
@@ -292,8 +292,8 @@ export default function QuizScreen({ state, questions, dispatch }) {
               <Flag size={16} fill={isFlagged ? 'currentColor' : 'none'} />
             </button>
 
-            <button onClick={() => dispatch({ type: 'TOGGLE_DARK' })} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-              {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+            <button onClick={() => dispatch({ type: 'TOGGLE_DARK' })} className="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Change theme (light / off-white / dark)" title="Change theme">
+              {darkMode ? <Moon size={16} /> : offWhite ? <Coffee size={16} /> : <Sun size={16} />}
             </button>
 
             <button

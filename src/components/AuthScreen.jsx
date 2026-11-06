@@ -45,7 +45,7 @@ const requestCodeHint = (
 // method: 'email' | 'sms'
 // mode (email): 'login' | 'register' | 'forgot'
 // mode (sms):   'phone' (ask for number) | 'code' (enter OTP)
-export default function AuthScreen({ darkMode, onToggleDark }) {
+export default function AuthScreen({ darkMode, offWhite, onToggleDark }) {
   const [method, setMethod] = useState('email')
   const [mode, setMode] = useState('login')
   const [busy, setBusy] = useState(false)
@@ -472,7 +472,7 @@ export default function AuthScreen({ darkMode, onToggleDark }) {
         onClick={onToggleDark}
         className="mt-6 text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 underline"
       >
-        {darkMode ? 'Light mode' : 'Dark mode'}
+        {darkMode ? 'Light mode' : offWhite ? 'Dark mode' : 'Off-white mode'}
       </button>
     </div>
   )
